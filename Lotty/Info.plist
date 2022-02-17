@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSCameraUsageDescription</key>
+	<string>카메라 권한을 활성화 해주세요</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Pretendard-Thin</string>
+		<string>Pretendard-SemiBold</string>
+		<string>Pretendard-Regular</string>
+		<string>Pretendard-Medium</string>
+		<string>Pretendard-Light</string>
+		<string>Pretendard-ExtraLight</string>
+		<string>Pretendard-ExtraBold</string>
+		<string>Pretendard-Bold</string>
+		<string>PretendardVariable</string>
+		<string>Pretendard-Black</string>
+	</array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Main</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+</dict>
+</plist>
