@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1378E33327BFADAE00B76E5B /* SearchLotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */; };
 		13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21227BB489000FE10E1 /* AppDelegate.swift */; };
 		13A2A21527BB489000FE10E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21427BB489000FE10E1 /* SceneDelegate.swift */; };
 		13A2A21727BB489000FE10E1 /* AroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21627BB489000FE10E1 /* AroundViewController.swift */; };
@@ -23,9 +24,9 @@
 		13A2A24427BB4E9000FE10E1 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A23927BB4E5000FE10E1 /* Pretendard-ExtraLight.otf */; };
 		13A2A24527BB4E9000FE10E1 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A23327BB4E5000FE10E1 /* Pretendard-ExtraBold.otf */; };
 		13A2A24627BB4E9000FE10E1 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A23127BB4E4200FE10E1 /* Pretendard-Thin.otf */; };
-		13A2A24C27BB802E00FE10E1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A24B27BB802E00FE10E1 /* SearchViewController.swift */; };
+		13A2A24C27BB802E00FE10E1 /* RandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A24B27BB802E00FE10E1 /* RandomViewController.swift */; };
 		13A2A24E27BB804700FE10E1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A24D27BB804700FE10E1 /* SettingViewController.swift */; };
-		13A2A25027BB806800FE10E1 /* RandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A24F27BB806800FE10E1 /* RandomViewController.swift */; };
+		13A2A25027BB806800FE10E1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A24F27BB806800FE10E1 /* SearchViewController.swift */; };
 		13A2A25227BB8B1400FE10E1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A25127BB8B1400FE10E1 /* UIColor.swift */; };
 		13DCF88F27BDEF5A00EAF40C /* LotteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DCF88E27BDEF5A00EAF40C /* LotteryInfo.swift */; };
 		13DCF89327BE0B9500EAF40C /* NumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DCF89227BE0B9500EAF40C /* NumberCell.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLotteryViewController.swift; sourceTree = "<group>"; };
 		13A2A20F27BB489000FE10E1 /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A2A21227BB489000FE10E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13A2A21427BB489000FE10E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,9 +54,9 @@
 		13A2A23927BB4E5000FE10E1 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
 		13A2A23A27BB4E5000FE10E1 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		13A2A23B27BB4E5200FE10E1 /* PretendardVariable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PretendardVariable.ttf; sourceTree = "<group>"; };
-		13A2A24B27BB802E00FE10E1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		13A2A24B27BB802E00FE10E1 /* RandomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomViewController.swift; sourceTree = "<group>"; };
 		13A2A24D27BB804700FE10E1 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		13A2A24F27BB806800FE10E1 /* RandomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomViewController.swift; sourceTree = "<group>"; };
+		13A2A24F27BB806800FE10E1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		13A2A25127BB8B1400FE10E1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		13DCF88E27BDEF5A00EAF40C /* LotteryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryInfo.swift; sourceTree = "<group>"; };
 		13DCF89227BE0B9500EAF40C /* NumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberCell.swift; sourceTree = "<group>"; };
@@ -143,8 +145,7 @@
 		13DCF89127BE0B7A00EAF40C /* Random */ = {
 			isa = PBXGroup;
 			children = (
-				13A2A24F27BB806800FE10E1 /* RandomViewController.swift */,
-				13DCF89227BE0B9500EAF40C /* NumberCell.swift */,
+				13A2A24B27BB802E00FE10E1 /* RandomViewController.swift */,
 			);
 			path = Random;
 			sourceTree = "<group>";
@@ -152,7 +153,9 @@
 		13DCF89427BE0C5700EAF40C /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				13A2A24B27BB802E00FE10E1 /* SearchViewController.swift */,
+				13A2A24F27BB806800FE10E1 /* SearchViewController.swift */,
+				13DCF89227BE0B9500EAF40C /* NumberCell.swift */,
+				1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -310,12 +313,13 @@
 			files = (
 				13A2A24E27BB804700FE10E1 /* SettingViewController.swift in Sources */,
 				13A2A25227BB8B1400FE10E1 /* UIColor.swift in Sources */,
+				1378E33327BFADAE00B76E5B /* SearchLotteryViewController.swift in Sources */,
 				13A2A21727BB489000FE10E1 /* AroundViewController.swift in Sources */,
 				13DCF88F27BDEF5A00EAF40C /* LotteryInfo.swift in Sources */,
 				13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */,
 				13DCF89327BE0B9500EAF40C /* NumberCell.swift in Sources */,
-				13A2A25027BB806800FE10E1 /* RandomViewController.swift in Sources */,
-				13A2A24C27BB802E00FE10E1 /* SearchViewController.swift in Sources */,
+				13A2A25027BB806800FE10E1 /* SearchViewController.swift in Sources */,
+				13A2A24C27BB802E00FE10E1 /* RandomViewController.swift in Sources */,
 				13A2A21527BB489000FE10E1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,7 +1,8 @@
 struct LotteryInfo: Codable {
     let drwNoDate: String
     let drwNo: Int            // 회차
-    let firstWinamnt: Int     // 상금
+    let firstAccumamnt: Int   // 총 상금
+    let firstWinamnt: Int     // 1인당 상금
     let firstPrzwnerCo: Int   // 1등 당첨수
     let drwtNo1: Int
     let drwtNo2: Int
@@ -12,7 +13,6 @@ struct LotteryInfo: Codable {
     let bnusNo: Int
     
 //    let returnValue: String
-//    let firstAccumamnt: Int
 //    let totSellamnt: Int
 }
 
