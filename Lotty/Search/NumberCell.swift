@@ -13,6 +13,12 @@ class NumberCell: UITableViewCell {
     @IBOutlet weak var winAmount: UILabel!
     @IBOutlet weak var line: UIView!
     @IBOutlet weak var detailButton: UIButton!
+    
+    var detailButtonHandler: (() -> Void)?
+    
+    @IBAction func detailButton(_ sender: Any) {
+        detailButtonHandler?()
+    }
 }
 
 class NumberCloseCell: UITableViewCell {

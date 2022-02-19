@@ -5,6 +5,7 @@ import QRCodeReader
 
 class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var explainLabel: UILabel!
     private var refreshControl = UIRefreshControl()
     var lotteryArray: [LotteryItem] = []
     var fetchingMore = false
@@ -21,24 +22,43 @@ class SearchViewController: UIViewController {
         self.navigationController?.navigationBar.largeTitleTextAttributes = [
             .font: UIFont.systemFont(ofSize: 24, weight: .bold)
         ]
+        self.navigationController?.navigationBar.layoutMargins.left = 32
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        // 글자 간격
+        let attrString = NSMutableAttributedString(string: explainLabel.text!)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 6
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
+        explainLabel.attributedText = attrString
         
         recentNumber = getRecentNumber()
-        for i in 0..<10 { getLotteryNumber(drwNo: recentNumber - i) }
+        for i in 0..<10 {
+            getLotteryNumber(drwNo: recentNumber - i)
+        }
     }
     
     func getNowTime() -> String {
         let now = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = NSTimeZone(name: "ko-KR") as TimeZone?
-        return dateFormatter.string(from: now)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.timeZone = NSTimeZone(name: "ko-KR") as TimeZone?
+        return formatter.string(from: now)
     }
     
     func getRecentNumber() -> Int {
-        let result = 1002
-        let before = getNowTime()
-        print(before)
-        return result
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let base = 1002
+        let now = getNowTime()
+        
+        guard let startTime = formatter.date(from: "2022-02-12 20:34:00") else { return 0 }
+        guard let endTime = formatter.date(from: now) else { return 0 }
+        
+        let subTime = Int(endTime.timeIntervalSince(startTime)) / 60
+        let count = subTime / 10080
+        
+        return base + count
     }
     
     func numberFormatter(number: Int) -> String {
@@ -52,6 +72,7 @@ class SearchViewController: UIViewController {
             "method": "getLottoNumber",
             "drwNo": drwNo
         ]
+        
         AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryInfo.self) { response in
             switch response.result {
             case .success:
@@ -63,7 +84,19 @@ class SearchViewController: UIViewController {
                 }
                 self.lotteryArray.sort(by: { $0.lottery.drwNo > $1.lottery.drwNo })
                 self.tableView.reloadData()
+                
             case .failure:
+//                AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryFail.self) { response in
+//                    switch response.result {
+//                    case .success:
+//                        guard let lottery = response.value else { return }
+//                        print(lottery.returnValue)
+//                        let item = LotteryInfo()
+//                        self.lotteryArray.append(LotteryItem(lottery: LotteryInfo(), open: true))
+//                    case .failure:
+//                        return
+//                    }
+//                }
                 return
             }
         }
@@ -199,6 +232,19 @@ extension SearchViewController: UITableViewDataSource {
             cell.bonusNo.text = "\(lotteryArray[indexPath.section].lottery.bnusNo)"
             cell.winCount.text = "총 \(lotteryArray[indexPath.section].lottery.firstPrzwnerCo)명 당첨"
             cell.winAmount.text = numberFormatter(number: lotteryArray[indexPath.section].lottery.firstWinamnt)
+            cell.detailButtonHandler = {
+                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchLottery") as? SearchLotteryViewController else { return }
+                vc.modalTransitionStyle = .coverVertical
+                vc.modalPresentationStyle = .fullScreen
+                vc.drwtNo1 = cell.no1.text!
+                vc.drwtNo2 = cell.no2.text!
+                vc.drwtNo3 = cell.no3.text!
+                vc.drwtNo4 = cell.no4.text!
+                vc.drwtNo5 = cell.no5.text!
+                vc.drwtNo6 = cell.no6.text!
+                vc.bnusNo = cell.bonusNo.text!
+                self.present(vc, animated: true, completion: nil)
+            }
             setRound(label: cell.no1)
             setRound(label: cell.no2)
             setRound(label: cell.no3)
@@ -208,10 +254,6 @@ extension SearchViewController: UITableViewDataSource {
             setRound(label: cell.bonusNo)
             return cell
         }
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
     }
     
     func setRound(label: UILabel) {
@@ -234,7 +276,7 @@ extension SearchViewController: UITableViewDataSource {
 // MARK: 테이블뷰 Delegate
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 { return 60 }
+        if indexPath.row == 0 { return 50 }
         else { return 200 }
     }
     
@@ -265,7 +307,6 @@ extension SearchViewController: UIScrollViewDelegate {
         let tableViewContentSize = tableView.contentSize.height
         let pagination_y = tableView.bounds.size.height
         
-        //print(contentOffset_y, tableViewContentSize, pagination_y)
         if contentOffset_y > (tableViewContentSize - pagination_y) {
             if !fetchingMore {
                 beingFetch()
@@ -279,6 +320,7 @@ extension SearchViewController: UIScrollViewDelegate {
             self.refreshControl.endRefreshing()
             self.lotteryArray = []
             recentNumber = getRecentNumber()
+            print(recentNumber)
             for i in 0..<10 { getLotteryNumber(drwNo: recentNumber - i) }
             self.tableView.reloadData()
         }
@@ -288,10 +330,11 @@ extension SearchViewController: UIScrollViewDelegate {
         fetchingMore = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
             self.page += 1
-            for i in 0..<10 { self.getLotteryNumber(drwNo: self.recentNumber - (self.page * 10 + i)) }
-            
-            self.fetchingMore = false
-            self.tableView.reloadData()
+            if self.recentNumber - (self.page * 10) > 10 {
+                for i in 0..<10 { self.getLotteryNumber(drwNo: self.recentNumber - (self.page * 10 + i)) }
+                self.fetchingMore = false
+                self.tableView.reloadData()
+            }
         }
     }
 }

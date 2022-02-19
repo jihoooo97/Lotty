@@ -11,12 +11,15 @@ struct LotteryInfo: Codable {
     let drwtNo5: Int
     let drwtNo6: Int
     let bnusNo: Int
-    
-//    let returnValue: String
-//    let totSellamnt: Int
+    let returnValue: String
+    let totSellamnt: Int
 }
 
 struct LotteryItem {
     let lottery: LotteryInfo
     var open = false
+}
+
+struct LotteryFail: Codable {
+    let returnValue: String
 }
