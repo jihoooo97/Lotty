@@ -319,6 +319,7 @@ extension SearchViewController: UIScrollViewDelegate {
         if refreshControl.isRefreshing {
             self.refreshControl.endRefreshing()
             self.lotteryArray = []
+            self.page = 0
             recentNumber = getRecentNumber()
             print(recentNumber)
             for i in 0..<10 { getLotteryNumber(drwNo: recentNumber - i) }
