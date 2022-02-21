@@ -23,7 +23,7 @@ class SearchLotteryViewController: UIViewController {
     @IBOutlet weak var historyTableViewTop: NSLayoutConstraint!
     
     var lotteryInfo = LotteryInfo(drwNoDate: "", drwNo: 0, firstAccumamnt: 0, firstWinamnt: 0, firstPrzwnerCo: 0, drwtNo1: 0, drwtNo2: 0, drwtNo3: 0, drwtNo4: 0, drwtNo5: 0, drwtNo6: 0, bnusNo: 0, returnValue: "", totSellamnt: 0)
-    var searchHistoryList = Storage.retrive("search_history.json", from: .documents, as: [Int].self) ?? []
+    var searchHistoryList: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +32,10 @@ class SearchLotteryViewController: UIViewController {
         historyTableView.dataSource = self
         historyTableView.delegate = self
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        clearButton.imageView?.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+        searchHistoryList = Storage.retrive("search_history.json", from: .documents, as: [Int].self) ?? []
         if lotteryInfo.drwNoDate != "" {
             lotteryConfigure()
         } else {
@@ -45,6 +44,11 @@ class SearchLotteryViewController: UIViewController {
                 historyTableViewTop.constant = 20
             }
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Storage.store(searchHistoryList, to: .documents, as: "search_history.json")
     }
     
     func naviConfigure() {
@@ -148,7 +152,6 @@ extension SearchLotteryViewController: UISearchBarDelegate {
                 self.lotteryConfigure()
                 self.searchHistoryList = self.searchHistoryList.filter { $0 != lottery.drwNo }
                 self.searchHistoryList.insert(lottery.drwNo, at: 0)
-                Storage.store(self.searchHistoryList, to: .documents, as: "search_history.json")
                 self.historyTableView.reloadData()
             case .failure:
                 return
@@ -165,7 +168,6 @@ extension SearchLotteryViewController: UITableViewDataSource {
         cell.drwNo.text = "\(searchHistoryList[indexPath.row])회"
         cell.deleteButtonHandler = {
             self.searchHistoryList.remove(at: indexPath.row)
-            Storage.store(self.searchHistoryList, to: .documents, as: "search_history.json")
             self.historyTableView.reloadData()
         }
         
@@ -196,7 +198,6 @@ extension SearchLotteryViewController: UITableViewDelegate {
                 self.lotteryConfigure()
                 self.searchHistoryList.remove(at: indexPath.row)
                 self.searchHistoryList.insert(lottery.drwNo, at: 0)
-                Storage.store(self.searchHistoryList, to: .documents, as: "search_history.json")
                 self.historyTableView.reloadData()
             case .failure:
                 return

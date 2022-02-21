@@ -8,7 +8,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var explainLabel: UILabel!
     private var refreshControl = UIRefreshControl()
     var lotteryArray: [LotteryItem] = []
-    var searchHistoryList = Storage.retrive("search_history.json", from: .documents, as: [Int].self) ?? []
+    var searchHistoryList: [Int] = []
     var fetchingMore = false
     var recentNumber = 0
     var page = 0
@@ -44,6 +44,12 @@ class SearchViewController: UIViewController {
         for i in 0..<10 {
             getLotteryNumber(drwNo: recentNumber - i)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchHistoryList = Storage.retrive("search_history.json", from: .documents, as: [Int].self) ?? []
+        print(searchHistoryList)
     }
     
     func getNowTime() -> String {

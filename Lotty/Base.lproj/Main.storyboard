@@ -345,7 +345,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNW-SY-n7L">
-                                        <rect key="frame" x="32" y="57.5" width="35.5" height="35.5"/>
+                                        <rect key="frame" x="32" y="58.5" width="35.5" height="35.5"/>
                                         <color key="backgroundColor" name="b500"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="NNW-SY-n7L" secondAttribute="height" multiplier="1:1" id="jov-hE-a0d"/>
@@ -355,7 +355,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrP-mx-7EC">
-                                        <rect key="frame" x="72.5" y="57.5" width="35.5" height="35.5"/>
+                                        <rect key="frame" x="72.5" y="58.5" width="35.5" height="35.5"/>
                                         <color key="backgroundColor" name="b500"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="FrP-mx-7EC" secondAttribute="height" multiplier="1:1" id="e1a-Ky-MuH"/>
@@ -365,7 +365,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZU-vf-hod">
-                                        <rect key="frame" x="113" y="57.5" width="35.5" height="35.5"/>
+                                        <rect key="frame" x="113" y="58.5" width="35.5" height="35.5"/>
                                         <color key="backgroundColor" name="b500"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="DZU-vf-hod" secondAttribute="height" multiplier="1:1" id="qKr-fw-Rjm"/>
@@ -375,7 +375,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJ2-m4-6n2">
-                                        <rect key="frame" x="153.5" y="57.5" width="36" height="35.5"/>
+                                        <rect key="frame" x="153.5" y="58.5" width="36" height="35.5"/>
                                         <color key="backgroundColor" name="b500"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="NJ2-m4-6n2" secondAttribute="height" multiplier="1:1" id="1pR-VA-fiw"/>
@@ -385,7 +385,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSq-cn-03R">
-                                        <rect key="frame" x="194.5" y="57.5" width="35.5" height="35.5"/>
+                                        <rect key="frame" x="194.5" y="58.5" width="35.5" height="35.5"/>
                                         <color key="backgroundColor" name="b500"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="iSq-cn-03R" secondAttribute="height" multiplier="1:1" id="h7e-4Y-ORD"/>
@@ -395,7 +395,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPe-dK-eJx">
-                                        <rect key="frame" x="235" y="57.5" width="35.5" height="35.5"/>
+                                        <rect key="frame" x="235" y="58.5" width="35.5" height="35.5"/>
                                         <color key="backgroundColor" name="b500"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="zPe-dK-eJx" secondAttribute="height" multiplier="1:1" id="BJr-FT-lXv"/>
@@ -405,7 +405,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mwg-Bt-k8T">
-                                        <rect key="frame" x="307.5" y="57.5" width="35.5" height="35.5"/>
+                                        <rect key="frame" x="307.5" y="58.5" width="35.5" height="35.5"/>
                                         <color key="backgroundColor" name="b500"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Mwg-Bt-k8T" secondAttribute="height" multiplier="1:1" id="KAM-f1-eOT"/>
@@ -415,7 +415,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4io-XS-HoL">
-                                        <rect key="frame" x="275.5" y="62.5" width="27" height="26"/>
+                                        <rect key="frame" x="275.5" y="63.5" width="27" height="26"/>
                                         <color key="tintColor" red="0.2901960784" green="0.3294117647" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="4io-XS-HoL" secondAttribute="height" multiplier="1:1" constant="3" id="GjE-7I-oLH"/>
@@ -424,61 +424,61 @@
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="regular"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1등수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfw-66-ktn">
-                                        <rect key="frame" x="32" y="117" width="34.5" height="17.5"/>
+                                        <rect key="frame" x="32" y="118" width="33" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                         <color key="textColor" name="G900"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1인 상금" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVj-dv-4fx">
-                                        <rect key="frame" x="32" y="139.5" width="51.5" height="17.5"/>
+                                        <rect key="frame" x="32" y="141.5" width="49.5" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                         <color key="textColor" name="G900"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1등 상금" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7u-Oa-Wns">
-                                        <rect key="frame" x="32" y="162" width="51.5" height="17.5"/>
+                                        <rect key="frame" x="32" y="165" width="49.5" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                         <color key="textColor" name="G900"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZ1-WG-otz">
-                                        <rect key="frame" x="313" y="117" width="30" height="17.5"/>
+                                        <rect key="frame" x="313" y="118" width="30" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                         <color key="textColor" name="G300"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,000,000,000원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaT-M8-HAx">
-                                        <rect key="frame" x="234" y="139.5" width="109" height="17.5"/>
+                                        <rect key="frame" x="221" y="141.5" width="122" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                         <color key="textColor" name="G300"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20,000,000,000원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sib-lc-1zq">
-                                        <rect key="frame" x="225.5" y="162" width="117.5" height="17.5"/>
+                                        <rect key="frame" x="211.5" y="165" width="131.5" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                         <color key="textColor" name="G300"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 판매액" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fl1-xP-aEE">
-                                        <rect key="frame" x="32" y="184.5" width="56" height="17.5"/>
+                                        <rect key="frame" x="32" y="188.5" width="56" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                         <color key="textColor" name="G900"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100,000,000,000원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xw-85-ZkX">
-                                        <rect key="frame" x="217" y="184.5" width="126" height="17.5"/>
+                                        <rect key="frame" x="203.5" y="188.5" width="139.5" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                         <color key="textColor" name="G300"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000회" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcB-XT-xxz">
-                                        <rect key="frame" x="32" y="16" width="46.5" height="17.5"/>
+                                        <rect key="frame" x="32" y="16" width="53" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                         <color key="textColor" name="b500"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000-00-00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4z-LF-xP8">
-                                        <rect key="frame" x="264.5" y="16" width="78.5" height="17.5"/>
+                                        <rect key="frame" x="253" y="16" width="90" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="15"/>
                                         <color key="textColor" name="G300"/>
                                         <nil key="highlightedColor"/>
@@ -548,7 +548,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근 조회 목록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8X-5O-vAZ">
-                                            <rect key="frame" x="32" y="6.5" width="86.5" height="17.5"/>
+                                            <rect key="frame" x="32" y="6" width="85" height="18.5"/>
                                             <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="15"/>
                                             <color key="textColor" name="G300"/>
                                             <nil key="highlightedColor"/>
@@ -592,9 +592,9 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GrA-wE-x6J">
-                                                    <rect key="frame" x="331" y="12" width="20" height="20"/>
+                                                    <rect key="frame" x="336" y="14.5" width="15" height="15"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="20" id="FMO-dJ-gQn"/>
+                                                        <constraint firstAttribute="width" constant="15" id="FMO-dJ-gQn"/>
                                                         <constraint firstAttribute="width" secondItem="GrA-wE-x6J" secondAttribute="height" multiplier="1:1" id="US8-Tw-364"/>
                                                     </constraints>
                                                     <color key="tintColor" name="G300"/>
@@ -607,7 +607,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000회" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3k-Mi-FEn">
-                                                    <rect key="frame" x="55" y="13.5" width="46.5" height="17.5"/>
+                                                    <rect key="frame" x="55" y="13" width="49" height="18.5"/>
                                                     <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
                                                     <color key="textColor" name="G900"/>
                                                     <nil key="highlightedColor"/>
