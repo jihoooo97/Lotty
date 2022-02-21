@@ -8,9 +8,17 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var explainLabel: UILabel!
     private var refreshControl = UIRefreshControl()
     var lotteryArray: [LotteryItem] = []
+    var searchHistoryList = Storage.retrive("search_history.json", from: .documents, as: [Int].self) ?? []
     var fetchingMore = false
     var recentNumber = 0
     var page = 0
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! SearchLotteryViewController
+        if segue.identifier == "detailLottery" {
+            vc.lotteryInfo = sender as! LotteryInfo
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +26,7 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.refreshControl = refreshControl
         
-        self.title = " 조회하기"
+        self.title = "조회하기"
         self.navigationController?.navigationBar.largeTitleTextAttributes = [
             .font: UIFont.systemFont(ofSize: 24, weight: .bold)
         ]
@@ -141,24 +149,20 @@ class SearchViewController: UIViewController {
         
         // [QR 패턴 사용 실시]
         self.readerVC.delegate = self
-        
         // [클로저 사용 실시]
         self.readerVC.completionBlock = { (result: QRCodeReaderResult?) in
             print("[ViewController >> callQrScanStart() :: QR 스캔 결과 확인 실시]")
             print("result : ", result?.value ?? "")
         }
-        
         // [readerVC를 모달 양식 시트로 표시]
         self.readerVC.modalPresentationStyle = .fullScreen
         self.present(self.readerVC, animated: true, completion: nil)
     }
-    
     // alert 팝업창 호출 메소드 정의 실시: 이벤트 호출 시
     // 호출 방법 : showAlert(tittle: "title", content: "content", okBtb: "확인", noBtn: "취소")
     func showAlert(tittle:String, content:String, okBtb:String, noBtn:String) {
         // [UIAlertController 객체 정의 실시]
         let alert = UIAlertController(title: tittle, message: content, preferredStyle: UIAlertController.Style.alert)
-        
         // [인풋으로 들어온 확인 버튼이 nil 아닌 경우]
         if(okBtb != "" && okBtb.count > 0){
             let okAction = UIAlertAction(title: okBtb, style: .default) { action in
@@ -166,7 +170,6 @@ class SearchViewController: UIViewController {
             }
             alert.addAction(okAction)
         }
-        
         // [인풋으로 들어온 취소 버튼이 nil 아닌 경우]
         if(noBtn != "" && noBtn.count > 0){
             let noAction = UIAlertAction(title: noBtn, style: .default) { action in
@@ -174,17 +177,9 @@ class SearchViewController: UIViewController {
             }
             alert.addAction(noAction)
         }
-        
         // [alert 팝업창 활성 실시]
         present(alert, animated: false, completion: nil)
     }
-    
-//    @IBAction func searchButton(_ sender: Any) {
-//        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchLottery") as? SearchLotteryViewController else { return }
-//        vc.modalTransitionStyle = .coverVertical
-//        vc.modalPresentationStyle = .fullScreen
-//        self.present(vc, animated: true, completion: nil)
-//    }
     
     @IBAction func qrButton(_ sender: Any) {
         // [카메라 권한 부여 확인 실시]
@@ -218,6 +213,11 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "numberCloseCell", for: indexPath) as? NumberCloseCell else { return UITableViewCell() }
+            if lotteryArray[indexPath.section].open == true {
+                cell.status.image = UIImage(named: "arrow_up_icon")
+            } else {
+                cell.status.image = UIImage(named: "arrow_down_icon")
+            }
             cell.drwNo.text = "\(lotteryArray[indexPath.section].lottery.drwNo)회"
             return cell
         } else {
@@ -233,17 +233,10 @@ extension SearchViewController: UITableViewDataSource {
             cell.winCount.text = "총 \(lotteryArray[indexPath.section].lottery.firstPrzwnerCo)명 당첨"
             cell.winAmount.text = numberFormatter(number: lotteryArray[indexPath.section].lottery.firstWinamnt)
             cell.detailButtonHandler = {
-                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchLottery") as? SearchLotteryViewController else { return }
-                vc.modalTransitionStyle = .coverVertical
-                vc.modalPresentationStyle = .fullScreen
-                vc.drwtNo1 = cell.no1.text!
-                vc.drwtNo2 = cell.no2.text!
-                vc.drwtNo3 = cell.no3.text!
-                vc.drwtNo4 = cell.no4.text!
-                vc.drwtNo5 = cell.no5.text!
-                vc.drwtNo6 = cell.no6.text!
-                vc.bnusNo = cell.bonusNo.text!
-                self.present(vc, animated: true, completion: nil)
+                self.searchHistoryList = self.searchHistoryList.filter { $0 != self.lotteryArray[indexPath.section].lottery.drwNo }
+                self.searchHistoryList.insert(self.lotteryArray[indexPath.section].lottery.drwNo, at: 0)
+                Storage.store(self.searchHistoryList, to: .documents, as: "search_history.json")
+                self.performSegue(withIdentifier: "detailLottery", sender: self.lotteryArray[indexPath.section].lottery)
             }
             setRound(label: cell.no1)
             setRound(label: cell.no2)
@@ -258,7 +251,7 @@ extension SearchViewController: UITableViewDataSource {
     
     func setRound(label: UILabel) {
         label.layer.masksToBounds = true
-        label.layer.cornerRadius = 20
+        label.layer.cornerRadius = 18
         if Int(label.text!)! <= 10 {
             label.backgroundColor = .firstColor
         } else if Int(label.text!)! <= 20 {
@@ -287,16 +280,15 @@ extension SearchViewController: UITableViewDelegate {
         if index.row == indexPath.row && index.row == 0 {
             if lotteryArray[indexPath.section].open == true {
                 lotteryArray[indexPath.section].open = false
-                cell.status.image = UIImage(named: "1814087_arrow_top_up_icon")
                 let section = IndexSet.init(integer: indexPath.section)
                 tableView.reloadSections(section, with: .fade)
             } else {
                 lotteryArray[indexPath.section].open = true
-                cell.status.image = UIImage(named: "1814082_arrow_bottom_down_icon")
                 let section = IndexSet.init(integer: indexPath.section)
                 tableView.reloadSections(section, with: .fade)
             }
         }
+        
     }
 }
 
