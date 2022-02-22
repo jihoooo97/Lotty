@@ -365,11 +365,11 @@ public final class QRCodeReader: NSObject, AVCaptureMetadataOutputObjectsDelegat
       metadataObjectTypes = [.qr]
     }
 
-      for metadataObjectType in metadataObjectTypes! {
-          if !output.availableMetadataObjectTypes.contains(where: { $0 == metadataObjectType }) {
-              return false
-          }
+    for metadataObjectType in metadataObjectTypes! {
+        if !output.availableMetadataObjectTypes.contains(where: { $0 == metadataObjectType }) {
+        return false
       }
+    }
 
     return true
   }

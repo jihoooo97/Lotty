@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.5.0)
+  - NMapsMap (3.14.1)
   - QRCodeReader.swift (10.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.5)
+  - NMapsMap
   - QRCodeReader.swift (~> 10.1.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - NMapsMap
     - QRCodeReader.swift
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  NMapsMap: 79bae4e0d7cc5214dd6dabdb95687a1356616556
   QRCodeReader.swift: 373a389fe9a22d513c879a32a6f647c58f4ef572
 
-PODFILE CHECKSUM: 04c181e5e04d3108344d9a40a50970250c02ef71
+PODFILE CHECKSUM: fb88bd3f64ba3215b8e03a1578aa3b77b427a3cf
 
 COCOAPODS: 1.11.2

@@ -27,14 +27,15 @@ class SearchLotteryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        naviConfigure()
-        self.tabBarController?.tabBar.isHidden = true
+        configureNavi()
         historyTableView.dataSource = self
         historyTableView.delegate = self
+        historyTableView.backgroundColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
         searchHistoryList = Storage.retrive("search_history.json", from: .documents, as: [Int].self) ?? []
         if lotteryInfo.drwNoDate != "" {
             lotteryConfigure()
@@ -48,18 +49,20 @@ class SearchLotteryViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
         Storage.store(searchHistoryList, to: .documents, as: "search_history.json")
     }
     
-    func naviConfigure() {
+    func configureNavi() {
         let backButton = UIButton(type: .custom)
         backButton.setImage(UIImage(named: "arrow_left_icon"), for: .normal)
         backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
-        backButton.tintColor = .darkGray
+        backButton.tintColor = .G900
         backButton.sizeToFit()
         
         let width = UIScreen.main.bounds.size.width
         let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: width - backButton.frame.width * 3, height: 0))
+        searchBar.tintColor = .G600
         searchBar.placeholder = "회차 입력"
         searchBar.delegate = self
         

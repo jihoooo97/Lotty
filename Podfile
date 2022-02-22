@@ -8,5 +8,6 @@ target 'Lotty' do
   # Pods for Lotty
   pod 'QRCodeReader.swift', '~> 10.1.0'
   pod 'Alamofire', '~> 5.5'
+  pod 'NMapsMap'
 
 end

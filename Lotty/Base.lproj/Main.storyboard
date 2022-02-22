@@ -81,7 +81,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000회" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uve-np-QtZ">
                                                     <rect key="frame" x="16" y="12" width="51.5" height="36"/>
                                                     <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="15"/>
-                                                    <color key="textColor" red="0.050980392159999999" green="0.058823529409999999" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" name="G900"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_up_icon" translatesAutoresizingMaskIntoConstraints="NO" id="r7y-gu-0PO">
@@ -310,13 +310,13 @@
                     <navigationItem key="navigationItem" id="ta9-VC-V8X">
                         <rightBarButtonItems>
                             <barButtonItem title="qrButton" image="qr_scan_icon" id="P92-ab-Nhi">
-                                <color key="tintColor" name="b500"/>
+                                <color key="tintColor" name="B500"/>
                                 <connections>
                                     <action selector="qrButton:" destination="wqN-Mz-JcS" id="JJ7-pf-EmV"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="searchButton" image="find_icon" id="LId-CP-6ES">
-                                <color key="tintColor" name="b500"/>
+                                <color key="tintColor" name="B500"/>
                                 <connections>
                                     <segue destination="WVX-9n-pSn" kind="show" identifier="searchLottery" id="uNF-jG-XUo"/>
                                 </connections>
@@ -474,7 +474,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000회" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcB-XT-xxz">
                                         <rect key="frame" x="32" y="16" width="53" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
-                                        <color key="textColor" name="b500"/>
+                                        <color key="textColor" name="B500"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000-00-00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4z-LF-xP8">
@@ -543,6 +543,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4hj-TO-48P">
                                 <rect key="frame" x="0.0" y="284" width="375" height="334"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="cyr-Aj-pUx">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -566,7 +569,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="0lx-lc-yoC" firstAttribute="centerY" secondItem="cyr-Aj-pUx" secondAttribute="centerY" id="EK2-6Q-YCy"/>
                                         <constraint firstItem="o8X-5O-vAZ" firstAttribute="leading" secondItem="cyr-Aj-pUx" secondAttribute="leading" constant="32" id="KDB-ld-Wcg"/>
@@ -613,6 +616,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="GrA-wE-x6J" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="f3k-Mi-FEn" secondAttribute="trailing" constant="8" symbolic="YES" id="1ch-LT-wLS"/>
                                                 <constraint firstItem="9B9-RM-5jA" firstAttribute="centerY" secondItem="R9M-KX-pM2" secondAttribute="centerY" id="1cn-Qq-kCK"/>
@@ -623,6 +627,7 @@
                                                 <constraint firstItem="GrA-wE-x6J" firstAttribute="centerY" secondItem="R9M-KX-pM2" secondAttribute="centerY" id="oRX-e5-Xq4"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="clockImage" destination="9B9-RM-5jA" id="GO5-Er-Qfp"/>
                                             <outlet property="deleteButton" destination="GrA-wE-x6J" id="ZPc-oW-3tM"/>
@@ -685,25 +690,8 @@
                     <view key="view" contentMode="scaleToFill" id="GIs-lQ-6mW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TL7-LY-z1X">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <color key="barTintColor" systemColor="systemBackgroundColor"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" name="b500"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem id="0So-xO-V0p"/>
-                                </items>
-                            </navigationBar>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="RSh-zy-uxo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="TL7-LY-z1X" firstAttribute="leading" secondItem="RSh-zy-uxo" secondAttribute="leading" id="PDn-bh-5IN"/>
-                            <constraint firstItem="TL7-LY-z1X" firstAttribute="top" secondItem="RSh-zy-uxo" secondAttribute="top" id="e1B-kV-QhH"/>
-                            <constraint firstItem="RSh-zy-uxo" firstAttribute="trailing" secondItem="TL7-LY-z1X" secondAttribute="trailing" id="oMK-dI-X96"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="번호 생성" id="5KQ-3L-AHn">
                         <color key="badgeColor" red="0.13725490200000001" green="0.57647058819999997" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -794,14 +782,17 @@
         <image name="qr_scan_icon" width="24" height="24"/>
         <image name="setting_icon" width="32" height="32"/>
         <image name="trash_icon" width="32" height="32"/>
+        <namedColor name="B500">
+            <color red="0.13725490196078433" green="0.57647058823529407" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="G300">
-            <color red="0.70200002193450928" green="0.73299998044967651" blue="0.82700002193450928" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.70196078431372544" green="0.73333333333333328" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="G600">
-            <color red="0.28999999165534973" green="0.32899999618530273" blue="0.43900001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.29019607843137257" green="0.32941176470588235" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="G900">
-            <color red="0.050999999046325684" green="0.059000000357627869" blue="0.078000001609325409" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.050980392156862744" green="0.058823529411764705" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="b500">
             <color red="0.13725490196078433" green="0.57647058823529407" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

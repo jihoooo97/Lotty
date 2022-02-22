@@ -24,10 +24,25 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.backgroundColor = .white
         tableView.refreshControl = refreshControl
+        configureNavi()
         
+        recentNumber = getRecentNumber()
+        for i in 0..<10 {
+            getLotteryNumber(drwNo: recentNumber - i)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchHistoryList = Storage.retrive("search_history.json", from: .documents, as: [Int].self) ?? []
+    }
+    
+    func configureNavi() {
         self.title = "조회하기"
         self.navigationController?.navigationBar.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.G900,
             .font: UIFont.systemFont(ofSize: 24, weight: .bold)
         ]
         self.navigationController?.navigationBar.layoutMargins.left = 32
@@ -39,17 +54,6 @@ class SearchViewController: UIViewController {
         paragraphStyle.lineSpacing = 6
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
         explainLabel.attributedText = attrString
-        
-        recentNumber = getRecentNumber()
-        for i in 0..<10 {
-            getLotteryNumber(drwNo: recentNumber - i)
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        searchHistoryList = Storage.retrive("search_history.json", from: .documents, as: [Int].self) ?? []
-        print(searchHistoryList)
     }
     
     func getNowTime() -> String {

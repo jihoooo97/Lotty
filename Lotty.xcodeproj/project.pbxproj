@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1378E33327BFADAE00B76E5B /* SearchLotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */; };
-		13802F6927C3A2E1008EE0BC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13802F6827C3A2E1008EE0BC /* Storage.swift */; };
+		13802F6B27C3D4D8008EE0BC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13802F6A27C3D4D8008EE0BC /* Storage.swift */; };
 		13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21227BB489000FE10E1 /* AppDelegate.swift */; };
 		13A2A21527BB489000FE10E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21427BB489000FE10E1 /* SceneDelegate.swift */; };
 		13A2A21727BB489000FE10E1 /* AroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21627BB489000FE10E1 /* AroundViewController.swift */; };
@@ -29,6 +29,7 @@
 		13A2A24E27BB804700FE10E1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A24D27BB804700FE10E1 /* SettingViewController.swift */; };
 		13A2A25027BB806800FE10E1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A24F27BB806800FE10E1 /* SearchViewController.swift */; };
 		13A2A25227BB8B1400FE10E1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A25127BB8B1400FE10E1 /* UIColor.swift */; };
+		13CCFC8427C4F5DB0033D682 /* StoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCFC8327C4F5DB0033D682 /* StoreDetailView.swift */; };
 		13DCF88F27BDEF5A00EAF40C /* LotteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DCF88E27BDEF5A00EAF40C /* LotteryInfo.swift */; };
 		13DCF89327BE0B9500EAF40C /* NumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DCF89227BE0B9500EAF40C /* NumberCell.swift */; };
 		13DCF89727BE681D00EAF40C /* Round.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13DCF89627BE681D00EAF40C /* Round.xib */; };
@@ -37,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLotteryViewController.swift; sourceTree = "<group>"; };
-		13802F6827C3A2E1008EE0BC /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Storage.swift; path = ../../Storage.swift; sourceTree = "<group>"; };
+		13802F6A27C3D4D8008EE0BC /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		13A2A20F27BB489000FE10E1 /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A2A21227BB489000FE10E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13A2A21427BB489000FE10E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 		13A2A24D27BB804700FE10E1 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		13A2A24F27BB806800FE10E1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		13A2A25127BB8B1400FE10E1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		13CCFC8327C4F5DB0033D682 /* StoreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailView.swift; sourceTree = "<group>"; };
 		13DCF88E27BDEF5A00EAF40C /* LotteryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryInfo.swift; sourceTree = "<group>"; };
 		13DCF89227BE0B9500EAF40C /* NumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberCell.swift; sourceTree = "<group>"; };
 		13DCF89627BE681D00EAF40C /* Round.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Round.xib; sourceTree = "<group>"; };
@@ -101,7 +103,7 @@
 		13A2A21127BB489000FE10E1 /* Lotty */ = {
 			isa = PBXGroup;
 			children = (
-				13802F6827C3A2E1008EE0BC /* Storage.swift */,
+				13802F6A27C3D4D8008EE0BC /* Storage.swift */,
 				13DCF89527BE0C6E00EAF40C /* API */,
 				13DCF89027BE0B5300EAF40C /* Arround */,
 				13DCF89127BE0B7A00EAF40C /* Random */,
@@ -116,6 +118,7 @@
 				13A2A25127BB8B1400FE10E1 /* UIColor.swift */,
 				13A2A23027BB4E3200FE10E1 /* Pretendard-Font */,
 				13DCF89627BE681D00EAF40C /* Round.xib */,
+				13CCFC8327C4F5DB0033D682 /* StoreDetailView.swift */,
 			);
 			path = Lotty;
 			sourceTree = "<group>";
@@ -315,12 +318,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				13A2A24E27BB804700FE10E1 /* SettingViewController.swift in Sources */,
-				13802F6927C3A2E1008EE0BC /* Storage.swift in Sources */,
+				13802F6B27C3D4D8008EE0BC /* Storage.swift in Sources */,
 				13A2A25227BB8B1400FE10E1 /* UIColor.swift in Sources */,
 				1378E33327BFADAE00B76E5B /* SearchLotteryViewController.swift in Sources */,
 				13A2A21727BB489000FE10E1 /* AroundViewController.swift in Sources */,
 				13DCF88F27BDEF5A00EAF40C /* LotteryInfo.swift in Sources */,
 				13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */,
+				13CCFC8427C4F5DB0033D682 /* StoreDetailView.swift in Sources */,
 				13DCF89327BE0B9500EAF40C /* NumberCell.swift in Sources */,
 				13A2A25027BB806800FE10E1 /* SearchViewController.swift in Sources */,
 				13A2A24C27BB802E00FE10E1 /* RandomViewController.swift in Sources */,
@@ -387,6 +391,8 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -448,6 +454,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -459,6 +467,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -475,6 +484,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3LTN66N935;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lotty/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = lotty;
@@ -508,6 +518,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3LTN66N935;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lotty/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = lotty;
