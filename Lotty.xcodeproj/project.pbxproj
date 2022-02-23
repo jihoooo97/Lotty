@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		132A29D227C5CACB003203B2 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132A29D127C5CACB003203B2 /* SearchBarView.swift */; };
 		1378E33327BFADAE00B76E5B /* SearchLotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */; };
 		13802F6B27C3D4D8008EE0BC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13802F6A27C3D4D8008EE0BC /* Storage.swift */; };
 		13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21227BB489000FE10E1 /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		132A29D127C5CACB003203B2 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLotteryViewController.swift; sourceTree = "<group>"; };
 		13802F6A27C3D4D8008EE0BC /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		13A2A20F27BB489000FE10E1 /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +121,7 @@
 				13A2A23027BB4E3200FE10E1 /* Pretendard-Font */,
 				13DCF89627BE681D00EAF40C /* Round.xib */,
 				13CCFC8327C4F5DB0033D682 /* StoreDetailView.swift */,
+				132A29D127C5CACB003203B2 /* SearchBarView.swift */,
 			);
 			path = Lotty;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */,
 				13CCFC8427C4F5DB0033D682 /* StoreDetailView.swift in Sources */,
 				13DCF89327BE0B9500EAF40C /* NumberCell.swift in Sources */,
+				132A29D227C5CACB003203B2 /* SearchBarView.swift in Sources */,
 				13A2A25027BB806800FE10E1 /* SearchViewController.swift in Sources */,
 				13A2A24C27BB802E00FE10E1 /* RandomViewController.swift in Sources */,
 				13A2A21527BB489000FE10E1 /* SceneDelegate.swift in Sources */,

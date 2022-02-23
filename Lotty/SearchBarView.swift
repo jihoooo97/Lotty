@@ -1,6 +1,6 @@
 import UIKit
 
-class StoreDetailView: UIView {
+class SearchBarView: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -12,7 +12,6 @@ class StoreDetailView: UIView {
     }
     
     private func commonInit() {
-        backgroundColor = .white
         layer.borderWidth = 1
         layer.borderColor = UIColor.white.cgColor
         layer.cornerRadius = 8
@@ -20,5 +19,9 @@ class StoreDetailView: UIView {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowOpacity = 0.2
+        
+//        self.showsScopeBar = false
+//        self.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
+//        self.searchTextField.backgroundColor = UIColor.clear
     }
 }

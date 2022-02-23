@@ -39,15 +39,24 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
             cameraUpdate.animationDuration = 2
             naverMapView.mapView.moveCamera(cameraUpdate)
             
+            configureSearchBar(map: naverMapView)
             configureDetail(map: naverMapView)
-            
 //            let marker = NMFMarker()
 //            marker.position = NMGLatLng(lat: latitude, lng: longitude)
 //            marker.mapView = naverMapView.mapView
         } else {
             // alert
-            
         }
+    }
+    
+    func configureSearchBar(map: NMFNaverMapView) {
+        let searchBar = SearchBarView()
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        map.addSubview(searchBar)
+        searchBar.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
     }
     
     func configureDetail(map: NMFNaverMapView) {
