@@ -75,7 +75,6 @@ class SearchViewController: UIViewController {
         
         let subTime = Int(endTime.timeIntervalSince(startTime)) / 60
         let count = subTime / 10080
-        
         return base + count
     }
     
@@ -323,7 +322,6 @@ extension SearchViewController: UIScrollViewDelegate {
             self.lotteryArray = []
             self.page = 0
             recentNumber = getRecentNumber()
-            print(recentNumber)
             for i in 0..<10 { getLotteryNumber(drwNo: recentNumber - i) }
             self.tableView.reloadData()
         }

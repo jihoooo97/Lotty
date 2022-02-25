@@ -12,6 +12,7 @@ class SearchBarView: UIButton {
     }
     
     private func commonInit() {
+        backgroundColor = .white
         layer.borderWidth = 1
         layer.borderColor = UIColor.white.cgColor
         layer.cornerRadius = 8
