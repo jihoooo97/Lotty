@@ -112,7 +112,7 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         map.addSubview(sideButton)
         sideButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         sideButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        sideButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
+        sideButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4).isActive = true
         sideButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor).isActive = true
     }
     
