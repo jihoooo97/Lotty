@@ -2,6 +2,13 @@ import UIKit
 
 class RandomViewController: UIViewController {
     @IBOutlet weak var numberView: UIView!
+    @IBOutlet weak var no1: CountLabel!
+    @IBOutlet weak var no2: CountLabel!
+    @IBOutlet weak var no3: CountLabel!
+    @IBOutlet weak var no4: CountLabel!
+    @IBOutlet weak var no5: CountLabel!
+    @IBOutlet weak var no6: CountLabel!
+    @IBOutlet weak var bonusNo: CountLabel!
     @IBOutlet weak var tableView: UITableView!
     
     private let emitterLayer = CAEmitterLayer()
@@ -12,6 +19,35 @@ class RandomViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .white
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    func setNumber() {
+        var randomNo: [Int] = []
+        for _ in 0...6 {
+            var drwtNo = Int.random(in: 1...45)
+            while randomNo.contains(drwtNo) {
+                drwtNo = Int.random(in: 1...45)
+            }
+            randomNo.append(drwtNo)
+        }
+        randomNo.sort()
+        var bonus = Int.random(in: 1...45)
+        while randomNo.contains(bonus) {
+            bonus = Int.random(in: 1...45)
+        }
+        randomNo.append(bonus)
+        
+        no1.configure(with: randomNo[0])
+        no2.configure(with: randomNo[1])
+        no3.configure(with: randomNo[2])
+        no4.configure(with: randomNo[3])
+        no5.configure(with: randomNo[4])
+        no6.configure(with: randomNo[5])
+        bonusNo.configure(with: randomNo[6])
     }
     
     private func setUpEmitterLayer() {
@@ -43,7 +79,7 @@ class RandomViewController: UIViewController {
         
         // 수치가 높을 수록 particle 이 빠르게, 더 멀리 방출되는 효과.
         // yAcceleration에 의해 영향 받음
-        cell.velocity = 200
+        cell.velocity = 300
         //velocity 값의 범위를 뜻함.
         // 만약 기본 velocity가 700이고, velocityRange 가 50 이면,
         // 각 particle은 650-750 사이의 velocity 값을 갖게 됨
@@ -56,7 +92,7 @@ class RandomViewController: UIViewController {
         return cell
     }
     
-    @IBAction func createNumber(_ sender: Any) {
+    func coinEffect() {
         let x = numberView.center.x
         let y = numberView.bounds.height / 2
         
@@ -75,6 +111,20 @@ class RandomViewController: UIViewController {
         // 레이어 얹어주면 방출 시작되는 것 보임.
         // 신기한건 클릭할때마다 addSublayer가 불리니까 layer가 계속 쌓일거 같은데 count 로 찍어보면 계속 1임
         numberView.layer.addSublayer(emitterLayer)
+    }
+    
+    @IBAction func createNumber(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.setNumber()
+            self.no1.animate()
+            self.no2.animate()
+            self.no3.animate()
+            self.no4.animate()
+            self.no5.animate()
+            self.no6.animate()
+            self.bonusNo.animate()
+            self.coinEffect()
+        }
     }
 }
 
