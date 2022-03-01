@@ -32,13 +32,87 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="내 주변" image="map_icon" id="vw9-2Q-XuK">
-                        <color key="badgeColor" red="0.13725490196078433" green="0.57647058823529407" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <tabBarItem key="tabBarItem" title="내 주변" image="map_icon" id="HYD-4J-qWw">
+                        <color key="badgeColor" name="B500"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" id="MVj-Lh-R0D"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1830" y="1164"/>
+            <point key="canvasLocation" x="-572" y="1164"/>
+        </scene>
+        <!--Map Search View Controller-->
+        <scene sceneID="Q0F-CX-KO2">
+            <objects>
+                <viewController storyboardIdentifier="searchMap" id="bvD-g1-PWj" customClass="MapSearchViewController" customModule="Lotty" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3MJ-go-d0O">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UfP-KE-RX9">
+                                <rect key="frame" x="16" y="10" width="343" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwo-5S-zKt">
+                                        <rect key="frame" x="8" y="8" width="28" height="28"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="0.2901960784" green="0.3294117647" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="arrow_left_icon">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="15"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="back:" destination="bvD-g1-PWj" eventType="touchUpInside" id="Zlh-vj-UPT"/>
+                                        </connections>
+                                    </button>
+                                    <searchBar contentMode="redraw" placeholder="장소 검색" translatesAutoresizingMaskIntoConstraints="NO" id="YsC-vu-dBc">
+                                        <rect key="frame" x="36" y="0.0" width="299" height="44"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <textInputTraits key="textInputTraits" spellCheckingType="no"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="OyQ-nP-3ST"/>
+                                    <constraint firstItem="YsC-vu-dBc" firstAttribute="top" secondItem="UfP-KE-RX9" secondAttribute="top" id="XVv-6X-QmU"/>
+                                    <constraint firstItem="cwo-5S-zKt" firstAttribute="leading" secondItem="UfP-KE-RX9" secondAttribute="leading" constant="8" id="ZHx-gQ-Dh7"/>
+                                    <constraint firstItem="cwo-5S-zKt" firstAttribute="centerY" secondItem="UfP-KE-RX9" secondAttribute="centerY" id="haM-BU-Fav"/>
+                                    <constraint firstAttribute="bottom" secondItem="YsC-vu-dBc" secondAttribute="bottom" id="mmp-CP-8hU"/>
+                                    <constraint firstItem="YsC-vu-dBc" firstAttribute="leading" secondItem="cwo-5S-zKt" secondAttribute="trailing" id="qH0-Gn-fUz"/>
+                                    <constraint firstAttribute="trailing" secondItem="YsC-vu-dBc" secondAttribute="trailing" constant="8" id="s5Z-nl-5kG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qt9-Nu-BIl"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="UfP-KE-RX9" firstAttribute="leading" secondItem="qt9-Nu-BIl" secondAttribute="leading" constant="16" id="Hec-py-ysr"/>
+                            <constraint firstItem="UfP-KE-RX9" firstAttribute="top" secondItem="qt9-Nu-BIl" secondAttribute="top" constant="10" id="bmx-T7-h44"/>
+                            <constraint firstItem="qt9-Nu-BIl" firstAttribute="trailing" secondItem="UfP-KE-RX9" secondAttribute="trailing" constant="16" id="gNH-hY-mLL"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="SZO-KX-6TQ" appends="YES" id="CT4-xg-agY"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="Vgq-Jt-AjP"/>
+                    <connections>
+                        <outlet property="naviView" destination="UfP-KE-RX9" id="U1t-vX-wZb"/>
+                        <outlet property="searchBar" destination="YsC-vu-dBc" id="AjL-02-Ofw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iap-Ud-AmB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="SZO-KX-6TQ">
+                    <connections>
+                        <action selector="tapView:" destination="bvD-g1-PWj" id="Wno-pE-PBV"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-572" y="1982"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="ORF-rj-Zyi">
@@ -332,7 +406,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xsR-Tc-fSN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-543" y="1985"/>
+            <point key="canvasLocation" x="751" y="1985"/>
         </scene>
         <!--Search Lottery View Controller-->
         <scene sceneID="g2B-eV-S6m">
@@ -656,11 +730,11 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="4hj-TO-48P" firstAttribute="leading" secondItem="A6E-K7-PID" secondAttribute="leading" id="MKZ-mO-DrM"/>
+                            <constraint firstItem="4hj-TO-48P" firstAttribute="top" secondItem="A6E-K7-PID" secondAttribute="top" constant="228" id="UJN-O2-DJy"/>
                             <constraint firstItem="N7J-1t-67L" firstAttribute="top" secondItem="A6E-K7-PID" secondAttribute="top" id="Xrv-ar-Qvf"/>
                             <constraint firstItem="N7J-1t-67L" firstAttribute="trailing" secondItem="A6E-K7-PID" secondAttribute="trailing" id="eW6-zR-SVx"/>
                             <constraint firstItem="A6E-K7-PID" firstAttribute="bottom" secondItem="4hj-TO-48P" secondAttribute="bottom" id="gAd-6W-3pp"/>
                             <constraint firstItem="NNW-SY-n7L" firstAttribute="leading" secondItem="A6E-K7-PID" secondAttribute="leading" constant="32" id="pBz-bB-JCd"/>
-                            <constraint firstItem="4hj-TO-48P" firstAttribute="top" secondItem="N7J-1t-67L" secondAttribute="bottom" id="rXv-Oy-x9m"/>
                             <constraint firstItem="N7J-1t-67L" firstAttribute="leading" secondItem="A6E-K7-PID" secondAttribute="leading" id="u8b-ks-heW"/>
                             <constraint firstItem="A6E-K7-PID" firstAttribute="trailing" secondItem="4hj-TO-48P" secondAttribute="trailing" id="zdi-YW-Ib7"/>
                         </constraints>
@@ -672,6 +746,7 @@
                         <outlet property="drwDate" destination="I4z-LF-xP8" id="aUi-D9-hAp"/>
                         <outlet property="drwNo" destination="pcB-XT-xxz" id="6FJ-DF-Rl8"/>
                         <outlet property="historyTableView" destination="4hj-TO-48P" id="FgM-02-oG1"/>
+                        <outlet property="historyTableViewTop" destination="UJN-O2-DJy" id="xcc-T7-1wr"/>
                         <outlet property="lotteryView" destination="N7J-1t-67L" id="Z2x-ap-RIH"/>
                         <outlet property="no1" destination="NNW-SY-n7L" id="0mi-h9-NWq"/>
                         <outlet property="no2" destination="FrP-mx-7EC" id="7EP-r4-vHs"/>
@@ -694,7 +769,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-543" y="2806"/>
+            <point key="canvasLocation" x="751" y="2805"/>
         </scene>
         <!--번호 생성-->
         <scene sceneID="DY2-ja-FQ5">
@@ -707,7 +782,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBZ-Zh-HI3">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="247.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6K2-w7-8KL" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6K2-w7-8KL" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
                                         <rect key="frame" x="32" y="60" width="36.5" height="36.5"/>
                                         <color key="backgroundColor" name="b500"/>
                                         <constraints>
@@ -717,7 +792,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ut-4F-2OE" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ut-4F-2OE" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
                                         <rect key="frame" x="73.5" y="60" width="36.5" height="36.5"/>
                                         <color key="backgroundColor" name="b500"/>
                                         <constraints>
@@ -727,7 +802,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="koE-rU-XRO" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="koE-rU-XRO" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
                                         <rect key="frame" x="115" y="60" width="36.5" height="36.5"/>
                                         <color key="backgroundColor" name="b500"/>
                                         <constraints>
@@ -737,7 +812,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcT-ax-XgJ" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcT-ax-XgJ" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
                                         <rect key="frame" x="156.5" y="60" width="37" height="36.5"/>
                                         <color key="backgroundColor" name="b500"/>
                                         <constraints>
@@ -747,7 +822,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYr-av-41Q" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYr-av-41Q" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
                                         <rect key="frame" x="198.5" y="60" width="36.5" height="36.5"/>
                                         <color key="backgroundColor" name="b500"/>
                                         <constraints>
@@ -757,7 +832,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeO-Qd-CoT" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeO-Qd-CoT" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
                                         <rect key="frame" x="240" y="60" width="36.5" height="36.5"/>
                                         <color key="backgroundColor" name="b500"/>
                                         <constraints>
@@ -788,7 +863,7 @@
                                             <action selector="createNumber:" destination="GDC-ai-Nmt" eventType="touchUpInside" id="PhE-Fx-exW"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Fj-3v-Ymu" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Fj-3v-Ymu" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
                                         <rect key="frame" x="306.5" y="60" width="36.5" height="36.5"/>
                                         <color key="backgroundColor" name="b500"/>
                                         <constraints>
@@ -854,6 +929,7 @@
                                             </state>
                                             <connections>
                                                 <action selector="clearHistoy:" destination="WVX-9n-pSn" eventType="touchUpInside" id="VLw-kv-vqj"/>
+                                                <action selector="clearNumber:" destination="GDC-ai-Nmt" eventType="touchUpInside" id="fqJ-h3-pDS"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -867,15 +943,139 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="numberCell" id="Imr-bl-ERk">
-                                        <rect key="frame" x="0.0" y="74.5" width="375" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="randomCell" id="Imr-bl-ERk" customClass="RandomCell" customModule="Lotty" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="74.5" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Imr-bl-ERk" id="0GT-gQ-W0y">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGi-Au-x5s" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="5" width="36.5" height="37"/>
+                                                    <color key="backgroundColor" name="b500"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="lGi-Au-x5s" secondAttribute="height" multiplier="1:1" id="pIh-y4-MIZ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXx-oW-9rq" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
+                                                    <rect key="frame" x="57.5" y="5" width="37" height="37"/>
+                                                    <color key="backgroundColor" name="b500"/>
+                                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5H-uv-QZt" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
+                                                    <rect key="frame" x="99.5" y="5" width="36.5" height="37"/>
+                                                    <color key="backgroundColor" name="b500"/>
+                                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFJ-ww-oqu" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
+                                                    <rect key="frame" x="141" y="5" width="37" height="37"/>
+                                                    <color key="backgroundColor" name="b500"/>
+                                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIa-2z-XWf" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
+                                                    <rect key="frame" x="183" y="5" width="36.5" height="37"/>
+                                                    <color key="backgroundColor" name="b500"/>
+                                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eze-pB-8Dm" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
+                                                    <rect key="frame" x="224.5" y="5" width="37" height="37"/>
+                                                    <color key="backgroundColor" name="b500"/>
+                                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Owj-PC-Mnq">
+                                                    <rect key="frame" x="266.5" y="14" width="20" height="19"/>
+                                                    <color key="tintColor" red="0.2901960784" green="0.3294117647" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="6Bp-Lp-exQ"/>
+                                                        <constraint firstAttribute="width" secondItem="Owj-PC-Mnq" secondAttribute="height" multiplier="1:1" constant="3" id="fSl-yQ-HF1"/>
+                                                    </constraints>
+                                                    <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="regular"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4o-Ho-JQ0" customClass="CountLabel" customModule="Lotty" customModuleProvider="target">
+                                                    <rect key="frame" x="291.5" y="5" width="36.5" height="37"/>
+                                                    <color key="backgroundColor" name="b500"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="g4o-Ho-JQ0" secondAttribute="height" multiplier="1:1" id="icF-FZ-ZUs"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcB-RW-Vw2">
+                                                    <rect key="frame" x="344" y="16" width="15" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="Baf-Ik-kXb"/>
+                                                        <constraint firstAttribute="width" secondItem="jcB-RW-Vw2" secondAttribute="height" multiplier="1:1" id="Sqi-XA-EYY"/>
+                                                    </constraints>
+                                                    <color key="tintColor" name="G300"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="trash_icon">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="15"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="deleteButton:" destination="Imr-bl-ERk" eventType="touchUpInside" id="66O-oC-TJ3"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="xXx-oW-9rq" firstAttribute="width" secondItem="lGi-Au-x5s" secondAttribute="width" id="1dU-fi-LUx"/>
+                                                <constraint firstItem="CIa-2z-XWf" firstAttribute="leading" secondItem="hFJ-ww-oqu" secondAttribute="trailing" constant="5" id="1ia-T5-jUC"/>
+                                                <constraint firstItem="lGi-Au-x5s" firstAttribute="top" secondItem="0GT-gQ-W0y" secondAttribute="top" constant="5" id="44e-MT-ZgU"/>
+                                                <constraint firstItem="CIa-2z-XWf" firstAttribute="centerY" secondItem="hFJ-ww-oqu" secondAttribute="centerY" id="4KE-hZ-XcV"/>
+                                                <constraint firstItem="d5H-uv-QZt" firstAttribute="width" secondItem="d5H-uv-QZt" secondAttribute="height" multiplier="1:1" id="9Ni-IT-K5N"/>
+                                                <constraint firstItem="hFJ-ww-oqu" firstAttribute="leading" secondItem="d5H-uv-QZt" secondAttribute="trailing" constant="5" id="AAa-dv-jse"/>
+                                                <constraint firstItem="hFJ-ww-oqu" firstAttribute="width" secondItem="hFJ-ww-oqu" secondAttribute="height" multiplier="1:1" id="ArG-8O-893"/>
+                                                <constraint firstItem="g4o-Ho-JQ0" firstAttribute="centerY" secondItem="eze-pB-8Dm" secondAttribute="centerY" id="BBb-Nc-HHx"/>
+                                                <constraint firstAttribute="trailing" secondItem="jcB-RW-Vw2" secondAttribute="trailing" constant="16" id="CRz-5i-vCq"/>
+                                                <constraint firstItem="hFJ-ww-oqu" firstAttribute="centerY" secondItem="d5H-uv-QZt" secondAttribute="centerY" id="DbX-rd-SUo"/>
+                                                <constraint firstItem="eze-pB-8Dm" firstAttribute="width" secondItem="eze-pB-8Dm" secondAttribute="height" multiplier="1:1" id="EJ2-HB-2dN"/>
+                                                <constraint firstItem="d5H-uv-QZt" firstAttribute="leading" secondItem="xXx-oW-9rq" secondAttribute="trailing" constant="5" id="EQP-09-Pao"/>
+                                                <constraint firstItem="eze-pB-8Dm" firstAttribute="leading" secondItem="CIa-2z-XWf" secondAttribute="trailing" constant="5" id="Efm-8Z-Lty"/>
+                                                <constraint firstItem="eze-pB-8Dm" firstAttribute="width" secondItem="CIa-2z-XWf" secondAttribute="width" id="IIs-XJ-QFh"/>
+                                                <constraint firstItem="d5H-uv-QZt" firstAttribute="centerY" secondItem="xXx-oW-9rq" secondAttribute="centerY" id="Iuv-Es-3e8"/>
+                                                <constraint firstItem="xXx-oW-9rq" firstAttribute="width" secondItem="xXx-oW-9rq" secondAttribute="height" multiplier="1:1" id="KAA-IF-ASF"/>
+                                                <constraint firstItem="g4o-Ho-JQ0" firstAttribute="width" secondItem="eze-pB-8Dm" secondAttribute="width" id="RCN-Ub-qKz"/>
+                                                <constraint firstItem="d5H-uv-QZt" firstAttribute="width" secondItem="xXx-oW-9rq" secondAttribute="width" id="SNr-UA-PhN"/>
+                                                <constraint firstItem="xXx-oW-9rq" firstAttribute="centerY" secondItem="lGi-Au-x5s" secondAttribute="centerY" id="UcJ-2g-bZ0"/>
+                                                <constraint firstItem="Owj-PC-Mnq" firstAttribute="leading" secondItem="eze-pB-8Dm" secondAttribute="trailing" constant="5" id="VQI-kW-yjc"/>
+                                                <constraint firstItem="jcB-RW-Vw2" firstAttribute="leading" secondItem="g4o-Ho-JQ0" secondAttribute="trailing" constant="16" id="X4g-mS-NEq"/>
+                                                <constraint firstItem="xXx-oW-9rq" firstAttribute="leading" secondItem="lGi-Au-x5s" secondAttribute="trailing" constant="5" id="YcJ-xq-PRv"/>
+                                                <constraint firstItem="jcB-RW-Vw2" firstAttribute="centerY" secondItem="g4o-Ho-JQ0" secondAttribute="centerY" id="cca-IK-J2N"/>
+                                                <constraint firstItem="CIa-2z-XWf" firstAttribute="width" secondItem="CIa-2z-XWf" secondAttribute="height" multiplier="1:1" id="eOr-oS-RTM"/>
+                                                <constraint firstItem="hFJ-ww-oqu" firstAttribute="width" secondItem="d5H-uv-QZt" secondAttribute="width" id="gJx-6j-Z7Y"/>
+                                                <constraint firstItem="CIa-2z-XWf" firstAttribute="width" secondItem="hFJ-ww-oqu" secondAttribute="width" id="mTA-CG-pVL"/>
+                                                <constraint firstAttribute="bottom" secondItem="lGi-Au-x5s" secondAttribute="bottom" constant="10" id="mo1-AB-M2m"/>
+                                                <constraint firstItem="lGi-Au-x5s" firstAttribute="leading" secondItem="0GT-gQ-W0y" secondAttribute="leading" constant="16" id="n9n-ha-JiR"/>
+                                                <constraint firstItem="g4o-Ho-JQ0" firstAttribute="leading" secondItem="Owj-PC-Mnq" secondAttribute="trailing" constant="5" id="nhV-5w-nu5"/>
+                                                <constraint firstItem="Owj-PC-Mnq" firstAttribute="centerY" secondItem="eze-pB-8Dm" secondAttribute="centerY" id="qdf-1P-Ivo"/>
+                                                <constraint firstItem="eze-pB-8Dm" firstAttribute="centerY" secondItem="CIa-2z-XWf" secondAttribute="centerY" id="tJl-7z-6v7"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="bnusNo" destination="g4o-Ho-JQ0" id="f8J-Ls-n4U"/>
+                                            <outlet property="drwtNo1" destination="lGi-Au-x5s" id="R2C-Zt-WJm"/>
+                                            <outlet property="drwtNo2" destination="xXx-oW-9rq" id="jj6-we-Y4n"/>
+                                            <outlet property="drwtNo3" destination="d5H-uv-QZt" id="sJM-ed-GFh"/>
+                                            <outlet property="drwtNo4" destination="hFJ-ww-oqu" id="9Xg-M8-xvi"/>
+                                            <outlet property="drwtNo5" destination="CIa-2z-XWf" id="z9F-Uk-kNe"/>
+                                            <outlet property="drwtNo6" destination="eze-pB-8Dm" id="8ds-9S-ruy"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -892,7 +1092,7 @@
                             <constraint firstItem="dp2-4e-x1t" firstAttribute="top" secondItem="DBZ-Zh-HI3" secondAttribute="bottom" id="ufe-Qx-nrE"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="번호 생성" id="5KQ-3L-AHn">
+                    <tabBarItem key="tabBarItem" title="번호 생성" image="lucky_seven_icon" id="5KQ-3L-AHn">
                         <color key="badgeColor" red="0.13725490200000001" green="0.57647058819999997" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <connections>
@@ -909,25 +1109,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4M-Wp-azm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="733.60000000000002" y="1163.568215892054"/>
+            <point key="canvasLocation" x="2010" y="1164"/>
         </scene>
-        <!--설정-->
+        <!--홈-->
         <scene sceneID="wTj-oX-O2u">
             <objects>
-                <viewController id="aoD-lc-T88" customClass="SettingViewController" customModule="Lotty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aoD-lc-T88" customClass="HomeViewController" customModule="Lotty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="23R-1Z-qJz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Rhc-SP-dYT"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="설정" image="setting_icon" id="VW3-ZO-tnG">
+                    <tabBarItem key="tabBarItem" title="홈" image="house" catalog="system" id="VW3-ZO-tnG">
                         <color key="badgeColor" red="0.13725490196078433" green="0.57647058823529407" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8aX-PX-uJf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1985" y="1164"/>
+            <point key="canvasLocation" x="-1729" y="1164"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="uKe-Sh-NXx">
@@ -940,15 +1140,15 @@
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="ghV-Hi-5CR"/>
+                        <segue destination="aoD-lc-T88" kind="relationship" relationship="viewControllers" id="tme-cg-PyK"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="d81-mD-uWe"/>
                         <segue destination="88Q-lY-zTC" kind="relationship" relationship="viewControllers" id="Xkj-CQ-ic8"/>
                         <segue destination="GDC-ai-Nmt" kind="relationship" relationship="viewControllers" id="YSh-pR-sXV"/>
-                        <segue destination="aoD-lc-T88" kind="relationship" relationship="viewControllers" id="tme-cg-PyK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zhg-ck-Jdp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28.985507246376812" y="83.705357142857139"/>
+            <point key="canvasLocation" x="138" y="91"/>
         </scene>
         <!--번호 조회-->
         <scene sceneID="NjM-GE-y5G">
@@ -977,20 +1177,22 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kc8-Dv-SPv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-542" y="1164"/>
+            <point key="canvasLocation" x="750" y="1164"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lkz-EI-KPn"/>
+        <segue reference="uNF-jG-XUo"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrow_left_icon" width="28" height="28"/>
         <image name="arrow_up_icon" width="64" height="64"/>
         <image name="clock_icon" width="32" height="32"/>
         <image name="find_icon" width="24" height="24"/>
+        <image name="house" catalog="system" width="128" height="106"/>
+        <image name="lucky_seven_icon" width="32" height="32"/>
         <image name="map_icon" width="26" height="26"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="qr_scan_icon" width="24" height="24"/>
-        <image name="setting_icon" width="32" height="32"/>
         <image name="trash_icon" width="32" height="32"/>
         <namedColor name="B500">
             <color red="0.13725490196078433" green="0.57647058823529407" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

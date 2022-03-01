@@ -1,10 +1,9 @@
 import UIKit
 
-class SettingViewController: UIViewController {
+class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
 }

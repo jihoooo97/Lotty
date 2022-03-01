@@ -19,10 +19,6 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         configureMap()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     // 판매점 이름 주소 전화번호
     func configureMap() {
         if CLLocationManager.locationServicesEnabled() {
@@ -76,7 +72,7 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
                     return
                 }
             }
-            configureSearchBar(map: naverMapView)
+            configureNavi(map: naverMapView)
             configureButton(map: naverMapView)
             
         } else {
@@ -84,15 +80,15 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func configureSearchBar(map: NMFNaverMapView) {
+    func configureNavi(map: NMFNaverMapView) {
         searchBar.addTarget(self, action: #selector(clickSearch), for: .touchUpInside)
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         
         map.addSubview(searchBar)
-        searchBar.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        searchBar.heightAnchor.constraint(equalToConstant: 44).isActive = true
         searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
         searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
-        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
+        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
     }
     
     func configureDetail(map: NMFNaverMapView, store: Documents) {
@@ -123,6 +119,9 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
     
     @objc func clickSearch() {
         // searchview 전환
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchMap") as? MapSearchViewController else { return }
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false, completion: nil)
     }
     
     @objc func clickMap() {

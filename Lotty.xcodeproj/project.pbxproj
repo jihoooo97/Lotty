@@ -10,6 +10,7 @@
 		132A29D227C5CACB003203B2 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132A29D127C5CACB003203B2 /* SearchBarView.swift */; };
 		1334B79C27C756C4003C2904 /* StoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1334B79B27C756C4003C2904 /* StoreInfo.swift */; };
 		1334B79E27C8B022003C2904 /* SideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1334B79D27C8B022003C2904 /* SideButton.swift */; };
+		133CBF7B27CDF31A008C02D8 /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133CBF7A27CDF31A008C02D8 /* MapSearchViewController.swift */; };
 		1378E33327BFADAE00B76E5B /* SearchLotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */; };
 		13802F6B27C3D4D8008EE0BC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13802F6A27C3D4D8008EE0BC /* Storage.swift */; };
 		13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21227BB489000FE10E1 /* AppDelegate.swift */; };
@@ -29,7 +30,7 @@
 		13A2A24527BB4E9000FE10E1 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A23327BB4E5000FE10E1 /* Pretendard-ExtraBold.otf */; };
 		13A2A24627BB4E9000FE10E1 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A23127BB4E4200FE10E1 /* Pretendard-Thin.otf */; };
 		13A2A24C27BB802E00FE10E1 /* RandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A24B27BB802E00FE10E1 /* RandomViewController.swift */; };
-		13A2A24E27BB804700FE10E1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A24D27BB804700FE10E1 /* SettingViewController.swift */; };
+		13A2A24E27BB804700FE10E1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A24D27BB804700FE10E1 /* HomeViewController.swift */; };
 		13A2A25027BB806800FE10E1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A24F27BB806800FE10E1 /* SearchViewController.swift */; };
 		13A2A25227BB8B1400FE10E1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A25127BB8B1400FE10E1 /* UIColor.swift */; };
 		13C706CC27CC84BC000CF41D /* CountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C706CB27CC84BC000CF41D /* CountLabel.swift */; };
@@ -44,6 +45,7 @@
 		132A29D127C5CACB003203B2 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		1334B79B27C756C4003C2904 /* StoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
 		1334B79D27C8B022003C2904 /* SideButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideButton.swift; sourceTree = "<group>"; };
+		133CBF7A27CDF31A008C02D8 /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
 		1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLotteryViewController.swift; sourceTree = "<group>"; };
 		13802F6A27C3D4D8008EE0BC /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		13A2A20F27BB489000FE10E1 /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +67,7 @@
 		13A2A23A27BB4E5000FE10E1 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		13A2A23B27BB4E5200FE10E1 /* PretendardVariable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PretendardVariable.ttf; sourceTree = "<group>"; };
 		13A2A24B27BB802E00FE10E1 /* RandomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomViewController.swift; sourceTree = "<group>"; };
-		13A2A24D27BB804700FE10E1 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		13A2A24D27BB804700FE10E1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		13A2A24F27BB806800FE10E1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		13A2A25127BB8B1400FE10E1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		13C706CB27CC84BC000CF41D /* CountLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountLabel.swift; sourceTree = "<group>"; };
@@ -116,7 +118,7 @@
 				13DCF89027BE0B5300EAF40C /* Arround */,
 				13DCF89427BE0C5700EAF40C /* Search */,
 				13DCF89127BE0B7A00EAF40C /* Random */,
-				13A2A24D27BB804700FE10E1 /* SettingViewController.swift */,
+				13A2A24D27BB804700FE10E1 /* HomeViewController.swift */,
 				13A2A21227BB489000FE10E1 /* AppDelegate.swift */,
 				13A2A21427BB489000FE10E1 /* SceneDelegate.swift */,
 				13A2A21D27BB489100FE10E1 /* LaunchScreen.storyboard */,
@@ -154,6 +156,7 @@
 				13CCFC8327C4F5DB0033D682 /* StoreDetailView.swift */,
 				132A29D127C5CACB003203B2 /* SearchBarView.swift */,
 				1334B79D27C8B022003C2904 /* SideButton.swift */,
+				133CBF7A27CDF31A008C02D8 /* MapSearchViewController.swift */,
 			);
 			path = Arround;
 			sourceTree = "<group>";
@@ -329,7 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13A2A24E27BB804700FE10E1 /* SettingViewController.swift in Sources */,
+				13A2A24E27BB804700FE10E1 /* HomeViewController.swift in Sources */,
 				1334B79E27C8B022003C2904 /* SideButton.swift in Sources */,
 				13802F6B27C3D4D8008EE0BC /* Storage.swift in Sources */,
 				13A2A25227BB8B1400FE10E1 /* UIColor.swift in Sources */,
@@ -340,6 +343,7 @@
 				13DCF88F27BDEF5A00EAF40C /* LotteryInfo.swift in Sources */,
 				13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */,
 				13CCFC8427C4F5DB0033D682 /* StoreDetailView.swift in Sources */,
+				133CBF7B27CDF31A008C02D8 /* MapSearchViewController.swift in Sources */,
 				13DCF89327BE0B9500EAF40C /* NumberCell.swift in Sources */,
 				132A29D227C5CACB003203B2 /* SearchBarView.swift in Sources */,
 				13A2A25027BB806800FE10E1 /* SearchViewController.swift in Sources */,

@@ -1,6 +1,15 @@
 import UIKit
 
 class SearchBarView: UIButton {
+    let searchLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.sizeToFit()
+        label.textColor = .G900
+        label.text = "위치 검색"
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -21,8 +30,8 @@ class SearchBarView: UIButton {
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowOpacity = 0.2
         
-//        self.showsScopeBar = false
-//        self.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
-//        self.searchTextField.backgroundColor = UIColor.clear
+        addSubview(searchLabel)
+        searchLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
+        searchLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
 }

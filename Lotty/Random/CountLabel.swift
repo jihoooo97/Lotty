@@ -17,21 +17,25 @@ class CountLabel: UILabel {
         setupSubviews()
     }
     
-    func animate(ascending: Bool = true) {
-        createAnimations(ascending: ascending)
+    func setRound(number: Int) {
         layer.masksToBounds = true
         layer.cornerRadius = 18
-        if Int(fullText)! <= 10 {
+        if number <= 10 {
             backgroundColor = .firstColor
-        } else if Int(fullText)! <= 20 {
+        } else if number <= 20 {
             backgroundColor = .secondColor
-        } else if Int(fullText)! <= 30 {
+        } else if number <= 30 {
             backgroundColor = .thirdColor
-        } else if Int(fullText)! <= 40 {
+        } else if number <= 40 {
             backgroundColor = .fourthColor
         } else {
             backgroundColor = .fifthColor
         }
+    }
+    
+    func animate(ascending: Bool = true) {
+        createAnimations(ascending: ascending)
+        setRound(number: Int(fullText)!)
     }
     
     private func clean() {

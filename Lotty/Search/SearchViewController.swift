@@ -6,6 +6,7 @@ import QRCodeReader
 class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var explainLabel: UILabel!
+    
     private var refreshControl = UIRefreshControl()
     var lotteryArray: [LotteryItem] = []
     var searchHistoryList: [Int] = []

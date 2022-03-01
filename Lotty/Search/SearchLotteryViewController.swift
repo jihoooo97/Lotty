@@ -41,9 +41,12 @@ class SearchLotteryViewController: UIViewController {
             lotteryConfigure()
         } else {
             lotteryView.isHidden = true
-            if lotteryView.isHidden {
-                historyTableViewTop.constant = 20
-            }
+        }
+        
+        if lotteryView.isHidden {
+            historyTableViewTop.constant = 0
+        } else {
+            historyTableViewTop.constant = lotteryView.bounds.height
         }
     }
     
