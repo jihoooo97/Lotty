@@ -68,11 +68,11 @@ class CountLabel: UILabel {
     
     private func createContentForLayer(scrollLayer: CAScrollLayer, text: String) {
         var textsForScroll: [String] = []
-        let number = Int(text)!
+        // let number = Int(text)!
         scrollLayer.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         textsForScroll.append("0")
-        for i in 0...9 {
-            textsForScroll.append(String((number + i) % 10))
+        for _ in 0...9 {
+            textsForScroll.append(String(Int.random(in: 0...45)))
         }
         textsForScroll.append(text)
         

@@ -13,6 +13,7 @@
 		133CBF7B27CDF31A008C02D8 /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133CBF7A27CDF31A008C02D8 /* MapSearchViewController.swift */; };
 		1378E33327BFADAE00B76E5B /* SearchLotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */; };
 		13802F6B27C3D4D8008EE0BC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13802F6A27C3D4D8008EE0BC /* Storage.swift */; };
+		1398D14227CF4D6700F71739 /* QrScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1398D14127CF4D6700F71739 /* QrScanViewController.swift */; };
 		13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21227BB489000FE10E1 /* AppDelegate.swift */; };
 		13A2A21527BB489000FE10E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21427BB489000FE10E1 /* SceneDelegate.swift */; };
 		13A2A21727BB489000FE10E1 /* AroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21627BB489000FE10E1 /* AroundViewController.swift */; };
@@ -48,6 +49,7 @@
 		133CBF7A27CDF31A008C02D8 /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
 		1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLotteryViewController.swift; sourceTree = "<group>"; };
 		13802F6A27C3D4D8008EE0BC /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		1398D14127CF4D6700F71739 /* QrScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScanViewController.swift; sourceTree = "<group>"; };
 		13A2A20F27BB489000FE10E1 /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A2A21227BB489000FE10E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13A2A21427BB489000FE10E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				13A2A24F27BB806800FE10E1 /* SearchViewController.swift */,
 				13DCF89227BE0B9500EAF40C /* NumberCell.swift */,
 				1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */,
+				1398D14127CF4D6700F71739 /* QrScanViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				13A2A21727BB489000FE10E1 /* AroundViewController.swift in Sources */,
 				13DCF88F27BDEF5A00EAF40C /* LotteryInfo.swift in Sources */,
 				13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */,
+				1398D14227CF4D6700F71739 /* QrScanViewController.swift in Sources */,
 				13CCFC8427C4F5DB0033D682 /* StoreDetailView.swift in Sources */,
 				133CBF7B27CDF31A008C02D8 /* MapSearchViewController.swift in Sources */,
 				13DCF89327BE0B9500EAF40C /* NumberCell.swift in Sources */,

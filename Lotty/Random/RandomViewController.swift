@@ -32,6 +32,22 @@ class RandomViewController: UIViewController {
         Storage.store(randomList, to: .documents, as: "random_list.json")
     }
     
+    func setRound(label: UILabel) {
+        label.layer.masksToBounds = true
+        label.layer.cornerRadius = 18
+        if Int(label.text!)! <= 10 {
+            label.backgroundColor = .firstColor
+        } else if Int(label.text!)! <= 20 {
+            label.backgroundColor = .secondColor
+        } else if Int(label.text!)! <= 30 {
+            label.backgroundColor = .thirdColor
+        } else if Int(label.text!)! <= 40 {
+            label.backgroundColor = .fourthColor
+        } else {
+            label.backgroundColor = .fifthColor
+        }
+    }
+    
     func setNumber() {
         var randomNo: [Int] = []
         for _ in 0..<6 {
@@ -166,13 +182,13 @@ extension RandomViewController: UITableViewDataSource {
         cell.drwtNo6.text = "\(list[5])"
         cell.bnusNo.text = "\(list[6])"
         
-        cell.drwtNo1.setRound(number: list[0])
-        cell.drwtNo2.setRound(number: list[1])
-        cell.drwtNo3.setRound(number: list[2])
-        cell.drwtNo4.setRound(number: list[3])
-        cell.drwtNo5.setRound(number: list[4])
-        cell.drwtNo6.setRound(number: list[5])
-        cell.bnusNo.setRound(number: list[6])
+        setRound(label: cell.drwtNo1)
+        setRound(label: cell.drwtNo2)
+        setRound(label: cell.drwtNo3)
+        setRound(label: cell.drwtNo4)
+        setRound(label: cell.drwtNo5)
+        setRound(label: cell.drwtNo6)
+        setRound(label: cell.bnusNo)
         
         cell.deleteButtonHandler = {
             self.randomList = self.randomList.filter({ $0 != self.randomList[indexPath.row] })
@@ -190,13 +206,13 @@ extension RandomViewController: UITableViewDelegate {
 }
 
 class RandomCell: UITableViewCell {
-    @IBOutlet weak var drwtNo1: CountLabel!
-    @IBOutlet weak var drwtNo2: CountLabel!
-    @IBOutlet weak var drwtNo3: CountLabel!
-    @IBOutlet weak var drwtNo4: CountLabel!
-    @IBOutlet weak var drwtNo5: CountLabel!
-    @IBOutlet weak var drwtNo6: CountLabel!
-    @IBOutlet weak var bnusNo: CountLabel!
+    @IBOutlet weak var drwtNo1: UILabel!
+    @IBOutlet weak var drwtNo2: UILabel!
+    @IBOutlet weak var drwtNo3: UILabel!
+    @IBOutlet weak var drwtNo4: UILabel!
+    @IBOutlet weak var drwtNo5: UILabel!
+    @IBOutlet weak var drwtNo6: UILabel!
+    @IBOutlet weak var bnusNo: UILabel!
     
     var deleteButtonHandler: (() -> Void) = {}
     
