@@ -4,6 +4,8 @@ class MapSearchViewController: UIViewController {
     @IBOutlet weak var naviView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    weak var delegate: SearchDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
@@ -38,5 +40,11 @@ class MapSearchViewController: UIViewController {
 extension MapSearchViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         return true
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        self.delegate?.mapSearch(query: searchBar.text!)
+        self.dismiss(animated: false, completion: nil)
     }
 }

@@ -2,16 +2,12 @@ import UIKit
 
 class RefreshView: UIView {
     let imgArray: [UIImage] = [
-        UIImage(named: "coin_icon")!
+        UIImage(named: "coin_icon")!,
+        UIImage(named: "lucky_seven_icon")!,
+        UIImage(named: "clock_icon")!
     ]
     
-    let refreshImage: UIImageView = {
-        let img = UIImageView()
-        img.translatesAutoresizingMaskIntoConstraints = false
-        img.contentMode = .scaleAspectFit
-        img.image = UIImage(named: "coin_icon")
-        return img
-    }()
+    let refreshImage = UIImageView()
     
     let refreshText: UILabel = {
         let label = UILabel()
@@ -34,6 +30,11 @@ class RefreshView: UIView {
     
     private func commonInit() {
         self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50)
+        
+        refreshImage.translatesAutoresizingMaskIntoConstraints = false
+        refreshImage.image = imgArray.randomElement()
+        refreshImage.contentMode = .scaleAspectFit
+        
         addSubview(refreshImage)
         addSubview(refreshText)
         refreshImage.image = resizeImage(image: refreshImage.image!, newWidth: 30)
@@ -41,7 +42,7 @@ class RefreshView: UIView {
     }
     
     func commonConstraint() {
-        refreshText.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        refreshText.leadingAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         refreshText.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
         refreshImage.trailingAnchor.constraint(equalTo: refreshText.leadingAnchor, constant: -4).isActive = true
@@ -57,8 +58,9 @@ class RefreshView: UIView {
     }
     
     func imgCATransition(_ img: UIImageView, down: Bool) {
+        refreshImage.image = resizeImage(image: imgArray.randomElement()!, newWidth: 30)
         let transition = CATransition()
-        transition.duration = 0.5
+        transition.duration = 0.3
         transition.timingFunction = .init(name: .easeInEaseOut)
         transition.type = .push
         if down { transition.subtype = .fromTop }

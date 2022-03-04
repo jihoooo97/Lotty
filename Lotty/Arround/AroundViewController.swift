@@ -3,6 +3,10 @@ import CoreLocation
 import NMapsMap
 import Alamofire
 
+protocol SearchDelegate: AnyObject {
+    func mapSearch(query: String)
+}
+
 class AroundViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager = CLLocationManager()
     let naverMapView = NMFNaverMapView()
@@ -121,6 +125,7 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         // searchview 전환
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchMap") as? MapSearchViewController else { return }
         vc.modalPresentationStyle = .fullScreen
+        vc.delegate = self
         self.present(vc, animated: false, completion: nil)
     }
     
@@ -178,6 +183,29 @@ extension AroundViewController: NMFMapViewCameraDelegate {
                         marker.mapView = self.naverMapView.mapView
                     }
                 }
+            case .failure:
+                return
+            }
+        }
+    }
+}
+
+extension AroundViewController: SearchDelegate {
+    func mapSearch(query: String) {
+        let paramerters: Parameters = [
+            "query": query,
+            "size": 1
+        ]
+        let headers: HTTPHeaders = [
+            "Authorization": "KakaoAK 7165edf50ee98e1383adf5924f5a76ad"
+        ]
+        AF.request("https://dapi.kakao.com/v2/local/search/keyword.json", method: .get, parameters: paramerters, encoding: URLEncoding.queryString, headers: headers).validate(statusCode: 200..<300).responseDecodable(of: StoreInfo.self) { response in
+            switch response.result {
+            case .success:
+                guard let coord = response.value?.documents[0] else { return }
+                let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: Double(coord.y)!, lng: Double(coord.x)!))
+                cameraUpdate.animation = .none
+                self.naverMapView.mapView.moveCamera(cameraUpdate)
             case .failure:
                 return
             }
