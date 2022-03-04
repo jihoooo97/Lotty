@@ -11,6 +11,7 @@
 		1334B79C27C756C4003C2904 /* StoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1334B79B27C756C4003C2904 /* StoreInfo.swift */; };
 		1334B79E27C8B022003C2904 /* SideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1334B79D27C8B022003C2904 /* SideButton.swift */; };
 		133CBF7B27CDF31A008C02D8 /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133CBF7A27CDF31A008C02D8 /* MapSearchViewController.swift */; };
+		136C20DF27D1E988004BD29A /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136C20DE27D1E988004BD29A /* RefreshView.swift */; };
 		1378E33327BFADAE00B76E5B /* SearchLotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */; };
 		13802F6B27C3D4D8008EE0BC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13802F6A27C3D4D8008EE0BC /* Storage.swift */; };
 		1398D14227CF4D6700F71739 /* QrScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1398D14127CF4D6700F71739 /* QrScanViewController.swift */; };
@@ -47,6 +48,7 @@
 		1334B79B27C756C4003C2904 /* StoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
 		1334B79D27C8B022003C2904 /* SideButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideButton.swift; sourceTree = "<group>"; };
 		133CBF7A27CDF31A008C02D8 /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
+		136C20DE27D1E988004BD29A /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLotteryViewController.swift; sourceTree = "<group>"; };
 		13802F6A27C3D4D8008EE0BC /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		1398D14127CF4D6700F71739 /* QrScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScanViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		136C20DD27D1E957004BD29A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				13A2A24D27BB804700FE10E1 /* HomeViewController.swift */,
+				136C20DE27D1E988004BD29A /* RefreshView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		13A2A20627BB489000FE10E1 = {
 			isa = PBXGroup;
 			children = (
@@ -120,7 +131,7 @@
 				13DCF89027BE0B5300EAF40C /* Arround */,
 				13DCF89427BE0C5700EAF40C /* Search */,
 				13DCF89127BE0B7A00EAF40C /* Random */,
-				13A2A24D27BB804700FE10E1 /* HomeViewController.swift */,
+				136C20DD27D1E957004BD29A /* Home */,
 				13A2A21227BB489000FE10E1 /* AppDelegate.swift */,
 				13A2A21427BB489000FE10E1 /* SceneDelegate.swift */,
 				13A2A21D27BB489100FE10E1 /* LaunchScreen.storyboard */,
@@ -341,6 +352,7 @@
 				13A2A25227BB8B1400FE10E1 /* UIColor.swift in Sources */,
 				13C706CC27CC84BC000CF41D /* CountLabel.swift in Sources */,
 				1334B79C27C756C4003C2904 /* StoreInfo.swift in Sources */,
+				136C20DF27D1E988004BD29A /* RefreshView.swift in Sources */,
 				1378E33327BFADAE00B76E5B /* SearchLotteryViewController.swift in Sources */,
 				13A2A21727BB489000FE10E1 /* AroundViewController.swift in Sources */,
 				13DCF88F27BDEF5A00EAF40C /* LotteryInfo.swift in Sources */,

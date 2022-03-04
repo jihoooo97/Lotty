@@ -26,12 +26,11 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.backgroundColor = .white
         tableView.refreshControl = refreshControl
+        tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         configureNavi()
         
         recentNumber = getRecentNumber()
-        for i in 0..<10 {
-            getLotteryNumber(drwNo: recentNumber - i)
-        }
+        for i in 0..<10 { getLotteryNumber(drwNo: recentNumber - i) }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,7 +89,6 @@ class SearchViewController: UIViewController {
             "method": "getLottoNumber",
             "drwNo": drwNo
         ]
-        
         AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryInfo.self) { response in
             switch response.result {
             case .success:
@@ -101,7 +99,7 @@ class SearchViewController: UIViewController {
                     self.lotteryArray.append(LotteryItem(lottery: lottery))
                 }
                 self.lotteryArray.sort(by: { $0.lottery.drwNo > $1.lottery.drwNo })
-                self.tableView.reloadData()
+                if self.lotteryArray.count == 10 { self.tableView.reloadData() }
                 
             case .failure:
 //                AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryFail.self) { response in
@@ -118,6 +116,15 @@ class SearchViewController: UIViewController {
                 return
             }
         }
+    }
+    
+    @objc func pullToRefresh() {
+        // scroll animation
+        tableView.refreshControl?.endRefreshing()
+        self.lotteryArray = []
+        self.page = 0
+        recentNumber = getRecentNumber()
+        for i in 0..<10 { getLotteryNumber(drwNo: recentNumber - i) }
     }
 }
 
@@ -225,18 +232,11 @@ extension SearchViewController: UIScrollViewDelegate {
         }
     }
     
-    // MARK: 최신회차
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if refreshControl.isRefreshing {
-            self.refreshControl.endRefreshing()
-            self.lotteryArray = []
-            self.page = 0
-            recentNumber = getRecentNumber()
-            for i in 0..<10 { getLotteryNumber(drwNo: recentNumber - i) }
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
     }
     
+    // 무한 스크롤
     private func beingFetch() {
         fetchingMore = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
@@ -244,7 +244,6 @@ extension SearchViewController: UIScrollViewDelegate {
             if self.recentNumber - (self.page * 10) > 10 {
                 for i in 0..<10 { self.getLotteryNumber(drwNo: self.recentNumber - (self.page * 10 + i)) }
                 self.fetchingMore = false
-                self.tableView.reloadData()
             }
         }
     }
