@@ -97,9 +97,12 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
     
     func configureDetail(map: NMFNaverMapView, store: Documents) {
         detailView.translatesAutoresizingMaskIntoConstraints = false
+        detailView.lat = store.y
+        detailView.lng = store.x
         detailView.storeName.text = store.place_name
         detailView.storeAddress.text = store.address_name
         detailView.storeCall.text = store.phone
+        detailView.naviButton.addTarget(self, action: #selector(clickNavi), for: .touchUpInside)
         
         map.addSubview(detailView)
         detailView.heightAnchor.constraint(equalToConstant: 90).isActive = true
@@ -122,7 +125,6 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @objc func clickSearch() {
-        // searchview 전환
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchMap") as? MapSearchViewController else { return }
         vc.modalPresentationStyle = .fullScreen
         vc.delegate = self
@@ -139,6 +141,19 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
                        animations: {
             self.detailView.frame = CGRect(x: x, y: y, width: width, height: height)
         })
+    }
+    
+    @objc func clickNavi() {
+        let x = locationManager.location?.coordinate.longitude ?? 127.104845
+        let y = locationManager.location?.coordinate.latitude ?? 37.3593486
+        let url = "kakaomap://route?" + "ep=\(y),\(x)" + "&ep=\(detailView.lat),\(detailView.lng)" + "&by=CAR"
+        
+        if let openApp = URL(string: url), UIApplication.shared.canOpenURL(openApp) {
+            UIApplication.shared.open(openApp)
+        } else {
+            let downApp = URL(string: "https://apps.apple.com/us/app/id304608425")!
+            UIApplication.shared.open(downApp)
+        }
     }
     
     @objc func clickLocationButton() {

@@ -3,18 +3,19 @@ import UIKit
 class HomeViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var randomButton: UIButton!
     
-    private var refreshControl = UIRefreshControl()
     var refreshView: RefreshView!
-    private var canRefresh = true
     var beforeDistance: CGFloat = 0
-    
-    let randomNumber = CountLabel()
+    var eventNumber = Int.random(in: 1...45)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         scrollView.delegate = self
-        scrollView.refreshControl = refreshControl
+        scrollView.refreshControl = UIRefreshControl()
         
         refreshView = RefreshView()
         refreshView.center.x = (scrollView.refreshControl?.frame.width)! / 2
@@ -23,20 +24,53 @@ class HomeViewController: UIViewController {
         scrollView.refreshControl?.backgroundColor = .B500
         scrollView.refreshControl?.addSubview(refreshView)
         
-        setEndNumber()
+        setContentView()
+        self.refreshView.randomNumber.isHidden = true
+        refreshView.refreshImage.isHidden = !refreshView.randomNumber.isHidden
     }
     
-    func setEndNumber() {
-        randomNumber.translatesAutoresizingMaskIntoConstraints = false
-        randomNumber.frame = CGRect(x: 200, y: 200, width: 50, height: 50)
-        randomNumber.sizeToFit()
-        randomNumber.text = "\(Int.random(in: 1...45))"
-        randomNumber.textColor = .G900
-        
-        contentView.addSubview(randomNumber)
-        randomNumber.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        randomNumber.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
     }
+    
+    func setContentView() {
+        mapButton.layer.borderWidth = 1
+        mapButton.layer.borderColor = UIColor.B600.cgColor
+        mapButton.layer.cornerRadius = 8
+        mapButton.layer.masksToBounds = false
+        mapButton.layer.shadowColor = UIColor.black.cgColor
+        mapButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        mapButton.layer.shadowOpacity = 0.2
+        
+        searchButton.layer.borderWidth = 1
+        searchButton.layer.borderColor = UIColor.white.cgColor
+        searchButton.layer.cornerRadius = 8
+        searchButton.layer.masksToBounds = false
+        searchButton.layer.shadowColor = UIColor.black.cgColor
+        searchButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        searchButton.layer.shadowOpacity = 0.2
+        
+        randomButton.layer.borderWidth = 1
+        randomButton.layer.borderColor = UIColor.white.cgColor
+        randomButton.layer.cornerRadius = 8
+        randomButton.layer.masksToBounds = false
+        randomButton.layer.shadowColor = UIColor.black.cgColor
+        randomButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        randomButton.layer.shadowOpacity = 0.2
+    }
+    
+    @IBAction func moveToMap(_ sender: Any) {
+        self.tabBarController?.selectedIndex = 1
+    }
+    
+    @IBAction func moveToSearch(_ sender: Any) {
+        self.tabBarController?.selectedIndex = 2
+    }
+    
+    @IBAction func moveToRandom(_ sender: Any) {
+        self.tabBarController?.selectedIndex = 3
+    }
+    
 }
 
 extension HomeViewController: UIScrollViewDelegate {
@@ -45,8 +79,7 @@ extension HomeViewController: UIScrollViewDelegate {
         var direction = true
         refreshView.center.y = distance / 2
         
-        //   && (scrollView.refreshControl?.isRefreshing)!
-        if Int(distance) % 20 == 0 && distance >= 20 {
+        if Int(distance) % 40 == 0 && distance >= 20 {
             if distance > self.beforeDistance { direction = true }
             else { direction = false }
             self.refreshView.imgCATransition(self.refreshView.refreshImage, down: direction)
@@ -55,9 +88,19 @@ extension HomeViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        refreshView.randomNumber.isHidden = false
+        refreshView.refreshImage.isHidden = !refreshView.randomNumber.isHidden
         
+        eventNumber = Int.random(in: 1...45)
+        refreshView.configure(with: eventNumber)
+        refreshView.animate()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             scrollView.refreshControl?.endRefreshing()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                self.refreshView.refreshImage.isHidden = false
+                self.refreshView.randomNumber.isHidden = !self.refreshView.refreshImage.isHidden
+            }
         }
+        
     }
 }

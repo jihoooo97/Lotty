@@ -1,6 +1,8 @@
 import UIKit
 
 class StoreDetailView: UIView {
+    var lat = ""
+    var lng = ""
     
     let storeName: UILabel = {
         let label = UILabel()
