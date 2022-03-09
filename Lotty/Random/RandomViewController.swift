@@ -135,7 +135,7 @@ class RandomViewController: UIViewController {
         }
         // 레이어 얹어주면 방출 시작되는 것 보임.
         // 신기한건 클릭할때마다 addSublayer가 불리니까 layer가 계속 쌓일거 같은데 count 로 찍어보면 계속 1임
-        numberView.layer.addSublayer(emitterLayer)
+        view.layer.addSublayer(emitterLayer)
     }
     
     @IBAction func createNumber(_ sender: Any) {
@@ -173,6 +173,7 @@ extension RandomViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "randomCell", for: indexPath) as? RandomCell else { return UITableViewCell() }
+        
         let list = randomList[indexPath.row]
         cell.drwtNo1.text = "\(list[0])"
         cell.drwtNo2.text = "\(list[1])"
@@ -196,27 +197,10 @@ extension RandomViewController: UITableViewDataSource {
         }
         return cell
     }
-    
 }
 
 extension RandomViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 52
-    }
-}
-
-class RandomCell: UITableViewCell {
-    @IBOutlet weak var drwtNo1: UILabel!
-    @IBOutlet weak var drwtNo2: UILabel!
-    @IBOutlet weak var drwtNo3: UILabel!
-    @IBOutlet weak var drwtNo4: UILabel!
-    @IBOutlet weak var drwtNo5: UILabel!
-    @IBOutlet weak var drwtNo6: UILabel!
-    @IBOutlet weak var bnusNo: UILabel!
-    
-    var deleteButtonHandler: (() -> Void) = {}
-    
-    @IBAction func deleteButton(_ sender: Any) {
-        deleteButtonHandler()
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 52
+//    }
 }

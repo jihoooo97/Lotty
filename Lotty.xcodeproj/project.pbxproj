@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		132A29D227C5CACB003203B2 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132A29D127C5CACB003203B2 /* SearchBarView.swift */; };
+		1331A35427D7383B00DCBE5D /* RandomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1331A35327D7383B00DCBE5D /* RandomCell.swift */; };
 		1334B79C27C756C4003C2904 /* StoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1334B79B27C756C4003C2904 /* StoreInfo.swift */; };
 		1334B79E27C8B022003C2904 /* SideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1334B79D27C8B022003C2904 /* SideButton.swift */; };
 		133CBF7B27CDF31A008C02D8 /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133CBF7A27CDF31A008C02D8 /* MapSearchViewController.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		132A29D127C5CACB003203B2 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		1331A35327D7383B00DCBE5D /* RandomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCell.swift; sourceTree = "<group>"; };
 		1334B79B27C756C4003C2904 /* StoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
 		1334B79D27C8B022003C2904 /* SideButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideButton.swift; sourceTree = "<group>"; };
 		133CBF7A27CDF31A008C02D8 /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				13A2A24B27BB802E00FE10E1 /* RandomViewController.swift */,
+				1331A35327D7383B00DCBE5D /* RandomCell.swift */,
 				13C706CB27CC84BC000CF41D /* CountLabel.swift */,
 			);
 			path = Random;
@@ -358,6 +361,7 @@
 				13DCF88F27BDEF5A00EAF40C /* LotteryInfo.swift in Sources */,
 				13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */,
 				1398D14227CF4D6700F71739 /* QrScanViewController.swift in Sources */,
+				1331A35427D7383B00DCBE5D /* RandomCell.swift in Sources */,
 				13CCFC8427C4F5DB0033D682 /* StoreDetailView.swift in Sources */,
 				133CBF7B27CDF31A008C02D8 /* MapSearchViewController.swift in Sources */,
 				13DCF89327BE0B9500EAF40C /* NumberCell.swift in Sources */,

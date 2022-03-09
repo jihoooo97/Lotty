@@ -30,6 +30,7 @@ class SearchViewController: UIViewController {
         configureNavi()
         
         recentNumber = getRecentNumber()
+        
         for i in 0..<10 { getLotteryNumber(drwNo: recentNumber - i) }
     }
     
@@ -99,7 +100,9 @@ class SearchViewController: UIViewController {
                     self.lotteryArray.append(LotteryItem(lottery: lottery))
                 }
                 self.lotteryArray.sort(by: { $0.lottery.drwNo > $1.lottery.drwNo })
-                if self.lotteryArray.count == 10 { self.tableView.reloadData() }
+                if self.lotteryArray.count == 20 {
+                    self.tableView.reloadData()
+                }
                 
             case .failure:
 //                AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryFail.self) { response in
@@ -119,7 +122,6 @@ class SearchViewController: UIViewController {
     }
     
     @objc func pullToRefresh() {
-        // scroll animation
         tableView.refreshControl?.endRefreshing()
         self.lotteryArray = []
         self.page = 0
