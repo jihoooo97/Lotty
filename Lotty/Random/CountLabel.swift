@@ -17,29 +17,13 @@ class CountLabel: UILabel {
         setupSubviews()
     }
     
-    func setRound(number: Int) {
-        layer.masksToBounds = true
-        layer.cornerRadius = 18
-        if number <= 10 {
-            backgroundColor = .firstColor
-        } else if number <= 20 {
-            backgroundColor = .secondColor
-        } else if number <= 30 {
-            backgroundColor = .thirdColor
-        } else if number <= 40 {
-            backgroundColor = .fourthColor
-        } else {
-            backgroundColor = .fifthColor
-        }
-    }
-    
     func animate(ascending: Bool = true) {
         createAnimations(ascending: ascending)
-        setRound(number: Int(fullText)!)
     }
     
     private func clean() {
-        self.text = nil
+        self.text = "..."
+        self.textColor = .white
         self.subviews.forEach { $0.removeFromSuperview() }
         self.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
         scrollLayers.removeAll()
@@ -49,11 +33,12 @@ class CountLabel: UILabel {
     private func setupSubviews() {
         let label = UILabel()
         label.frame.origin = CGPoint(x: 0, y: 0)
-        label.textColor = textColor
+        label.textColor = .G900
         label.font = font
-        label.text = "0"
+        label.text = "30"
         label.sizeToFit()
         label.textAlignment = .center
+        
         createScrollLayer(to: label, text: fullText)
     }
     
@@ -68,19 +53,19 @@ class CountLabel: UILabel {
     
     private func createContentForLayer(scrollLayer: CAScrollLayer, text: String) {
         var textsForScroll: [String] = []
-        // let number = Int(text)!
-        scrollLayer.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
-        textsForScroll.append("0")
+        
+        scrollLayer.frame = CGRect(x: 0, y: 0, width: 21, height: frame.height)
+        textsForScroll.append("00")
         for _ in 0...9 {
             textsForScroll.append(String(Int.random(in: 0...45)))
         }
         textsForScroll.append(text)
         
-        var height: CGFloat = 0
+        var height: CGFloat = 20
         for text in textsForScroll {
             let label = UILabel()
             label.text = text
-            label.textColor = textColor
+            label.textColor = .G900
             label.font = font
             label.sizeToFit()
             label.textAlignment = .center

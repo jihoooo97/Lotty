@@ -71,7 +71,7 @@ class SearchViewController: UIViewController {
         let base = 1002
         let now = getNowTime()
         
-        guard let startTime = formatter.date(from: "2022-02-12 20:34:00") else { return 0 }
+        guard let startTime = formatter.date(from: "2022-02-12 20:45:00") else { return 0 }
         guard let endTime = formatter.date(from: now) else { return 0 }
         
         let subTime = Int(endTime.timeIntervalSince(startTime)) / 60

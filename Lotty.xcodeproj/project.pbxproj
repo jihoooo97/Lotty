@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1320D4F727DB0D0D00E47E4C /* RightLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1320D4F627DB0D0D00E47E4C /* RightLine.swift */; };
+		1320D4F927DB0EC600E47E4C /* BackgroundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1320D4F827DB0EC600E47E4C /* BackgroundLabel.swift */; };
+		1320D4FB27DB174B00E47E4C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1320D4FA27DB174B00E47E4C /* GameView.swift */; };
+		1320D4FD27DB397900E47E4C /* DottedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1320D4FC27DB397900E47E4C /* DottedLine.swift */; };
 		132A29D227C5CACB003203B2 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132A29D127C5CACB003203B2 /* SearchBarView.swift */; };
 		1331A35427D7383B00DCBE5D /* RandomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1331A35327D7383B00DCBE5D /* RandomCell.swift */; };
 		1334B79C27C756C4003C2904 /* StoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1334B79B27C756C4003C2904 /* StoreInfo.swift */; };
@@ -45,6 +49,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1320D4F627DB0D0D00E47E4C /* RightLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightLine.swift; sourceTree = "<group>"; };
+		1320D4F827DB0EC600E47E4C /* BackgroundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundLabel.swift; sourceTree = "<group>"; };
+		1320D4FA27DB174B00E47E4C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		1320D4FC27DB397900E47E4C /* DottedLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedLine.swift; sourceTree = "<group>"; };
+		1320D4FF27DB70D000E47E4C /* BMHANNAPro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BMHANNAPro.ttf; path = ../../../BMHANNAPro.ttf; sourceTree = "<group>"; };
+		1320D50027DB70D000E47E4C /* BMYEONSUNG_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BMYEONSUNG_ttf.ttf; path = ../../../BMYEONSUNG_ttf.ttf; sourceTree = "<group>"; };
+		1320D50127DB70D100E47E4C /* BMDOHYEON_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BMDOHYEON_ttf.ttf; path = ../../../BMDOHYEON_ttf.ttf; sourceTree = "<group>"; };
 		132A29D127C5CACB003203B2 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		1331A35327D7383B00DCBE5D /* RandomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCell.swift; sourceTree = "<group>"; };
 		1334B79B27C756C4003C2904 /* StoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
@@ -98,6 +109,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1320D4FE27DB6F9600E47E4C /* Baemin-Font */ = {
+			isa = PBXGroup;
+			children = (
+				1320D4FF27DB70D000E47E4C /* BMHANNAPro.ttf */,
+				1320D50127DB70D100E47E4C /* BMDOHYEON_ttf.ttf */,
+				1320D50027DB70D000E47E4C /* BMYEONSUNG_ttf.ttf */,
+			);
+			path = "Baemin-Font";
+			sourceTree = "<group>";
+		};
 		136C20DD27D1E957004BD29A /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +163,7 @@
 				13A2A22027BB489100FE10E1 /* Info.plist */,
 				13A2A25127BB8B1400FE10E1 /* UIColor.swift */,
 				13A2A23027BB4E3200FE10E1 /* Pretendard-Font */,
+				1320D4FE27DB6F9600E47E4C /* Baemin-Font */,
 				13DCF89627BE681D00EAF40C /* Round.xib */,
 			);
 			path = Lotty;
@@ -182,6 +204,10 @@
 				13A2A24B27BB802E00FE10E1 /* RandomViewController.swift */,
 				1331A35327D7383B00DCBE5D /* RandomCell.swift */,
 				13C706CB27CC84BC000CF41D /* CountLabel.swift */,
+				1320D4F627DB0D0D00E47E4C /* RightLine.swift */,
+				1320D4F827DB0EC600E47E4C /* BackgroundLabel.swift */,
+				1320D4FA27DB174B00E47E4C /* GameView.swift */,
+				1320D4FC27DB397900E47E4C /* DottedLine.swift */,
 			);
 			path = Random;
 			sourceTree = "<group>";
@@ -353,6 +379,7 @@
 				1334B79E27C8B022003C2904 /* SideButton.swift in Sources */,
 				13802F6B27C3D4D8008EE0BC /* Storage.swift in Sources */,
 				13A2A25227BB8B1400FE10E1 /* UIColor.swift in Sources */,
+				1320D4F727DB0D0D00E47E4C /* RightLine.swift in Sources */,
 				13C706CC27CC84BC000CF41D /* CountLabel.swift in Sources */,
 				1334B79C27C756C4003C2904 /* StoreInfo.swift in Sources */,
 				136C20DF27D1E988004BD29A /* RefreshView.swift in Sources */,
@@ -360,8 +387,11 @@
 				13A2A21727BB489000FE10E1 /* AroundViewController.swift in Sources */,
 				13DCF88F27BDEF5A00EAF40C /* LotteryInfo.swift in Sources */,
 				13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */,
+				1320D4FB27DB174B00E47E4C /* GameView.swift in Sources */,
 				1398D14227CF4D6700F71739 /* QrScanViewController.swift in Sources */,
 				1331A35427D7383B00DCBE5D /* RandomCell.swift in Sources */,
+				1320D4FD27DB397900E47E4C /* DottedLine.swift in Sources */,
+				1320D4F927DB0EC600E47E4C /* BackgroundLabel.swift in Sources */,
 				13CCFC8427C4F5DB0033D682 /* StoreDetailView.swift in Sources */,
 				133CBF7B27CDF31A008C02D8 /* MapSearchViewController.swift in Sources */,
 				13DCF89327BE0B9500EAF40C /* NumberCell.swift in Sources */,

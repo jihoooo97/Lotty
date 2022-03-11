@@ -406,7 +406,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xsR-Tc-fSN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1678" y="1982"/>
+            <point key="canvasLocation" x="752" y="1982"/>
         </scene>
         <!--Qr Scan View Controller-->
         <scene sceneID="ZyC-X0-dvA">
@@ -452,7 +452,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4YG-8s-p6V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2938" y="2832"/>
+            <point key="canvasLocation" x="2012" y="2832"/>
         </scene>
         <!--Search Lottery View Controller-->
         <scene sceneID="g2B-eV-S6m">
@@ -815,7 +815,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1677" y="2832"/>
+            <point key="canvasLocation" x="752" y="2832"/>
         </scene>
         <!--번호 생성-->
         <scene sceneID="DY2-ja-FQ5">
@@ -825,22 +825,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jnm-nZ-gFO">
-                                <rect key="frame" x="30" y="310" width="320" height="0.66666666666668561"/>
-                                <color key="backgroundColor" name="G900"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lotto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggw-xQ-NJ6">
+                                <rect key="frame" x="122" y="84" width="86.333333333333314" height="42.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="35"/>
+                                <color key="textColor" name="G900"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jnm-nZ-gFO" customClass="DottedLine" customModule="Lotty" customModuleProvider="target">
+                                <rect key="frame" x="30" y="256.33333333333331" width="320" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="0.5" id="1xz-0M-3V2"/>
+                                    <constraint firstAttribute="height" constant="1" id="1aB-7s-PFP"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ztA-AZ-5OK">
-                                <rect key="frame" x="30" y="569.66666666666663" width="320" height="0.33333333333337123"/>
-                                <color key="backgroundColor" name="G900"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ztA-AZ-5OK" customClass="DottedLine" customModule="Lotty" customModuleProvider="target">
+                                <rect key="frame" x="30" y="477.33333333333331" width="320" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="0.5" id="TpH-ej-K8N"/>
+                                    <constraint firstAttribute="height" constant="1" id="noG-3K-6Zf"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJm-fc-z9I">
-                                <rect key="frame" x="169" y="590" width="52" height="31"/>
+                                <rect key="frame" x="70" y="498.33333333333326" width="250" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="Pg5-ac-mC7"/>
+                                    <constraint firstAttribute="height" constant="60" id="ZTt-Y1-G57"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="번호생성">
@@ -850,83 +861,170 @@
                                     <action selector="createNumber:" destination="GDC-ai-Nmt" eventType="touchUpInside" id="PhE-Fx-exW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCe-Ug-wMr">
-                                <rect key="frame" x="120.33333333333331" y="330.33333333333331" width="20" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lotto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIb-xn-pmA" customClass="BackgroundLabel" customModule="Lotty" customModuleProvider="target">
+                                <rect key="frame" x="31.999999999999996" y="157" width="60.666666666666657" height="30.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="25"/>
+                                <color key="textColor" name="B600"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lotto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIO-be-Bei" customClass="BackgroundLabel" customModule="Lotty" customModuleProvider="target">
+                                <rect key="frame" x="31.999999999999996" y="387.33333333333331" width="60.666666666666657" height="30.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="25"/>
+                                <color key="textColor" name="B600"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lotto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMt-oq-W5Q" customClass="BackgroundLabel" customModule="Lotty" customModuleProvider="target">
+                                <rect key="frame" x="31.999999999999996" y="617.66666666666663" width="60.666666666666657" height="30.333333333333371"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="25"/>
+                                <color key="textColor" name="B600"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="의 민족" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5W-W8-rxF">
+                                <rect key="frame" x="210.33333333333334" y="98.333333333333329" width="57.000000000000028" height="25"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="20"/>
+                                <color key="textColor" name="G900"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="의 민족" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9P-Gr-0B7" customClass="BackgroundLabel" customModule="Lotty" customModuleProvider="target">
+                                <rect key="frame" x="93.666666666666671" y="166" width="42.666666666666671" height="18.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="15"/>
+                                <color key="textColor" name="B600"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="의 민족" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70t-sF-yGt" customClass="BackgroundLabel" customModule="Lotty" customModuleProvider="target">
+                                <rect key="frame" x="93.666666666666671" y="396.33333333333331" width="42.666666666666671" height="18.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="15"/>
+                                <color key="textColor" name="B600"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="의 민족" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncm-qD-4vF" customClass="BackgroundLabel" customModule="Lotty" customModuleProvider="target">
+                                <rect key="frame" x="93.666666666666671" y="626.66666666666663" width="42.666666666666671" height="18.333333333333371"/>
+                                <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="15"/>
+                                <color key="textColor" name="B600"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제  0000  회" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ak1-9u-Krf">
+                                <rect key="frame" x="142" y="146.33333333333334" width="106" height="25"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="20"/>
+                                <color key="textColor" name="G900"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="발  행  일    :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRH-FE-iJs">
+                                <rect key="frame" x="31" y="181.33333333333334" width="71" height="18.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                 <color key="textColor" name="G900"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A 게임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfz-P3-qea">
-                                <rect key="frame" x="40" y="330.66666666666669" width="40.333333333333343" height="18.333333333333314"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추  첨  일    :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jer-VY-RnW">
+                                <rect key="frame" x="31" y="199.66666666666666" width="71" height="18.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                 <color key="textColor" name="G900"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lH8-dL-mdu">
-                                <rect key="frame" x="155.33333333333334" y="330.33333333333331" width="20" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지급기한    :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qve-uB-bl6">
+                                <rect key="frame" x="31.666666666666671" y="218" width="70" height="18.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                 <color key="textColor" name="G900"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIZ-WV-lNf">
-                                <rect key="frame" x="190.33333333333334" y="330.33333333333331" width="20" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000/00/00 (금)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cK3-cc-4SS">
+                                <rect key="frame" x="117" y="181.33333333333334" width="118.66666666666669" height="18.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                 <color key="textColor" name="G900"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBq-KP-a3n">
-                                <rect key="frame" x="225.33333333333334" y="330.33333333333331" width="20" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000/00/00 (금)  00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTs-yU-pFq">
+                                <rect key="frame" x="117.00000000000001" y="199.66666666666666" width="193.33333333333337" height="18.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                 <color key="textColor" name="G900"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9N-Lc-qEJ">
-                                <rect key="frame" x="260.33333333333331" y="330.33333333333331" width="20" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000/00/00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Av2-4w-fJf">
+                                <rect key="frame" x="116.66666666666666" y="218" width="90.666666666666657" height="18.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                 <color key="textColor" name="G900"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJs-md-idh">
-                                <rect key="frame" x="295.33333333333331" y="330.33333333333331" width="20" height="19"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
-                                <color key="textColor" name="G900"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr_scan_icon" translatesAutoresizingMaskIntoConstraints="NO" id="QVl-gn-AXf">
+                                <rect key="frame" x="272.33333333333331" y="80.333333333333329" width="50" height="49.999999999999986"/>
+                                <color key="tintColor" name="G900"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QVl-gn-AXf" secondAttribute="height" multiplier="1:1" id="7ZL-YC-qeG"/>
+                                    <constraint firstAttribute="width" constant="50" id="jQn-ru-JiP"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RSh-zy-uxo"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Jnm-nZ-gFO" firstAttribute="top" secondItem="RSh-zy-uxo" secondAttribute="top" constant="266" id="0Xr-ga-LNd"/>
-                            <constraint firstItem="E9N-Lc-qEJ" firstAttribute="centerY" secondItem="GBq-KP-a3n" secondAttribute="centerY" id="1Oq-Ya-3Pc"/>
-                            <constraint firstItem="E9N-Lc-qEJ" firstAttribute="leading" secondItem="GBq-KP-a3n" secondAttribute="trailing" constant="15" id="3Wv-Kd-doF"/>
-                            <constraint firstItem="sJs-md-idh" firstAttribute="centerY" secondItem="E9N-Lc-qEJ" secondAttribute="centerY" id="3eM-vp-f0T"/>
+                            <constraint firstItem="a5W-W8-rxF" firstAttribute="leading" secondItem="Ggw-xQ-NJ6" secondAttribute="trailing" constant="2" id="0PS-LT-wnQ"/>
+                            <constraint firstItem="RSh-zy-uxo" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ncm-qD-4vF" secondAttribute="trailing" symbolic="YES" id="1rM-dU-aH9"/>
+                            <constraint firstItem="I9P-Gr-0B7" firstAttribute="bottom" secondItem="DIb-xn-pmA" secondAttribute="bottom" constant="-3" id="4Vn-gl-naU"/>
+                            <constraint firstItem="Av2-4w-fJf" firstAttribute="leading" secondItem="qve-uB-bl6" secondAttribute="trailing" constant="15" id="5Dq-om-xcq"/>
+                            <constraint firstItem="wIO-be-Bei" firstAttribute="top" secondItem="DIb-xn-pmA" secondAttribute="bottom" constant="200" id="5bl-vt-guG"/>
+                            <constraint firstItem="jer-VY-RnW" firstAttribute="top" secondItem="LRH-FE-iJs" secondAttribute="bottom" id="7PS-0H-IB9"/>
                             <constraint firstItem="RSh-zy-uxo" firstAttribute="trailing" secondItem="ztA-AZ-5OK" secondAttribute="trailing" constant="40" id="7gI-go-Tbr"/>
-                            <constraint firstItem="KCe-Ug-wMr" firstAttribute="centerY" secondItem="Hfz-P3-qea" secondAttribute="centerY" id="AlM-tB-yMl"/>
-                            <constraint firstItem="Hfz-P3-qea" firstAttribute="top" secondItem="Jnm-nZ-gFO" secondAttribute="bottom" constant="20" id="C8U-PE-n4H"/>
-                            <constraint firstItem="CIZ-WV-lNf" firstAttribute="centerY" secondItem="lH8-dL-mdu" secondAttribute="centerY" id="E5c-Yg-OgH"/>
-                            <constraint firstItem="Hfz-P3-qea" firstAttribute="leading" secondItem="RSh-zy-uxo" secondAttribute="leading" constant="40" id="ETU-rf-kD3"/>
-                            <constraint firstItem="RSh-zy-uxo" firstAttribute="bottom" secondItem="HJm-fc-z9I" secondAttribute="bottom" constant="140" id="Fep-Sb-ddB"/>
-                            <constraint firstItem="GBq-KP-a3n" firstAttribute="centerY" secondItem="CIZ-WV-lNf" secondAttribute="centerY" id="G7K-9v-9ta"/>
-                            <constraint firstItem="GBq-KP-a3n" firstAttribute="leading" secondItem="CIZ-WV-lNf" secondAttribute="trailing" constant="15" id="Ixy-hu-ZV7"/>
+                            <constraint firstItem="Ak1-9u-Krf" firstAttribute="centerX" secondItem="RSh-zy-uxo" secondAttribute="centerX" id="9HA-ht-JWk"/>
+                            <constraint firstItem="jer-VY-RnW" firstAttribute="centerX" secondItem="LRH-FE-iJs" secondAttribute="centerX" id="ARS-Q1-XDN"/>
+                            <constraint firstItem="HJm-fc-z9I" firstAttribute="centerX" secondItem="RSh-zy-uxo" secondAttribute="centerX" id="AZ1-sk-OMs"/>
+                            <constraint firstItem="RSh-zy-uxo" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Av2-4w-fJf" secondAttribute="trailing" symbolic="YES" id="BAB-lF-TvJ"/>
+                            <constraint firstItem="cK3-cc-4SS" firstAttribute="leading" secondItem="LRH-FE-iJs" secondAttribute="trailing" constant="15" id="CRJ-Ve-v3r"/>
+                            <constraint firstItem="wTs-yU-pFq" firstAttribute="centerY" secondItem="jer-VY-RnW" secondAttribute="centerY" id="DYe-OC-bSO"/>
+                            <constraint firstItem="ztA-AZ-5OK" firstAttribute="top" secondItem="Jnm-nZ-gFO" secondAttribute="bottom" constant="220" id="HGL-Jx-SY1"/>
+                            <constraint firstItem="RSh-zy-uxo" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="I9P-Gr-0B7" secondAttribute="trailing" symbolic="YES" id="I76-KO-msh"/>
                             <constraint firstItem="ztA-AZ-5OK" firstAttribute="leading" secondItem="RSh-zy-uxo" secondAttribute="leading" constant="30" id="MTa-Fa-pOM"/>
+                            <constraint firstItem="I9P-Gr-0B7" firstAttribute="leading" secondItem="DIb-xn-pmA" secondAttribute="trailing" constant="1" id="NWr-Ur-lDU"/>
+                            <constraint firstItem="Ggw-xQ-NJ6" firstAttribute="centerX" secondItem="RSh-zy-uxo" secondAttribute="centerX" constant="-30" id="P0z-2C-W8k"/>
+                            <constraint firstItem="a5W-W8-rxF" firstAttribute="bottom" secondItem="Ggw-xQ-NJ6" secondAttribute="bottom" constant="-3" id="Pb1-0B-5u7"/>
+                            <constraint firstItem="QVl-gn-AXf" firstAttribute="centerY" secondItem="Ggw-xQ-NJ6" secondAttribute="centerY" id="Rbw-Hu-oB4"/>
+                            <constraint firstItem="70t-sF-yGt" firstAttribute="bottom" secondItem="wIO-be-Bei" secondAttribute="bottom" constant="-3" id="SXv-ss-uNv"/>
+                            <constraint firstItem="wIO-be-Bei" firstAttribute="centerX" secondItem="DIb-xn-pmA" secondAttribute="centerX" id="Snk-hQ-0FK"/>
+                            <constraint firstItem="DIb-xn-pmA" firstAttribute="leading" secondItem="RSh-zy-uxo" secondAttribute="leading" constant="32" id="XFR-0S-bE3"/>
+                            <constraint firstItem="RSh-zy-uxo" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="a5W-W8-rxF" secondAttribute="trailing" symbolic="YES" id="XZt-ve-qc9"/>
+                            <constraint firstItem="RSh-zy-uxo" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wTs-yU-pFq" secondAttribute="trailing" symbolic="YES" id="XbH-LC-PwG"/>
+                            <constraint firstItem="QMt-oq-W5Q" firstAttribute="centerX" secondItem="wIO-be-Bei" secondAttribute="centerX" id="Xh2-cR-wKM"/>
+                            <constraint firstItem="ncm-qD-4vF" firstAttribute="bottom" secondItem="QMt-oq-W5Q" secondAttribute="bottom" constant="-3" id="YBp-lN-0Ig"/>
+                            <constraint firstItem="ncm-qD-4vF" firstAttribute="leading" secondItem="QMt-oq-W5Q" secondAttribute="trailing" constant="1" id="ZWE-xH-uxr"/>
+                            <constraint firstItem="Ak1-9u-Krf" firstAttribute="top" secondItem="Ggw-xQ-NJ6" secondAttribute="bottom" constant="20" id="a92-ck-9qj"/>
+                            <constraint firstItem="Av2-4w-fJf" firstAttribute="centerY" secondItem="qve-uB-bl6" secondAttribute="centerY" id="aNI-bu-piq"/>
+                            <constraint firstItem="qve-uB-bl6" firstAttribute="top" secondItem="jer-VY-RnW" secondAttribute="bottom" id="aXN-pp-wZr"/>
                             <constraint firstItem="RSh-zy-uxo" firstAttribute="trailing" secondItem="Jnm-nZ-gFO" secondAttribute="trailing" constant="40" id="amu-vP-qdS"/>
-                            <constraint firstItem="sJs-md-idh" firstAttribute="leading" secondItem="E9N-Lc-qEJ" secondAttribute="trailing" constant="15" id="be4-Wd-uNd"/>
-                            <constraint firstItem="CIZ-WV-lNf" firstAttribute="leading" secondItem="lH8-dL-mdu" secondAttribute="trailing" constant="15" id="dWm-iM-o2b"/>
+                            <constraint firstItem="wIO-be-Bei" firstAttribute="centerY" secondItem="RSh-zy-uxo" secondAttribute="centerY" id="bRt-bD-qz0"/>
+                            <constraint firstItem="Ggw-xQ-NJ6" firstAttribute="top" secondItem="RSh-zy-uxo" secondAttribute="top" constant="40" id="bjO-qx-ueZ"/>
                             <constraint firstItem="Jnm-nZ-gFO" firstAttribute="leading" secondItem="RSh-zy-uxo" secondAttribute="leading" constant="30" id="e49-gc-l3S"/>
-                            <constraint firstItem="lH8-dL-mdu" firstAttribute="leading" secondItem="KCe-Ug-wMr" secondAttribute="trailing" constant="15" id="gzz-CF-vHJ"/>
-                            <constraint firstItem="HJm-fc-z9I" firstAttribute="centerX" secondItem="GIs-lQ-6mW" secondAttribute="centerX" id="j3Y-Pv-fqr"/>
-                            <constraint firstItem="KCe-Ug-wMr" firstAttribute="leading" secondItem="Hfz-P3-qea" secondAttribute="trailing" constant="40" id="sNq-Am-ENx"/>
-                            <constraint firstItem="lH8-dL-mdu" firstAttribute="centerY" secondItem="KCe-Ug-wMr" secondAttribute="centerY" id="vau-Lb-0sp"/>
+                            <constraint firstItem="LRH-FE-iJs" firstAttribute="top" secondItem="Ak1-9u-Krf" secondAttribute="bottom" constant="10" id="jIS-hY-QlD"/>
+                            <constraint firstItem="wTs-yU-pFq" firstAttribute="leading" secondItem="jer-VY-RnW" secondAttribute="trailing" constant="15" id="kSR-3X-Yo5"/>
+                            <constraint firstItem="cK3-cc-4SS" firstAttribute="centerY" secondItem="LRH-FE-iJs" secondAttribute="centerY" id="kUl-Hj-Edn"/>
+                            <constraint firstItem="RSh-zy-uxo" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="70t-sF-yGt" secondAttribute="trailing" symbolic="YES" id="lGq-yJ-eaJ"/>
+                            <constraint firstItem="QMt-oq-W5Q" firstAttribute="top" secondItem="wIO-be-Bei" secondAttribute="bottom" constant="200" id="lSh-LJ-Kxa"/>
+                            <constraint firstItem="Ak1-9u-Krf" firstAttribute="leading" secondItem="LRH-FE-iJs" secondAttribute="trailing" constant="40" id="p7B-Gr-xcp"/>
+                            <constraint firstItem="qve-uB-bl6" firstAttribute="centerX" secondItem="jer-VY-RnW" secondAttribute="centerX" id="pdu-W2-Ezc"/>
+                            <constraint firstItem="Jnm-nZ-gFO" firstAttribute="top" secondItem="qve-uB-bl6" secondAttribute="bottom" constant="20" id="rgw-vY-XfC"/>
+                            <constraint firstItem="RSh-zy-uxo" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cK3-cc-4SS" secondAttribute="trailing" symbolic="YES" id="t9l-4h-m32"/>
+                            <constraint firstItem="QVl-gn-AXf" firstAttribute="leading" secondItem="a5W-W8-rxF" secondAttribute="trailing" constant="5" id="tjk-JE-43Y"/>
                             <constraint firstItem="HJm-fc-z9I" firstAttribute="top" secondItem="ztA-AZ-5OK" secondAttribute="bottom" constant="20" id="x4D-up-ecP"/>
+                            <constraint firstItem="70t-sF-yGt" firstAttribute="leading" secondItem="wIO-be-Bei" secondAttribute="trailing" constant="1" id="yTz-tQ-Iwk"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="번호 생성" image="slot_icon" id="5KQ-3L-AHn">
                         <color key="badgeColor" red="0.13725490200000001" green="0.57647058819999997" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="backLabel1" destination="DIb-xn-pmA" id="Sq1-CT-4cw"/>
+                        <outlet property="backLabel2" destination="wIO-be-Bei" id="mH5-Yf-FBQ"/>
+                        <outlet property="backLabel3" destination="QMt-oq-W5Q" id="fi0-7W-YRC"/>
+                        <outlet property="bottomLine" destination="ztA-AZ-5OK" id="1Jf-K0-VtJ"/>
+                        <outlet property="createButton" destination="HJm-fc-z9I" id="Oh9-Yg-j1O"/>
+                        <outlet property="endDay" destination="Av2-4w-fJf" id="3yO-V4-uyd"/>
+                        <outlet property="getDay" destination="cK3-cc-4SS" id="EYY-8v-ieq"/>
+                        <outlet property="lotteryNumber" destination="Ak1-9u-Krf" id="siu-AY-Pmm"/>
+                        <outlet property="luckyDay" destination="wTs-yU-pFq" id="hWL-6K-Ksh"/>
+                        <outlet property="topLine" destination="Jnm-nZ-gFO" id="pWe-6v-VZJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4M-Wp-azm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2938.4615384615386" y="1163.7440758293837"/>
+            <point key="canvasLocation" x="2012" y="1162"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="wTj-oX-O2u">
@@ -1083,7 +1181,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kc8-Dv-SPv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1678.4615384615383" y="1163.7440758293837"/>
+            <point key="canvasLocation" x="754" y="1163"/>
         </scene>
         <!--홈-->
         <scene sceneID="A5X-kq-4is">

@@ -23,6 +23,9 @@
 	<string>a7nivesl0b</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>BMHANNAPro</string>
+		<string>BMDOHYEON_ttf</string>
+		<string>BMYEONSUNG_ttf</string>
 		<string>Pretendard-Thin</string>
 		<string>Pretendard-SemiBold</string>
 		<string>Pretendard-Regular</string>
