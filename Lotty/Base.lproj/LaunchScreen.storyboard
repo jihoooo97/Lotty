@@ -7,14 +7,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="BMHANNAPro.ttf">
-            <string>BMHANNAPro</string>
-        </array>
-        <array key="BMYEONSUNG_ttf.ttf">
-            <string>BMYEONSUNG</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -24,55 +16,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로또의 민족" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8o-qb-T9Y">
-                                <rect key="frame" x="95" y="428" width="224.5" height="50"/>
-                                <fontDescription key="fontDescription" name="BMHANNAPro" family="BM HANNA Pro" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="anseolab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIA-TF-joM">
-                                <rect key="frame" x="171" y="818" width="72" height="24"/>
-                                <fontDescription key="fontDescription" name="BMYEONSUNG" family="BM YEONSUNG" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="꼴등" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDy-KF-iIK">
-                                <rect key="frame" x="194.5" y="384" width="25" height="24"/>
-                                <fontDescription key="fontDescription" name="BMYEONSUNG" family="BM YEONSUNG" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="로또앱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhG-h9-c27">
-                                <rect key="frame" x="287" y="369" width="45" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="대한민국" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VT9-EC-off">
-                                <rect key="frame" x="102" y="383" width="59" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_lomin" translatesAutoresizingMaskIntoConstraints="NO" id="oVW-vd-vBm">
+                                <rect key="frame" x="0.0" y="313" width="414" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="NtP-8u-dqE"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_anseolab" translatesAutoresizingMaskIntoConstraints="NO" id="8gD-hY-GqD">
+                                <rect key="frame" x="0.0" y="734" width="414" height="128"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="GDy-KF-iIK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1GE-aF-oqN"/>
-                            <constraint firstItem="v8o-qb-T9Y" firstAttribute="top" secondItem="GDy-KF-iIK" secondAttribute="bottom" constant="20" id="3DH-kj-hyU"/>
-                            <constraint firstItem="tIA-TF-joM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4TO-44-jbn"/>
-                            <constraint firstItem="v8o-qb-T9Y" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Ktb-ER-qlD"/>
-                            <constraint firstItem="VT9-EC-off" firstAttribute="centerY" secondItem="GDy-KF-iIK" secondAttribute="centerY" id="N0i-d1-EJT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tIA-TF-joM" secondAttribute="bottom" constant="20" id="jmN-qe-1Hi"/>
-                            <constraint firstItem="v8o-qb-T9Y" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="sHL-Th-IOq"/>
-                            <constraint firstItem="GDy-KF-iIK" firstAttribute="leading" secondItem="VT9-EC-off" secondAttribute="trailing" constant="33.5" id="y89-ln-Utx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8gD-hY-GqD" secondAttribute="trailing" id="7KI-oP-Nks"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8gD-hY-GqD" secondAttribute="bottom" id="EGa-8w-ugU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oVW-vd-vBm" secondAttribute="trailing" id="GKE-OT-ENj"/>
+                            <constraint firstItem="oVW-vd-vBm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PNr-8C-gR8"/>
+                            <constraint firstItem="8gD-hY-GqD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="QCk-f1-HMW"/>
+                            <constraint firstItem="oVW-vd-vBm" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-40" id="VxC-64-0WW"/>
+                            <constraint firstItem="8gD-hY-GqD" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.142857" id="ugG-C0-et1"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="splash_anseolab" width="459.21258544921875" height="323.14959716796875"/>
+        <image name="splash_lomin" width="323.14959716796875" height="229.60629272460938"/>
+    </resources>
 </document>

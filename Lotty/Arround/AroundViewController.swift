@@ -38,7 +38,7 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
             naverMapView.mapView.positionMode = .direction
             naverMapView.mapView.allowsTilting = false
             naverMapView.mapView.allowsRotating = false
-            naverMapView.showZoomControls = false
+//            naverMapView.showZoomControls = false
             naverMapView.showScaleBar = false
             
             let latitude = locationManager.location?.coordinate.latitude ?? 37.3593486
@@ -64,6 +64,7 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
                         let marker = NMFMarker()
                         marker.position = NMGLatLng(lat: Double(store.y)!, lng: Double(store.x)!)
                         marker.touchHandler = { (overlay: NMFOverlay) -> Bool in
+                            marker.iconTintColor = .red
                             self.configureDetail(map: self.naverMapView, store: store)
                             return true
                         }
@@ -118,7 +119,7 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         sideButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         sideButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         sideButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4).isActive = true
-        sideButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor).isActive = true
+        sideButton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10).isActive = true
         
         let locationTap = UITapGestureRecognizer(target: self, action: #selector(clickLocationButton))
         sideButton.currentLocationButton.addGestureRecognizer(locationTap)

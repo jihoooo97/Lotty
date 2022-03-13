@@ -53,9 +53,6 @@
 		1320D4F827DB0EC600E47E4C /* BackgroundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundLabel.swift; sourceTree = "<group>"; };
 		1320D4FA27DB174B00E47E4C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		1320D4FC27DB397900E47E4C /* DottedLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedLine.swift; sourceTree = "<group>"; };
-		1320D4FF27DB70D000E47E4C /* BMHANNAPro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BMHANNAPro.ttf; path = ../../../BMHANNAPro.ttf; sourceTree = "<group>"; };
-		1320D50027DB70D000E47E4C /* BMYEONSUNG_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BMYEONSUNG_ttf.ttf; path = ../../../BMYEONSUNG_ttf.ttf; sourceTree = "<group>"; };
-		1320D50127DB70D100E47E4C /* BMDOHYEON_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BMDOHYEON_ttf.ttf; path = ../../../BMDOHYEON_ttf.ttf; sourceTree = "<group>"; };
 		132A29D127C5CACB003203B2 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		1331A35327D7383B00DCBE5D /* RandomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCell.swift; sourceTree = "<group>"; };
 		1334B79B27C756C4003C2904 /* StoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
@@ -109,16 +106,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1320D4FE27DB6F9600E47E4C /* Baemin-Font */ = {
-			isa = PBXGroup;
-			children = (
-				1320D4FF27DB70D000E47E4C /* BMHANNAPro.ttf */,
-				1320D50127DB70D100E47E4C /* BMDOHYEON_ttf.ttf */,
-				1320D50027DB70D000E47E4C /* BMYEONSUNG_ttf.ttf */,
-			);
-			path = "Baemin-Font";
-			sourceTree = "<group>";
-		};
 		136C20DD27D1E957004BD29A /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +150,6 @@
 				13A2A22027BB489100FE10E1 /* Info.plist */,
 				13A2A25127BB8B1400FE10E1 /* UIColor.swift */,
 				13A2A23027BB4E3200FE10E1 /* Pretendard-Font */,
-				1320D4FE27DB6F9600E47E4C /* Baemin-Font */,
 				13DCF89627BE681D00EAF40C /* Round.xib */,
 			);
 			path = Lotty;
@@ -558,7 +544,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lotty/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = lotty;
-				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 권한을 활성화 해주세요";
+				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 권한이 필요합니다";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치정보 권한이 필요합니다";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치정보 권한이 필요합니다";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치정보 권한이 필요합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -593,7 +582,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lotty/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = lotty;
-				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 권한을 활성화 해주세요";
+				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 권한이 필요합니다";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치정보 권한이 필요합니다";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치정보 권한이 필요합니다";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치정보 권한이 필요합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

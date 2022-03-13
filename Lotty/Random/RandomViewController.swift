@@ -1,9 +1,6 @@
 import UIKit
 
 class RandomViewController: UIViewController {
-    @IBOutlet weak var backLabel1: BackgroundLabel!
-    @IBOutlet weak var backLabel2: BackgroundLabel!
-    @IBOutlet weak var backLabel3: BackgroundLabel!
     @IBOutlet weak var topLine: DottedLine!
     @IBOutlet weak var bottomLine: DottedLine!
     
@@ -24,7 +21,7 @@ class RandomViewController: UIViewController {
         super.viewDidLoad()
 
         view.addSubview(rightLine)
-        rightLine.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -rightLine.frame.width + 10).isActive = true
+        rightLine.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -rightLine.frame.width / 2).isActive = true
         rightLine.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         setView()
     }
@@ -32,10 +29,6 @@ class RandomViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.backgroundColor = .white
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
     }
     
     func setCount(game: GameView, numberList: [Int]) {
@@ -55,6 +48,11 @@ class RandomViewController: UIViewController {
     }
     
     func setView() {
+        lotteryNumber.text = "제 \(getRecentNumber() + 1) 회"
+        getDay.text = getNowTime()
+        luckyDay.text = getNextDay(day: "next")
+        endDay.text = getNextDay(day: "end")
+        
         AGame.GameName.text = "A 게임"
         view.addSubview(AGame)
         AGame.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
@@ -116,18 +114,49 @@ class RandomViewController: UIViewController {
         return randomList
     }
     
-    func setLineDot(view: UIView, color: String) {
-        let borderLayer = CAShapeLayer()
-        borderLayer.strokeColor = UIColor(named: color)?.cgColor
-        borderLayer.lineDashPattern = [12, 3]
-        borderLayer.frame = view.bounds
-        borderLayer.fillColor = nil
-        borderLayer.path = UIBezierPath(rect: view.bounds).cgPath
-        view.layer.addSublayer(borderLayer)
+    func getNowTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd (E) kk:mm:ss"
+        formatter.locale = Locale(identifier: "ko")
+        
+        let now = Date()
+        return formatter.string(from: now)
     }
     
+    func getRecentNumber() -> Int {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.locale = Locale(identifier: "ko")
+        
+        let base = 1002
+        let origin = Date()
+        let now = formatter.string(from: origin)
+        
+        guard let startTime = formatter.date(from: "2022-02-12 20:45:00") else { return 0 }
+        guard let endTime = formatter.date(from: now) else { return 0 }
+        
+        let subTime = Int(endTime.timeIntervalSince(startTime)) / 60
+        let count = subTime / 10080
+        return base + count
+    }
+    
+    func getNextDay(day: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd (E) HH:mm:ss"
+        formatter.locale = Locale(identifier: "ko")
+        
+        guard let start = formatter.date(from: "2022/03/05 (토) 20:45:00") else { return "error" }
+        var addTime = Date()
+        if day == "next" {
+            addTime = start.addingTimeInterval(TimeInterval(86400 * 7 * (getRecentNumber() - 1004)))
+        } else if day == "end" {
+            addTime = start.addingTimeInterval(TimeInterval(86400 * 365))
+        }
+        return formatter.string(from: addTime)
+    }
     
     @IBAction func createNumber(_ sender: Any) {
+        getDay.text = getNowTime()
         AGame.isHidden = true
         BGame.isHidden = true
         CGame.isHidden = true
@@ -135,7 +164,6 @@ class RandomViewController: UIViewController {
         EGame.isHidden = true
         
         let randomList = self.setNumber()
-        
         let gameA = randomList[0]
         let gameB = randomList[1]
         let gameC = randomList[2]
@@ -145,19 +173,15 @@ class RandomViewController: UIViewController {
         DispatchQueue.main.async {
             self.AGame.isHidden = false
             self.setCount(game: self.AGame, numberList: gameA)
-            
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
                 self.BGame.isHidden = false
                 self.setCount(game: self.BGame, numberList: gameB)
-                
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
                     self.CGame.isHidden = false
                     self.setCount(game: self.CGame, numberList: gameC)
-                    
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
                         self.DGame.isHidden = false
                         self.setCount(game: self.DGame, numberList: gameD)
-                        
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
                             self.EGame.isHidden = false
                             self.setCount(game: self.EGame, numberList: gameE)
@@ -165,7 +189,7 @@ class RandomViewController: UIViewController {
                     }
                 }
             }
-            
         }
+        
     }
 }

@@ -134,7 +134,7 @@ class RefreshView: UIView {
     
     private func createContentForLayer(scrollLayer: CAScrollLayer, text: String) {
 //        var textsForScroll: [UIImage] = []
-        scrollLayer.frame = CGRect(x: 0, y: 0, width: randomNumber.frame.width, height: randomNumber.frame.height)
+        scrollLayer.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
 //        textsForScroll.append("0")
 //        for _ in 0...9 {
 //            textsForScroll.append(String(Int.random(in: 1...45)))

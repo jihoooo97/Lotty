@@ -2,30 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDarkContent</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kakaomap</string>
 	</array>
+	<key>NMFClientId</key>
+	<string>a7nivesl0b</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>카메라 권한이 필요합니다</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>위치정보 권한이 필요합니다</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>위치정보 권한이 필요합니다</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>위치정보 권한이 필요합니다</string>
-	<key>NMFClientId</key>
-	<string>a7nivesl0b</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>BMHANNAPro</string>
-		<string>BMDOHYEON_ttf</string>
-		<string>BMYEONSUNG_ttf</string>
 		<string>Pretendard-Thin</string>
 		<string>Pretendard-SemiBold</string>
 		<string>Pretendard-Regular</string>

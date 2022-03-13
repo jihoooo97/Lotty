@@ -3,9 +3,10 @@ import UIKit
 class HomeViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var mapButton: UIButton!
-    @IBOutlet weak var searchButton: UIButton!
-    @IBOutlet weak var randomButton: UIButton!
+    @IBOutlet weak var mapButton: UIView!
+    @IBOutlet weak var searchButton: UIView!
+    @IBOutlet weak var qrButton: UIView!
+    @IBOutlet weak var randomButton: UIView!
     
     var refreshView: RefreshView!
     var beforeDistance: CGFloat = 0
@@ -29,11 +30,17 @@ class HomeViewController: UIViewController {
         refreshView.refreshImage.isHidden = !refreshView.randomNumber.isHidden
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .darkContent
-    }
-    
     func setContentView() {
+        let mapButtonTap = UITapGestureRecognizer(target: self, action: #selector(moveToMap))
+        let searchButtonTap = UITapGestureRecognizer(target: self, action: #selector(moveToSearch))
+        let qrButtonTap = UITapGestureRecognizer(target: self, action: #selector(moveToQR))
+        let randomButtonTap = UITapGestureRecognizer(target: self, action: #selector(moveToRandom))
+        
+        mapButton.addGestureRecognizer(mapButtonTap)
+        searchButton.addGestureRecognizer(searchButtonTap)
+        qrButton.addGestureRecognizer(qrButtonTap)
+        randomButton.addGestureRecognizer(randomButtonTap)
+        
         mapButton.layer.borderWidth = 1
         mapButton.layer.borderColor = UIColor.B600.cgColor
         mapButton.layer.cornerRadius = 8
@@ -50,6 +57,14 @@ class HomeViewController: UIViewController {
         searchButton.layer.shadowOffset = CGSize(width: 0, height: 1)
         searchButton.layer.shadowOpacity = 0.2
         
+        qrButton.layer.borderWidth = 1
+        qrButton.layer.borderColor = UIColor.white.cgColor
+        qrButton.layer.cornerRadius = 8
+        qrButton.layer.masksToBounds = false
+        qrButton.layer.shadowColor = UIColor.black.cgColor
+        qrButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        qrButton.layer.shadowOpacity = 0.2
+        
         randomButton.layer.borderWidth = 1
         randomButton.layer.borderColor = UIColor.white.cgColor
         randomButton.layer.cornerRadius = 8
@@ -59,18 +74,21 @@ class HomeViewController: UIViewController {
         randomButton.layer.shadowOpacity = 0.2
     }
     
-    @IBAction func moveToMap(_ sender: Any) {
+    @objc func moveToMap() {
         self.tabBarController?.selectedIndex = 1
     }
     
-    @IBAction func moveToSearch(_ sender: Any) {
+    @objc func moveToSearch() {
         self.tabBarController?.selectedIndex = 2
     }
     
-    @IBAction func moveToRandom(_ sender: Any) {
-        self.tabBarController?.selectedIndex = 3
+    @objc func moveToQR() {
+        
     }
     
+    @objc func moveToRandom() {
+        self.tabBarController?.selectedIndex = 3
+    }
 }
 
 extension HomeViewController: UIScrollViewDelegate {

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "splash_anseolab.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
