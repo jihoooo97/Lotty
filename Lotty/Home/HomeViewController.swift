@@ -17,7 +17,6 @@ class HomeViewController: UIViewController {
         
         scrollView.delegate = self
         scrollView.refreshControl = UIRefreshControl()
-        
         refreshView = RefreshView()
         refreshView.center.x = (scrollView.refreshControl?.frame.width)! / 2
         
@@ -83,7 +82,10 @@ class HomeViewController: UIViewController {
     }
     
     @objc func moveToQR() {
-        
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "qrScanView") as? QrScanViewController else { return }
+        vc.modalPresentationStyle = .fullScreen
+        vc.navigationController
+        self.present(vc, animated: false, completion: nil)
     }
     
     @objc func moveToRandom() {

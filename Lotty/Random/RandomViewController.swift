@@ -90,11 +90,12 @@ class RandomViewController: UIViewController {
         
         createButton.layer.borderWidth = 1
         createButton.layer.borderColor = UIColor.white.cgColor
-        createButton.layer.cornerRadius = 8
+        createButton.layer.cornerRadius = 4
         createButton.layer.masksToBounds = false
         createButton.layer.shadowColor = UIColor.black.cgColor
-        createButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        createButton.layer.shadowOpacity = 0.2
+        createButton.layer.shadowOffset = CGSize(width: 0, height: 0.5)
+        createButton.layer.shadowOpacity = 0.4
+        createButton.layer.shadowRadius = 1
     }
     
     func setNumber() -> [[Int]] {
@@ -150,7 +151,7 @@ class RandomViewController: UIViewController {
         if day == "next" {
             addTime = start.addingTimeInterval(TimeInterval(86400 * 7 * (getRecentNumber() - 1004)))
         } else if day == "end" {
-            addTime = start.addingTimeInterval(TimeInterval(86400 * 365))
+            addTime = start.addingTimeInterval(TimeInterval(86400 * 379))
         }
         return formatter.string(from: addTime)
     }

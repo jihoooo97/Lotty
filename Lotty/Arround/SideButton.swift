@@ -26,11 +26,12 @@ class SideButton: UIView {
         backgroundColor = .white
         layer.borderWidth = 1
         layer.borderColor = UIColor.white.cgColor
-        layer.cornerRadius = 8
+        layer.cornerRadius = 2
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 1)
-        layer.shadowOpacity = 0.2
+        layer.shadowOffset = CGSize(width: 0, height: 0.5)
+        layer.shadowOpacity = 0.4
+        layer.shadowRadius = 1
         
         addSubview(currentLocationButton)
         commonConstraint()

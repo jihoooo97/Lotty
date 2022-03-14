@@ -7,6 +7,7 @@ class SearchBarView: UIButton {
         label.sizeToFit()
         label.textColor = .G900
         label.text = "위치 검색"
+        label.font = UIFont(name: "Pretendard-Medium", size: 17)
         return label
     }()
     
@@ -24,14 +25,15 @@ class SearchBarView: UIButton {
         backgroundColor = .white
         layer.borderWidth = 1
         layer.borderColor = UIColor.white.cgColor
-        layer.cornerRadius = 8
+        layer.cornerRadius = 4
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 1)
-        layer.shadowOpacity = 0.2
+        layer.shadowOffset = CGSize(width: 0, height: 0.5)
+        layer.shadowOpacity = 0.4
+        layer.shadowRadius = 1
         
         addSubview(searchLabel)
-        searchLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
+        searchLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32).isActive = true
         searchLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
 }

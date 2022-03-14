@@ -12,7 +12,7 @@ class MapSearchViewController: UIViewController {
         configureNavi()
         naviView.layer.borderWidth = 1
         naviView.layer.borderColor = UIColor.lightGray.cgColor
-        naviView.layer.cornerRadius = 8
+        naviView.layer.cornerRadius = 4
     }
 
     override func viewWillAppear(_ animated: Bool) {

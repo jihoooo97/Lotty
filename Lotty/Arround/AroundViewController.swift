@@ -29,7 +29,7 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
             let width = UIScreen.main.bounds.width
             let height = UIScreen.main.bounds.height - self.tabBarController!.tabBar.frame.size.height
             naverMapView.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            let detailTap = UITapGestureRecognizer(target: self, action: #selector(self.clickMap))
+            let detailTap = UITapGestureRecognizer(target: self, action: #selector(clickMap))
             self.naverMapView.addGestureRecognizer(detailTap)
             
             view.addSubview(naverMapView)
@@ -91,8 +91,8 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         
         map.addSubview(searchBar)
         searchBar.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-        searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12).isActive = true
+        searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
         searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
     }
     
@@ -100,16 +100,17 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         detailView.translatesAutoresizingMaskIntoConstraints = false
         detailView.lat = store.y
         detailView.lng = store.x
+        detailView.backgroundColor = .none
         detailView.storeName.text = store.place_name
         detailView.storeAddress.text = store.address_name
         detailView.storeCall.text = store.phone
         detailView.naviButton.addTarget(self, action: #selector(clickNavi), for: .touchUpInside)
         
         map.addSubview(detailView)
-        detailView.heightAnchor.constraint(equalToConstant: 90).isActive = true
-        detailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-        detailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
-        detailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+        detailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        detailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        detailView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
+        detailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
     func configureButton(map: NMFNaverMapView) {
@@ -118,7 +119,7 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         map.addSubview(sideButton)
         sideButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         sideButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        sideButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4).isActive = true
+        sideButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
         sideButton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10).isActive = true
         
         let locationTap = UITapGestureRecognizer(target: self, action: #selector(clickLocationButton))
@@ -167,7 +168,7 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
 }
 
 extension AroundViewController: NMFMapViewCameraDelegate {
-    // camera 이동에 따라 판매점pin 삭제 및 갱신
+    // camera 이동에 따라 판매점 pin 삭제 및 갱신
     func mapViewCameraIdle(_ mapView: NMFMapView) {
         for marker in markerList {
             marker.mapView = nil
