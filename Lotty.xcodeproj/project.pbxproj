@@ -142,6 +142,7 @@
 				13DCF89427BE0C5700EAF40C /* Search */,
 				13DCF89127BE0B7A00EAF40C /* Random */,
 				136C20DD27D1E957004BD29A /* Home */,
+				1398D14127CF4D6700F71739 /* QrScanViewController.swift */,
 				13A2A21227BB489000FE10E1 /* AppDelegate.swift */,
 				13A2A21427BB489000FE10E1 /* SceneDelegate.swift */,
 				13A2A21D27BB489100FE10E1 /* LaunchScreen.storyboard */,
@@ -204,7 +205,6 @@
 				13A2A24F27BB806800FE10E1 /* SearchViewController.swift */,
 				13DCF89227BE0B9500EAF40C /* NumberCell.swift */,
 				1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */,
-				1398D14127CF4D6700F71739 /* QrScanViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";

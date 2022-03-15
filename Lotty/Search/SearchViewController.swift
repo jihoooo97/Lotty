@@ -30,7 +30,6 @@ class SearchViewController: UIViewController {
         configureNavi()
         
         recentNumber = getRecentNumber()
-        
         for i in 0..<10 { getLotteryNumber(drwNo: recentNumber - i) }
     }
     

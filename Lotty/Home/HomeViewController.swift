@@ -1,8 +1,8 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    @IBOutlet weak var pullDownView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var mapButton: UIView!
     @IBOutlet weak var searchButton: UIView!
     @IBOutlet weak var qrButton: UIView!
@@ -83,9 +83,9 @@ class HomeViewController: UIViewController {
     
     @objc func moveToQR() {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "qrScanView") as? QrScanViewController else { return }
-        vc.modalPresentationStyle = .fullScreen
-        vc.navigationController
-        self.present(vc, animated: false, completion: nil)
+        vc.modalPresentationStyle = .popover
+        //vc.navigationItem
+        self.present(vc, animated: true, completion: nil)
     }
     
     @objc func moveToRandom() {

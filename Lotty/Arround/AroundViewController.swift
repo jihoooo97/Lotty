@@ -14,17 +14,23 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
     let detailView = StoreDetailView()
     let sideButton = SideButton()
     var markerList: [NMFMarker] = []
+    var fourClover = UIImage()
+    var threeClover = UIImage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
+        
         configureMap()
     }
     
     // 판매점 이름 주소 전화번호
     func configureMap() {
+        fourClover = resizeImage(image: UIImage(named: "clover_four_icon")!, width: 50, height: 53)
+        threeClover = resizeImage(image: UIImage(named: "clover_three_icon")!, width: 50, height: 50)
+        
         if CLLocationManager.locationServicesEnabled() {
             let width = UIScreen.main.bounds.width
             let height = UIScreen.main.bounds.height - self.tabBarController!.tabBar.frame.size.height
@@ -38,7 +44,6 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
             naverMapView.mapView.positionMode = .direction
             naverMapView.mapView.allowsTilting = false
             naverMapView.mapView.allowsRotating = false
-//            naverMapView.showZoomControls = false
             naverMapView.showScaleBar = false
             
             let latitude = locationManager.location?.coordinate.latitude ?? 37.3593486
@@ -47,41 +52,11 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
             cameraUpdate.animation = .none
             naverMapView.mapView.moveCamera(cameraUpdate)
             
-            let paramerters: Parameters = [
-                "x": longitude,
-                "y": latitude,
-                "query": "복권 판매점",
-                "size": 15
-            ]
-            let headers: HTTPHeaders = [
-                "Authorization": "KakaoAK 7165edf50ee98e1383adf5924f5a76ad"
-            ]
-            AF.request("https://dapi.kakao.com/v2/local/search/keyword.json", method: .get, parameters: paramerters, encoding: URLEncoding.queryString, headers: headers).validate(statusCode: 200..<300).responseDecodable(of: StoreInfo.self) { response in
-                switch response.result {
-                case .success:
-                    guard let stores = response.value?.documents else { return }
-                    for store in stores {
-                        let marker = NMFMarker()
-                        marker.position = NMGLatLng(lat: Double(store.y)!, lng: Double(store.x)!)
-                        marker.touchHandler = { (overlay: NMFOverlay) -> Bool in
-                            marker.iconTintColor = .red
-                            self.configureDetail(map: self.naverMapView, store: store)
-                            return true
-                        }
-                        self.markerList.append(marker)
-                        for marker in self.markerList {
-                            marker.mapView = self.naverMapView.mapView
-                        }
-                    }
-                case .failure:
-                    return
-                }
-            }
             configureNavi(map: naverMapView)
             configureButton(map: naverMapView)
             
         } else {
-            // alert
+            // 권한 허용 alert
         }
     }
     
@@ -97,20 +72,30 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func configureDetail(map: NMFNaverMapView, store: Documents) {
-        detailView.translatesAutoresizingMaskIntoConstraints = false
         detailView.lat = store.y
         detailView.lng = store.x
-        detailView.backgroundColor = .none
+        
+        detailView.translatesAutoresizingMaskIntoConstraints = false
+        detailView.backgroundColor = .white
+        detailView.layer.borderWidth = 1
+        detailView.layer.borderColor = UIColor.white.cgColor
+        detailView.layer.cornerRadius = 4
+        detailView.layer.masksToBounds = false
+        detailView.layer.shadowColor = UIColor.black.cgColor
+        detailView.layer.shadowOffset = CGSize(width: 0, height: 0.5)
+        detailView.layer.shadowOpacity = 0.4
+        detailView.layer.shadowRadius = 1
+        
         detailView.storeName.text = store.place_name
         detailView.storeAddress.text = store.address_name
         detailView.storeCall.text = store.phone
         detailView.naviButton.addTarget(self, action: #selector(clickNavi), for: .touchUpInside)
         
         map.addSubview(detailView)
-        detailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        detailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        detailView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
-        detailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        detailView.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        detailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        detailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        detailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
     }
     
     func configureButton(map: NMFNaverMapView) {
@@ -125,6 +110,14 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         let locationTap = UITapGestureRecognizer(target: self, action: #selector(clickLocationButton))
         sideButton.currentLocationButton.addGestureRecognizer(locationTap)
     }
+    
+    func resizeImage(image: UIImage, width: CGFloat, height: CGFloat) -> UIImage {
+         UIGraphicsBeginImageContext(CGSize(width: width, height: height))
+         image.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
+         let newImage = UIGraphicsGetImageFromCurrentImageContext()
+         UIGraphicsEndImageContext()
+         return newImage!
+     }
     
     @objc func clickSearch() {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchMap") as? MapSearchViewController else { return }
@@ -174,6 +167,7 @@ extension AroundViewController: NMFMapViewCameraDelegate {
             marker.mapView = nil
         }
         self.markerList.removeAll()
+        
         let positon = mapView.cameraPosition.target
         let paramerters: Parameters = [
             "x": positon.lng,
@@ -190,13 +184,16 @@ extension AroundViewController: NMFMapViewCameraDelegate {
                 guard let stores = response.value?.documents else { return }
                 for store in stores {
                     let marker = NMFMarker()
+                    marker.iconImage = NMFOverlayImage(name: "clover_three_icon")
                     marker.position = NMGLatLng(lat: Double(store.y)!, lng: Double(store.x)!)
                     marker.touchHandler = { (overlay: NMFOverlay) -> Bool in
                         self.configureDetail(map: self.naverMapView, store: store)
+                        
                         return true
                     }
                     self.markerList.append(marker)
                     for marker in self.markerList {
+                        marker.iconImage = NMFOverlayImage(image: self.threeClover)
                         marker.mapView = self.naverMapView.mapView
                     }
                 }
