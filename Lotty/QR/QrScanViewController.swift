@@ -5,6 +5,7 @@ import WebKit
 class QrScanViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     @IBOutlet weak var qrView: UIView!
     @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var firstView: UIView!
     
     var captureSession = AVCaptureSession()
     var videoPreviewLayer = AVCaptureVideoPreviewLayer()
@@ -105,6 +106,7 @@ extension QrScanViewController: AVCaptureMetadataOutputObjectsDelegate {
         
         let metaDataObject = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         guard let StringCodeValue = metaDataObject.stringValue else { return }
+        firstView.isHidden = true
         if before == StringCodeValue { return }
         guard let _ = self.videoPreviewLayer.transformedMetadataObject(for: metaDataObject) else { return }
         guard let url = URL(string: StringCodeValue) else { return }

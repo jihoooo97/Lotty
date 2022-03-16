@@ -12,10 +12,10 @@
 		1320D4FB27DB174B00E47E4C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1320D4FA27DB174B00E47E4C /* GameView.swift */; };
 		1320D4FD27DB397900E47E4C /* DottedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1320D4FC27DB397900E47E4C /* DottedLine.swift */; };
 		132A29D227C5CACB003203B2 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132A29D127C5CACB003203B2 /* SearchBarView.swift */; };
-		1331A35427D7383B00DCBE5D /* RandomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1331A35327D7383B00DCBE5D /* RandomCell.swift */; };
 		1334B79C27C756C4003C2904 /* StoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1334B79B27C756C4003C2904 /* StoreInfo.swift */; };
 		1334B79E27C8B022003C2904 /* SideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1334B79D27C8B022003C2904 /* SideButton.swift */; };
 		133CBF7B27CDF31A008C02D8 /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133CBF7A27CDF31A008C02D8 /* MapSearchViewController.swift */; };
+		1361592D27E0F7BA00DB1883 /* alertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1361592C27E0F7BA00DB1883 /* alertView.swift */; };
 		136C20DF27D1E988004BD29A /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136C20DE27D1E988004BD29A /* RefreshView.swift */; };
 		1378E33327BFADAE00B76E5B /* SearchLotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */; };
 		13802F6B27C3D4D8008EE0BC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13802F6A27C3D4D8008EE0BC /* Storage.swift */; };
@@ -54,10 +54,10 @@
 		1320D4FA27DB174B00E47E4C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		1320D4FC27DB397900E47E4C /* DottedLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedLine.swift; sourceTree = "<group>"; };
 		132A29D127C5CACB003203B2 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
-		1331A35327D7383B00DCBE5D /* RandomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCell.swift; sourceTree = "<group>"; };
 		1334B79B27C756C4003C2904 /* StoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
 		1334B79D27C8B022003C2904 /* SideButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideButton.swift; sourceTree = "<group>"; };
 		133CBF7A27CDF31A008C02D8 /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
+		1361592C27E0F7BA00DB1883 /* alertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = alertView.swift; sourceTree = "<group>"; };
 		136C20DE27D1E988004BD29A /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLotteryViewController.swift; sourceTree = "<group>"; };
 		13802F6A27C3D4D8008EE0BC /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -138,11 +138,11 @@
 			children = (
 				13802F6A27C3D4D8008EE0BC /* Storage.swift */,
 				13DCF89527BE0C6E00EAF40C /* API */,
+				136C20DD27D1E957004BD29A /* Home */,
 				13DCF89027BE0B5300EAF40C /* Arround */,
 				13DCF89427BE0C5700EAF40C /* Search */,
+				13ED064427E1C9D9002823C8 /* QR */,
 				13DCF89127BE0B7A00EAF40C /* Random */,
-				136C20DD27D1E957004BD29A /* Home */,
-				1398D14127CF4D6700F71739 /* QrScanViewController.swift */,
 				13A2A21227BB489000FE10E1 /* AppDelegate.swift */,
 				13A2A21427BB489000FE10E1 /* SceneDelegate.swift */,
 				13A2A21D27BB489100FE10E1 /* LaunchScreen.storyboard */,
@@ -177,10 +177,11 @@
 			isa = PBXGroup;
 			children = (
 				13A2A21627BB489000FE10E1 /* AroundViewController.swift */,
-				13CCFC8327C4F5DB0033D682 /* StoreDetailView.swift */,
-				132A29D127C5CACB003203B2 /* SearchBarView.swift */,
-				1334B79D27C8B022003C2904 /* SideButton.swift */,
 				133CBF7A27CDF31A008C02D8 /* MapSearchViewController.swift */,
+				132A29D127C5CACB003203B2 /* SearchBarView.swift */,
+				13CCFC8327C4F5DB0033D682 /* StoreDetailView.swift */,
+				1334B79D27C8B022003C2904 /* SideButton.swift */,
+				1361592C27E0F7BA00DB1883 /* alertView.swift */,
 			);
 			path = Arround;
 			sourceTree = "<group>";
@@ -189,12 +190,11 @@
 			isa = PBXGroup;
 			children = (
 				13A2A24B27BB802E00FE10E1 /* RandomViewController.swift */,
-				1331A35327D7383B00DCBE5D /* RandomCell.swift */,
 				13C706CB27CC84BC000CF41D /* CountLabel.swift */,
 				1320D4F627DB0D0D00E47E4C /* RightLine.swift */,
 				1320D4F827DB0EC600E47E4C /* BackgroundLabel.swift */,
-				1320D4FA27DB174B00E47E4C /* GameView.swift */,
 				1320D4FC27DB397900E47E4C /* DottedLine.swift */,
+				1320D4FA27DB174B00E47E4C /* GameView.swift */,
 			);
 			path = Random;
 			sourceTree = "<group>";
@@ -216,6 +216,14 @@
 				1334B79B27C756C4003C2904 /* StoreInfo.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		13ED064427E1C9D9002823C8 /* QR */ = {
+			isa = PBXGroup;
+			children = (
+				1398D14127CF4D6700F71739 /* QrScanViewController.swift */,
+			);
+			path = QR;
 			sourceTree = "<group>";
 		};
 		2FD4CE63248C5321D28A5EDE /* Frameworks */ = {
@@ -366,6 +374,7 @@
 				13802F6B27C3D4D8008EE0BC /* Storage.swift in Sources */,
 				13A2A25227BB8B1400FE10E1 /* UIColor.swift in Sources */,
 				1320D4F727DB0D0D00E47E4C /* RightLine.swift in Sources */,
+				1361592D27E0F7BA00DB1883 /* alertView.swift in Sources */,
 				13C706CC27CC84BC000CF41D /* CountLabel.swift in Sources */,
 				1334B79C27C756C4003C2904 /* StoreInfo.swift in Sources */,
 				136C20DF27D1E988004BD29A /* RefreshView.swift in Sources */,
@@ -375,7 +384,6 @@
 				13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */,
 				1320D4FB27DB174B00E47E4C /* GameView.swift in Sources */,
 				1398D14227CF4D6700F71739 /* QrScanViewController.swift in Sources */,
-				1331A35427D7383B00DCBE5D /* RandomCell.swift in Sources */,
 				1320D4FD27DB397900E47E4C /* DottedLine.swift in Sources */,
 				1320D4F927DB0EC600E47E4C /* BackgroundLabel.swift in Sources */,
 				13CCFC8427C4F5DB0033D682 /* StoreDetailView.swift in Sources */,
@@ -543,7 +551,7 @@
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lotty/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = lotty;
+				INFOPLIST_KEY_CFBundleDisplayName = "로또의 민족";
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 권한이 필요합니다";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치정보 권한이 필요합니다";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치정보 권한이 필요합니다";
@@ -581,7 +589,7 @@
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lotty/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = lotty;
+				INFOPLIST_KEY_CFBundleDisplayName = "로또의 민족";
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 권한이 필요합니다";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치정보 권한이 필요합니다";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치정보 권한이 필요합니다";

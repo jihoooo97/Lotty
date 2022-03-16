@@ -3,9 +3,7 @@ import CoreLocation
 import NMapsMap
 import Alamofire
 
-protocol SearchDelegate: AnyObject {
-    func mapSearch(query: String)
-}
+protocol SearchDelegate: AnyObject { func mapSearch(query: String) }
 
 class AroundViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager = CLLocationManager()
@@ -13,17 +11,27 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
     let searchBar = SearchBarView()
     let detailView = StoreDetailView()
     let sideButton = SideButton()
-    var markerList: [NMFMarker] = []
+    
+    var markerList: [LotteryMarker] = []
+    
     var fourClover = UIImage()
     var threeClover = UIImage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         
-        configureMap()
+        self.configureMap()
+        if CLLocationManager.locationServicesEnabled() {
+            let latitude = self.locationManager.location?.coordinate.latitude ?? 37.3593486
+            let longitude = self.locationManager.location?.coordinate.longitude ?? 127.104845
+            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: latitude, lng: longitude))
+            cameraUpdate.animation = .easeOut
+            self.naverMapView.mapView.moveCamera(cameraUpdate)
+        }
     }
     
     // 판매점 이름 주소 전화번호
@@ -35,8 +43,6 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
             let width = UIScreen.main.bounds.width
             let height = UIScreen.main.bounds.height - self.tabBarController!.tabBar.frame.size.height
             naverMapView.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            let detailTap = UITapGestureRecognizer(target: self, action: #selector(clickMap))
-            self.naverMapView.addGestureRecognizer(detailTap)
             
             view.addSubview(naverMapView)
             self.tabBarController?.tabBar.backgroundColor = .white
@@ -46,32 +52,26 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
             naverMapView.mapView.allowsRotating = false
             naverMapView.showScaleBar = false
             
-            let latitude = locationManager.location?.coordinate.latitude ?? 37.3593486
-            let longitude = locationManager.location?.coordinate.longitude ?? 127.104845
-            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: latitude, lng: longitude))
-            cameraUpdate.animation = .none
-            naverMapView.mapView.moveCamera(cameraUpdate)
-            
-            configureNavi(map: naverMapView)
-            configureButton(map: naverMapView)
-            
+            configureNavi()
+            configureButton()
         } else {
             // 권한 허용 alert
         }
     }
     
-    func configureNavi(map: NMFNaverMapView) {
+    func configureNavi() {
         searchBar.addTarget(self, action: #selector(clickSearch), for: .touchUpInside)
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         
-        map.addSubview(searchBar)
+        view.addSubview(searchBar)
         searchBar.heightAnchor.constraint(equalToConstant: 44).isActive = true
         searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12).isActive = true
         searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
         searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
     }
     
-    func configureDetail(map: NMFNaverMapView, store: Documents) {
+    func configureDetail(store: Documents) {
+        detailView.id = store.id
         detailView.lat = store.y
         detailView.lng = store.x
         
@@ -91,17 +91,17 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         detailView.storeCall.text = store.phone
         detailView.naviButton.addTarget(self, action: #selector(clickNavi), for: .touchUpInside)
         
-        map.addSubview(detailView)
+        view.addSubview(detailView)
         detailView.heightAnchor.constraint(equalToConstant: 90).isActive = true
         detailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
         detailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
         detailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
     }
     
-    func configureButton(map: NMFNaverMapView) {
+    func configureButton() {
         sideButton.translatesAutoresizingMaskIntoConstraints = false
         
-        map.addSubview(sideButton)
+        view.addSubview(sideButton)
         sideButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         sideButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         sideButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
@@ -126,16 +126,22 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         self.present(vc, animated: false, completion: nil)
     }
     
+    // map 클릭 시 마커 이미지 변경
     @objc func clickMap() {
         let x = self.detailView.frame.minX
         let y = UIScreen.main.bounds.height + 100
-        let width = self.detailView.frame.width
-        let height = self.detailView.frame.height
-        
+
         UIView.animate(withDuration: 0.5,
                        animations: {
-            self.detailView.frame = CGRect(x: x, y: y, width: width, height: height)
+            self.detailView.frame.origin = CGPoint(x: x, y: y)
+            self.detailView.id = "-"
         })
+
+        for marker in self.markerList {
+            if marker.storeId != self.detailView.id {
+                marker.marker.iconImage = NMFOverlayImage(image: self.threeClover)
+            }
+        }
     }
     
     @objc func clickNavi() {
@@ -160,13 +166,15 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
     }
 }
 
+// MARK: CAMERA별 판매점 마커 갱신
 extension AroundViewController: NMFMapViewCameraDelegate {
-    // camera 이동에 따라 판매점 pin 삭제 및 갱신
     func mapViewCameraIdle(_ mapView: NMFMapView) {
         for marker in markerList {
-            marker.mapView = nil
+            if marker.storeId != self.detailView.id {
+                self.markerList = self.markerList.filter({$0.marker != marker.marker})
+                marker.marker.mapView = nil
+            }
         }
-        self.markerList.removeAll()
         
         let positon = mapView.cameraPosition.target
         let paramerters: Parameters = [
@@ -182,28 +190,41 @@ extension AroundViewController: NMFMapViewCameraDelegate {
             switch response.result {
             case .success:
                 guard let stores = response.value?.documents else { return }
-                for store in stores {
-                    let marker = NMFMarker()
-                    marker.iconImage = NMFOverlayImage(name: "clover_three_icon")
-                    marker.position = NMGLatLng(lat: Double(store.y)!, lng: Double(store.x)!)
-                    marker.touchHandler = { (overlay: NMFOverlay) -> Bool in
-                        self.configureDetail(map: self.naverMapView, store: store)
-                        
+                for i in 0..<stores.count {
+                    let marker = LotteryMarker(marker: NMFMarker(), storeId: stores[i].id)
+                    marker.marker.position = NMGLatLng(lat: Double(stores[i].y)!, lng: Double(stores[i].x)!)
+                    if !self.markerList.contains(where: {$0.storeId == marker.storeId}) && marker.storeId != self.detailView.id {
+                        self.markerList.append(marker)
+                        marker.marker.mapView = self.naverMapView.mapView
+                    }
+                    
+                    if stores[i].id == self.detailView.id {
+                        marker.marker.iconImage = NMFOverlayImage(image: self.fourClover)
+                    } else {
+                        marker.marker.iconImage = NMFOverlayImage(image: self.threeClover)
+                    }
+                    
+                    marker.marker.touchHandler = { (overlay: NMFOverlay) -> Bool in
+                        self.configureDetail(store: stores[i])
+                        marker.marker.iconImage = NMFOverlayImage(image: self.fourClover)
+                        for marker in self.markerList.filter({ $0.marker != marker.marker }) {
+                            marker.marker.iconImage = NMFOverlayImage(image: self.threeClover)
+                        }
                         return true
                     }
-                    self.markerList.append(marker)
-                    for marker in self.markerList {
-                        marker.iconImage = NMFOverlayImage(image: self.threeClover)
-                        marker.mapView = self.naverMapView.mapView
-                    }
+                    
                 }
             case .failure:
+                // 사용량 다 쓴 경우 안내뷰
+                
                 return
             }
         }
+        
     }
 }
 
+// MARK: 지도 검색 결과
 extension AroundViewController: SearchDelegate {
     func mapSearch(query: String) {
         let paramerters: Parameters = [
@@ -218,11 +239,15 @@ extension AroundViewController: SearchDelegate {
             case .success:
                 guard let coord = response.value?.documents[0] else { return }
                 let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: Double(coord.y)!, lng: Double(coord.x)!))
-                cameraUpdate.animation = .none
                 self.naverMapView.mapView.moveCamera(cameraUpdate)
             case .failure:
                 return
             }
         }
     }
+}
+
+struct LotteryMarker {
+    var marker: NMFMarker
+    var storeId: String
 }

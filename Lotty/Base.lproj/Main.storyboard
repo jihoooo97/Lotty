@@ -422,10 +422,20 @@
                                     <constraint firstAttribute="height" constant="250" id="PgM-ja-EgC"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QtM-Fa-H3G">
+                                <rect key="frame" x="70" y="337.66666666666669" width="250" height="130"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="5W1-w5-6LX"/>
+                                    <constraint firstAttribute="width" constant="250" id="YxA-bI-Xat"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zer-tM-D5R"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="QtM-Fa-H3G" firstAttribute="centerY" secondItem="zer-tM-D5R" secondAttribute="centerY" id="5XQ-vv-uyB"/>
+                            <constraint firstItem="QtM-Fa-H3G" firstAttribute="centerX" secondItem="zer-tM-D5R" secondAttribute="centerX" id="AfQ-VO-Xxv"/>
                             <constraint firstItem="zer-tM-D5R" firstAttribute="trailing" secondItem="1kB-5n-ig0" secondAttribute="trailing" id="Kfm-8m-eKc"/>
                             <constraint firstItem="lJF-4X-J86" firstAttribute="leading" secondItem="zer-tM-D5R" secondAttribute="leading" id="RR6-r7-KAw"/>
                             <constraint firstItem="zer-tM-D5R" firstAttribute="bottom" secondItem="1kB-5n-ig0" secondAttribute="bottom" id="SAa-gf-esu"/>
@@ -438,6 +448,7 @@
                     <tabBarItem key="tabBarItem" title="QR코드" image="qr_scan_icon" id="Mvx-hO-nwZ"/>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="QTZ-zw-yhB"/>
                     <connections>
+                        <outlet property="firstView" destination="QtM-Fa-H3G" id="A1c-fv-Si7"/>
                         <outlet property="qrView" destination="lJF-4X-J86" id="mJ3-Yb-kXX"/>
                         <outlet property="webView" destination="1kB-5n-ig0" id="oOe-mD-uOU"/>
                     </connections>
@@ -1075,7 +1086,7 @@
                                                 <rect key="frame" x="0.0" y="-10" width="390" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아래로 당겨주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJ9-DG-i0q">
-                                                        <rect key="frame" x="141.33333333333334" y="26" width="107.33333333333334" height="18.333333333333329"/>
+                                                        <rect key="frame" x="141" y="26" width="108" height="18.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>

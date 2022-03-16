@@ -4,6 +4,7 @@ struct StoreInfo: Codable {
 }
 
 struct Documents: Codable {
+    let id: String
     let place_name: String
     let address_name: String
     let road_address_name: String
@@ -13,7 +14,6 @@ struct Documents: Codable {
     // "category_group_code": "",
     // "category_group_name": "",
     // "distance": "2615",
-    // "id": "2091279060",
     // "place_url": "http://place.map.kakao.com/2091279060",
 }
 

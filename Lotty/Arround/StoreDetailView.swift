@@ -1,6 +1,7 @@
 import UIKit
 
 class StoreDetailView: UIView {
+    var id = ""
     var lat = ""
     var lng = ""
     
