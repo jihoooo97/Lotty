@@ -1,13 +1,20 @@
 import UIKit
 
 class SearchBarView: UIButton {
+    let scopeImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "find_icon")
+        imageView.tintColor = .G400
+        return imageView
+    }()
     let searchLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
-        label.textColor = .G900
+        label.textColor = .G400
         label.text = "위치 검색"
-        label.font = UIFont(name: "Pretendard-Medium", size: 17)
+        label.font = UIFont(name: "Pretendard-SemiBold", size: 19)
         return label
     }()
     
@@ -32,8 +39,14 @@ class SearchBarView: UIButton {
         layer.shadowOpacity = 0.4
         layer.shadowRadius = 1
         
+        addSubview(scopeImage)
+        scopeImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
+        scopeImage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        scopeImage.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        scopeImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
         addSubview(searchLabel)
-        searchLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32).isActive = true
+        searchLabel.leadingAnchor.constraint(equalTo: scopeImage.trailingAnchor, constant: 16).isActive = true
         searchLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
 }

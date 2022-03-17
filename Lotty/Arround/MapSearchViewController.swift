@@ -1,18 +1,15 @@
 import UIKit
 
 class MapSearchViewController: UIViewController {
-    @IBOutlet weak var naviView: UIView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UIView!
+    @IBOutlet weak var searchField: UITextField!
     
     weak var delegate: SearchDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
+        searchField.delegate = self
         configureNavi()
-        naviView.layer.borderWidth = 1
-        naviView.layer.borderColor = UIColor.lightGray.cgColor
-        naviView.layer.cornerRadius = 4
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -21,11 +18,8 @@ class MapSearchViewController: UIViewController {
     }
 
     func configureNavi() {
-        naviView.layer.borderColor = UIColor.lightGray.cgColor
-        searchBar.showsScopeBar = false
-        searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
-        searchBar.searchTextField.backgroundColor = UIColor.clear
-        searchBar.searchTextField.textColor = .G900
+        searchBar.layer.cornerRadius = 8
+        searchField.textColor = .G900
     }
     
     @IBAction func back(_ sender: Any) {
@@ -37,14 +31,16 @@ class MapSearchViewController: UIViewController {
     }
 }
 
-extension MapSearchViewController: UISearchBarDelegate {
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+extension MapSearchViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        self.delegate?.mapSearch(query: searchBar.text!)
+    // 자음, 모음만 검색하는것 처리
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.delegate?.mapSearch(query: textField.text!)
         self.dismiss(animated: false, completion: nil)
+        return true
     }
 }

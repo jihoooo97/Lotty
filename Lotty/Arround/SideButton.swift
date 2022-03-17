@@ -5,7 +5,7 @@ class SideButton: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("현위치", for: .normal)
-        button.setTitleColor(.B500, for: .normal)
+        button.setTitleColor(UIColor.red, for: .normal)
         button.titleLabel?.font = UIFont(name: "Pretendard-Bold", size: 15)
         button.backgroundColor = .white
         button.layer.cornerRadius = 4

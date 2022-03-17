@@ -23,6 +23,7 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
+        naverMapView.mapView.touchDelegate = self
         
         self.configureMap()
         if CLLocationManager.locationServicesEnabled() {
@@ -60,8 +61,8 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func configureNavi() {
-        searchBar.addTarget(self, action: #selector(clickSearch), for: .touchUpInside)
         searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.addTarget(self, action: #selector(clickSearch), for: .touchUpInside)
         
         view.addSubview(searchBar)
         searchBar.heightAnchor.constraint(equalToConstant: 44).isActive = true
@@ -105,7 +106,7 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         sideButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         sideButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         sideButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
-        sideButton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10).isActive = true
+        sideButton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 14).isActive = true
         
         let locationTap = UITapGestureRecognizer(target: self, action: #selector(clickLocationButton))
         sideButton.currentLocationButton.addGestureRecognizer(locationTap)
@@ -215,12 +216,19 @@ extension AroundViewController: NMFMapViewCameraDelegate {
                     
                 }
             case .failure:
-                // 사용량 다 쓴 경우 안내뷰
+                // [!] 사용량 다 쓴 경우 안내뷰
                 
                 return
             }
         }
-        
+    }
+    
+    
+}
+
+extension AroundViewController: NMFMapViewTouchDelegate {
+    func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
+        clickMap()
     }
 }
 
@@ -237,7 +245,8 @@ extension AroundViewController: SearchDelegate {
         AF.request("https://dapi.kakao.com/v2/local/search/keyword.json", method: .get, parameters: paramerters, encoding: URLEncoding.queryString, headers: headers).validate(statusCode: 200..<300).responseDecodable(of: StoreInfo.self) { response in
             switch response.result {
             case .success:
-                guard let coord = response.value?.documents[0] else { return }
+                guard let result = response.value?.documents else { return }
+                guard let coord = result.first else { return }
                 let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: Double(coord.y)!, lng: Double(coord.x)!))
                 self.naverMapView.mapView.moveCamera(cameraUpdate)
             case .failure:

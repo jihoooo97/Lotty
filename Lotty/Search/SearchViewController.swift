@@ -151,7 +151,8 @@ extension SearchViewController: UITableViewDataSource {
             cell.drwNo.text = "\(lotteryArray[indexPath.section].lottery.drwNo)회"
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "numberCell", for: indexPath) as? NumberCell else { return UITableViewCell() }
+            // 회차 리턴 없으면 failview
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "numberCell", for: indexPath) as? NumberCell else { return FailCell() }
             cell.date.text = lotteryArray[indexPath.section].lottery.drwNoDate
             cell.no1.text = "\(lotteryArray[indexPath.section].lottery.drwtNo1)"
             cell.no2.text = "\(lotteryArray[indexPath.section].lottery.drwtNo2)"

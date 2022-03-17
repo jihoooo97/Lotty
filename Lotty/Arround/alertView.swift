@@ -1,10 +1,10 @@
 import UIKit
 
-class alertView: UIView {
+class AlertView: UIView {
     let mapImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage()
+        imageView.image = UIImage(named: "")
         return imageView
     }()
     
@@ -53,5 +53,13 @@ class alertView: UIView {
         mapImage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         mapImage.widthAnchor.constraint(equalToConstant: 200).isActive = true
         mapImage.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        explainLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        explainLabel.topAnchor.constraint(equalTo: mapImage.bottomAnchor, constant: 10).isActive = true
+        
+        confirmButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        confirmButton.topAnchor.constraint(equalTo: explainLabel.bottomAnchor, constant: 20).isActive = true
+        confirmButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        confirmButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }

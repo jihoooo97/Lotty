@@ -16,8 +16,6 @@ class SearchLotteryViewController: UIViewController {
     @IBOutlet weak var winAmount: UILabel!
     @IBOutlet weak var totalWinAmount: UILabel!
     @IBOutlet weak var totalAmount: UILabel!
-    @IBOutlet weak var testLabel: UILabel!
-    @IBOutlet weak var searchHistory: UITableView!
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var historyTableView: UITableView!
     @IBOutlet weak var historyTableViewTop: NSLayoutConstraint!
@@ -72,7 +70,7 @@ class SearchLotteryViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
     }
-    // present방식 생각해보기
+    
     @objc func back() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -167,65 +165,63 @@ extension SearchLotteryViewController: UISearchBarDelegate {
 }
 
 extension SearchLotteryViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return searchHistoryList.count }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchHistoryList.count > 0 {
+            return searchHistoryList.count
+        } else {
+            return 1
+        }
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as? HistoryCell else { return UITableViewCell() }
-        cell.drwNo.text = "\(searchHistoryList[indexPath.row])회"
-        cell.clickButtonHandler = {
-            self.navigationItem.rightBarButtonItem?.customView?.resignFirstResponder()
-            let parameters: Parameters = [
-                "method": "getLottoNumber",
-                "drwNo": self.searchHistoryList[indexPath.row]
-            ]
-            AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryInfo.self) { response in
-                switch response.result {
-                case .success:
-                    if self.lotteryView.isHidden {
-                        self.lotteryView.isHidden = false
-                        self.historyTableViewTop.constant = self.lotteryView.frame.height + 20
+        if searchHistoryList.count > 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as? HistoryCell else { return UITableViewCell() }
+            cell.drwNo.text = "\(searchHistoryList[indexPath.row])회"
+            cell.clickButtonHandler = {
+                self.navigationItem.rightBarButtonItem?.customView?.resignFirstResponder()
+                let parameters: Parameters = [
+                    "method": "getLottoNumber",
+                    "drwNo": self.searchHistoryList[indexPath.row]
+                ]
+                AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryInfo.self) { response in
+                    switch response.result {
+                    case .success:
+                        if self.lotteryView.isHidden {
+                            self.lotteryView.isHidden = false
+                            self.historyTableViewTop.constant = self.lotteryView.frame.height + 20
+                        }
+                        guard let lottery = response.value else { return }
+                        self.lotteryInfo = lottery
+                        self.lotteryConfigure()
+                        self.searchHistoryList.remove(at: indexPath.row)
+                        self.searchHistoryList.insert(lottery.drwNo, at: 0)
+                        self.historyTableView.reloadData()
+                    case .failure:
+                        return
                     }
-                    guard let lottery = response.value else { return }
-                    self.lotteryInfo = lottery
-                    self.lotteryConfigure()
-                    self.searchHistoryList.remove(at: indexPath.row)
-                    self.searchHistoryList.insert(lottery.drwNo, at: 0)
-                    self.historyTableView.reloadData()
-                case .failure:
-                    return
                 }
             }
+            cell.deleteButtonHandler = {
+                self.searchHistoryList.remove(at: indexPath.row)
+                self.historyTableView.reloadData()
+            }
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "emptyCell", for: indexPath) as? EmptyCell else { return UITableViewCell() }
+            return cell
         }
-        cell.deleteButtonHandler = {
-            self.searchHistoryList.remove(at: indexPath.row)
-            self.historyTableView.reloadData()
-        }
-        return cell
     }
 }
 
 extension SearchLotteryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        if searchHistoryList.count > 0 {
+            return 50
+        } else {
+            return 150
+        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-    }
-}
-
-class HistoryCell: UITableViewCell {
-    @IBOutlet weak var drwNo: UILabel!
-    @IBOutlet weak var clockImage: UIImageView!
-    @IBOutlet weak var clickButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
-    
-    var clickButtonHandler: (() -> Void)?
-    var deleteButtonHandler: (() -> Void)?
-    
-    @IBAction func clickButton(_ sender: Any) {
-        clickButtonHandler?()
-    }
-    @IBAction func deleteButton(_ sender: Any) {
-        deleteButtonHandler?()
     }
 }
