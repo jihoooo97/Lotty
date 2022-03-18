@@ -4,7 +4,6 @@ import AVFoundation
 
 class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var explainLabel: UILabel!
     
     private var refreshControl = UIRefreshControl()
     var lotteryArray: [LotteryItem] = []
@@ -40,20 +39,20 @@ class SearchViewController: UIViewController {
     }
     
     func configureNavi() {
-        self.title = "조회하기"
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [
+        self.navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: UIColor.G900,
-            .font: UIFont.systemFont(ofSize: 24, weight: .bold)
+            .font: UIFont(name: "Pretendard-Bold", size: 18)!
         ]
         self.navigationController?.navigationBar.layoutMargins.left = 32
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationItem.titleView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         // 글자 간격
-        let attrString = NSMutableAttributedString(string: explainLabel.text!)
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 6
-        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
-        explainLabel.attributedText = attrString
+//        let attrString = NSMutableAttributedString(string: explainLabel.text!)
+//        let paragraphStyle = NSMutableParagraphStyle()
+//        paragraphStyle.lineSpacing = 6
+//        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
+//        explainLabel.attributedText = attrString
     }
     
     func getNowTime() -> String {

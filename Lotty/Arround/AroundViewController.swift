@@ -11,6 +11,7 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
     let searchBar = SearchBarView()
     let detailView = StoreDetailView()
     let sideButton = SideButton()
+    let alertView = AlertView()
     
     var markerList: [LotteryMarker] = []
     
@@ -33,6 +34,12 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
             cameraUpdate.animation = .easeOut
             self.naverMapView.mapView.moveCamera(cameraUpdate)
         }
+        
+//        view.addSubview(alertView)
+//        alertView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+//        alertView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+//        alertView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+//        alertView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 8).isActive = true
     }
     
     // 판매점 이름 주소 전화번호
@@ -68,7 +75,7 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         searchBar.heightAnchor.constraint(equalToConstant: 44).isActive = true
         searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12).isActive = true
         searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
-        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 4).isActive = true
     }
     
     func configureDetail(store: Documents) {
@@ -94,9 +101,9 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         
         view.addSubview(detailView)
         detailView.heightAnchor.constraint(equalToConstant: 90).isActive = true
-        detailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-        detailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
-        detailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+        detailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12).isActive = true
+        detailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
+        detailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8).isActive = true
     }
     
     func configureButton() {
@@ -222,8 +229,6 @@ extension AroundViewController: NMFMapViewCameraDelegate {
             }
         }
     }
-    
-    
 }
 
 extension AroundViewController: NMFMapViewTouchDelegate {

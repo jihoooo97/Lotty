@@ -23,6 +23,7 @@ class SearchLotteryViewController: UIViewController {
     var lotteryInfo = LotteryInfo(drwNoDate: "", drwNo: 0, firstAccumamnt: 0, firstWinamnt: 0, firstPrzwnerCo: 0, drwtNo1: 0, drwtNo2: 0, drwtNo3: 0, drwtNo4: 0, drwtNo5: 0, drwtNo6: 0, bnusNo: 0, returnValue: "", totSellamnt: 0)
     var searchHistoryList: [Int] = []
     
+    // [!] 전체 삭제 옆에 쓰레기통, 구분선 G100
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavi()
@@ -38,13 +39,13 @@ class SearchLotteryViewController: UIViewController {
         if lotteryInfo.drwNoDate != "" {
             lotteryConfigure()
         } else {
-            lotteryView.isHidden = true
+            
         }
         
         if lotteryView.isHidden {
             historyTableViewTop.constant = 0
         } else {
-            historyTableViewTop.constant = lotteryView.bounds.height
+//            historyTableViewTop.constant = lotteryView.bounds.height
         }
     }
     
@@ -100,7 +101,7 @@ class SearchLotteryViewController: UIViewController {
     
     func setRound(label: UILabel) {
         label.layer.masksToBounds = true
-        label.layer.cornerRadius = 18
+        label.layer.cornerRadius = 20
         if Int(label.text!)! <= 10 {
             label.backgroundColor = .firstColor
         } else if Int(label.text!)! <= 20 {
@@ -148,8 +149,6 @@ extension SearchLotteryViewController: UISearchBarDelegate {
         AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryInfo.self) { response in
             switch response.result {
             case .success:
-                self.lotteryView.isHidden = false
-                self.historyTableViewTop.constant = self.lotteryView.frame.height + 20
                 searchBar.text = ""
                 guard let lottery = response.value else { return }
                 self.lotteryInfo = lottery

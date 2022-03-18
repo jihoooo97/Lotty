@@ -10,7 +10,7 @@ class StoreDetailView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.text = "가게 이름"
-        label.font = UIFont(name: "Pretendard-Bold", size: 17)
+        label.font = UIFont(name: "Pretendard-SemiBold", size: 17)
         label.textColor = .G900
         return label
     }()
@@ -20,8 +20,8 @@ class StoreDetailView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.text = "가게 주소"
-        label.font = UIFont(name: "Pretendard-Bold", size: 15)
-        label.textColor = .G300
+        label.font = UIFont(name: "Pretendard-Regular", size: 15)
+        label.textColor = .G500
         label.numberOfLines = 2
         return label
     }()
@@ -31,11 +31,12 @@ class StoreDetailView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.text = "가게 전화번호"
-        label.font = UIFont(name: "Pretendard-Bold", size: 15)
-        label.textColor = .G900
+        label.font = UIFont(name: "Pretendard-Regular", size: 15)
+        label.textColor = .B500
         return label
     }()
     
+    // 길찾기 레이블 추가, regular, 사이즈 15
     let naviButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -71,19 +72,20 @@ class StoreDetailView: UIView {
         storeName.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
         
         // 가게 주소
-        storeAddress.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 13).isActive = true
+        storeAddress.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12).isActive = true
         storeAddress.trailingAnchor.constraint(equalTo: naviButton.leadingAnchor, constant: -2).isActive = true
-        storeAddress.topAnchor.constraint(equalTo: storeName.bottomAnchor, constant: 2).isActive = true
+        storeAddress.topAnchor.constraint(equalTo: storeName.bottomAnchor, constant: 12).isActive = true
         
         // 가게 연락처
-        storeCall.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 13).isActive = true
+        storeCall.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12).isActive = true
         storeCall.trailingAnchor.constraint(equalTo: naviButton.leadingAnchor, constant: -8).isActive = true
         storeCall.topAnchor.constraint(equalTo: storeAddress.bottomAnchor, constant: 8).isActive = true
+        storeCall.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
         
         // 길찾기 버튼
         naviButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
         naviButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
-        naviButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 15).isActive = true
-        naviButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -15).isActive = true
+        naviButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 12).isActive = true
+        naviButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -12).isActive = true
     }
 }

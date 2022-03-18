@@ -13,8 +13,8 @@ class SearchBarView: UIButton {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.textColor = .G400
-        label.text = "위치 검색"
-        label.font = UIFont(name: "Pretendard-SemiBold", size: 19)
+        label.text = "지역 이름으로 검색하세요"
+        label.font = UIFont(name: "Pretendard-Medium", size: 16)
         return label
     }()
     
