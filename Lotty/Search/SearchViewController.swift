@@ -19,6 +19,7 @@ class SearchViewController: UIViewController {
         }
     }
     
+    // [!] 갱신되는 동안 표시할 뷰?, 공 배경 조정, 자세히보기 버튼식
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -35,16 +36,23 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.backgroundColor = .white
-        searchHistoryList = Storage.retrive("search_history.json", from: .documents, as: [Int].self) ?? []
+        searchHistoryList = Storage.retrive("lottery_history.json", from: .documents, as: [Int].self) ?? []
     }
     
     func configureNavi() {
-        self.navigationController?.navigationBar.titleTextAttributes = [
-            .foregroundColor: UIColor.G900,
-            .font: UIFont(name: "Pretendard-Bold", size: 18)!
-        ]
-        self.navigationController?.navigationBar.layoutMargins.left = 32
-        self.navigationItem.titleView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 44))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 65, height: 44))
+        label.text = "조회하기"
+        label.textColor = .G900
+        label.font = UIFont(name: "Pretendard-Bold", size: 18)!
+        customView.addSubview(label)
+        
+        let leftButton = UIBarButtonItem(customView: customView)
+        self.navigationItem.leftBarButtonItem = leftButton
+//        self.navigationController?.navigationBar.titleTextAttributes = [
+//            .foregroundColor: UIColor.G900,
+//            .font: UIFont(name: "Pretendard-Bold", size: 18)!
+//        ]
 //        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         // 글자 간격
@@ -98,33 +106,19 @@ class SearchViewController: UIViewController {
                     self.lotteryArray.append(LotteryItem(lottery: lottery))
                 }
                 self.lotteryArray.sort(by: { $0.lottery.drwNo > $1.lottery.drwNo })
-                if self.lotteryArray.count == 20 {
-                    self.tableView.reloadData()
-                }
-                
+                self.tableView.reloadData()
             case .failure:
-//                AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryFail.self) { response in
-//                    switch response.result {
-//                    case .success:
-//                        guard let lottery = response.value else { return }
-//                        print(lottery.returnValue)
-//                        let item = LotteryInfo()
-//                        self.lotteryArray.append(LotteryItem(lottery: LotteryInfo(), open: true))
-//                    case .failure:
-//                        return
-//                    }
-//                }
                 return
             }
         }
     }
     
     @objc func pullToRefresh() {
-        tableView.refreshControl?.endRefreshing()
         self.lotteryArray = []
         self.page = 0
         recentNumber = getRecentNumber()
         for i in 0..<10 { getLotteryNumber(drwNo: recentNumber - i) }
+        tableView.refreshControl?.endRefreshing()
     }
 }
 
@@ -135,8 +129,11 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if lotteryArray[section].open == true { return 2 }
-        else { return 1 }
+        if lotteryArray[section].open == true {
+            return 2
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -150,7 +147,6 @@ extension SearchViewController: UITableViewDataSource {
             cell.drwNo.text = "\(lotteryArray[indexPath.section].lottery.drwNo)회"
             return cell
         } else {
-            // 회차 리턴 없으면 failview
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "numberCell", for: indexPath) as? NumberCell else { return FailCell() }
             cell.date.text = lotteryArray[indexPath.section].lottery.drwNoDate
             cell.no1.text = "\(lotteryArray[indexPath.section].lottery.drwtNo1)"
@@ -165,7 +161,7 @@ extension SearchViewController: UITableViewDataSource {
             cell.detailButtonHandler = {
                 self.searchHistoryList = self.searchHistoryList.filter { $0 != self.lotteryArray[indexPath.section].lottery.drwNo }
                 self.searchHistoryList.insert(self.lotteryArray[indexPath.section].lottery.drwNo, at: 0)
-                Storage.store(self.searchHistoryList, to: .documents, as: "search_history.json")
+                Storage.store(self.searchHistoryList, to: .documents, as: "lottery_history.json")
                 self.performSegue(withIdentifier: "detailLottery", sender: self.lotteryArray[indexPath.section].lottery)
             }
             setRound(label: cell.no1)
@@ -206,7 +202,6 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? NumberCloseCell else { return }
         guard let index = tableView.indexPath(for: cell) else { return }
-        
         if index.row == indexPath.row && index.row == 0 {
             if lotteryArray[indexPath.section].open == true {
                 lotteryArray[indexPath.section].open = false
@@ -227,9 +222,11 @@ extension SearchViewController: UIScrollViewDelegate {
         let contentOffset_y = tableView.contentOffset.y
         let tableViewContentSize = tableView.contentSize.height
         let pagination_y = tableView.bounds.size.height
-        
-        if contentOffset_y > (tableViewContentSize - pagination_y) {
-            if !fetchingMore { beingFetch() }
+
+        if contentOffset_y > (tableViewContentSize - pagination_y) && contentOffset_y > 0 {
+            if !fetchingMore {
+                beingFetch()
+            }
         }
     }
     
@@ -240,7 +237,7 @@ extension SearchViewController: UIScrollViewDelegate {
     // 무한 스크롤
     private func beingFetch() {
         fetchingMore = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.page += 1
             if self.recentNumber - (self.page * 10) > 10 {
                 for i in 0..<10 { self.getLotteryNumber(drwNo: self.recentNumber - (self.page * 10 + i)) }

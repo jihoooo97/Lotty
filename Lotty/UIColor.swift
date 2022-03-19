@@ -19,4 +19,5 @@ extension UIColor {
     class var fifthColor: UIColor? { return UIColor(named: "fifthColor") }
     
     class var AlphaB600: UIColor { return UIColor(named: "AlphaB600")! }
+    class var Placeholder: UIColor { return UIColor(named: "Placeholder")! }
 }

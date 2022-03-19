@@ -15,16 +15,14 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Pretendard-Thin</string>
-		<string>Pretendard-SemiBold</string>
-		<string>Pretendard-Regular</string>
-		<string>Pretendard-Medium</string>
+		<string>Pretendard-Medium.otf</string>
+		<string>Pretendard-SemiBold.otf</string>
 		<string>Pretendard-Light</string>
-		<string>Pretendard-ExtraLight</string>
-		<string>Pretendard-ExtraBold</string>
-		<string>Pretendard-Bold</string>
-		<string>PretendardVariable</string>
-		<string>Pretendard-Black</string>
+		<string>Pretendard-Bold.otf</string>
+		<string>Pretendard-Regular.otf</string>
+		<string>BMDOHYEON_ttf</string>
+		<string>BMHANNAPro</string>
+		<string>BMYEONSUNG_ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

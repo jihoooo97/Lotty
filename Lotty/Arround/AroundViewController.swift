@@ -34,15 +34,15 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
             cameraUpdate.animation = .easeOut
             self.naverMapView.mapView.moveCamera(cameraUpdate)
         }
-        
+//        
+//        alertView.translatesAutoresizingMaskIntoConstraints = false
 //        view.addSubview(alertView)
 //        alertView.heightAnchor.constraint(equalToConstant: 200).isActive = true
 //        alertView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
 //        alertView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-//        alertView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 8).isActive = true
+//        alertView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
     }
     
-    // 판매점 이름 주소 전화번호
     func configureMap() {
         fourClover = resizeImage(image: UIImage(named: "clover_four_icon")!, width: 50, height: 53)
         threeClover = resizeImage(image: UIImage(named: "clover_three_icon")!, width: 50, height: 50)
@@ -68,14 +68,13 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func configureNavi() {
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.addTarget(self, action: #selector(clickSearch), for: .touchUpInside)
-        
         view.addSubview(searchBar)
         searchBar.heightAnchor.constraint(equalToConstant: 44).isActive = true
         searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12).isActive = true
         searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
         searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 4).isActive = true
+        
+        searchBar.addTarget(self, action: #selector(clickSearch), for: .touchUpInside)
     }
     
     func configureDetail(store: Documents) {
@@ -83,37 +82,26 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         detailView.lat = store.y
         detailView.lng = store.x
         
-        detailView.translatesAutoresizingMaskIntoConstraints = false
-        detailView.backgroundColor = .white
-        detailView.layer.borderWidth = 1
-        detailView.layer.borderColor = UIColor.white.cgColor
-        detailView.layer.cornerRadius = 4
-        detailView.layer.masksToBounds = false
-        detailView.layer.shadowColor = UIColor.black.cgColor
-        detailView.layer.shadowOffset = CGSize(width: 0, height: 0.5)
-        detailView.layer.shadowOpacity = 0.4
-        detailView.layer.shadowRadius = 1
-        
         detailView.storeName.text = store.place_name
         detailView.storeAddress.text = store.address_name
         detailView.storeCall.text = store.phone
-        detailView.naviButton.addTarget(self, action: #selector(clickNavi), for: .touchUpInside)
         
         view.addSubview(detailView)
         detailView.heightAnchor.constraint(equalToConstant: 90).isActive = true
         detailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12).isActive = true
         detailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
         detailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8).isActive = true
+        
+        let naviTap = UITapGestureRecognizer(target: self, action: #selector(clickNavi))
+        detailView.naviView.addGestureRecognizer(naviTap)
     }
     
     func configureButton() {
-        sideButton.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(sideButton)
         sideButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         sideButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         sideButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
-        sideButton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 14).isActive = true
+        sideButton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 4).isActive = true
         
         let locationTap = UITapGestureRecognizer(target: self, action: #selector(clickLocationButton))
         sideButton.currentLocationButton.addGestureRecognizer(locationTap)
@@ -214,6 +202,14 @@ extension AroundViewController: NMFMapViewCameraDelegate {
                     
                     marker.marker.touchHandler = { (overlay: NMFOverlay) -> Bool in
                         self.configureDetail(store: stores[i])
+                        let x = self.detailView.frame.minX
+                        let y = UIScreen.main.bounds.height - 8
+                        self.detailView.frame.origin = CGPoint(x: x, y: y + 198)
+                        UIView.animate(withDuration: 0.5,
+                                       animations: {
+                            self.detailView.frame.origin = CGPoint(x: x, y: y)
+                        })
+                        
                         marker.marker.iconImage = NMFOverlayImage(image: self.fourClover)
                         for marker in self.markerList.filter({ $0.marker != marker.marker }) {
                             marker.marker.iconImage = NMFOverlayImage(image: self.threeClover)

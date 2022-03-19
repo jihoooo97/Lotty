@@ -9,7 +9,7 @@ class GameView: UIView {
         label.sizeToFit()
         label.text = "A 게임"
         label.textColor = .G900
-        label.font = UIFont(name: "Pretendard-Bold", size: 15)
+        label.font = UIFont(name: "BMDoHyeon", size: 14)
         return label
     }()
     let No1: CountLabel = {
@@ -18,7 +18,7 @@ class GameView: UIView {
         label.sizeToFit()
         label.text = "45"
         label.textColor = .G900
-        label.font = UIFont(name: "Pretendard-Bold", size: 15)
+        label.font = UIFont(name: "BMDoHyeon", size: 14)
         return label
     }()
     let No2: CountLabel = {
@@ -27,7 +27,7 @@ class GameView: UIView {
         label.sizeToFit()
         label.text = "45"
         label.textColor = .G900
-        label.font = UIFont(name: "Pretendard-Bold", size: 15)
+        label.font = UIFont(name: "BMDoHyeon", size: 14)
         return label
     }()
     let No3: CountLabel = {
@@ -36,7 +36,7 @@ class GameView: UIView {
         label.sizeToFit()
         label.text = "45"
         label.textColor = .G900
-        label.font = UIFont(name: "Pretendard-Bold", size: 15)
+        label.font = UIFont(name: "BMDoHyeon", size: 14)
         return label
     }()
     let No4: CountLabel = {
@@ -45,7 +45,7 @@ class GameView: UIView {
         label.sizeToFit()
         label.text = "45"
         label.textColor = .G900
-        label.font = UIFont(name: "Pretendard-Bold", size: 15)
+        label.font = UIFont(name: "BMDoHyeon", size: 14)
         return label
     }()
     let No5: CountLabel = {
@@ -54,7 +54,7 @@ class GameView: UIView {
         label.sizeToFit()
         label.text = "45"
         label.textColor = .G900
-        label.font = UIFont(name: "Pretendard-Bold", size: 15)
+        label.font = UIFont(name: "BMDoHyeon", size: 14)
         return label
     }()
     let No6: CountLabel = {
@@ -63,7 +63,7 @@ class GameView: UIView {
         label.sizeToFit()
         label.text = "45"
         label.textColor = .G900
-        label.font = UIFont(name: "Pretendard-Bold", size: 15)
+        label.font = UIFont(name: "BMDoHyeon", size: 15)
         return label
     }()
     
@@ -99,19 +99,19 @@ class GameView: UIView {
         No1.leadingAnchor.constraint(equalTo: GameName.trailingAnchor, constant: 30).isActive = true
         No1.centerYAnchor.constraint(equalTo: GameName.centerYAnchor).isActive = true
         
-        No2.leadingAnchor.constraint(equalTo: No1.trailingAnchor, constant: 30).isActive = true
+        No2.leadingAnchor.constraint(equalTo: No1.trailingAnchor, constant: 40).isActive = true
         No2.centerYAnchor.constraint(equalTo: No1.centerYAnchor).isActive = true
         
-        No3.leadingAnchor.constraint(equalTo: No2.trailingAnchor, constant: 30).isActive = true
+        No3.leadingAnchor.constraint(equalTo: No2.trailingAnchor, constant: 40).isActive = true
         No3.centerYAnchor.constraint(equalTo: No2.centerYAnchor).isActive = true
         
-        No4.leadingAnchor.constraint(equalTo: No3.trailingAnchor, constant: 30).isActive = true
+        No4.leadingAnchor.constraint(equalTo: No3.trailingAnchor, constant: 40).isActive = true
         No4.centerYAnchor.constraint(equalTo: No3.centerYAnchor).isActive = true
         
-        No5.leadingAnchor.constraint(equalTo: No4.trailingAnchor, constant: 30).isActive = true
+        No5.leadingAnchor.constraint(equalTo: No4.trailingAnchor, constant: 40).isActive = true
         No5.centerYAnchor.constraint(equalTo: No4.centerYAnchor).isActive = true
         
-        No6.leadingAnchor.constraint(equalTo: No5.trailingAnchor, constant: 30).isActive = true
+        No6.leadingAnchor.constraint(equalTo: No5.trailingAnchor, constant: 40).isActive = true
         No6.centerYAnchor.constraint(equalTo: No5.centerYAnchor).isActive = true
     }
 }

@@ -23,6 +23,7 @@ class SideButton: UIView {
     }
     
     private func commonInit() {
+        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .white
         layer.borderWidth = 1
         layer.borderColor = UIColor.white.cgColor

@@ -22,7 +22,7 @@ class CountLabel: UILabel {
     }
     
     private func clean() {
-        self.text = "..."
+        self.text = " "
         self.textColor = .white
         self.subviews.forEach { $0.removeFromSuperview() }
         self.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
@@ -34,7 +34,7 @@ class CountLabel: UILabel {
         let label = UILabel()
         label.frame.origin = CGPoint(x: 0, y: 0)
         label.textColor = .G900
-        label.font = font
+        label.font = UIFont(name: "BMDoHyeon", size: 14)
         label.text = "30"
         label.sizeToFit()
         label.textAlignment = .center
@@ -54,7 +54,7 @@ class CountLabel: UILabel {
     private func createContentForLayer(scrollLayer: CAScrollLayer, text: String) {
         var textsForScroll: [String] = []
         
-        scrollLayer.frame = CGRect(x: 0, y: 0, width: 21, height: frame.height)
+        scrollLayer.frame = CGRect(x: 0, y: 0, width: 24, height: frame.height)
         textsForScroll.append("00")
         for _ in 0...9 {
             textsForScroll.append(String(Int.random(in: 0...45)))
@@ -66,7 +66,7 @@ class CountLabel: UILabel {
             let label = UILabel()
             label.text = text
             label.textColor = .G900
-            label.font = font
+            label.font = UIFont(name: "BMDoHyeon", size: 14)
             label.sizeToFit()
             label.textAlignment = .center
             label.frame = CGRect(x: 0, y: height, width: scrollLayer.frame.width, height: scrollLayer.frame.height)

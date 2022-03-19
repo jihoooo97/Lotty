@@ -2,7 +2,9 @@ import UIKit
 import Alamofire
 
 class SearchLotteryViewController: UIViewController {
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var lotteryView: UIView!
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var drwNo: UILabel!
     @IBOutlet weak var drwDate: UILabel!
     @IBOutlet weak var no1: UILabel!
@@ -16,14 +18,13 @@ class SearchLotteryViewController: UIViewController {
     @IBOutlet weak var winAmount: UILabel!
     @IBOutlet weak var totalWinAmount: UILabel!
     @IBOutlet weak var totalAmount: UILabel!
-    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var clearView: UIView!
     @IBOutlet weak var historyTableView: UITableView!
-    @IBOutlet weak var historyTableViewTop: NSLayoutConstraint!
     
     var lotteryInfo = LotteryInfo(drwNoDate: "", drwNo: 0, firstAccumamnt: 0, firstWinamnt: 0, firstPrzwnerCo: 0, drwtNo1: 0, drwtNo2: 0, drwtNo3: 0, drwtNo4: 0, drwtNo5: 0, drwtNo6: 0, bnusNo: 0, returnValue: "", totSellamnt: 0)
-    var searchHistoryList: [Int] = []
+    private var historyList: [Int] = []
     
-    // [!] 전체 삭제 옆에 쓰레기통, 구분선 G100
+    // [!] 구분선 G100
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavi()
@@ -35,24 +36,27 @@ class SearchLotteryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
-        searchHistoryList = Storage.retrive("search_history.json", from: .documents, as: [Int].self) ?? []
+        historyList = Storage.retrive("lottery_history.json", from: .documents, as: [Int].self) ?? []
         if lotteryInfo.drwNoDate != "" {
             lotteryConfigure()
         } else {
-            
+            lotteryView.isHidden = true
         }
         
+        let width = UIScreen.main.bounds.width
         if lotteryView.isHidden {
-            historyTableViewTop.constant = 0
+            contentView.frame = CGRect(x: 0, y: 0, width: width, height: 60)
+            bottomView.frame.origin = CGPoint(x: 0, y: 0)
         } else {
-//            historyTableViewTop.constant = lotteryView.bounds.height
+            contentView.frame = CGRect(x: 0, y: 0, width: width, height: 464)
+            bottomView.frame.origin = CGPoint(x: 0, y: 400)
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
-        Storage.store(searchHistoryList, to: .documents, as: "search_history.json")
+        Storage.store(historyList, to: .documents, as: "lottery_history.json")
     }
     
     func configureNavi() {
@@ -63,13 +67,22 @@ class SearchLotteryViewController: UIViewController {
         backButton.sizeToFit()
         
         let width = UIScreen.main.bounds.size.width
-        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: width - backButton.frame.width * 3, height: 0))
-        searchBar.tintColor = .G600
-        searchBar.placeholder = "회차 입력"
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: width - 70, height: 0))
+        searchBar.layer.cornerRadius = 8
+        searchBar.searchTextField.textColor = .G900
+        searchBar.searchTextField.backgroundColor = .G50
+        searchBar.searchTextField.attributedPlaceholder = NSAttributedString(
+            string: "회차를 입력해주세요 ex) 1002",
+            attributes: [.foregroundColor: UIColor.Placeholder,
+                         .font: UIFont(name: "Pretendard-Regular", size: 15)!]
+        )
         searchBar.delegate = self
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        
+        let clearTap = UITapGestureRecognizer(target: self, action: #selector(clearHistoy))
+        clearView.addGestureRecognizer(clearTap)
     }
     
     @objc func back() {
@@ -101,7 +114,7 @@ class SearchLotteryViewController: UIViewController {
     
     func setRound(label: UILabel) {
         label.layer.masksToBounds = true
-        label.layer.cornerRadius = 20
+        label.layer.cornerRadius = 18
         if Int(label.text!)! <= 10 {
             label.backgroundColor = .firstColor
         } else if Int(label.text!)! <= 20 {
@@ -121,11 +134,11 @@ class SearchLotteryViewController: UIViewController {
         return numberFormatter.string(from: NSNumber(value: number))!
     }
     
-    @IBAction func clearHistoy(_ sender: Any) {
+    @objc func clearHistoy() {
         let alert = UIAlertController(title: "알림", message: "최근 조회 목록을 모두 삭제하시겠습니까?", preferredStyle: .alert)
         let confirm = UIAlertAction(title: "확인", style: .default) { action in
-            self.searchHistoryList = []
-            Storage.clear(.documents)
+            self.historyList = []
+            Storage.remove("lottery_history.json", from: .documents)
             self.historyTableView.reloadData()
         }
         let cancel = UIAlertAction(title: "취소", style: .default)
@@ -153,8 +166,8 @@ extension SearchLotteryViewController: UISearchBarDelegate {
                 guard let lottery = response.value else { return }
                 self.lotteryInfo = lottery
                 self.lotteryConfigure()
-                self.searchHistoryList = self.searchHistoryList.filter { $0 != lottery.drwNo }
-                self.searchHistoryList.insert(lottery.drwNo, at: 0)
+                self.historyList = self.historyList.filter { $0 != lottery.drwNo }
+                self.historyList.insert(lottery.drwNo, at: 0)
                 self.historyTableView.reloadData()
             case .failure:
                 return
@@ -165,35 +178,37 @@ extension SearchLotteryViewController: UISearchBarDelegate {
 
 extension SearchLotteryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchHistoryList.count > 0 {
-            return searchHistoryList.count
+        if historyList.count > 0 {
+            return historyList.count
         } else {
             return 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if searchHistoryList.count > 0 {
+        if historyList.count > 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as? HistoryCell else { return UITableViewCell() }
-            cell.drwNo.text = "\(searchHistoryList[indexPath.row])회"
+            cell.drwNo.text = "\(historyList[indexPath.row])회"
             cell.clickButtonHandler = {
                 self.navigationItem.rightBarButtonItem?.customView?.resignFirstResponder()
                 let parameters: Parameters = [
                     "method": "getLottoNumber",
-                    "drwNo": self.searchHistoryList[indexPath.row]
+                    "drwNo": self.historyList[indexPath.row]
                 ]
                 AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryInfo.self) { response in
                     switch response.result {
                     case .success:
                         if self.lotteryView.isHidden {
                             self.lotteryView.isHidden = false
-                            self.historyTableViewTop.constant = self.lotteryView.frame.height + 20
+                            let width = UIScreen.main.bounds.width
+                            self.contentView.frame = CGRect(x: 0, y: 0, width: width, height: 464)
+                            self.bottomView.frame.origin = CGPoint(x: 0, y: 400)
                         }
                         guard let lottery = response.value else { return }
                         self.lotteryInfo = lottery
                         self.lotteryConfigure()
-                        self.searchHistoryList.remove(at: indexPath.row)
-                        self.searchHistoryList.insert(lottery.drwNo, at: 0)
+                        self.historyList.remove(at: indexPath.row)
+                        self.historyList.insert(lottery.drwNo, at: 0)
                         self.historyTableView.reloadData()
                     case .failure:
                         return
@@ -201,7 +216,7 @@ extension SearchLotteryViewController: UITableViewDataSource {
                 }
             }
             cell.deleteButtonHandler = {
-                self.searchHistoryList.remove(at: indexPath.row)
+                self.historyList.remove(at: indexPath.row)
                 self.historyTableView.reloadData()
             }
             return cell
@@ -214,7 +229,7 @@ extension SearchLotteryViewController: UITableViewDataSource {
 
 extension SearchLotteryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if searchHistoryList.count > 0 {
+        if historyList.count > 0 {
             return 50
         } else {
             return 150
