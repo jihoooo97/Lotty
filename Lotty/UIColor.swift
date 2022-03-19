@@ -20,4 +20,5 @@ extension UIColor {
     
     class var AlphaB600: UIColor { return UIColor(named: "AlphaB600")! }
     class var Placeholder: UIColor { return UIColor(named: "Placeholder")! }
+    class var BackButton: UIColor { return UIColor(named: "BackButton")! }
 }

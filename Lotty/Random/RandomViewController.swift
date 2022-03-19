@@ -149,9 +149,9 @@ class RandomViewController: UIViewController {
         guard let start = formatter.date(from: "2022/03/05 (토) 20:45:00") else { return "error" }
         var addTime = Date()
         if day == "next" {
-            addTime = start.addingTimeInterval(TimeInterval(86400 * 7 * (getRecentNumber() - 1004)))
+            addTime = start.addingTimeInterval(TimeInterval((getRecentNumber() - 1004) * 86400 * 7))
         } else if day == "end" {
-            addTime = start.addingTimeInterval(TimeInterval(86400 * 379))
+            addTime = start.addingTimeInterval(TimeInterval(((getRecentNumber() - 1004) * 7 + 364) * 86400))
         }
         return formatter.string(from: addTime)
     }

@@ -157,7 +157,7 @@ extension SearchViewController: UITableViewDataSource {
             cell.no6.text = "\(lotteryArray[indexPath.section].lottery.drwtNo6)"
             cell.bonusNo.text = "\(lotteryArray[indexPath.section].lottery.bnusNo)"
             cell.winCount.text = "총 \(lotteryArray[indexPath.section].lottery.firstPrzwnerCo)명 당첨"
-            cell.winAmount.text = numberFormatter(number: lotteryArray[indexPath.section].lottery.firstWinamnt)
+            cell.winAmount.text = numberFormatter(number: lotteryArray[indexPath.section].lottery.firstWinamnt) + "억"
             cell.detailButtonHandler = {
                 self.searchHistoryList = self.searchHistoryList.filter { $0 != self.lotteryArray[indexPath.section].lottery.drwNo }
                 self.searchHistoryList.insert(self.lotteryArray[indexPath.section].lottery.drwNo, at: 0)
@@ -196,7 +196,7 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 { return 50 }
-        else { return 200 }
+        else { return 220 }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

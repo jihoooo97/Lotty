@@ -61,20 +61,22 @@ class SearchLotteryViewController: UIViewController {
     
     func configureNavi() {
         let backButton = UIButton(type: .custom)
+        backButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         backButton.setImage(UIImage(named: "arrow_left_icon"), for: .normal)
         backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
-        backButton.tintColor = .G900
+        backButton.tintColor = .BackButton
         backButton.sizeToFit()
         
         let width = UIScreen.main.bounds.size.width
         let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: width - 70, height: 0))
         searchBar.layer.cornerRadius = 8
         searchBar.searchTextField.textColor = .G900
+        searchBar.alpha = 0.6
         searchBar.searchTextField.backgroundColor = .G50
         searchBar.searchTextField.attributedPlaceholder = NSAttributedString(
             string: "회차를 입력해주세요 ex) 1002",
             attributes: [.foregroundColor: UIColor.Placeholder,
-                         .font: UIFont(name: "Pretendard-Regular", size: 15)!]
+                         .font: UIFont(name: "Pretendard-Regular", size: 16)!]
         )
         searchBar.delegate = self
         

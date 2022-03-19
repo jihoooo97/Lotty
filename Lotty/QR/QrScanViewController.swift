@@ -16,8 +16,6 @@ class QrScanViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
         super.viewDidLoad()
         webView.uiDelegate = self
         webView.navigationDelegate = self
-        qrView.layer.borderWidth = 1
-        qrView.layer.borderColor = UIColor.white.cgColor
         
         let status = AVCaptureDevice.authorizationStatus(for: .video)
         if status == .authorized {
@@ -78,10 +76,12 @@ class QrScanViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
     }
     
     private func setVideoLayer(rectOfInterest: CGRect) -> CGRect{
+        let width = UIScreen.main.bounds.width
+        let height = qrView.frame.height
         // 영상을 담을 공간.
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         //카메라의 크기 지정
-        videoPreviewLayer.frame = qrView.layer.bounds
+        videoPreviewLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
         //카메라의 비율지정
         videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         qrView.layer.addSublayer(videoPreviewLayer)
@@ -96,6 +96,30 @@ class QrScanViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
         line.layer.borderWidth = 0.5
         line.layer.borderColor = UIColor.B500.cgColor
         qrView.addSubview(line)
+        
+        let leftBoard = UIView()
+        leftBoard.frame = CGRect(x: 0, y: 0, width: line.frame.minX, height: qrView.frame.height)
+        leftBoard.backgroundColor = .black
+        leftBoard.alpha = 0.4
+        qrView.addSubview(leftBoard)
+        
+        let rightBoard = UIView()
+        rightBoard.frame = CGRect(x: line.frame.maxX, y: 0, width: qrView.frame.width - line.frame.maxX, height: qrView.frame.height)
+        rightBoard.backgroundColor = .black
+        rightBoard.alpha = 0.4
+        qrView.addSubview(rightBoard)
+        
+        let topBoard = UIView()
+        topBoard.frame = CGRect(x: line.frame.minX, y: 0, width: line.frame.width, height: line.frame.minY)
+        topBoard.backgroundColor = .black
+        topBoard.alpha = 0.4
+        qrView.addSubview(topBoard)
+        
+        let bottomBoard = UIView()
+        bottomBoard.frame = CGRect(x: line.frame.minX, y: line.frame.maxY, width: line.frame.width, height: qrView.frame.height - line.frame.maxY)
+        bottomBoard.backgroundColor = .black
+        bottomBoard.alpha = 0.4
+        qrView.addSubview(bottomBoard)
     }
 }
 

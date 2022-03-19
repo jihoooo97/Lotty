@@ -2,15 +2,18 @@ import UIKit
 import CoreLocation
 import NMapsMap
 import Alamofire
+import Network
 
 protocol SearchDelegate: AnyObject { func mapSearch(query: String) }
 
 class AroundViewController: UIViewController, CLLocationManagerDelegate {
+    let monitor = NWPathMonitor()
     var locationManager = CLLocationManager()
     let naverMapView = NMFNaverMapView()
     let searchBar = SearchBarView()
     let detailView = StoreDetailView()
     let sideButton = SideButton()
+    let blockView = UIView()
     let alertView = AlertView()
     
     var markerList: [LotteryMarker] = []
@@ -21,26 +24,21 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // network 연결상태 확인
+        monitor.start(queue: DispatchQueue.global())
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         naverMapView.mapView.touchDelegate = self
         
-        self.configureMap()
+        configureMap()
         if CLLocationManager.locationServicesEnabled() {
-            let latitude = self.locationManager.location?.coordinate.latitude ?? 37.3593486
-            let longitude = self.locationManager.location?.coordinate.longitude ?? 127.104845
+            let latitude = locationManager.location?.coordinate.latitude ?? 37.3593486
+            let longitude = locationManager.location?.coordinate.longitude ?? 127.104845
             let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: latitude, lng: longitude))
             cameraUpdate.animation = .easeOut
-            self.naverMapView.mapView.moveCamera(cameraUpdate)
+            naverMapView.mapView.moveCamera(cameraUpdate)
         }
-//        
-//        alertView.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(alertView)
-//        alertView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-//        alertView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-//        alertView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-//        alertView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
     }
     
     func configureMap() {
@@ -77,6 +75,13 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         searchBar.addTarget(self, action: #selector(clickSearch), for: .touchUpInside)
     }
     
+    @objc func clickSearch() {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchMap") as? MapSearchViewController else { return }
+        vc.modalPresentationStyle = .fullScreen
+        vc.delegate = self
+        self.present(vc, animated: false, completion: nil)
+    }
+    
     func configureDetail(store: Documents) {
         detailView.id = store.id
         detailView.lat = store.y
@@ -96,6 +101,19 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         detailView.naviView.addGestureRecognizer(naviTap)
     }
     
+    @objc func clickNavi() {
+        let x = locationManager.location?.coordinate.longitude ?? 127.104845
+        let y = locationManager.location?.coordinate.latitude ?? 37.3593486
+        let url = "kakaomap://route?" + "ep=\(y),\(x)" + "&ep=\(detailView.lat),\(detailView.lng)" + "&by=CAR"
+        
+        if let openApp = URL(string: url), UIApplication.shared.canOpenURL(openApp) {
+            UIApplication.shared.open(openApp)
+        } else {
+            let downApp = URL(string: "https://apps.apple.com/us/app/id304608425")!
+            UIApplication.shared.open(downApp)
+        }
+    }
+    
     func configureButton() {
         view.addSubview(sideButton)
         sideButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
@@ -107,6 +125,48 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         sideButton.currentLocationButton.addGestureRecognizer(locationTap)
     }
     
+    @objc func clickLocationButton() {
+        let latitude = locationManager.location?.coordinate.latitude ?? 37.3593486
+        let longitude = locationManager.location?.coordinate.longitude ?? 127.104845
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: latitude, lng: longitude))
+        cameraUpdate.animation = .easeIn
+        naverMapView.mapView.moveCamera(cameraUpdate)
+    }
+    
+    func configureAlertView() {
+        blockView.translatesAutoresizingMaskIntoConstraints = false
+        blockView.backgroundColor = .black
+        blockView.alpha = 0.6
+        
+        view.addSubview(blockView)
+        blockView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        blockView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        blockView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        blockView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+                
+        view.addSubview(alertView)
+        alertView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        alertView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        alertView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 200).isActive = true
+        alertView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        alertView.confirmButton.addTarget(self, action: #selector(popAlert), for: .touchUpInside)
+    }
+    
+    @objc func popAlert() {
+        DispatchQueue.main.async {
+            self.alertView.removeFromSuperview()
+            self.blockView.removeFromSuperview()
+        }
+        let url = "kakaomap://"
+        if let openApp = URL(string: url), UIApplication.shared.canOpenURL(openApp) {
+            UIApplication.shared.open(openApp)
+        } else {
+            let downApp = URL(string: "https://apps.apple.com/us/app/id304608425")!
+            UIApplication.shared.open(downApp)
+        }
+    }
+    
     func resizeImage(image: UIImage, width: CGFloat, height: CGFloat) -> UIImage {
          UIGraphicsBeginImageContext(CGSize(width: width, height: height))
          image.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
@@ -114,13 +174,6 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
          UIGraphicsEndImageContext()
          return newImage!
      }
-    
-    @objc func clickSearch() {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchMap") as? MapSearchViewController else { return }
-        vc.modalPresentationStyle = .fullScreen
-        vc.delegate = self
-        self.present(vc, animated: false, completion: nil)
-    }
     
     // map 클릭 시 마커 이미지 변경
     @objc func clickMap() {
@@ -138,27 +191,6 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
                 marker.marker.iconImage = NMFOverlayImage(image: self.threeClover)
             }
         }
-    }
-    
-    @objc func clickNavi() {
-        let x = locationManager.location?.coordinate.longitude ?? 127.104845
-        let y = locationManager.location?.coordinate.latitude ?? 37.3593486
-        let url = "kakaomap://route?" + "ep=\(y),\(x)" + "&ep=\(detailView.lat),\(detailView.lng)" + "&by=CAR"
-        
-        if let openApp = URL(string: url), UIApplication.shared.canOpenURL(openApp) {
-            UIApplication.shared.open(openApp)
-        } else {
-            let downApp = URL(string: "https://apps.apple.com/us/app/id304608425")!
-            UIApplication.shared.open(downApp)
-        }
-    }
-    
-    @objc func clickLocationButton() {
-        let latitude = locationManager.location?.coordinate.latitude ?? 37.3593486
-        let longitude = locationManager.location?.coordinate.longitude ?? 127.104845
-        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: latitude, lng: longitude))
-        cameraUpdate.animation = .easeIn
-        naverMapView.mapView.moveCamera(cameraUpdate)
     }
 }
 
@@ -216,12 +248,22 @@ extension AroundViewController: NMFMapViewCameraDelegate {
                         }
                         return true
                     }
-                    
                 }
             case .failure:
-                // [!] 사용량 다 쓴 경우 안내뷰
-                
-                return
+                self.monitor.pathUpdateHandler = { [weak self] path in
+                    // 검색 한도 초과 시
+                    if path.status == .satisfied {
+                        self!.configureAlertView()
+                        let x = self!.alertView.frame.minX
+                        let y = UIScreen.main.bounds.height - 260
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                            UIView.animate(withDuration: 1,
+                                           animations: {
+                                self!.alertView.frame.origin = CGPoint(x: x, y: y)
+                            })
+                        }
+                    }
+                }
             }
         }
     }

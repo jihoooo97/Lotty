@@ -587,7 +587,7 @@
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lotty/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "로또의 민족";
+				INFOPLIST_KEY_CFBundleDisplayName = "로또의민족";
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 권한이 필요합니다";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치정보 권한이 필요합니다";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치정보 권한이 필요합니다";
@@ -625,7 +625,7 @@
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lotty/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "로또의 민족";
+				INFOPLIST_KEY_CFBundleDisplayName = "로또의민족";
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 권한이 필요합니다";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치정보 권한이 필요합니다";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치정보 권한이 필요합니다";

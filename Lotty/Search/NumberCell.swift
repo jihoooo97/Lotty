@@ -11,7 +11,6 @@ class NumberCell: UITableViewCell {
     @IBOutlet weak var bonusNo: UILabel!
     @IBOutlet weak var winCount: UILabel!
     @IBOutlet weak var winAmount: UILabel!
-    @IBOutlet weak var line: UIView!
     @IBOutlet weak var detailButton: UIButton!
     
     var detailButtonHandler: (() -> Void)?
