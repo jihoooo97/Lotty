@@ -39,6 +39,15 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
             cameraUpdate.animation = .easeOut
             naverMapView.mapView.moveCamera(cameraUpdate)
         }
+            self.configureAlertView()
+            let x = self.alertView.frame.minX
+            let y = UIScreen.main.bounds.height - 260
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                UIView.animate(withDuration: 1,
+                               animations: {
+                    self.alertView.frame.origin = CGPoint(x: x, y: y)
+                })
+            }
     }
     
     func configureMap() {
@@ -154,6 +163,7 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @objc func popAlert() {
+        self.alertView.confirmButton.isEnabled = false
         DispatchQueue.main.async {
             self.alertView.removeFromSuperview()
             self.blockView.removeFromSuperview()

@@ -21,8 +21,10 @@ class RandomViewController: UIViewController {
         super.viewDidLoad()
 
         view.addSubview(rightLine)
-        rightLine.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -rightLine.frame.width / 2).isActive = true
+        rightLine.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.5).isActive = true
         rightLine.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        rightLine.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.height).isActive = true
+        rightLine.heightAnchor.constraint(equalToConstant: 25).isActive = true
         setView()
     }
     
@@ -171,6 +173,7 @@ class RandomViewController: UIViewController {
         let gameD = randomList[3]
         let gameE = randomList[4]
         
+        // 순서대로 게임 보여주기
         DispatchQueue.main.async {
             self.AGame.isHidden = false
             self.setCount(game: self.AGame, numberList: gameA)

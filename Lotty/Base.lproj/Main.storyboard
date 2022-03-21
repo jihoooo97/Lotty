@@ -451,36 +451,33 @@
                                                     </constraints>
                                                 </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="medal_icon" translatesAutoresizingMaskIntoConstraints="NO" id="dYv-YP-Fgo">
-                                                    <rect key="frame" x="142.66666666666666" y="105" width="20" height="20"/>
+                                                    <rect key="frame" x="142.66666666666666" y="111" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="dYv-YP-Fgo" secondAttribute="height" multiplier="1:1" id="3tw-tl-LfX"/>
                                                         <constraint firstAttribute="width" constant="20" id="S1T-jk-DgS"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 4명 당첨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odG-QW-LzY">
-                                                    <rect key="frame" x="166.66666666666666" y="106" width="57" height="18"/>
+                                                    <rect key="frame" x="166.66666666666666" y="112" width="57" height="18"/>
                                                     <fontDescription key="fontDescription" name="BMYEONSUNG" family="BM YEONSUNG" pointSize="15"/>
                                                     <color key="textColor" name="G900"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,500,000,000원" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6e-ef-QVM">
-                                                    <rect key="frame" x="94" y="128" width="202" height="26"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="26" id="SLQ-BP-U8G"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="94" y="134" width="202" height="29"/>
                                                     <fontDescription key="fontDescription" name="BMDoHyeon" family="BM DoHyeon" pointSize="24"/>
                                                     <color key="textColor" red="0.13725490200000001" green="0.57647058819999997" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03u-53-j8Q">
-                                                    <rect key="frame" x="0.0" y="178" width="390" height="0.33333333333334281"/>
+                                                    <rect key="frame" x="0.0" y="179" width="390" height="0.33333333333334281"/>
                                                     <color key="backgroundColor" name="G400"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.29999999999999999" id="fYB-0X-k3a"/>
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKf-aC-9YV">
-                                                    <rect key="frame" x="0.0" y="178.33333333333334" width="390" height="41.666666666666657"/>
+                                                    <rect key="frame" x="0.0" y="179.33333333333334" width="390" height="40.666666666666657"/>
                                                     <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="13"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" title="자세히보기">
@@ -508,9 +505,9 @@
                                                 <constraint firstItem="odG-QW-LzY" firstAttribute="centerX" secondItem="smt-mq-Dgd" secondAttribute="centerX" id="CXP-QG-UwH"/>
                                                 <constraint firstItem="trp-Ol-Ij0" firstAttribute="leading" secondItem="w20-Se-dZ4" secondAttribute="trailing" constant="5" id="D2b-lw-sVC"/>
                                                 <constraint firstItem="wwA-LK-6xY" firstAttribute="centerY" secondItem="w20-Se-dZ4" secondAttribute="centerY" id="Div-Uu-gqL"/>
-                                                <constraint firstItem="03u-53-j8Q" firstAttribute="top" secondItem="w6e-ef-QVM" secondAttribute="bottom" constant="24" id="EdB-lT-1rA"/>
+                                                <constraint firstItem="03u-53-j8Q" firstAttribute="top" secondItem="w6e-ef-QVM" secondAttribute="bottom" constant="16" id="EdB-lT-1rA"/>
                                                 <constraint firstItem="lKf-aC-9YV" firstAttribute="top" secondItem="03u-53-j8Q" secondAttribute="bottom" id="FK0-4b-esb"/>
-                                                <constraint firstItem="odG-QW-LzY" firstAttribute="top" secondItem="Sbe-Te-std" secondAttribute="bottom" constant="10" id="JeZ-85-AzG"/>
+                                                <constraint firstItem="odG-QW-LzY" firstAttribute="top" secondItem="Sbe-Te-std" secondAttribute="bottom" constant="16" id="JeZ-85-AzG"/>
                                                 <constraint firstItem="aSL-Z6-iWa" firstAttribute="leading" secondItem="Lpy-5M-jsj" secondAttribute="trailing" constant="5" id="K0y-qD-QYY"/>
                                                 <constraint firstItem="aKX-Gi-jvn" firstAttribute="centerX" secondItem="vP6-O7-odm" secondAttribute="centerX" id="LmD-dy-LW1"/>
                                                 <constraint firstItem="LM5-4T-Sbu" firstAttribute="leading" secondItem="Sbe-Te-std" secondAttribute="trailing" constant="5" id="MB3-hG-ltl"/>
@@ -982,7 +979,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근 본 회차" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8X-5O-vAZ">
                                                     <rect key="frame" x="24" y="35" width="72" height="18.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="15"/>
-                                                    <color key="textColor" name="G900"/>
+                                                    <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9u-cs-xoI">
@@ -990,7 +987,7 @@
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trash_icon" translatesAutoresizingMaskIntoConstraints="NO" id="JcW-Sa-Eq6">
                                                             <rect key="frame" x="4" y="1.6666666666666856" width="15" height="15"/>
-                                                            <color key="tintColor" name="G300"/>
+                                                            <color key="tintColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="15" id="NB4-7W-BPN"/>
                                                                 <constraint firstAttribute="width" secondItem="JcW-Sa-Eq6" secondAttribute="height" multiplier="1:1" id="Zwg-FT-n7X"/>
@@ -999,7 +996,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전체삭제" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fv9-jL-CE3">
                                                             <rect key="frame" x="21" y="1" width="45" height="16"/>
                                                             <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="13"/>
-                                                            <color key="textColor" name="G300"/>
+                                                            <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>

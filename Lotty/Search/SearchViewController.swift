@@ -19,7 +19,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    // [!] 갱신되는 동안 표시할 뷰?, 공 배경 조정, 자세히보기 버튼식
+    // [!] 갱신되는 동안 표시할 뷰?, 공 배경 조정
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -80,6 +80,7 @@ class SearchViewController: UIViewController {
         guard let startTime = formatter.date(from: "2022-02-12 20:45:00") else { return 0 }
         guard let endTime = formatter.date(from: now) else { return 0 }
         
+        // 분으로 계산
         let subTime = Int(endTime.timeIntervalSince(startTime)) / 60
         let count = subTime / 10080
         return base + count
@@ -157,7 +158,7 @@ extension SearchViewController: UITableViewDataSource {
             cell.no6.text = "\(lotteryArray[indexPath.section].lottery.drwtNo6)"
             cell.bonusNo.text = "\(lotteryArray[indexPath.section].lottery.bnusNo)"
             cell.winCount.text = "총 \(lotteryArray[indexPath.section].lottery.firstPrzwnerCo)명 당첨"
-            cell.winAmount.text = numberFormatter(number: lotteryArray[indexPath.section].lottery.firstWinamnt) + "억"
+            cell.winAmount.text = numberFormatter(number: lotteryArray[indexPath.section].lottery.firstWinamnt) + "원"
             cell.detailButtonHandler = {
                 self.searchHistoryList = self.searchHistoryList.filter { $0 != self.lotteryArray[indexPath.section].lottery.drwNo }
                 self.searchHistoryList.insert(self.lotteryArray[indexPath.section].lottery.drwNo, at: 0)
@@ -239,8 +240,16 @@ extension SearchViewController: UIScrollViewDelegate {
         fetchingMore = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.page += 1
-            if self.recentNumber - (self.page * 10) > 10 {
-                for i in 0..<10 { self.getLotteryNumber(drwNo: self.recentNumber - (self.page * 10 + i)) }
+            let count = self.recentNumber - (self.page * 10)
+            if count > 10 {
+                for i in 0..<10 {
+                    self.getLotteryNumber(drwNo: count - i)
+                }
+                self.fetchingMore = false
+            } else if count <= 10 && count > 0{
+                for i in 1...count {
+                    self.getLotteryNumber(drwNo: i)
+                }
                 self.fetchingMore = false
             }
         }

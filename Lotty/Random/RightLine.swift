@@ -1,23 +1,37 @@
 import UIKit
 
-class RightLine: UILabel {
+class RightLine: UIView {
+    let contentLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "로또의 민족                              로또의 민족                              로또의 민족                              로또의 민족                         로또의 민족          "
+        label.textColor = .white
+        label.font = UIFont(name: "BM DoHyeon", size: 14)
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setLabel()
+        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
-        setLabel()
+        commonInit()
     }
     
-    func setLabel() {
+    func commonInit() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.height, height: 30)
         self.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
-        self.text = "로또의 민족                              로또의 민족                              로또의 민족                              로또의 민족                         로또의 민족          "
-        self.textColor = .white
         self.backgroundColor = .B600
         self.alpha = 0.5
+        
+        addSubview(contentLabel)
+        commonConstraint()
+    }
+    
+    func commonConstraint() {
+        contentLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        contentLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
 }

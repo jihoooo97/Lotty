@@ -38,6 +38,9 @@ class SearchLotteryViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         historyList = Storage.retrive("lottery_history.json", from: .documents, as: [Int].self) ?? []
         if lotteryInfo.drwNoDate != "" {
+            if lotteryInfo.firstAccumamnt == 0 {
+                lotteryInfo.firstAccumamnt = lotteryInfo.firstPrzwnerCo * lotteryInfo.firstWinamnt
+            }
             lotteryConfigure()
         } else {
             lotteryView.isHidden = true
@@ -67,8 +70,7 @@ class SearchLotteryViewController: UIViewController {
         backButton.tintColor = .BackButton
         backButton.sizeToFit()
         
-        let width = UIScreen.main.bounds.size.width
-        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: width - 70, height: 0))
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 70, height: 0))
         searchBar.layer.cornerRadius = 8
         searchBar.searchTextField.textColor = .G900
         searchBar.alpha = 0.6
@@ -154,30 +156,6 @@ class SearchLotteryViewController: UIViewController {
     }
 }
 
-extension SearchLotteryViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        let parameters: Parameters = [
-            "method": "getLottoNumber",
-            "drwNo": searchBar.text!
-        ]
-        AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryInfo.self) { response in
-            switch response.result {
-            case .success:
-                searchBar.text = ""
-                guard let lottery = response.value else { return }
-                self.lotteryInfo = lottery
-                self.lotteryConfigure()
-                self.historyList = self.historyList.filter { $0 != lottery.drwNo }
-                self.historyList.insert(lottery.drwNo, at: 0)
-                self.historyTableView.reloadData()
-            case .failure:
-                return
-            }
-        }
-    }
-}
-
 extension SearchLotteryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if historyList.count > 0 {
@@ -208,6 +186,9 @@ extension SearchLotteryViewController: UITableViewDataSource {
                         }
                         guard let lottery = response.value else { return }
                         self.lotteryInfo = lottery
+                        if self.lotteryInfo.firstAccumamnt == 0 {
+                            self.lotteryInfo.firstAccumamnt = lottery.firstPrzwnerCo * lottery.firstWinamnt
+                        }
                         self.lotteryConfigure()
                         self.historyList.remove(at: indexPath.row)
                         self.historyList.insert(lottery.drwNo, at: 0)
@@ -237,7 +218,37 @@ extension SearchLotteryViewController: UITableViewDelegate {
             return 150
         }
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+}
+
+extension SearchLotteryViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        let parameters: Parameters = [
+            "method": "getLottoNumber",
+            "drwNo": searchBar.text!
+        ]
+        AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryInfo.self) { response in
+            switch response.result {
+            case .success:
+                searchBar.text = ""
+                if self.lotteryView.isHidden {
+                    self.lotteryView.isHidden = false
+                    let width = UIScreen.main.bounds.width
+                    self.contentView.frame = CGRect(x: 0, y: 0, width: width, height: 464)
+                    self.bottomView.frame.origin = CGPoint(x: 0, y: 400)
+                }
+                guard let lottery = response.value else { return }
+                self.lotteryInfo = lottery
+                if self.lotteryInfo.firstAccumamnt == 0 {
+                    self.lotteryInfo.firstAccumamnt = lottery.firstPrzwnerCo * lottery.firstWinamnt
+                }
+                self.lotteryConfigure()
+                self.historyList = self.historyList.filter { $0 != lottery.drwNo }
+                self.historyList.insert(lottery.drwNo, at: 0)
+                self.historyTableView.reloadData()
+            case .failure:
+                return
+            }
+        }
     }
 }
