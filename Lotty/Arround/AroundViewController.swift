@@ -25,7 +25,6 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         // network 연결상태 확인
-        monitor.start(queue: DispatchQueue.global())
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -39,15 +38,11 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
             cameraUpdate.animation = .easeOut
             naverMapView.mapView.moveCamera(cameraUpdate)
         }
-            self.configureAlertView()
-            let x = self.alertView.frame.minX
-            let y = UIScreen.main.bounds.height - 260
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-                UIView.animate(withDuration: 1,
-                               animations: {
-                    self.alertView.frame.origin = CGPoint(x: x, y: y)
-                })
-            }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        monitor.cancel()
     }
     
     func configureMap() {
@@ -260,21 +255,30 @@ extension AroundViewController: NMFMapViewCameraDelegate {
                     }
                 }
             case .failure:
-                self.monitor.pathUpdateHandler = { [weak self] path in
-                    // 검색 한도 초과 시
+                self.monitor.start(queue: DispatchQueue.global())
+                self.monitor.pathUpdateHandler = { path in
+                    // 네트워크 O, 검색 한도 초과 시
                     if path.status == .satisfied {
-                        self!.configureAlertView()
-                        let x = self!.alertView.frame.minX
+                        self.configureAlertView()
+                        let x = self.alertView.frame.minX
                         let y = UIScreen.main.bounds.height - 260
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
                             UIView.animate(withDuration: 1,
                                            animations: {
-                                self!.alertView.frame.origin = CGPoint(x: x, y: y)
+                                self.alertView.frame.origin = CGPoint(x: x, y: y)
                             })
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+                            let confirm = UIAlertAction(title: "확인", style: .default)
+                            alert.addAction(confirm)
+                            self.present(alert, animated: true)
                         }
                     }
                 }
             }
+            
         }
     }
 }

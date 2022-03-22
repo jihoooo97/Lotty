@@ -4,11 +4,13 @@ class RandomViewController: UIViewController {
     @IBOutlet weak var topLine: DottedLine!
     @IBOutlet weak var bottomLine: DottedLine!
     
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var lotteryNumber: UILabel!
     @IBOutlet weak var getDay: UILabel!
     @IBOutlet weak var luckyDay: UILabel!
     @IBOutlet weak var endDay: UILabel!
     @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var leadingLine: UILabel!
     
     let rightLine = RightLine()
     let AGame = GameView()
@@ -20,9 +22,9 @@ class RandomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.addSubview(rightLine)
+        contentView.addSubview(rightLine)
         rightLine.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.5).isActive = true
-        rightLine.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        rightLine.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         rightLine.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.height).isActive = true
         rightLine.heightAnchor.constraint(equalToConstant: 25).isActive = true
         setView()
@@ -57,35 +59,35 @@ class RandomViewController: UIViewController {
         
         AGame.GameName.text = "A 게임"
         view.addSubview(AGame)
-        AGame.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        AGame.leadingAnchor.constraint(equalTo: leadingLine.leadingAnchor, constant: -10).isActive = true
         AGame.topAnchor.constraint(equalTo: topLine.bottomAnchor, constant: 20).isActive = true
         AGame.heightAnchor.constraint(equalToConstant: 20).isActive = true
         AGame.isHidden = true
         
         BGame.GameName.text = "B 게임"
         view.addSubview(BGame)
-        BGame.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        BGame.leadingAnchor.constraint(equalTo: AGame.leadingAnchor).isActive = true
         BGame.topAnchor.constraint(equalTo: AGame.bottomAnchor, constant: 20).isActive = true
         BGame.heightAnchor.constraint(equalToConstant: 20).isActive = true
         BGame.isHidden = true
         
         CGame.GameName.text = "C 게임"
         view.addSubview(CGame)
-        CGame.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        CGame.leadingAnchor.constraint(equalTo: BGame.leadingAnchor).isActive = true
         CGame.topAnchor.constraint(equalTo: BGame.bottomAnchor, constant: 20).isActive = true
         CGame.heightAnchor.constraint(equalToConstant: 20).isActive = true
         CGame.isHidden = true
         
         DGame.GameName.text = "D 게임"
         view.addSubview(DGame)
-        DGame.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        DGame.leadingAnchor.constraint(equalTo: CGame.leadingAnchor).isActive = true
         DGame.topAnchor.constraint(equalTo: CGame.bottomAnchor, constant: 20).isActive = true
         DGame.heightAnchor.constraint(equalToConstant: 20).isActive = true
         DGame.isHidden = true
         
         EGame.GameName.text = "E 게임"
         view.addSubview(EGame)
-        EGame.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        EGame.leadingAnchor.constraint(equalTo: DGame.leadingAnchor).isActive = true
         EGame.topAnchor.constraint(equalTo: DGame.bottomAnchor, constant: 20).isActive = true
         EGame.heightAnchor.constraint(equalToConstant: 20).isActive = true
         EGame.isHidden = true

@@ -1,11 +1,14 @@
 import UIKit
 import Alamofire
 import AVFoundation
+import Network
 
 class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
+    let monitor = NWPathMonitor()
     private var refreshControl = UIRefreshControl()
+    
     var lotteryArray: [LotteryItem] = []
     var searchHistoryList: [Int] = []
     var fetchingMore = false
@@ -22,6 +25,18 @@ class SearchViewController: UIViewController {
     // [!] 갱신되는 동안 표시할 뷰?, 공 배경 조정
     override func viewDidLoad() {
         super.viewDidLoad()
+        monitor.start(queue: DispatchQueue.global())
+        monitor.pathUpdateHandler = { path in
+            if path.status != .satisfied {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+                    let confirm = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(confirm)
+                    self.present(alert, animated: true)
+                }
+            }
+        }
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .white
@@ -36,7 +51,13 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.backgroundColor = .white
+        
         searchHistoryList = Storage.retrive("lottery_history.json", from: .documents, as: [Int].self) ?? []
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        monitor.cancel()
     }
     
     func configureNavi() {
@@ -130,11 +151,8 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if lotteryArray[section].open == true {
-            return 2
-        } else {
-            return 1
-        }
+        if lotteryArray[section].open == true { return 2 }
+        else { return 1 }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -225,9 +243,7 @@ extension SearchViewController: UIScrollViewDelegate {
         let pagination_y = tableView.bounds.size.height
 
         if contentOffset_y > (tableViewContentSize - pagination_y) && contentOffset_y > 0 {
-            if !fetchingMore {
-                beingFetch()
-            }
+            if !fetchingMore { beingFetch() }
         }
     }
     

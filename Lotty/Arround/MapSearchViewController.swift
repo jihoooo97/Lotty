@@ -1,4 +1,5 @@
 import UIKit
+import Network
 
 class MapSearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UIView!
@@ -7,11 +8,14 @@ class MapSearchViewController: UIViewController {
     @IBOutlet weak var historyTableView: UITableView!
 
     weak var delegate: SearchDelegate?
-    
+
+    let monitor = NWPathMonitor()
     private var historyList: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        monitor.start(queue: .global())
+        
         historyTableView.dataSource = self
         historyTableView.delegate = self
         searchField.delegate = self
@@ -28,6 +32,7 @@ class MapSearchViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         Storage.store(self.historyList, to: .documents, as: "location_history.json")
+        monitor.cancel()
     }
     
     func configureNavi() {
@@ -66,11 +71,8 @@ class MapSearchViewController: UIViewController {
 
 extension MapSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if historyList.count > 0 {
-            return historyList.count
-        } else {
-            return 1
-        }
+        if historyList.count > 0 { return historyList.count }
+        else { return 1 }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,6 +81,16 @@ extension MapSearchViewController: UITableViewDataSource {
             cell.locationLabel.text = historyList[indexPath.row]
             cell.clickButtonHandler = {
                 self.searchField.resignFirstResponder()
+                self.monitor.pathUpdateHandler = { path in
+                    if path.status != .satisfied {
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+                            let confirm = UIAlertAction(title: "확인", style: .default)
+                            alert.addAction(confirm)
+                            self.present(alert, animated: true)
+                        }
+                    }
+                }
                 self.historyList.remove(at: indexPath.row)
                 self.historyList.insert(cell.locationLabel.text!, at: 0)
                 self.delegate?.mapSearch(query: cell.locationLabel.text!)
@@ -99,11 +111,8 @@ extension MapSearchViewController: UITableViewDataSource {
 
 extension MapSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if historyList.count > 0 {
-            return 50
-        } else {
-            return 150
-        }
+        if historyList.count > 0 { return 50 }
+        else { return 150 }
     }
 }
 
@@ -115,6 +124,16 @@ extension MapSearchViewController: UITextFieldDelegate {
     // [!] 자음, 모음만 검색하는것 처리
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        self.monitor.pathUpdateHandler = { path in
+            if path.status != .satisfied {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+                    let confirm = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(confirm)
+                    self.present(alert, animated: true)
+                }
+            }
+        }
         self.historyList.append(textField.text!)
         self.delegate?.mapSearch(query: textField.text!)
         self.dismiss(animated: false)
