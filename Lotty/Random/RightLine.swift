@@ -4,7 +4,7 @@ class RightLine: UIView {
     let contentLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "로또의 민족                                                                    로또의 민족                                                               로또의 민족          "
+        label.text = "          로또의 민족                                                              로또의 민족                                                         로또의 민족          "
         label.textColor = .white
         label.font = UIFont(name: "BM DoHyeon", size: 14)
         return label

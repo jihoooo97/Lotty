@@ -21,7 +21,7 @@ class RandomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         contentView.addSubview(rightLine)
         rightLine.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.5).isActive = true
         rightLine.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
@@ -176,21 +176,23 @@ class RandomViewController: UIViewController {
         let gameE = randomList[4]
         
         // 순서대로 게임 보여주기
+        createButton.isEnabled = false
         DispatchQueue.main.async {
             self.AGame.isHidden = false
             self.setCount(game: self.AGame, numberList: gameA)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05) {
                 self.BGame.isHidden = false
                 self.setCount(game: self.BGame, numberList: gameB)
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05) {
                     self.CGame.isHidden = false
                     self.setCount(game: self.CGame, numberList: gameC)
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05) {
                         self.DGame.isHidden = false
                         self.setCount(game: self.DGame, numberList: gameD)
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05) {
                             self.EGame.isHidden = false
                             self.setCount(game: self.EGame, numberList: gameE)
+                            self.createButton.isEnabled = true
                         }
                     }
                 }
