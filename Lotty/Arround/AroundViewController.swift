@@ -24,8 +24,8 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.monitor.start(queue: DispatchQueue.global())
-        self.monitor.pathUpdateHandler = { path in
+        monitor.start(queue: .global())
+        monitor.pathUpdateHandler = { path in
             if path.status != .satisfied {
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
@@ -40,7 +40,6 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         naverMapView.mapView.touchDelegate = self
-        
         configureMap()
         if CLLocationManager.locationServicesEnabled() {
             let latitude = locationManager.location?.coordinate.latitude ?? 37.3593486
@@ -51,9 +50,12 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        monitor.cancel()
     }
     
     func configureMap() {
@@ -158,7 +160,7 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         blockView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         blockView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         blockView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-                
+        
         view.addSubview(alertView)
         alertView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         alertView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
@@ -184,24 +186,24 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func resizeImage(image: UIImage, width: CGFloat, height: CGFloat) -> UIImage {
-         UIGraphicsBeginImageContext(CGSize(width: width, height: height))
-         image.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
-         let newImage = UIGraphicsGetImageFromCurrentImageContext()
-         UIGraphicsEndImageContext()
-         return newImage!
-     }
+        UIGraphicsBeginImageContext(CGSize(width: width, height: height))
+        image.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
     
     // map 클릭 시 마커 이미지 변경
     @objc func clickMap() {
         let x = self.detailView.frame.minX
         let y = UIScreen.main.bounds.height + 100
-
+        
         UIView.animate(withDuration: 0.5,
                        animations: {
             self.detailView.frame.origin = CGPoint(x: x, y: y)
             self.detailView.id = "-"
         })
-
+        
         for marker in self.markerList {
             if marker.storeId != self.detailView.id {
                 marker.marker.iconImage = NMFOverlayImage(image: self.threeClover)
@@ -213,63 +215,62 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
 // MARK: CAMERA별 판매점 마커 갱신
 extension AroundViewController: NMFMapViewCameraDelegate {
     func mapViewCameraIdle(_ mapView: NMFMapView) {
-        for marker in markerList {
-            if marker.storeId != self.detailView.id {
-                self.markerList = self.markerList.filter({$0.marker != marker.marker})
-                marker.marker.mapView = nil
+        if monitor.currentPath.status == .satisfied {
+            for marker in markerList {
+                if marker.storeId != self.detailView.id {
+                    self.markerList = self.markerList.filter({$0.marker != marker.marker})
+                    marker.marker.mapView = nil
+                }
             }
-        }
-        
-        let positon = mapView.cameraPosition.target
-        let paramerters: Parameters = [
-            "x": positon.lng,
-            "y": positon.lat,
-            "query": "복권 판매점",
-            "size": 15
-        ]
-        let headers: HTTPHeaders = [
-            "Authorization": "KakaoAK 7165edf50ee98e1383adf5924f5a76ad"
-        ]
-        AF.request("https://dapi.kakao.com/v2/local/search/keyword.json", method: .get, parameters: paramerters, encoding: URLEncoding.queryString, headers: headers).validate(statusCode: 200..<300).responseDecodable(of: StoreInfo.self) { response in
-            switch response.result {
-            case .success:
-                guard let stores = response.value?.documents else { return }
-                for i in 0..<stores.count {
-                    let marker = LotteryMarker(marker: NMFMarker(), storeId: stores[i].id)
-                    marker.marker.position = NMGLatLng(lat: Double(stores[i].y)!, lng: Double(stores[i].x)!)
-                    if !self.markerList.contains(where: {$0.storeId == marker.storeId}) && marker.storeId != self.detailView.id {
-                        self.markerList.append(marker)
-                        marker.marker.mapView = self.naverMapView.mapView
-                    }
-                    
-                    if stores[i].id == self.detailView.id {
-                        marker.marker.iconImage = NMFOverlayImage(image: self.fourClover)
-                    } else {
-                        marker.marker.iconImage = NMFOverlayImage(image: self.threeClover)
-                    }
-                    
-                    marker.marker.touchHandler = { (overlay: NMFOverlay) -> Bool in
-                        self.configureDetail(store: stores[i])
-                        let x = self.detailView.frame.minX
-                        let y = UIScreen.main.bounds.height - 8
-                        self.detailView.frame.origin = CGPoint(x: x, y: y + 198)
-                        UIView.animate(withDuration: 0.5,
-                                       animations: {
-                            self.detailView.frame.origin = CGPoint(x: x, y: y)
-                        })
+            
+            let positon = mapView.cameraPosition.target
+            let paramerters: Parameters = [
+                "x": positon.lng,
+                "y": positon.lat,
+                "query": "복권 판매점",
+                "size": 15
+            ]
+            let headers: HTTPHeaders = [
+                "Authorization": "KakaoAK 7165edf50ee98e1383adf5924f5a76ad"
+            ]
+            AF.request("https://dapi.kakao.com/v2/local/search/keyword.json", method: .get, parameters: paramerters, encoding: URLEncoding.queryString, headers: headers).validate(statusCode: 200..<300).responseDecodable(of: StoreInfo.self) { response in
+                switch response.result {
+                case .success:
+                    guard let stores = response.value?.documents else { return }
+                    for i in 0..<stores.count {
+                        let marker = LotteryMarker(marker: NMFMarker(), storeId: stores[i].id)
+                        marker.marker.position = NMGLatLng(lat: Double(stores[i].y)!, lng: Double(stores[i].x)!)
+                        if !self.markerList.contains(where: {$0.storeId == marker.storeId}) && marker.storeId != self.detailView.id {
+                            self.markerList.append(marker)
+                            marker.marker.mapView = self.naverMapView.mapView
+                        }
                         
-                        marker.marker.iconImage = NMFOverlayImage(image: self.fourClover)
-                        for marker in self.markerList.filter({ $0.marker != marker.marker }) {
+                        if stores[i].id == self.detailView.id {
+                            marker.marker.iconImage = NMFOverlayImage(image: self.fourClover)
+                        } else {
                             marker.marker.iconImage = NMFOverlayImage(image: self.threeClover)
                         }
-                        return true
+                        
+                        marker.marker.touchHandler = { (overlay: NMFOverlay) -> Bool in
+                            self.configureDetail(store: stores[i])
+                            let x = self.detailView.frame.minX
+                            let y = UIScreen.main.bounds.height - 8
+                            self.detailView.frame.origin = CGPoint(x: x, y: y + 198)
+                            UIView.animate(withDuration: 0.5,
+                                           animations: {
+                                self.detailView.frame.origin = CGPoint(x: x, y: y)
+                            })
+                            
+                            marker.marker.iconImage = NMFOverlayImage(image: self.fourClover)
+                            for marker in self.markerList.filter({ $0.marker != marker.marker }) {
+                                marker.marker.iconImage = NMFOverlayImage(image: self.threeClover)
+                            }
+                            return true
+                        }
                     }
-                }
-            case .failure:
-                self.monitor.start(queue: DispatchQueue.global())
-                self.monitor.pathUpdateHandler = { path in
+                case .failure:
                     // 네트워크 O, 검색 한도 초과 시
-                    if path.status == .satisfied {
+                    if self.monitor.currentPath.status == .satisfied {
                         self.configureAlertView()
                         let x = self.alertView.frame.minX
                         let y = UIScreen.main.bounds.height - 260
@@ -279,17 +280,14 @@ extension AroundViewController: NMFMapViewCameraDelegate {
                                 self.alertView.frame.origin = CGPoint(x: x, y: y)
                             })
                         }
-                    } else {
-                        DispatchQueue.main.async {
-                            let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
-                            let confirm = UIAlertAction(title: "확인", style: .default)
-                            alert.addAction(confirm)
-                            self.present(alert, animated: true)
-                        }
                     }
                 }
             }
-            
+        } else {
+            let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+            let confirm = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(confirm)
+            self.present(alert, animated: true)
         }
     }
 }

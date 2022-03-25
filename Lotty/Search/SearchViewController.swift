@@ -51,13 +51,7 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.backgroundColor = .white
-        
         searchHistoryList = Storage.retrive("lottery_history.json", from: .documents, as: [Int].self) ?? []
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        monitor.cancel()
     }
     
     func configureNavi() {
@@ -136,11 +130,20 @@ class SearchViewController: UIViewController {
     }
     
     @objc func pullToRefresh() {
-        self.lotteryArray = []
-        self.page = 0
-        recentNumber = getRecentNumber()
-        for i in 0..<10 { getLotteryNumber(drwNo: recentNumber - i) }
-        tableView.refreshControl?.endRefreshing()
+        if self.monitor.currentPath.status == .satisfied {
+            self.lotteryArray = []
+            self.page = 0
+            recentNumber = getRecentNumber()
+            for i in 0..<10 { getLotteryNumber(drwNo: recentNumber - i) }
+            tableView.refreshControl?.endRefreshing()
+        } else {
+            let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+            let confirm = UIAlertAction(title: "확인", style: .default) { action in
+                self.tableView.refreshControl?.endRefreshing()
+            }
+            alert.addAction(confirm)
+            self.present(alert, animated: true)
+        }
     }
 }
 
@@ -178,10 +181,17 @@ extension SearchViewController: UITableViewDataSource {
             cell.winCount.text = "총 \(lotteryArray[indexPath.section].lottery.firstPrzwnerCo)명 당첨"
             cell.winAmount.text = numberFormatter(number: lotteryArray[indexPath.section].lottery.firstWinamnt) + "원"
             cell.detailButtonHandler = {
-                self.searchHistoryList = self.searchHistoryList.filter { $0 != self.lotteryArray[indexPath.section].lottery.drwNo }
-                self.searchHistoryList.insert(self.lotteryArray[indexPath.section].lottery.drwNo, at: 0)
-                Storage.store(self.searchHistoryList, to: .documents, as: "lottery_history.json")
-                self.performSegue(withIdentifier: "detailLottery", sender: self.lotteryArray[indexPath.section].lottery)
+                if self.monitor.currentPath.status == .satisfied {
+                    self.searchHistoryList = self.searchHistoryList.filter { $0 != self.lotteryArray[indexPath.section].lottery.drwNo }
+                    self.searchHistoryList.insert(self.lotteryArray[indexPath.section].lottery.drwNo, at: 0)
+                    Storage.store(self.searchHistoryList, to: .documents, as: "lottery_history.json")
+                    self.performSegue(withIdentifier: "detailLottery", sender: self.lotteryArray[indexPath.section].lottery)
+                } else {
+                    let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+                    let confirm = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(confirm)
+                    self.present(alert, animated: true)
+                }
             }
             setRound(label: cell.no1)
             setRound(label: cell.no2)
@@ -235,7 +245,7 @@ extension SearchViewController: UITableViewDelegate {
     }
 }
 
-// MARK: 테이블뷰 갱신
+// MARK: 무한 스크롤
 extension SearchViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentOffset_y = tableView.contentOffset.y
@@ -243,7 +253,16 @@ extension SearchViewController: UIScrollViewDelegate {
         let pagination_y = tableView.bounds.size.height
 
         if contentOffset_y > (tableViewContentSize - pagination_y) && contentOffset_y > 0 {
-            if !fetchingMore { beingFetch() }
+            if !fetchingMore {
+                if monitor.currentPath.status == .satisfied {
+                    beingFetch()
+                } else {
+                    let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+                    let confirm = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(confirm)
+                    self.present(alert, animated: true)
+                }
+            }
         }
     }
     
@@ -251,7 +270,7 @@ extension SearchViewController: UIScrollViewDelegate {
         self.tableView.reloadData()
     }
     
-    // 무한 스크롤
+    // 페이지 갱신
     private func beingFetch() {
         fetchingMore = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {

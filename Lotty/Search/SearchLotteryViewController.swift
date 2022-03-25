@@ -29,7 +29,18 @@ class SearchLotteryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavi()
-        monitor.start(queue: DispatchQueue.global())
+        
+        monitor.start(queue: .global())
+        monitor.pathUpdateHandler = { path in
+            if path.status != .satisfied {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+                    let confirm = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(confirm)
+                    self.present(alert, animated: true)
+                }
+            }
+        }
         
         historyTableView.dataSource = self
         historyTableView.delegate = self
@@ -38,7 +49,6 @@ class SearchLotteryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.tabBarController?.tabBar.isHidden = true
         historyList = Storage.retrive("lottery_history.json", from: .documents, as: [Int].self) ?? []
         if lotteryInfo.drwNoDate != "" {
@@ -179,42 +189,40 @@ extension SearchLotteryViewController: UITableViewDataSource {
             cell.drwNo.text = "\(historyList[indexPath.row])회"
             cell.clickButtonHandler = {
                 self.navigationItem.rightBarButtonItem?.customView?.resignFirstResponder()
-                self.monitor.pathUpdateHandler = { path in
-                    if path.status != .satisfied {
-                        DispatchQueue.main.async {
-                            let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
-                            let confirm = UIAlertAction(title: "확인", style: .default)
-                            alert.addAction(confirm)
-                            self.present(alert, animated: true)
+                if self.monitor.currentPath.status == .satisfied {
+                    if cell.drwNo.text != self.drwNo.text {
+                        let parameters: Parameters = [
+                            "method": "getLottoNumber",
+                            "drwNo": self.historyList[indexPath.row]
+                        ]
+                        AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryInfo.self) { response in
+                            switch response.result {
+                            case .success:
+                                if self.lotteryView.isHidden {
+                                    self.lotteryView.isHidden = false
+                                    let width = UIScreen.main.bounds.width
+                                    self.contentView.frame = CGRect(x: 0, y: 0, width: width, height: 464)
+                                    self.bottomView.frame.origin = CGPoint(x: 0, y: 400)
+                                }
+                                guard let lottery = response.value else { return }
+                                self.lotteryInfo = lottery
+                                if self.lotteryInfo.firstAccumamnt == 0 {
+                                    self.lotteryInfo.firstAccumamnt = lottery.firstPrzwnerCo * lottery.firstWinamnt
+                                }
+                                self.lotteryConfigure()
+                                self.historyList.remove(at: indexPath.row)
+                                self.historyList.insert(lottery.drwNo, at: 0)
+                                self.historyTableView.reloadData()
+                            case .failure:
+                                return
+                            }
                         }
                     }
-                }
-                
-                let parameters: Parameters = [
-                    "method": "getLottoNumber",
-                    "drwNo": self.historyList[indexPath.row]
-                ]
-                AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryInfo.self) { response in
-                    switch response.result {
-                    case .success:
-                        if self.lotteryView.isHidden {
-                            self.lotteryView.isHidden = false
-                            let width = UIScreen.main.bounds.width
-                            self.contentView.frame = CGRect(x: 0, y: 0, width: width, height: 464)
-                            self.bottomView.frame.origin = CGPoint(x: 0, y: 400)
-                        }
-                        guard let lottery = response.value else { return }
-                        self.lotteryInfo = lottery
-                        if self.lotteryInfo.firstAccumamnt == 0 {
-                            self.lotteryInfo.firstAccumamnt = lottery.firstPrzwnerCo * lottery.firstWinamnt
-                        }
-                        self.lotteryConfigure()
-                        self.historyList.remove(at: indexPath.row)
-                        self.historyList.insert(lottery.drwNo, at: 0)
-                        self.historyTableView.reloadData()
-                    case .failure:
-                        return
-                    }
+                } else {
+                    let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+                    let confirm = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(confirm)
+                    self.present(alert, animated: true)
                 }
             }
             cell.deleteButtonHandler = {
@@ -242,16 +250,7 @@ extension SearchLotteryViewController: UITableViewDelegate {
 extension SearchLotteryViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        self.monitor.pathUpdateHandler = { path in
-            if path.status != .satisfied {
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
-                    let confirm = UIAlertAction(title: "확인", style: .default)
-                    alert.addAction(confirm)
-                    self.present(alert, animated: true)
-                }
-            }
-            
+        if monitor.currentPath.status == .satisfied {
             let parameters: Parameters = [
                 "method": "getLottoNumber",
                 "drwNo": searchBar.text!
@@ -279,6 +278,11 @@ extension SearchLotteryViewController: UISearchBarDelegate {
                     return
                 }
             }
+        } else {
+            let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+            let confirm = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(confirm)
+            self.present(alert, animated: true)
         }
     }
 }

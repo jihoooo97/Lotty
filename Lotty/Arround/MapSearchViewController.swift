@@ -14,7 +14,18 @@ class MapSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        monitor.start(queue: .global())
+        
+        monitor.start(queue: DispatchQueue.global())
+        monitor.pathUpdateHandler = { path in
+            if path.status != .satisfied {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+                    let confirm = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(confirm)
+                    self.present(alert, animated: true)
+                }
+            }
+        }
         
         historyTableView.dataSource = self
         historyTableView.delegate = self
@@ -28,7 +39,7 @@ class MapSearchViewController: UIViewController {
         historyList = Storage.retrive("location_history.json", from: .documents, as: [String].self) ?? []
         searchField.becomeFirstResponder()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         Storage.store(self.historyList, to: .documents, as: "location_history.json")
@@ -80,21 +91,18 @@ extension MapSearchViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "locationHistoryCell", for: indexPath) as? LocationHistoryCell else { return UITableViewCell() }
             cell.locationLabel.text = historyList[indexPath.row]
             cell.clickButtonHandler = {
-                self.searchField.resignFirstResponder()
-                self.monitor.pathUpdateHandler = { path in
-                    if path.status != .satisfied {
-                        DispatchQueue.main.async {
-                            let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
-                            let confirm = UIAlertAction(title: "확인", style: .default)
-                            alert.addAction(confirm)
-                            self.present(alert, animated: true)
-                        }
-                    }
+                if self.monitor.currentPath.status == .satisfied {
+                    self.searchField.resignFirstResponder()
+                    self.historyList.remove(at: indexPath.row)
+                    self.historyList.insert(cell.locationLabel.text!, at: 0)
+                    self.delegate?.mapSearch(query: cell.locationLabel.text!)
+                    self.dismiss(animated: false)
+                } else {
+                    let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+                    let confirm = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(confirm)
+                    self.present(alert, animated: true)
                 }
-                self.historyList.remove(at: indexPath.row)
-                self.historyList.insert(cell.locationLabel.text!, at: 0)
-                self.delegate?.mapSearch(query: cell.locationLabel.text!)
-                self.dismiss(animated: false)
             }
             cell.deleteButtonHandler = {
                 self.historyList.remove(at: indexPath.row)
@@ -124,19 +132,18 @@ extension MapSearchViewController: UITextFieldDelegate {
     // [!] 자음, 모음만 검색하는것 처리
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        self.monitor.pathUpdateHandler = { path in
-            if path.status != .satisfied {
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
-                    let confirm = UIAlertAction(title: "확인", style: .default)
-                    alert.addAction(confirm)
-                    self.present(alert, animated: true)
-                }
+        if self.monitor.currentPath.status == .satisfied {
+            if !self.historyList.contains(textField.text!)  {
+                self.historyList.insert(textField.text!, at: 0)
             }
+            self.delegate?.mapSearch(query: textField.text!)
+            self.dismiss(animated: false)
+        } else {
+            let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+            let confirm = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(confirm)
+            self.present(alert, animated: true)
         }
-        self.historyList.append(textField.text!)
-        self.delegate?.mapSearch(query: textField.text!)
-        self.dismiss(animated: false)
         return true
     }
 }

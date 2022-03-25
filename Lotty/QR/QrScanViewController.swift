@@ -1,12 +1,14 @@
 import UIKit
 import AVKit
 import WebKit
+import Network
 
 class QrScanViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     @IBOutlet weak var qrView: UIView!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var firstView: UIView!
     
+    let monitor = NWPathMonitor()
     var captureSession = AVCaptureSession()
     var videoPreviewLayer = AVCaptureVideoPreviewLayer()
     var centerGuideLineView = UIView()
@@ -14,6 +16,18 @@ class QrScanViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        monitor.start(queue: .global())
+        monitor.pathUpdateHandler = { path in
+            if path.status != .satisfied {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+                    let confirm = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(confirm)
+                    self.present(alert, animated: true)
+                }
+            }
+        }
         webView.uiDelegate = self
         webView.navigationDelegate = self
         
@@ -130,12 +144,19 @@ extension QrScanViewController: AVCaptureMetadataOutputObjectsDelegate {
         
         let metaDataObject = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         guard let StringCodeValue = metaDataObject.stringValue else { return }
-        firstView.isHidden = true
-        if before == StringCodeValue { return }
-        guard let _ = self.videoPreviewLayer.transformedMetadataObject(for: metaDataObject) else { return }
-        guard let url = URL(string: StringCodeValue) else { return }
-        let request = URLRequest(url: url)
-        webView.load(request)
-        before = StringCodeValue
+        if monitor.currentPath.status == .satisfied {
+            firstView.isHidden = true
+            if before == StringCodeValue { return }
+            guard let _ = self.videoPreviewLayer.transformedMetadataObject(for: metaDataObject) else { return }
+            guard let url = URL(string: StringCodeValue) else { return }
+            let request = URLRequest(url: url)
+            webView.load(request)
+            before = StringCodeValue
+        } else {
+            let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
+            let confirm = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(confirm)
+            self.present(alert, animated: true)
+        }
     }
 }
