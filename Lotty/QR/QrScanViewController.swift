@@ -54,10 +54,6 @@ class QrScanViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
             }
         }
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

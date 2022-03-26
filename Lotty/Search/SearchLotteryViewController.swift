@@ -42,6 +42,9 @@ class SearchLotteryViewController: UIViewController {
             }
         }
         
+        contentView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 464)
+        lotteryView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 400)
+        bottomView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 60)
         historyTableView.dataSource = self
         historyTableView.delegate = self
         historyTableView.backgroundColor = .white

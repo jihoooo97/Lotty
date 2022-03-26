@@ -41,6 +41,7 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.backgroundColor = .white
         tableView.refreshControl = refreshControl
+        tableView.refreshControl?.tintColor = .AlphaB600
         tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         configureNavi()
         

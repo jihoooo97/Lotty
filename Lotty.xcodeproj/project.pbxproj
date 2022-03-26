@@ -52,7 +52,7 @@
 		13DCF89727BE681D00EAF40C /* Round.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13DCF89627BE681D00EAF40C /* Round.xib */; };
 		13FD443027E59E63001C5AAA /* LocationHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD442F27E59E63001C5AAA /* LocationHistoryCell.swift */; };
 		13FD443227E59E74001C5AAA /* LocationEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD443127E59E74001C5AAA /* LocationEmptyCell.swift */; };
-		9A66E45E67BB27BBB98730CA /* Pods_Lotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970B00F0580958B10EE64FCB /* Pods_Lotty.framework */; };
+		CF045A07EE1DD56BB96C6BA6 /* Pods_Lotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8AE2F15D193A81CC2A0942 /* Pods_Lotty.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +68,7 @@
 		130F845B27E5EAFD00E01079 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		130F845C27E5EAFD00E01079 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
 		130F845D27E5EAFD00E01079 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		131B329527EF0EE200F9121D /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1320D4F627DB0D0D00E47E4C /* RightLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightLine.swift; sourceTree = "<group>"; };
 		1320D4F827DB0EC600E47E4C /* BackgroundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundLabel.swift; sourceTree = "<group>"; };
 		1320D4FA27DB174B00E47E4C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -81,7 +82,6 @@
 		1378E33227BFADAE00B76E5B /* SearchLotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLotteryViewController.swift; sourceTree = "<group>"; };
 		13802F6A27C3D4D8008EE0BC /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		1398D14127CF4D6700F71739 /* QrScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScanViewController.swift; sourceTree = "<group>"; };
-		13A2A20F27BB489000FE10E1 /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A2A21227BB489000FE10E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13A2A21427BB489000FE10E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		13A2A21627BB489000FE10E1 /* AroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AroundViewController.swift; sourceTree = "<group>"; };
@@ -103,9 +103,9 @@
 		13DCF89627BE681D00EAF40C /* Round.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Round.xib; sourceTree = "<group>"; };
 		13FD442F27E59E63001C5AAA /* LocationHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHistoryCell.swift; sourceTree = "<group>"; };
 		13FD443127E59E74001C5AAA /* LocationEmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEmptyCell.swift; sourceTree = "<group>"; };
-		970B00F0580958B10EE64FCB /* Pods_Lotty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lotty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E7094E779F093B4C45FC239D /* Pods-Lotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.release.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.release.xcconfig"; sourceTree = "<group>"; };
-		ED2201B71F448033108942CB /* Pods-Lotty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.debug.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.debug.xcconfig"; sourceTree = "<group>"; };
+		23887CA422FFBCAF6A639C20 /* Pods-Lotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.release.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.release.xcconfig"; sourceTree = "<group>"; };
+		9C27D869B329F5628D99FBFC /* Pods-Lotty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.debug.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.debug.xcconfig"; sourceTree = "<group>"; };
+		FD8AE2F15D193A81CC2A0942 /* Pods_Lotty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lotty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A66E45E67BB27BBB98730CA /* Pods_Lotty.framework in Frameworks */,
+				CF045A07EE1DD56BB96C6BA6 /* Pods_Lotty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,18 +133,10 @@
 			isa = PBXGroup;
 			children = (
 				13A2A21127BB489000FE10E1 /* Lotty */,
-				13A2A21027BB489000FE10E1 /* Products */,
 				40ACCF754CC6FCB807C697D7 /* Pods */,
-				2FD4CE63248C5321D28A5EDE /* Frameworks */,
+				7B2C4CB78E00D9DE95B43D2F /* Frameworks */,
+				131B329527EF0EE200F9121D /* Lotty.app */,
 			);
-			sourceTree = "<group>";
-		};
-		13A2A21027BB489000FE10E1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				13A2A20F27BB489000FE10E1 /* Lotty.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		13A2A21127BB489000FE10E1 /* Lotty */ = {
@@ -255,21 +247,21 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		2FD4CE63248C5321D28A5EDE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				970B00F0580958B10EE64FCB /* Pods_Lotty.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		40ACCF754CC6FCB807C697D7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				ED2201B71F448033108942CB /* Pods-Lotty.debug.xcconfig */,
-				E7094E779F093B4C45FC239D /* Pods-Lotty.release.xcconfig */,
+				9C27D869B329F5628D99FBFC /* Pods-Lotty.debug.xcconfig */,
+				23887CA422FFBCAF6A639C20 /* Pods-Lotty.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		7B2C4CB78E00D9DE95B43D2F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FD8AE2F15D193A81CC2A0942 /* Pods_Lotty.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,11 +271,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13A2A22327BB489100FE10E1 /* Build configuration list for PBXNativeTarget "Lotty" */;
 			buildPhases = (
-				76307A75EE88BF880061CB7E /* [CP] Check Pods Manifest.lock */,
+				CB33FA442C7C35D6CBC544CE /* [CP] Check Pods Manifest.lock */,
 				13A2A20B27BB489000FE10E1 /* Sources */,
 				13A2A20C27BB489000FE10E1 /* Frameworks */,
 				13A2A20D27BB489000FE10E1 /* Resources */,
-				565E8EBDAF804AFAF2EDFEFA /* [CP] Embed Pods Frameworks */,
+				A14CC4F6E1DC239D5D11E9CF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -291,7 +283,7 @@
 			);
 			name = Lotty;
 			productName = Lotty;
-			productReference = 13A2A20F27BB489000FE10E1 /* Lotty.app */;
+			productReference = 131B329527EF0EE200F9121D /* Lotty.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -318,7 +310,7 @@
 				Base,
 			);
 			mainGroup = 13A2A20627BB489000FE10E1;
-			productRefGroup = 13A2A21027BB489000FE10E1 /* Products */;
+			productRefGroup = 13A2A20627BB489000FE10E1;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -354,7 +346,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		565E8EBDAF804AFAF2EDFEFA /* [CP] Embed Pods Frameworks */ = {
+		A14CC4F6E1DC239D5D11E9CF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -371,7 +363,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lotty/Pods-Lotty-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		76307A75EE88BF880061CB7E /* [CP] Check Pods Manifest.lock */ = {
+		CB33FA442C7C35D6CBC544CE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -577,7 +569,7 @@
 		};
 		13A2A22427BB489100FE10E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED2201B71F448033108942CB /* Pods-Lotty.debug.xcconfig */;
+			baseConfigurationReference = 9C27D869B329F5628D99FBFC /* Pods-Lotty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -588,10 +580,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lotty/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "로또의민족";
-				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 권한이 필요합니다";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치정보 권한이 필요합니다";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치정보 권한이 필요합니다";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치정보 권한이 필요합니다";
+				INFOPLIST_KEY_NSCameraUsageDescription = "로또 QR코드를 조회하려면 카메라 권한이 필요합니다";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "로또 판매점을 조회하려면 위치 정보가 필요합니다";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "로또 판매점을 조회하려면 위치 정보가 필요합니다";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "로또 판매점을 조회하려면 위치 정보가 필요합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -614,7 +606,7 @@
 		};
 		13A2A22527BB489100FE10E1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7094E779F093B4C45FC239D /* Pods-Lotty.release.xcconfig */;
+			baseConfigurationReference = 23887CA422FFBCAF6A639C20 /* Pods-Lotty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -626,10 +618,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lotty/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "로또의민족";
-				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 권한이 필요합니다";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치정보 권한이 필요합니다";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치정보 권한이 필요합니다";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치정보 권한이 필요합니다";
+				INFOPLIST_KEY_NSCameraUsageDescription = "로또 QR코드를 조회하려면 카메라 권한이 필요합니다";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "로또 판매점을 조회하려면 위치 정보가 필요합니다";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "로또 판매점을 조회하려면 위치 정보가 필요합니다";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "로또 판매점을 조회하려면 위치 정보가 필요합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
