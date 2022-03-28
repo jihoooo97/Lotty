@@ -30,6 +30,7 @@ class QrScanViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
         }
         webView.uiDelegate = self
         webView.navigationDelegate = self
+        qrView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 250)
         
         let status = AVCaptureDevice.authorizationStatus(for: .video)
         if status == .authorized {

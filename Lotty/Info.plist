@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>로또 판매점을 조회하려면 위치 정보가 필요합니다</string>
-	<key>NSLocationUsageDescription</key>
-	<string>로또 판매점을 조회하려면 위치 정보가 필요합니다</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>로또 판매점을 조회하려면 위치 정보가 필요합니다</string>
-	<key>NSCameraUsageDescription</key>
-	<string>로또 QR코드를 조회하려면 카메라 권한이 필요합니다</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kakaomap</string>

@@ -25,7 +25,7 @@ class RandomViewController: UIViewController {
         contentView.addSubview(rightLine)
         rightLine.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.5).isActive = true
         rightLine.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        rightLine.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.height).isActive = true
+        rightLine.widthAnchor.constraint(equalToConstant: contentView.frame.height).isActive = true
         rightLine.heightAnchor.constraint(equalToConstant: 25).isActive = true
         setView()
     }
