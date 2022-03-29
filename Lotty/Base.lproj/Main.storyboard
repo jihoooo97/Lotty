@@ -82,6 +82,7 @@
                                             <constraint firstAttribute="width" constant="20" id="DfG-kq-Bj9"/>
                                             <constraint firstAttribute="width" secondItem="nh7-fz-pHp" secondAttribute="height" multiplier="1:1" id="NpL-hG-QDk"/>
                                         </constraints>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="지역 이름으로 검색하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZCe-G9-7L5">
                                         <rect key="frame" x="40" y="5" width="274" height="34"/>
@@ -630,11 +631,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nnv-Zg-PlL">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nnv-Zg-PlL">
                                 <rect key="frame" x="0.0" y="44" width="390" height="717"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fAF-n5-kvY">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="750"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="1000"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ASZ-ec-8VJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="390" height="250"/>
@@ -644,7 +645,7 @@
                                                 </constraints>
                                             </view>
                                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TGz-N2-VYZ">
-                                                <rect key="frame" x="0.0" y="250" width="390" height="500"/>
+                                                <rect key="frame" x="0.0" y="250" width="390" height="750"/>
                                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <wkWebViewConfiguration key="configuration">
                                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -685,7 +686,7 @@
                                             <constraint firstAttribute="trailing" secondItem="ASZ-ec-8VJ" secondAttribute="trailing" id="8Q7-h6-J1u"/>
                                             <constraint firstItem="ASZ-ec-8VJ" firstAttribute="top" secondItem="fAF-n5-kvY" secondAttribute="top" id="DIX-hy-gnB"/>
                                             <constraint firstItem="NVI-5J-R6s" firstAttribute="trailing" secondItem="TGz-N2-VYZ" secondAttribute="trailing" id="DTI-Y8-dRA"/>
-                                            <constraint firstAttribute="height" constant="750" id="FRQ-YD-EIF"/>
+                                            <constraint firstAttribute="height" constant="1000" id="FRQ-YD-EIF"/>
                                             <constraint firstItem="ASZ-ec-8VJ" firstAttribute="leading" secondItem="fAF-n5-kvY" secondAttribute="leading" id="WaN-MR-oKj"/>
                                             <constraint firstItem="NVI-5J-R6s" firstAttribute="top" secondItem="TGz-N2-VYZ" secondAttribute="top" id="eRp-86-DE0"/>
                                             <constraint firstItem="TGz-N2-VYZ" firstAttribute="top" secondItem="ASZ-ec-8VJ" secondAttribute="bottom" id="ea6-Jn-ZYv"/>

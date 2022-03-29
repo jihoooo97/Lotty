@@ -80,6 +80,14 @@ class SearchLotteryViewController: UIViewController {
         monitor.cancel()
     }
     
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newWidth))
+        image.draw(in: CGRect(origin: .zero, size: CGSize(width: newWidth, height: newWidth)))
+        let resultImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resultImage
+    }
+    
     func configureNavi() {
         let backButton = UIButton(type: .custom)
         backButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -89,7 +97,10 @@ class SearchLotteryViewController: UIViewController {
         backButton.sizeToFit()
         
         let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 70, height: 0))
+        let scopeImage = resizeImage(image: UIImage(named: "find_icon")!, newWidth: 20)?.withTintColor(.Placeholder)
         searchBar.layer.cornerRadius = 8
+        searchBar.searchTextField.leftView = UIImageView(image: scopeImage)
+        searchBar.searchTextField.leftView?.contentMode = .scaleToFill
         searchBar.searchTextField.textColor = .G900
         searchBar.alpha = 0.6
         searchBar.searchTextField.backgroundColor = .G50

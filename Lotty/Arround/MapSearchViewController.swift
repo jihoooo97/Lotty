@@ -37,6 +37,7 @@ class MapSearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         historyList = Storage.retrive("location_history.json", from: .documents, as: [String].self) ?? []
+        
         searchField.becomeFirstResponder()
     }
     
