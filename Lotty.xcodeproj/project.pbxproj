@@ -49,11 +49,9 @@
 		13CCFC8427C4F5DB0033D682 /* StoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCFC8327C4F5DB0033D682 /* StoreDetailView.swift */; };
 		13DCF88F27BDEF5A00EAF40C /* LotteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DCF88E27BDEF5A00EAF40C /* LotteryInfo.swift */; };
 		13DCF89327BE0B9500EAF40C /* NumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DCF89227BE0B9500EAF40C /* NumberCell.swift */; };
-		13DCF89727BE681D00EAF40C /* Round.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13DCF89627BE681D00EAF40C /* Round.xib */; };
 		13FC7E9627F1D18200407B57 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FC7E9527F1D18200407B57 /* ViewModel.swift */; };
 		13FD443027E59E63001C5AAA /* LocationHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD442F27E59E63001C5AAA /* LocationHistoryCell.swift */; };
 		13FD443227E59E74001C5AAA /* LocationEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD443127E59E74001C5AAA /* LocationEmptyCell.swift */; };
-		2E62517AE138BEC3E38FF83B /* Pods_Lotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951FA71C335669680596AA1F /* Pods_Lotty.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,13 +99,9 @@
 		13CCFC8327C4F5DB0033D682 /* StoreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailView.swift; sourceTree = "<group>"; };
 		13DCF88E27BDEF5A00EAF40C /* LotteryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryInfo.swift; sourceTree = "<group>"; };
 		13DCF89227BE0B9500EAF40C /* NumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberCell.swift; sourceTree = "<group>"; };
-		13DCF89627BE681D00EAF40C /* Round.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Round.xib; sourceTree = "<group>"; };
 		13FC7E9527F1D18200407B57 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		13FD442F27E59E63001C5AAA /* LocationHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHistoryCell.swift; sourceTree = "<group>"; };
 		13FD443127E59E74001C5AAA /* LocationEmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEmptyCell.swift; sourceTree = "<group>"; };
-		951FA71C335669680596AA1F /* Pods_Lotty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lotty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		98EB4A1B6D97A1C4CA13FD2E /* Pods-Lotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.release.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.release.xcconfig"; sourceTree = "<group>"; };
-		C919BD56F408DE5ED33CE3EB /* Pods-Lotty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.debug.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +109,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E62517AE138BEC3E38FF83B /* Pods_Lotty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +130,6 @@
 				13A2A21127BB489000FE10E1 /* Lotty */,
 				40ACCF754CC6FCB807C697D7 /* Pods */,
 				131B329527EF0EE200F9121D /* Lotty.app */,
-				F355975C44AD8C9E295815B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,7 +152,6 @@
 				13A2A22027BB489100FE10E1 /* Info.plist */,
 				13A2A25127BB8B1400FE10E1 /* UIColor.swift */,
 				13A2A23027BB4E3200FE10E1 /* Fonts */,
-				13DCF89627BE681D00EAF40C /* Round.xib */,
 			);
 			path = Lotty;
 			sourceTree = "<group>";
@@ -253,18 +244,8 @@
 		40ACCF754CC6FCB807C697D7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C919BD56F408DE5ED33CE3EB /* Pods-Lotty.debug.xcconfig */,
-				98EB4A1B6D97A1C4CA13FD2E /* Pods-Lotty.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		F355975C44AD8C9E295815B9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				951FA71C335669680596AA1F /* Pods_Lotty.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,11 +255,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13A2A22327BB489100FE10E1 /* Build configuration list for PBXNativeTarget "Lotty" */;
 			buildPhases = (
-				8B1DF2FC892F0AD31A062D01 /* [CP] Check Pods Manifest.lock */,
 				13A2A20B27BB489000FE10E1 /* Sources */,
 				13A2A20C27BB489000FE10E1 /* Frameworks */,
 				13A2A20D27BB489000FE10E1 /* Resources */,
-				866CC0FD9B8278842CF1F8F2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -327,7 +306,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13DCF89727BE681D00EAF40C /* Round.xib in Resources */,
 				130F846027E5EAFD00E01079 /* Pretendard-Bold.otf in Resources */,
 				130F842F27E5E57500E01079 /* BMYEONSUNG_ttf.ttf in Resources */,
 				13A2A21F27BB489100FE10E1 /* LaunchScreen.storyboard in Resources */,
@@ -347,48 +325,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		866CC0FD9B8278842CF1F8F2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Lotty/Pods-Lotty-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Lotty/Pods-Lotty-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lotty/Pods-Lotty-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8B1DF2FC892F0AD31A062D01 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Lotty-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		13A2A20B27BB489000FE10E1 /* Sources */ = {
@@ -573,7 +509,6 @@
 		};
 		13A2A22427BB489100FE10E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C919BD56F408DE5ED33CE3EB /* Pods-Lotty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -611,7 +546,6 @@
 		};
 		13A2A22527BB489100FE10E1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98EB4A1B6D97A1C4CA13FD2E /* Pods-Lotty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
