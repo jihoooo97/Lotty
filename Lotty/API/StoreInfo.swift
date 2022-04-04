@@ -1,6 +1,5 @@
 struct StoreInfo: Codable {
     let documents: [Documents]
-    //let meta: Meta
 }
 
 struct Documents: Codable {
