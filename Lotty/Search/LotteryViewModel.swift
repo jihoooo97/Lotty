@@ -7,6 +7,6 @@
 
 import UIKit
 
-class LotteryViewModel: NSObject {
+class LotteryViewModel {
 
 }
