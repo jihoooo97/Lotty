@@ -1,0 +1,12 @@
+//
+//  LotteryViewModel.swift
+//  Lotty
+//
+//  Created by JihoMac on 2022/04/05.
+//
+
+import UIKit
+
+class LotteryViewModel: NSObject {
+
+}
