@@ -14,6 +14,7 @@ class SearchViewController: UIViewController {
     var fetchingMore = false
     var recentNumber = 0
     var page = 0
+    let lotteryViewModel = LotteryViewModel()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailLottery" {
