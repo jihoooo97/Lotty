@@ -23,7 +23,7 @@ class SearchLotteryViewController: UIViewController {
     @IBOutlet weak var historyTableView: UITableView!
     
     let monitor = NWPathMonitor()
-    var lotteryInfo = LotteryInfo(drwNoDate: "", drwNo: 0, firstAccumamnt: 0, firstWinamnt: 0, firstPrzwnerCo: 0, drwtNo1: 0, drwtNo2: 0, drwtNo3: 0, drwtNo4: 0, drwtNo5: 0, drwtNo6: 0, bnusNo: 0, returnValue: "", totSellamnt: 0)
+    let viewModel = DetailViewModel()
     private var historyList: [Int] = []
     
     override func viewDidLoad() {
@@ -54,9 +54,9 @@ class SearchLotteryViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
         historyList = Storage.retrive("lottery_history.json", from: .documents, as: [Int].self) ?? []
-        if lotteryInfo.drwNoDate != "" {
-            if lotteryInfo.firstAccumamnt == 0 {
-                lotteryInfo.firstAccumamnt = lotteryInfo.firstPrzwnerCo * lotteryInfo.firstWinamnt
+        if viewModel.lotteryInfo.drwNoDate != "" {
+            if viewModel.lotteryInfo.firstAccumamnt == 0 {
+                viewModel.lotteryInfo.firstAccumamnt = viewModel.lotteryInfo.firstPrzwnerCo * viewModel.lotteryInfo.firstWinamnt
             }
             lotteryConfigure()
         } else {
@@ -126,19 +126,19 @@ class SearchLotteryViewController: UIViewController {
     }
     
     func lotteryConfigure() {
-        drwNo.text = "\(lotteryInfo.drwNo)회"
-        drwDate.text = lotteryInfo.drwNoDate
-        no1.text = "\(lotteryInfo.drwtNo1)"
-        no2.text = "\(lotteryInfo.drwtNo2)"
-        no3.text = "\(lotteryInfo.drwtNo3)"
-        no4.text = "\(lotteryInfo.drwtNo4)"
-        no5.text = "\(lotteryInfo.drwtNo5)"
-        no6.text = "\(lotteryInfo.drwtNo6)"
-        bonusNo.text = "\(lotteryInfo.bnusNo)"
-        winCount.text = "\(lotteryInfo.firstPrzwnerCo)명"
-        winAmount.text = "\(numberFormatter(number: lotteryInfo.firstWinamnt))원"
-        totalWinAmount.text = "\(numberFormatter(number: lotteryInfo.firstAccumamnt))원"
-        totalAmount.text = "\(numberFormatter(number: lotteryInfo.totSellamnt))원"
+        drwNo.text = "\(viewModel.lotteryInfo.drwNo)회"
+        drwDate.text = viewModel.lotteryInfo.drwNoDate
+        no1.text = "\(viewModel.lotteryInfo.drwtNo1)"
+        no2.text = "\(viewModel.lotteryInfo.drwtNo2)"
+        no3.text = "\(viewModel.lotteryInfo.drwtNo3)"
+        no4.text = "\(viewModel.lotteryInfo.drwtNo4)"
+        no5.text = "\(viewModel.lotteryInfo.drwtNo5)"
+        no6.text = "\(viewModel.lotteryInfo.drwtNo6)"
+        bonusNo.text = "\(viewModel.lotteryInfo.bnusNo)"
+        winCount.text = "\(viewModel.lotteryInfo.firstPrzwnerCo)명"
+        winAmount.text = "\(numberFormatter(number: viewModel.lotteryInfo.firstWinamnt))원"
+        totalWinAmount.text = "\(numberFormatter(number: viewModel.lotteryInfo.firstAccumamnt))원"
+        totalAmount.text = "\(numberFormatter(number: viewModel.lotteryInfo.totSellamnt))원"
         setRound(label: no1)
         setRound(label: no2)
         setRound(label: no3)
@@ -219,9 +219,9 @@ extension SearchLotteryViewController: UITableViewDataSource {
                                     self.bottomView.frame.origin = CGPoint(x: 0, y: 400)
                                 }
                                 guard let lottery = response.value else { return }
-                                self.lotteryInfo = lottery
-                                if self.lotteryInfo.firstAccumamnt == 0 {
-                                    self.lotteryInfo.firstAccumamnt = lottery.firstPrzwnerCo * lottery.firstWinamnt
+                                self.viewModel.lotteryInfo = lottery
+                                if self.viewModel.lotteryInfo.firstAccumamnt == 0 {
+                                    self.viewModel.lotteryInfo.firstAccumamnt = lottery.firstPrzwnerCo * lottery.firstWinamnt
                                 }
                                 self.lotteryConfigure()
                                 self.historyList.remove(at: indexPath.row)
@@ -280,9 +280,9 @@ extension SearchLotteryViewController: UISearchBarDelegate {
                         self.bottomView.frame.origin = CGPoint(x: 0, y: 400)
                     }
                     guard let lottery = response.value else { return }
-                    self.lotteryInfo = lottery
-                    if self.lotteryInfo.firstAccumamnt == 0 {
-                        self.lotteryInfo.firstAccumamnt = lottery.firstPrzwnerCo * lottery.firstWinamnt
+                    self.viewModel.lotteryInfo = lottery
+                    if self.viewModel.lotteryInfo.firstAccumamnt == 0 {
+                        self.viewModel.lotteryInfo.firstAccumamnt = lottery.firstPrzwnerCo * lottery.firstWinamnt
                     }
                     self.lotteryConfigure()
                     self.historyList = self.historyList.filter { $0 != lottery.drwNo }

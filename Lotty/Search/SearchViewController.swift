@@ -1,5 +1,4 @@
 import UIKit
-import Alamofire
 import AVFoundation
 import Network
 
@@ -9,21 +8,16 @@ class SearchViewController: UIViewController {
     let monitor = NWPathMonitor()
     private var refreshControl = UIRefreshControl()
     
-    var lotteryArray: [LotteryItem] = []
     var searchHistoryList: [Int] = []
-    var fetchingMore = false
-    var recentNumber = 0
-    var page = 0
-    let lotteryViewModel = LotteryViewModel()
+    let viewModel = LotteryViewModel()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailLottery" {
             let vc = segue.destination as! SearchLotteryViewController
-            vc.lotteryInfo = sender as! LotteryInfo
+            vc.viewModel.lotteryInfo = sender as! LotteryInfo
         }
     }
     
-    // [!] 갱신되는 동안 표시할 뷰?, 공 배경 조정
     override func viewDidLoad() {
         super.viewDidLoad()
         monitor.start(queue: DispatchQueue.global())
@@ -46,8 +40,16 @@ class SearchViewController: UIViewController {
         tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         configureNavi()
         
-        recentNumber = getRecentNumber()
-        for i in 0..<10 { getLotteryNumber(drwNo: recentNumber - i) }
+        viewModel.getRecentNumber()
+        // 개선 필요
+        DispatchQueue.main.async {
+            for i in 0..<10 {
+                self.viewModel.getLotteryNumber(drwNo: self.viewModel.recentNumber - i)
+            }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,64 +82,22 @@ class SearchViewController: UIViewController {
 //        explainLabel.attributedText = attrString
     }
     
-    func getNowTime() -> String {
-        let now = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        formatter.timeZone = NSTimeZone(name: "ko-KR") as TimeZone?
-        return formatter.string(from: now)
-    }
-    
-    func getRecentNumber() -> Int {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let base = 1002
-        let now = getNowTime()
-        
-        guard let startTime = formatter.date(from: "2022-02-12 20:45:00") else { return 0 }
-        guard let endTime = formatter.date(from: now) else { return 0 }
-        
-        // 분으로 계산
-        let subTime = Int(endTime.timeIntervalSince(startTime)) / 60
-        let count = subTime / 10080
-        return base + count
-    }
-    
     func numberFormatter(number: Int) -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         return numberFormatter.string(from: NSNumber(value: number))!
     }
     
-    func getLotteryNumber(drwNo: Int) {
-        let parameters: Parameters = [
-            "method": "getLottoNumber",
-            "drwNo": drwNo
-        ]
-        AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryInfo.self) { response in
-            switch response.result {
-            case .success:
-                guard let lottery = response.value else { return }
-                if lottery.drwNo == self.recentNumber {
-                    self.lotteryArray.append(LotteryItem(lottery: lottery, open: true))
-                } else {
-                    self.lotteryArray.append(LotteryItem(lottery: lottery))
-                }
-                self.lotteryArray.sort(by: { $0.lottery.drwNo > $1.lottery.drwNo })
-                self.tableView.reloadData()
-            case .failure:
-                return
-            }
-        }
-    }
-    
     @objc func pullToRefresh() {
         if self.monitor.currentPath.status == .satisfied {
-            self.lotteryArray = []
-            self.page = 0
-            recentNumber = getRecentNumber()
-            for i in 0..<10 { getLotteryNumber(drwNo: recentNumber - i) }
-            tableView.refreshControl?.endRefreshing()
+            viewModel.lotteryItems = []
+            viewModel.page = 0
+            viewModel.getRecentNumber()
+            for i in 0..<10 {
+                self.viewModel.getLotteryNumber(drwNo: self.viewModel.recentNumber - i)
+            }
+            self.tableView.reloadData()
+            self.tableView.refreshControl?.endRefreshing()
         } else {
             let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
             let confirm = UIAlertAction(title: "확인", style: .default) { action in
@@ -152,42 +112,42 @@ class SearchViewController: UIViewController {
 // MARK: 테이블뷰 DataSource
 extension SearchViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return lotteryArray.count
+        return viewModel.lotteryItems.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if lotteryArray[section].open == true { return 2 }
+        if viewModel.lotteryItems[section].open == true { return 2 }
         else { return 1 }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "numberCloseCell", for: indexPath) as? NumberCloseCell else { return UITableViewCell() }
-            if lotteryArray[indexPath.section].open == true {
+            if viewModel.lotteryItems[indexPath.section].open == true {
                 cell.status.image = UIImage(named: "arrow_up_icon")
             } else {
                 cell.status.image = UIImage(named: "arrow_down_icon")
             }
-            cell.drwNo.text = "\(lotteryArray[indexPath.section].lottery.drwNo)회"
+            cell.drwNo.text = "\(viewModel.lotteryItems[indexPath.section].lottery.drwNo)회"
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "numberCell", for: indexPath) as? NumberCell else { return FailCell() }
-            cell.date.text = lotteryArray[indexPath.section].lottery.drwNoDate
-            cell.no1.text = "\(lotteryArray[indexPath.section].lottery.drwtNo1)"
-            cell.no2.text = "\(lotteryArray[indexPath.section].lottery.drwtNo2)"
-            cell.no3.text = "\(lotteryArray[indexPath.section].lottery.drwtNo3)"
-            cell.no4.text = "\(lotteryArray[indexPath.section].lottery.drwtNo4)"
-            cell.no5.text = "\(lotteryArray[indexPath.section].lottery.drwtNo5)"
-            cell.no6.text = "\(lotteryArray[indexPath.section].lottery.drwtNo6)"
-            cell.bonusNo.text = "\(lotteryArray[indexPath.section].lottery.bnusNo)"
-            cell.winCount.text = "총 \(lotteryArray[indexPath.section].lottery.firstPrzwnerCo)명 당첨"
-            cell.winAmount.text = numberFormatter(number: lotteryArray[indexPath.section].lottery.firstWinamnt) + "원"
+            cell.date.text = viewModel.lotteryItems[indexPath.section].lottery.drwNoDate
+            cell.no1.text = "\(viewModel.lotteryItems[indexPath.section].lottery.drwtNo1)"
+            cell.no2.text = "\(viewModel.lotteryItems[indexPath.section].lottery.drwtNo2)"
+            cell.no3.text = "\(viewModel.lotteryItems[indexPath.section].lottery.drwtNo3)"
+            cell.no4.text = "\(viewModel.lotteryItems[indexPath.section].lottery.drwtNo4)"
+            cell.no5.text = "\(viewModel.lotteryItems[indexPath.section].lottery.drwtNo5)"
+            cell.no6.text = "\(viewModel.lotteryItems[indexPath.section].lottery.drwtNo6)"
+            cell.bonusNo.text = "\(viewModel.lotteryItems[indexPath.section].lottery.bnusNo)"
+            cell.winCount.text = "총 \(viewModel.lotteryItems[indexPath.section].lottery.firstPrzwnerCo)명 당첨"
+            cell.winAmount.text = numberFormatter(number: viewModel.lotteryItems[indexPath.section].lottery.firstWinamnt) + "원"
             cell.detailButtonHandler = {
                 if self.monitor.currentPath.status == .satisfied {
-                    self.searchHistoryList = self.searchHistoryList.filter { $0 != self.lotteryArray[indexPath.section].lottery.drwNo }
-                    self.searchHistoryList.insert(self.lotteryArray[indexPath.section].lottery.drwNo, at: 0)
+                    self.searchHistoryList = self.searchHistoryList.filter { $0 != self.viewModel.lotteryItems[indexPath.section].lottery.drwNo }
+                    self.searchHistoryList.insert(self.viewModel.lotteryItems[indexPath.section].lottery.drwNo, at: 0)
                     Storage.store(self.searchHistoryList, to: .documents, as: "lottery_history.json")
-                    self.performSegue(withIdentifier: "detailLottery", sender: self.lotteryArray[indexPath.section].lottery)
+                    self.performSegue(withIdentifier: "detailLottery", sender: self.viewModel.lotteryItems[indexPath.section].lottery)
                 } else {
                     let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
                     let confirm = UIAlertAction(title: "확인", style: .default)
@@ -234,12 +194,12 @@ extension SearchViewController: UITableViewDelegate {
         guard let cell = tableView.cellForRow(at: indexPath) as? NumberCloseCell else { return }
         guard let index = tableView.indexPath(for: cell) else { return }
         if index.row == indexPath.row && index.row == 0 {
-            if lotteryArray[indexPath.section].open == true {
-                lotteryArray[indexPath.section].open = false
+            if viewModel.lotteryItems[indexPath.section].open == true {
+                viewModel.lotteryItems[indexPath.section].open = false
                 let section = IndexSet.init(integer: indexPath.section)
                 tableView.reloadSections(section, with: .fade)
             } else {
-                lotteryArray[indexPath.section].open = true
+                viewModel.lotteryItems[indexPath.section].open = true
                 let section = IndexSet.init(integer: indexPath.section)
                 tableView.reloadSections(section, with: .fade)
             }
@@ -255,9 +215,10 @@ extension SearchViewController: UIScrollViewDelegate {
         let pagination_y = tableView.bounds.size.height
 
         if contentOffset_y > (tableViewContentSize - pagination_y) && contentOffset_y > 0 {
-            if !fetchingMore {
+            if !viewModel.fetchingMore {
                 if monitor.currentPath.status == .satisfied {
                     beingFetch()
+                    
                 } else {
                     let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
                     let confirm = UIAlertAction(title: "확인", style: .default)
@@ -274,20 +235,20 @@ extension SearchViewController: UIScrollViewDelegate {
     
     // 페이지 갱신
     private func beingFetch() {
-        fetchingMore = true
+        viewModel.fetchingMore = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.page += 1
-            let count = self.recentNumber - (self.page * 10)
+            self.viewModel.page += 1
+            let count = self.viewModel.recentNumber - (self.viewModel.page * 10)
             if count > 10 {
                 for i in 0..<10 {
-                    self.getLotteryNumber(drwNo: count - i)
+                    self.viewModel.getLotteryNumber(drwNo: count - i)
                 }
-                self.fetchingMore = false
+                self.viewModel.fetchingMore = false
             } else if count <= 10 && count > 0{
                 for i in 1...count {
-                    self.getLotteryNumber(drwNo: i)
+                    self.viewModel.getLotteryNumber(drwNo: i)
                 }
-                self.fetchingMore = false
+                self.viewModel.fetchingMore = false
             }
         }
     }
