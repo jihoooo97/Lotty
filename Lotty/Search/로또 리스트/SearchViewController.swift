@@ -1,6 +1,7 @@
 import UIKit
 import AVFoundation
 import Network
+import RxSwift
 
 class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -8,8 +9,8 @@ class SearchViewController: UIViewController {
     let monitor = NWPathMonitor()
     private var refreshControl = UIRefreshControl()
     
-    var searchHistoryList: [Int] = []
     let viewModel = LotteryViewModel()
+    let disposeBag = DisposeBag()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailLottery" {
@@ -41,12 +42,13 @@ class SearchViewController: UIViewController {
         configureNavi()
         
         viewModel.getRecentNumber()
-        // 개선 필요
+        // 개선 필요, 받아오는게 느리면 갱신안됨
         DispatchQueue.main.async {
             for i in 0..<10 {
                 self.viewModel.getLotteryNumber(drwNo: self.viewModel.recentNumber - i)
             }
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.tableView.reloadData()
             }
         }
@@ -55,7 +57,7 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.backgroundColor = .white
-        searchHistoryList = Storage.retrive("lottery_history.json", from: .documents, as: [Int].self) ?? []
+        viewModel.loadHistory()
     }
     
     func configureNavi() {
@@ -144,9 +146,8 @@ extension SearchViewController: UITableViewDataSource {
             cell.winAmount.text = numberFormatter(number: viewModel.lotteryItems[indexPath.section].lottery.firstWinamnt) + "원"
             cell.detailButtonHandler = {
                 if self.monitor.currentPath.status == .satisfied {
-                    self.searchHistoryList = self.searchHistoryList.filter { $0 != self.viewModel.lotteryItems[indexPath.section].lottery.drwNo }
-                    self.searchHistoryList.insert(self.viewModel.lotteryItems[indexPath.section].lottery.drwNo, at: 0)
-                    Storage.store(self.searchHistoryList, to: .documents, as: "lottery_history.json")
+                    self.viewModel.updateHistory(section: indexPath.section)
+                    self.viewModel.saveHistory()
                     self.performSegue(withIdentifier: "detailLottery", sender: self.viewModel.lotteryItems[indexPath.section].lottery)
                 } else {
                     let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
@@ -218,7 +219,6 @@ extension SearchViewController: UIScrollViewDelegate {
             if !viewModel.fetchingMore {
                 if monitor.currentPath.status == .satisfied {
                     beingFetch()
-                    
                 } else {
                     let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
                     let confirm = UIAlertAction(title: "확인", style: .default)
@@ -234,7 +234,7 @@ extension SearchViewController: UIScrollViewDelegate {
     }
     
     // 페이지 갱신
-    private func beingFetch() {
+    func beingFetch() {
         viewModel.fetchingMore = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.viewModel.page += 1

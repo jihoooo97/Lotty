@@ -133,6 +133,30 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		1375C43F2801CC5900557AEC /* 로또 리스트 */ = {
+			isa = PBXGroup;
+			children = (
+				13007AB627FC712500EB37C1 /* NumberCell.swift */,
+				13007AB427FC712500EB37C1 /* FailCell.swift */,
+				13007AB327FC712500EB37C1 /* LotteryViewModel.swift */,
+				13007AB727FC712500EB37C1 /* SearchViewController.swift */,
+			);
+			name = "로또 리스트";
+			path = "로또 리스트";
+			sourceTree = "<group>";
+		};
+		1375C4402801CC8900557AEC /* 로또 상세 */ = {
+			isa = PBXGroup;
+			children = (
+				13007AB227FC712500EB37C1 /* HistoryCell.swift */,
+				13007AB127FC712500EB37C1 /* EmptyCell.swift */,
+				1375C43D2801C8A400557AEC /* DetailViewModel.swift */,
+				13007AB527FC712500EB37C1 /* SearchLotteryViewController.swift */,
+			);
+			name = "로또 상세";
+			path = "로또 상세";
+			sourceTree = "<group>";
+		};
 		13A2A20627BB489000FE10E1 = {
 			isa = PBXGroup;
 			children = (
@@ -148,7 +172,7 @@
 			children = (
 				13FD443327E59E83001C5AAA /* Base */,
 				13802F6A27C3D4D8008EE0BC /* Storage.swift */,
-				13DCF89527BE0C6E00EAF40C /* API */,
+				13DCF89527BE0C6E00EAF40C /* Model */,
 				136C20DD27D1E957004BD29A /* Home */,
 				13DCF89027BE0B5300EAF40C /* Arround */,
 				13DCF89427BE0C5700EAF40C /* Search */,
@@ -216,25 +240,19 @@
 		13DCF89427BE0C5700EAF40C /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				13007AB127FC712500EB37C1 /* EmptyCell.swift */,
-				13007AB427FC712500EB37C1 /* FailCell.swift */,
-				13007AB227FC712500EB37C1 /* HistoryCell.swift */,
-				13007AB327FC712500EB37C1 /* LotteryViewModel.swift */,
-				13007AB627FC712500EB37C1 /* NumberCell.swift */,
-				13007AB527FC712500EB37C1 /* SearchLotteryViewController.swift */,
-				13007AB727FC712500EB37C1 /* SearchViewController.swift */,
-				1375C43D2801C8A400557AEC /* DetailViewModel.swift */,
+				1375C43F2801CC5900557AEC /* 로또 리스트 */,
+				1375C4402801CC8900557AEC /* 로또 상세 */,
 			);
 			path = Search;
 			sourceTree = "<group>";
 		};
-		13DCF89527BE0C6E00EAF40C /* API */ = {
+		13DCF89527BE0C6E00EAF40C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				13DCF88E27BDEF5A00EAF40C /* LotteryInfo.swift */,
 				1334B79B27C756C4003C2904 /* StoreInfo.swift */,
 			);
-			path = API;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		13ED064427E1C9D9002823C8 /* QR */ = {

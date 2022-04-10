@@ -1,6 +1,7 @@
 import UIKit
-import Alamofire
 import Network
+import RxSwift
+import RxCocoa
 
 class SearchLotteryViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
@@ -23,8 +24,8 @@ class SearchLotteryViewController: UIViewController {
     @IBOutlet weak var historyTableView: UITableView!
     
     let monitor = NWPathMonitor()
+    
     let viewModel = DetailViewModel()
-    private var historyList: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,7 @@ class SearchLotteryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
-        historyList = Storage.retrive("lottery_history.json", from: .documents, as: [Int].self) ?? []
+        viewModel.loadHistory()
         if viewModel.lotteryInfo.drwNoDate != "" {
             if viewModel.lotteryInfo.firstAccumamnt == 0 {
                 viewModel.lotteryInfo.firstAccumamnt = viewModel.lotteryInfo.firstPrzwnerCo * viewModel.lotteryInfo.firstWinamnt
@@ -76,7 +77,7 @@ class SearchLotteryViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
-        Storage.store(historyList, to: .documents, as: "lottery_history.json")
+        viewModel.saveHistory()
         monitor.cancel()
     }
     
@@ -173,8 +174,7 @@ class SearchLotteryViewController: UIViewController {
     @objc func clearHistoy() {
         let alert = UIAlertController(title: "알림", message: "최근 조회 목록을 모두 삭제하시겠습니까?", preferredStyle: .alert)
         let confirm = UIAlertAction(title: "확인", style: .default) { action in
-            self.historyList = []
-            Storage.remove("lottery_history.json", from: .documents)
+            self.viewModel.clearHistory()
             self.historyTableView.reloadData()
         }
         let cancel = UIAlertAction(title: "취소", style: .default)
@@ -190,47 +190,31 @@ class SearchLotteryViewController: UIViewController {
 
 extension SearchLotteryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if historyList.count > 0 {
-            return historyList.count
+        if viewModel.historyList.count > 0 {
+            return viewModel.historyList.count
         } else {
             return 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if historyList.count > 0 {
+        if viewModel.historyList.count > 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as? HistoryCell else { return UITableViewCell() }
-            cell.drwNo.text = "\(historyList[indexPath.row])회"
+            cell.drwNo.text = "\(viewModel.historyList[indexPath.row])회"
             cell.clickButtonHandler = {
                 self.navigationItem.rightBarButtonItem?.customView?.resignFirstResponder()
                 if self.monitor.currentPath.status == .satisfied {
+                    if self.lotteryView.isHidden {
+                        self.lotteryView.isHidden = false
+                        let width = UIScreen.main.bounds.width
+                        self.contentView.frame = CGRect(x: 0, y: 0, width: width, height: 464)
+                        self.bottomView.frame.origin = CGPoint(x: 0, y: 400)
+                    }
                     if cell.drwNo.text != self.drwNo.text {
-                        let parameters: Parameters = [
-                            "method": "getLottoNumber",
-                            "drwNo": self.historyList[indexPath.row]
-                        ]
-                        AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryInfo.self) { response in
-                            switch response.result {
-                            case .success:
-                                if self.lotteryView.isHidden {
-                                    self.lotteryView.isHidden = false
-                                    let width = UIScreen.main.bounds.width
-                                    self.contentView.frame = CGRect(x: 0, y: 0, width: width, height: 464)
-                                    self.bottomView.frame.origin = CGPoint(x: 0, y: 400)
-                                }
-                                guard let lottery = response.value else { return }
-                                self.viewModel.lotteryInfo = lottery
-                                if self.viewModel.lotteryInfo.firstAccumamnt == 0 {
-                                    self.viewModel.lotteryInfo.firstAccumamnt = lottery.firstPrzwnerCo * lottery.firstWinamnt
-                                }
-                                self.lotteryConfigure()
-                                self.historyList.remove(at: indexPath.row)
-                                self.historyList.insert(lottery.drwNo, at: 0)
-                                self.historyTableView.reloadData()
-                            case .failure:
-                                return
-                            }
-                        }
+                        // [!] viewModel 갱신 전 뷰 처리 이슈
+                        self.viewModel.clickHistory(index: indexPath.row)
+                        self.lotteryConfigure()
+                        self.historyTableView.reloadData()
                     }
                 } else {
                     let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
@@ -240,7 +224,7 @@ extension SearchLotteryViewController: UITableViewDataSource {
                 }
             }
             cell.deleteButtonHandler = {
-                self.historyList.remove(at: indexPath.row)
+                self.viewModel.deleteHistory(index: indexPath.row)
                 self.historyTableView.reloadData()
             }
             return cell
@@ -253,7 +237,7 @@ extension SearchLotteryViewController: UITableViewDataSource {
 
 extension SearchLotteryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if historyList.count > 0 {
+        if viewModel.historyList.count > 0 {
             return 50
         } else {
             return 150
@@ -265,33 +249,17 @@ extension SearchLotteryViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         if monitor.currentPath.status == .satisfied {
-            let parameters: Parameters = [
-                "method": "getLottoNumber",
-                "drwNo": searchBar.text!
-            ]
-            AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryInfo.self) { response in
-                switch response.result {
-                case .success:
-                    searchBar.text = ""
-                    if self.lotteryView.isHidden {
-                        self.lotteryView.isHidden = false
-                        let width = UIScreen.main.bounds.width
-                        self.contentView.frame = CGRect(x: 0, y: 0, width: width, height: 464)
-                        self.bottomView.frame.origin = CGPoint(x: 0, y: 400)
-                    }
-                    guard let lottery = response.value else { return }
-                    self.viewModel.lotteryInfo = lottery
-                    if self.viewModel.lotteryInfo.firstAccumamnt == 0 {
-                        self.viewModel.lotteryInfo.firstAccumamnt = lottery.firstPrzwnerCo * lottery.firstWinamnt
-                    }
-                    self.lotteryConfigure()
-                    self.historyList = self.historyList.filter { $0 != lottery.drwNo }
-                    self.historyList.insert(lottery.drwNo, at: 0)
-                    self.historyTableView.reloadData()
-                case .failure:
-                    return
-                }
+            if self.lotteryView.isHidden {
+                self.lotteryView.isHidden = false
+                let width = UIScreen.main.bounds.width
+                self.contentView.frame = CGRect(x: 0, y: 0, width: width, height: 464)
+                self.bottomView.frame.origin = CGPoint(x: 0, y: 400)
             }
+            // [!] viewModel 갱신 전 뷰 처리 이슈
+            self.viewModel.searchDrwNo(drwNo: searchBar.text!)
+            self.lotteryConfigure()
+            self.historyTableView.reloadData()
+            searchBar.text = ""
         } else {
             let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
             let confirm = UIAlertAction(title: "확인", style: .default)

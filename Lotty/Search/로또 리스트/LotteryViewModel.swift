@@ -2,6 +2,7 @@ import UIKit
 import Alamofire
 
 class LotteryViewModel {
+    var historyList: [Int] = []
     var lotteryItems: [LotteryItem] = []
     var recentNumber = 0
     var page = 0
@@ -53,5 +54,18 @@ class LotteryViewModel {
                 return
             }
         }
+    }
+    
+    func loadHistory() {
+        historyList = Storage.retrive("lottery_history.json", from: .documents, as: [Int].self) ?? []
+    }
+    
+    func saveHistory() {
+        Storage.store(historyList, to: .documents, as: "lottery_history.json")
+    }
+    
+    func updateHistory(section: Int) {
+        historyList = historyList.filter { $0 != lotteryItems[section].lottery.drwNo }
+        historyList.insert(lotteryItems[section].lottery.drwNo, at: 0)
     }
 }
