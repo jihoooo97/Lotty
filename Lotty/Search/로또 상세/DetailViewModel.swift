@@ -1,4 +1,3 @@
-import UIKit
 import Alamofire
 
 class DetailViewModel {
@@ -65,7 +64,6 @@ class DetailViewModel {
             historyList = historyList.filter { $0 != lotteryInfo.drwNo }
             historyList.insert(lotteryInfo.drwNo, at: 0)
         }
-        print(historyList)
     }
     
     func deleteHistory(index: Int) {

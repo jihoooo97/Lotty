@@ -95,10 +95,11 @@ class SearchViewController: UIViewController {
             viewModel.lotteryItems = []
             viewModel.page = 0
             viewModel.getRecentNumber()
+            // [!] 테이블뷰 갱신 오류
             for i in 0..<10 {
                 self.viewModel.getLotteryNumber(drwNo: self.viewModel.recentNumber - i)
+                self.tableView.reloadData()
             }
-            self.tableView.reloadData()
             self.tableView.refreshControl?.endRefreshing()
         } else {
             let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
@@ -219,6 +220,8 @@ extension SearchViewController: UIScrollViewDelegate {
             if !viewModel.fetchingMore {
                 if monitor.currentPath.status == .satisfied {
                     beingFetch()
+                    // [!]
+                    self.tableView.reloadData()
                 } else {
                     let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
                     let confirm = UIAlertAction(title: "확인", style: .default)

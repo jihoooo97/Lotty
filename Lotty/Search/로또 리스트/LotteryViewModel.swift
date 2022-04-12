@@ -1,5 +1,5 @@
-import UIKit
 import Alamofire
+import RxSwift
 
 class LotteryViewModel {
     var historyList: [Int] = []
@@ -49,6 +49,7 @@ class LotteryViewModel {
                 } else {
                     self.lotteryItems.append(LotteryItem(lottery: lottery))
                 }
+                print(self.lotteryItems.count)
                 self.lotteryItems.sort(by: { $0.lottery.drwNo > $1.lottery.drwNo })
             case .failure:
                 return
