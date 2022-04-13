@@ -4,6 +4,7 @@ import RxSwift
 class LotteryViewModel {
     var historyList: [Int] = []
     var lotteryItems: [LotteryItem] = []
+    var lotteryRx = BehaviorSubject<[LotteryItem]>(value: [])
     var recentNumber = 0
     var page = 0
     var fetchingMore = false
