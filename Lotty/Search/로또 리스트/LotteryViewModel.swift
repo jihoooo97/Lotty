@@ -1,5 +1,6 @@
 import Alamofire
 import RxSwift
+import RxCocoa
 
 class LotteryViewModel {
     var historyList: [Int] = []
