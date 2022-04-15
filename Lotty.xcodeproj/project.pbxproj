@@ -186,6 +186,17 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		13912CD22809BA5C0077D5A6 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				13A2A21B27BB489100FE10E1 /* Assets.xcassets */,
+				13A2A21D27BB489100FE10E1 /* LaunchScreen.storyboard */,
+				13A2A25127BB8B1400FE10E1 /* UIColor.swift */,
+				13A2A23027BB4E3200FE10E1 /* Fonts */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		13A2A20627BB489000FE10E1 = {
 			isa = PBXGroup;
 			children = (
@@ -203,14 +214,11 @@
 				13912CCB2809B6B00077D5A6 /* UI */,
 				13802F6A27C3D4D8008EE0BC /* Storage.swift */,
 				13DCF89527BE0C6E00EAF40C /* Model */,
+				13912CD22809BA5C0077D5A6 /* Resource */,
 				13A2A21227BB489000FE10E1 /* AppDelegate.swift */,
 				13A2A21427BB489000FE10E1 /* SceneDelegate.swift */,
-				13A2A21D27BB489100FE10E1 /* LaunchScreen.storyboard */,
 				13A2A21827BB489000FE10E1 /* Main.storyboard */,
-				13A2A21B27BB489100FE10E1 /* Assets.xcassets */,
 				13A2A22027BB489100FE10E1 /* Info.plist */,
-				13A2A25127BB8B1400FE10E1 /* UIColor.swift */,
-				13A2A23027BB4E3200FE10E1 /* Fonts */,
 			);
 			path = Lotty;
 			sourceTree = "<group>";
