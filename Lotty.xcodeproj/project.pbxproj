@@ -51,6 +51,8 @@
 		13A2A21F27BB489100FE10E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21D27BB489100FE10E1 /* LaunchScreen.storyboard */; };
 		13A2A24E27BB804700FE10E1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A24D27BB804700FE10E1 /* HomeViewController.swift */; };
 		13A2A25227BB8B1400FE10E1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A25127BB8B1400FE10E1 /* UIColor.swift */; };
+		13C89118280C507C005DBAF3 /* QrScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89117280C507C005DBAF3 /* QrScanViewModel.swift */; };
+		13C8911A280C50D8005DBAF3 /* RandomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89119280C50D8005DBAF3 /* RandomViewModel.swift */; };
 		13CCFC8427C4F5DB0033D682 /* StoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCFC8327C4F5DB0033D682 /* StoreDetailView.swift */; };
 		13DCF88F27BDEF5A00EAF40C /* LotteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DCF88E27BDEF5A00EAF40C /* LotteryInfo.swift */; };
 		13FC7E9627F1D18200407B57 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FC7E9527F1D18200407B57 /* ViewModel.swift */; };
@@ -108,6 +110,8 @@
 		13A2A22027BB489100FE10E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13A2A24D27BB804700FE10E1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		13A2A25127BB8B1400FE10E1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		13C89117280C507C005DBAF3 /* QrScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScanViewModel.swift; sourceTree = "<group>"; };
+		13C89119280C50D8005DBAF3 /* RandomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomViewModel.swift; sourceTree = "<group>"; };
 		13CCFC8327C4F5DB0033D682 /* StoreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailView.swift; sourceTree = "<group>"; };
 		13DCF88E27BDEF5A00EAF40C /* LotteryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryInfo.swift; sourceTree = "<group>"; };
 		13FC7E9527F1D18200407B57 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 		13912CCB2809B6B00077D5A6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				13A2A21827BB489000FE10E1 /* Main.storyboard */,
+				13912CD32809BB810077D5A6 /* AppDelegate */,
 				13FD443327E59E83001C5AAA /* Base */,
 			);
 			path = UI;
@@ -197,6 +203,14 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		13912CD32809BB810077D5A6 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				13A2A21227BB489000FE10E1 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
 		13A2A20627BB489000FE10E1 = {
 			isa = PBXGroup;
 			children = (
@@ -210,14 +224,12 @@
 		13A2A21127BB489000FE10E1 /* Lotty */ = {
 			isa = PBXGroup;
 			children = (
-				13912CCC2809B6CD0077D5A6 /* Network */,
 				13912CCB2809B6B00077D5A6 /* UI */,
 				13802F6A27C3D4D8008EE0BC /* Storage.swift */,
+				13912CCC2809B6CD0077D5A6 /* Network */,
 				13DCF89527BE0C6E00EAF40C /* Model */,
 				13912CD22809BA5C0077D5A6 /* Resource */,
-				13A2A21227BB489000FE10E1 /* AppDelegate.swift */,
 				13A2A21427BB489000FE10E1 /* SceneDelegate.swift */,
-				13A2A21827BB489000FE10E1 /* Main.storyboard */,
 				13A2A22027BB489100FE10E1 /* Info.plist */,
 			);
 			path = Lotty;
@@ -266,6 +278,7 @@
 				13007AC527FC714900EB37C1 /* GameView.swift */,
 				13007AC127FC714900EB37C1 /* RandomViewController.swift */,
 				13007AC227FC714900EB37C1 /* RightLine.swift */,
+				13C89119280C50D8005DBAF3 /* RandomViewModel.swift */,
 			);
 			path = Random;
 			sourceTree = "<group>";
@@ -292,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				13007ABF27FC713800EB37C1 /* QrScanViewController.swift */,
+				13C89117280C507C005DBAF3 /* QrScanViewModel.swift */,
 			);
 			path = QR;
 			sourceTree = "<group>";
@@ -453,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13C89118280C507C005DBAF3 /* QrScanViewModel.swift in Sources */,
 				13A2A24E27BB804700FE10E1 /* HomeViewController.swift in Sources */,
 				1334B79E27C8B022003C2904 /* SideButton.swift in Sources */,
 				13007ABB27FC712500EB37C1 /* FailCell.swift in Sources */,
@@ -465,6 +480,7 @@
 				1334B79C27C756C4003C2904 /* StoreInfo.swift in Sources */,
 				13FC7E9627F1D18200407B57 /* ViewModel.swift in Sources */,
 				136C20DF27D1E988004BD29A /* RefreshView.swift in Sources */,
+				13C8911A280C50D8005DBAF3 /* RandomViewModel.swift in Sources */,
 				13007ABD27FC712500EB37C1 /* NumberCell.swift in Sources */,
 				13A2A21727BB489000FE10E1 /* AroundViewController.swift in Sources */,
 				13007AC927FC714900EB37C1 /* CountLabel.swift in Sources */,
