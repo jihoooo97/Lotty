@@ -1,4 +1,6 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 class RandomViewController: UIViewController {
     @IBOutlet weak var topLine: DottedLine!
@@ -198,6 +200,10 @@ class RandomViewController: UIViewController {
                 }
             }
         }
+        
+//        createButton.rx
+//            .tap
+//            .subscribe(<#T##observer: ObserverType##ObserverType#>)
         
     }
 }

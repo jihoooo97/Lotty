@@ -272,13 +272,13 @@
 		13DCF89127BE0B7A00EAF40C /* Random */ = {
 			isa = PBXGroup;
 			children = (
+				13007AC127FC714900EB37C1 /* RandomViewController.swift */,
+				13C89119280C50D8005DBAF3 /* RandomViewModel.swift */,
 				13007AC627FC714900EB37C1 /* BackgroundLabel.swift */,
 				13007AC327FC714900EB37C1 /* CountLabel.swift */,
 				13007AC427FC714900EB37C1 /* DottedLine.swift */,
 				13007AC527FC714900EB37C1 /* GameView.swift */,
-				13007AC127FC714900EB37C1 /* RandomViewController.swift */,
 				13007AC227FC714900EB37C1 /* RightLine.swift */,
-				13C89119280C50D8005DBAF3 /* RandomViewModel.swift */,
 			);
 			path = Random;
 			sourceTree = "<group>";
