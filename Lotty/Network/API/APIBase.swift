@@ -10,20 +10,12 @@ import Alamofire
 // MARK: - Request
 protocol APIRequest: Codable { }
 
-class APIPageableRequest: APIRequest {
-    
-}
 
 // MARK: - Response
 protocol APIResponse: Codable { }
 
-class APIPageableResponse<T: APIResponse>: APIRequest {
-    
-}
+class APIErrorResponse: Codable { }
 
-class APIErrorResponse: Codable {
-    
-}
 
 // MARK: - API Template
 class APIBase: NSObject {
