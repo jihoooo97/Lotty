@@ -195,6 +195,7 @@
 		13912CD22809BA5C0077D5A6 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				13A2A22027BB489100FE10E1 /* Info.plist */,
 				13A2A21B27BB489100FE10E1 /* Assets.xcassets */,
 				13A2A21D27BB489100FE10E1 /* LaunchScreen.storyboard */,
 				13A2A25127BB8B1400FE10E1 /* UIColor.swift */,
@@ -230,7 +231,6 @@
 				13DCF89527BE0C6E00EAF40C /* Model */,
 				13912CD22809BA5C0077D5A6 /* Resource */,
 				13A2A21427BB489000FE10E1 /* SceneDelegate.swift */,
-				13A2A22027BB489100FE10E1 /* Info.plist */,
 			);
 			path = Lotty;
 			sourceTree = "<group>";
