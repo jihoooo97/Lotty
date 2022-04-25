@@ -42,7 +42,12 @@ class LotteryViewModel {
             "method": "getLottoNumber",
             "drwNo": drwNo
         ]
-        AF.request("https://www.dhlottery.co.kr/common.do", method: .get, parameters: parameters, encoding: URLEncoding.queryString).validate(statusCode: 200..<300).responseDecodable(of: LotteryInfo.self) { response in
+        AF.request(
+            "https://www.dhlottery.co.kr/common.do",
+            method: .get, parameters: parameters,
+            encoding: URLEncoding.queryString
+        ).validate(statusCode: 200..<300)
+            .responseDecodable(of: LotteryInfo.self) { response in
             switch response.result {
             case .success:
                 guard let lottery = response.value else { return }

@@ -201,9 +201,5 @@ class RandomViewController: UIViewController {
             }
         }
         
-//        createButton.rx
-//            .tap
-//            .subscribe(<#T##observer: ObserverType##ObserverType#>)
-        
     }
 }
