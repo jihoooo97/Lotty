@@ -19,17 +19,13 @@
 		130F846427E5EAFD00E01079 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 130F845B27E5EAFD00E01079 /* Pretendard-Light.otf */; };
 		130F846527E5EAFD00E01079 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 130F845C27E5EAFD00E01079 /* Pretendard-ExtraLight.otf */; };
 		130F846627E5EAFD00E01079 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 130F845D27E5EAFD00E01079 /* Pretendard-ExtraBold.otf */; };
-		1334B79C27C756C4003C2904 /* StoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1334B79B27C756C4003C2904 /* StoreInfo.swift */; };
 		13802F6B27C3D4D8008EE0BC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13802F6A27C3D4D8008EE0BC /* Storage.swift */; };
-		13912CCE2809B6E70077D5A6 /* APIBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13912CCD2809B6E70077D5A6 /* APIBase.swift */; };
-		13912CD12809B7180077D5A6 /* BaseNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13912CD02809B7180077D5A6 /* BaseNetwork.swift */; };
 		13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21227BB489000FE10E1 /* AppDelegate.swift */; };
 		13A2A21527BB489000FE10E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21427BB489000FE10E1 /* SceneDelegate.swift */; };
 		13A2A21A27BB489000FE10E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21827BB489000FE10E1 /* Main.storyboard */; };
 		13A2A21C27BB489100FE10E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21B27BB489100FE10E1 /* Assets.xcassets */; };
 		13A2A21F27BB489100FE10E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21D27BB489100FE10E1 /* LaunchScreen.storyboard */; };
 		13A2A25227BB8B1400FE10E1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A25127BB8B1400FE10E1 /* UIColor.swift */; };
-		13DCF88F27BDEF5A00EAF40C /* LotteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DCF88E27BDEF5A00EAF40C /* LotteryInfo.swift */; };
 		A6D32E6CB7D32FDD60D1607D /* Pods_Lotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A64C4C25BD8F9610714F0B0 /* Pods_Lotty.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,10 +45,7 @@
 		130F845C27E5EAFD00E01079 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
 		130F845D27E5EAFD00E01079 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		131B329527EF0EE200F9121D /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1334B79B27C756C4003C2904 /* StoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
 		13802F6A27C3D4D8008EE0BC /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		13912CCD2809B6E70077D5A6 /* APIBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBase.swift; sourceTree = "<group>"; };
-		13912CD02809B7180077D5A6 /* BaseNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetwork.swift; sourceTree = "<group>"; };
 		13A2A21227BB489000FE10E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13A2A21427BB489000FE10E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		13A2A21927BB489000FE10E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,7 +53,6 @@
 		13A2A21E27BB489100FE10E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13A2A22027BB489100FE10E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13A2A25127BB8B1400FE10E1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		13DCF88E27BDEF5A00EAF40C /* LotteryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryInfo.swift; sourceTree = "<group>"; };
 		BDB874F062F3BED792DE7C97 /* Pods-Lotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.release.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,30 +103,6 @@
 			path = random;
 			sourceTree = "<group>";
 		};
-		13912CCB2809B6B00077D5A6 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		13912CCC2809B6CD0077D5A6 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				13912CD02809B7180077D5A6 /* BaseNetwork.swift */,
-				13912CCF2809B7040077D5A6 /* API */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		13912CCF2809B7040077D5A6 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				13912CCD2809B6E70077D5A6 /* APIBase.swift */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
 		13912CD22809BA5C0077D5A6 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,10 +136,7 @@
 				1317BB752915B6BC0033D22F /* search */,
 				1317BB762915B6C10033D22F /* qr */,
 				1317BB772915B6C60033D22F /* random */,
-				13912CCB2809B6B00077D5A6 /* UI */,
 				13802F6A27C3D4D8008EE0BC /* Storage.swift */,
-				13912CCC2809B6CD0077D5A6 /* Network */,
-				13DCF89527BE0C6E00EAF40C /* Model */,
 				13912CD22809BA5C0077D5A6 /* Resource */,
 			);
 			path = Lotty;
@@ -194,15 +159,6 @@
 				130F842C27E5E57500E01079 /* BMYEONSUNG_ttf.ttf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		13DCF89527BE0C6E00EAF40C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				13DCF88E27BDEF5A00EAF40C /* LotteryInfo.swift */,
-				1334B79B27C756C4003C2904 /* StoreInfo.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		3EDD3A305017908757C67039 /* Frameworks */ = {
@@ -351,11 +307,7 @@
 			files = (
 				13802F6B27C3D4D8008EE0BC /* Storage.swift in Sources */,
 				13A2A25227BB8B1400FE10E1 /* UIColor.swift in Sources */,
-				1334B79C27C756C4003C2904 /* StoreInfo.swift in Sources */,
-				13DCF88F27BDEF5A00EAF40C /* LotteryInfo.swift in Sources */,
 				13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */,
-				13912CD12809B7180077D5A6 /* BaseNetwork.swift in Sources */,
-				13912CCE2809B6E70077D5A6 /* APIBase.swift in Sources */,
 				13A2A21527BB489000FE10E1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
