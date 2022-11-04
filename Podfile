@@ -7,7 +7,15 @@ target 'Lotty' do
 
   # Pods for Lotty
   pod 'Alamofire', '~> 5.5'
+  pod 'Moya/RxSwift'
+
+  # UI
+  pod 'SnapKit'
+
+  # navermap
   pod 'NMapsMap'
+
+  # Rx
   pod 'RxSwift', '6.5.0'
   pod 'RxCocoa', '6.5.0'
 

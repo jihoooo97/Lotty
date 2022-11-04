@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 import RxSwift
 import RxCocoa
 import NMapsMap
@@ -39,6 +40,7 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
     let blockView = UIView()
     let alertView = AlertView()
     
+    var safeArea = UILayoutGuide()
     var locationManager = CLLocationManager()
     
     let viewModel = AroundViewModel()
@@ -57,20 +59,60 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         
         configureMap()
+        initUI()
         inputBind()
         outputBind()
     }
     
     func inputBind() {
-        
+        currentLocationButton.rx.tap
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
+            .withUnretained(self).map { $0.0 }
+            .subscribe(onNext: { $0.moveToCurrentLocation() })
+            .disposed(by: disposeBag)
     }
     
     func outputBind() {
+        // marker
         viewModel.storeInfoRelay
             .withUnretained(self).map { $0.0 }
-            .bind(onNext: {
-                
+            .bind(onNext: { $0.makeShopMarkers() }
+            ).disposed(by: disposeBag)
+        
+        viewModel.searchResultRelay
+            .withUnretained(self).map { $0 }
+            .map { ($0, $1) }
+            .bind(onNext: { (vc, result) in
+                guard let result = result.first else { return }
+                let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: Double(result.y)!, lng: Double(result.x)!))
+                vc.naverMapView!.moveCamera(cameraUpdate)
             }).disposed(by: disposeBag)
+    }
+    
+    func initUI() {
+        safeArea = view.safeAreaLayoutGuide
+        
+        [naverMapView!, searchBar, currentLocationButton, detailView]
+            .forEach { view.addSubview($0) }
+        
+        naverMapView!.snp.makeConstraints {
+            $0.leading.trailing.top.equalToSuperview()
+            $0.bottom.equalTo(safeArea)
+        }
+        
+        searchBar.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(12)
+            $0.top.equalTo(safeArea).offset(4)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(44)
+        }
+        
+        currentLocationButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().offset(-12)
+            $0.top.equalTo(searchBar.snp.bottom).offset(8)
+            $0.width.equalTo(50)
+            $0.height.equalTo(30)
+        }
     }
     
     func configureMap() {
@@ -119,7 +161,7 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    func drawShopMarkerInMap(markerInfo: Documents, shopMarker: LottyMapMarker) {
+    private func drawShopMarkerInMap(markerInfo: Documents, shopMarker: LottyMapMarker) {
         guard let lat = Double(markerInfo.y),
               let lng = Double(markerInfo.x) else { return }
         
@@ -151,7 +193,7 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func switchShopSelectedMarker(isNew : Bool) {
+    private func switchShopSelectedMarker(isNew : Bool) {
         guard let marker = selectedShop.marker,
               let shopData = selectedShop.data else { return }
 
@@ -200,7 +242,6 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func configureDetail(store: Documents) {
-        view.addSubview(detailView)
         detailView.heightAnchor.constraint(equalToConstant: 90).isActive = true
         detailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12).isActive = true
         detailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
@@ -208,26 +249,6 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
         
         let naviTap = UITapGestureRecognizer(target: self, action: #selector(clickNavi))
         detailView.naviView.addGestureRecognizer(naviTap)
-    }
-    
-    
-    
-    func configureButton() {
-        view.addSubview(currentLocationButton)
-        currentLocationButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        currentLocationButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        currentLocationButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
-        currentLocationButton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 4).isActive = true
-        
-        let locationTap = UITapGestureRecognizer(target: self, action: #selector(clickLocationButton))
-        currentLocationButton.addGestureRecognizer(locationTap)
-    }
-    
-    @objc func clickLocationButton() {
-        let location = locationManager.location ?? CLLocation(latitude: 37.3593486, longitude: 127.104845)
-        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(from: location.coordinate), zoomTo: 16)
-        cameraUpdate.animation = .none
-        naverMapView!.moveCamera(cameraUpdate)
     }
 
 }
@@ -245,6 +266,14 @@ extension AroundViewController: NMFMapViewCameraDelegate, NMFMapViewTouchDelegat
         self.switchShopSelectedMarker(isNew: false)
         self.selectedShop.reset()
         self.hideShopView()
+    }
+    
+    private func moveToCurrentLocation() {
+        let location = locationManager.location ?? CLLocation(latitude: 37.3593486,
+                                                              longitude: 127.104845)
+        let camera = NMFCameraUpdate(scrollTo: NMGLatLng(from: location.coordinate), zoomTo: 16)
+        camera.animation = .none
+        self.naverMapView?.moveCamera(camera)
     }
     
 }

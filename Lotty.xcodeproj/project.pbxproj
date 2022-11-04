@@ -50,7 +50,6 @@
 		1317BC062915BBFC0033D22F /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBF22915BBFC0033D22F /* Pretendard-ExtraLight.otf */; };
 		1317BC072915BBFC0033D22F /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBF32915BBFC0033D22F /* Pretendard-SemiBold.otf */; };
 		1317BC082915BBFC0033D22F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBF42915BBFC0033D22F /* AppDelegate.swift */; };
-		1317BC0C2915BC8A0033D22F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1317BC0B2915BC8A0033D22F /* Info.plist */; };
 		1317BC112915BD4E0033D22F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1317BC0F2915BCA60033D22F /* LaunchScreen.storyboard */; };
 		1317BC2F2915BE180033D22F /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC152915BE180033D22F /* BaseViewModel.swift */; };
 		1317BC302915BE180033D22F /* BaseNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC162915BE180033D22F /* BaseNetwork.swift */; };
@@ -503,7 +502,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1317BC0C2915BC8A0033D22F /* Info.plist in Resources */,
 				1317BC042915BBFC0033D22F /* Pretendard-Bold.otf in Resources */,
 				1317BBFA2915BBFC0033D22F /* Assets.xcassets in Resources */,
 				1317BC022915BBFC0033D22F /* BMHANNAPro.ttf in Resources */,
@@ -772,7 +770,7 @@
 				DEVELOPMENT_TEAM = 3LTN66N935;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Lotty/Info.plist;
+				INFOPLIST_FILE = Lotty/resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "로또의민족";
 				INFOPLIST_KEY_NSCameraUsageDescription = "로또 QR코드를 조회하려면 카메라 권한이 필요합니다";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "로또 판매점을 조회하려면 위치 정보가 필요합니다";
@@ -811,7 +809,7 @@
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Lotty/Info.plist;
+				INFOPLIST_FILE = Lotty/resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "로또의민족";
 				INFOPLIST_KEY_NSCameraUsageDescription = "로또 QR코드를 조회하려면 카메라 권한이 필요합니다";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "로또 판매점을 조회하려면 위치 정보가 필요합니다";

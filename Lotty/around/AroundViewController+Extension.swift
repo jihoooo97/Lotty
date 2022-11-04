@@ -4,12 +4,6 @@ import NMapsMap
 extension AroundViewController {
 
     func configureNavi() {
-        view.addSubview(searchBar)
-        searchBar.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12).isActive = true
-        searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
-        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 4).isActive = true
-        
         searchBar.addTarget(self, action: #selector(clickSearch), for: .touchUpInside)
     }
     
