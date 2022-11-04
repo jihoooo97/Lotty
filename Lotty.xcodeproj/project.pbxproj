@@ -27,6 +27,25 @@
 		1317BB852915B7A30033D22F /* alertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7D2915B7A30033D22F /* alertView.swift */; };
 		1317BB862915B7A30033D22F /* SideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7E2915B7A30033D22F /* SideButton.swift */; };
 		1317BB872915B7A30033D22F /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7F2915B7A30033D22F /* SearchBarView.swift */; };
+		1317BB8A2915B7B70033D22F /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB882915B7B60033D22F /* RefreshView.swift */; };
+		1317BB8B2915B7B70033D22F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB892915B7B70033D22F /* HomeViewController.swift */; };
+		1317BB962915B7C70033D22F /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB8D2915B7C70033D22F /* EmptyCell.swift */; };
+		1317BB972915B7C70033D22F /* SearchLotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB8E2915B7C70033D22F /* SearchLotteryViewController.swift */; };
+		1317BB982915B7C70033D22F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB8F2915B7C70033D22F /* DetailViewModel.swift */; };
+		1317BB992915B7C70033D22F /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB902915B7C70033D22F /* HistoryCell.swift */; };
+		1317BB9A2915B7C70033D22F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB922915B7C70033D22F /* SearchViewController.swift */; };
+		1317BB9B2915B7C70033D22F /* FailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB932915B7C70033D22F /* FailCell.swift */; };
+		1317BB9C2915B7C70033D22F /* NumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB942915B7C70033D22F /* NumberCell.swift */; };
+		1317BB9D2915B7C70033D22F /* LotteryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB952915B7C70033D22F /* LotteryViewModel.swift */; };
+		1317BBA02915B7D10033D22F /* QrScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB9E2915B7D10033D22F /* QrScanViewController.swift */; };
+		1317BBA12915B7D10033D22F /* QrScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB9F2915B7D10033D22F /* QrScanViewModel.swift */; };
+		1317BBA92915B7DA0033D22F /* BackgroundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA22915B7DA0033D22F /* BackgroundLabel.swift */; };
+		1317BBAA2915B7DA0033D22F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA32915B7DA0033D22F /* GameView.swift */; };
+		1317BBAB2915B7DA0033D22F /* RandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA42915B7DA0033D22F /* RandomViewController.swift */; };
+		1317BBAC2915B7DA0033D22F /* RandomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA52915B7DA0033D22F /* RandomViewModel.swift */; };
+		1317BBAD2915B7DA0033D22F /* RightLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA62915B7DA0033D22F /* RightLine.swift */; };
+		1317BBAE2915B7DA0033D22F /* CountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA72915B7DA0033D22F /* CountLabel.swift */; };
+		1317BBAF2915B7DA0033D22F /* DottedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA82915B7DA0033D22F /* DottedLine.swift */; };
 		13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21227BB489000FE10E1 /* AppDelegate.swift */; };
 		13A2A21527BB489000FE10E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21427BB489000FE10E1 /* SceneDelegate.swift */; };
 		13A2A21A27BB489000FE10E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21827BB489000FE10E1 /* Main.storyboard */; };
@@ -59,6 +78,25 @@
 		1317BB7D2915B7A30033D22F /* alertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = alertView.swift; sourceTree = "<group>"; };
 		1317BB7E2915B7A30033D22F /* SideButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideButton.swift; sourceTree = "<group>"; };
 		1317BB7F2915B7A30033D22F /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		1317BB882915B7B60033D22F /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
+		1317BB892915B7B70033D22F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1317BB8D2915B7C70033D22F /* EmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
+		1317BB8E2915B7C70033D22F /* SearchLotteryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLotteryViewController.swift; sourceTree = "<group>"; };
+		1317BB8F2915B7C70033D22F /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		1317BB902915B7C70033D22F /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		1317BB922915B7C70033D22F /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		1317BB932915B7C70033D22F /* FailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailCell.swift; sourceTree = "<group>"; };
+		1317BB942915B7C70033D22F /* NumberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberCell.swift; sourceTree = "<group>"; };
+		1317BB952915B7C70033D22F /* LotteryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryViewModel.swift; sourceTree = "<group>"; };
+		1317BB9E2915B7D10033D22F /* QrScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrScanViewController.swift; sourceTree = "<group>"; };
+		1317BB9F2915B7D10033D22F /* QrScanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrScanViewModel.swift; sourceTree = "<group>"; };
+		1317BBA22915B7DA0033D22F /* BackgroundLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundLabel.swift; sourceTree = "<group>"; };
+		1317BBA32915B7DA0033D22F /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		1317BBA42915B7DA0033D22F /* RandomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomViewController.swift; sourceTree = "<group>"; };
+		1317BBA52915B7DA0033D22F /* RandomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomViewModel.swift; sourceTree = "<group>"; };
+		1317BBA62915B7DA0033D22F /* RightLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightLine.swift; sourceTree = "<group>"; };
+		1317BBA72915B7DA0033D22F /* CountLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountLabel.swift; sourceTree = "<group>"; };
+		1317BBA82915B7DA0033D22F /* DottedLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DottedLine.swift; sourceTree = "<group>"; };
 		131B329527EF0EE200F9121D /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A2A21227BB489000FE10E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13A2A21427BB489000FE10E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +123,8 @@
 		1317BB732915B6A50033D22F /* home */ = {
 			isa = PBXGroup;
 			children = (
+				1317BB892915B7B70033D22F /* HomeViewController.swift */,
+				1317BB882915B7B60033D22F /* RefreshView.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -107,6 +147,8 @@
 		1317BB752915B6BC0033D22F /* search */ = {
 			isa = PBXGroup;
 			children = (
+				1317BB912915B7C70033D22F /* 로또 리스트 */,
+				1317BB8C2915B7C70033D22F /* 로또 상세 */,
 			);
 			path = search;
 			sourceTree = "<group>";
@@ -114,6 +156,8 @@
 		1317BB762915B6C10033D22F /* qr */ = {
 			isa = PBXGroup;
 			children = (
+				1317BB9E2915B7D10033D22F /* QrScanViewController.swift */,
+				1317BB9F2915B7D10033D22F /* QrScanViewModel.swift */,
 			);
 			path = qr;
 			sourceTree = "<group>";
@@ -121,8 +165,37 @@
 		1317BB772915B6C60033D22F /* random */ = {
 			isa = PBXGroup;
 			children = (
+				1317BBA22915B7DA0033D22F /* BackgroundLabel.swift */,
+				1317BBA72915B7DA0033D22F /* CountLabel.swift */,
+				1317BBA82915B7DA0033D22F /* DottedLine.swift */,
+				1317BBA32915B7DA0033D22F /* GameView.swift */,
+				1317BBA42915B7DA0033D22F /* RandomViewController.swift */,
+				1317BBA52915B7DA0033D22F /* RandomViewModel.swift */,
+				1317BBA62915B7DA0033D22F /* RightLine.swift */,
 			);
 			path = random;
+			sourceTree = "<group>";
+		};
+		1317BB8C2915B7C70033D22F /* 로또 상세 */ = {
+			isa = PBXGroup;
+			children = (
+				1317BB8D2915B7C70033D22F /* EmptyCell.swift */,
+				1317BB8E2915B7C70033D22F /* SearchLotteryViewController.swift */,
+				1317BB8F2915B7C70033D22F /* DetailViewModel.swift */,
+				1317BB902915B7C70033D22F /* HistoryCell.swift */,
+			);
+			path = "로또 상세";
+			sourceTree = "<group>";
+		};
+		1317BB912915B7C70033D22F /* 로또 리스트 */ = {
+			isa = PBXGroup;
+			children = (
+				1317BB922915B7C70033D22F /* SearchViewController.swift */,
+				1317BB932915B7C70033D22F /* FailCell.swift */,
+				1317BB942915B7C70033D22F /* NumberCell.swift */,
+				1317BB952915B7C70033D22F /* LotteryViewModel.swift */,
+			);
+			path = "로또 리스트";
 			sourceTree = "<group>";
 		};
 		13912CD22809BA5C0077D5A6 /* Resource */ = {
@@ -327,16 +400,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				1317BB832915B7A30033D22F /* StoreDetailView.swift in Sources */,
+				1317BBAB2915B7DA0033D22F /* RandomViewController.swift in Sources */,
 				13A2A25227BB8B1400FE10E1 /* UIColor.swift in Sources */,
 				1317BB862915B7A30033D22F /* SideButton.swift in Sources */,
+				1317BBAD2915B7DA0033D22F /* RightLine.swift in Sources */,
+				1317BB962915B7C70033D22F /* EmptyCell.swift in Sources */,
+				1317BB9C2915B7C70033D22F /* NumberCell.swift in Sources */,
 				13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */,
 				13A2A21527BB489000FE10E1 /* SceneDelegate.swift in Sources */,
+				1317BB992915B7C70033D22F /* HistoryCell.swift in Sources */,
+				1317BB9B2915B7C70033D22F /* FailCell.swift in Sources */,
 				1317BB812915B7A30033D22F /* LocationHistoryCell.swift in Sources */,
+				1317BB9D2915B7C70033D22F /* LotteryViewModel.swift in Sources */,
+				1317BB972915B7C70033D22F /* SearchLotteryViewController.swift in Sources */,
+				1317BBAC2915B7DA0033D22F /* RandomViewModel.swift in Sources */,
+				1317BB8A2915B7B70033D22F /* RefreshView.swift in Sources */,
 				1317BB852915B7A30033D22F /* alertView.swift in Sources */,
+				1317BBAE2915B7DA0033D22F /* CountLabel.swift in Sources */,
+				1317BBAA2915B7DA0033D22F /* GameView.swift in Sources */,
+				1317BBA02915B7D10033D22F /* QrScanViewController.swift in Sources */,
+				1317BBA12915B7D10033D22F /* QrScanViewModel.swift in Sources */,
+				1317BBA92915B7DA0033D22F /* BackgroundLabel.swift in Sources */,
 				1317BB872915B7A30033D22F /* SearchBarView.swift in Sources */,
+				1317BB9A2915B7C70033D22F /* SearchViewController.swift in Sources */,
 				1317BB842915B7A30033D22F /* AroundViewController.swift in Sources */,
 				1317BB822915B7A30033D22F /* LocationEmptyCell.swift in Sources */,
+				1317BB8B2915B7B70033D22F /* HomeViewController.swift in Sources */,
+				1317BBAF2915B7DA0033D22F /* DottedLine.swift in Sources */,
 				1317BB802915B7A30033D22F /* MapSearchViewController.swift in Sources */,
+				1317BB982915B7C70033D22F /* DetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
