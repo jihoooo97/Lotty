@@ -1,6 +1,6 @@
 import UIKit
 
-extension BaseMarker {
+extension BaseMapMarker {
     
     // UIView to UIImage
     func asImage() -> UIImage {

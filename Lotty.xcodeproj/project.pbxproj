@@ -70,6 +70,10 @@
 		1317BC3E2915BE190033D22F /* Codable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC2D2915BE180033D22F /* Codable+Extension.swift */; };
 		1317BC3F2915BE190033D22F /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC2E2915BE180033D22F /* CALayer+Extension.swift */; };
 		1317BC412915BE1F0033D22F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC402915BE1F0033D22F /* Storage.swift */; };
+		1317BC432915BF730033D22F /* AroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC422915BF730033D22F /* AroundViewModel.swift */; };
+		1317BC452915C5430033D22F /* AroundViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC442915C5430033D22F /* AroundViewController+Extension.swift */; };
+		1317BC482915C6F70033D22F /* BaseMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC472915C6F70033D22F /* BaseMapMarker.swift */; };
+		1317BC4A2915C70A0033D22F /* LottyMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC492915C70A0033D22F /* LottyMapMarker.swift */; };
 		13A2A21A27BB489000FE10E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21827BB489000FE10E1 /* Main.storyboard */; };
 		A6D32E6CB7D32FDD60D1607D /* Pods_Lotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A64C4C25BD8F9610714F0B0 /* Pods_Lotty.framework */; };
 /* End PBXBuildFile section */
@@ -140,6 +144,10 @@
 		1317BC2D2915BE180033D22F /* Codable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extension.swift"; sourceTree = "<group>"; };
 		1317BC2E2915BE180033D22F /* CALayer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		1317BC402915BE1F0033D22F /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		1317BC422915BF730033D22F /* AroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AroundViewModel.swift; sourceTree = "<group>"; };
+		1317BC442915C5430033D22F /* AroundViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AroundViewController+Extension.swift"; sourceTree = "<group>"; };
+		1317BC472915C6F70033D22F /* BaseMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapMarker.swift; sourceTree = "<group>"; };
+		1317BC492915C70A0033D22F /* LottyMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottyMapMarker.swift; sourceTree = "<group>"; };
 		131B329527EF0EE200F9121D /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A2A21927BB489000FE10E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BDB874F062F3BED792DE7C97 /* Pods-Lotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.release.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,8 +177,11 @@
 		1317BB742915B6B50033D22F /* around */ = {
 			isa = PBXGroup;
 			children = (
+				1317BC462915C6A60033D22F /* mapMarker */,
 				1317BB7D2915B7A30033D22F /* alertView.swift */,
 				1317BB7C2915B7A30033D22F /* AroundViewController.swift */,
+				1317BC422915BF730033D22F /* AroundViewModel.swift */,
+				1317BC442915C5430033D22F /* AroundViewController+Extension.swift */,
 				1317BB7A2915B7A20033D22F /* LocationEmptyCell.swift */,
 				1317BB792915B7A20033D22F /* LocationHistoryCell.swift */,
 				1317BB782915B7A20033D22F /* MapSearchViewController.swift */,
@@ -380,6 +391,15 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
+		1317BC462915C6A60033D22F /* mapMarker */ = {
+			isa = PBXGroup;
+			children = (
+				1317BC472915C6F70033D22F /* BaseMapMarker.swift */,
+				1317BC492915C70A0033D22F /* LottyMapMarker.swift */,
+			);
+			path = mapMarker;
+			sourceTree = "<group>";
+		};
 		13A2A20627BB489000FE10E1 = {
 			isa = PBXGroup;
 			children = (
@@ -566,6 +586,7 @@
 				1317BC3D2915BE190033D22F /* UIImage+Extension.swift in Sources */,
 				1317BB972915B7C70033D22F /* SearchLotteryViewController.swift in Sources */,
 				1317BC382915BE180033D22F /* APIBase.swift in Sources */,
+				1317BC452915C5430033D22F /* AroundViewController+Extension.swift in Sources */,
 				1317BBAC2915B7DA0033D22F /* RandomViewModel.swift in Sources */,
 				1317BC2F2915BE180033D22F /* BaseViewModel.swift in Sources */,
 				1317BB8A2915B7B70033D22F /* RefreshView.swift in Sources */,
@@ -576,6 +597,7 @@
 				1317BC392915BE190033D22F /* Interceptor.swift in Sources */,
 				1317BBF92915BBFC0033D22F /* SceneDelegate.swift in Sources */,
 				1317BBAA2915B7DA0033D22F /* GameView.swift in Sources */,
+				1317BC482915C6F70033D22F /* BaseMapMarker.swift in Sources */,
 				1317BC342915BE180033D22F /* ErrorEntitiy.swift in Sources */,
 				1317BC082915BBFC0033D22F /* AppDelegate.swift in Sources */,
 				1317BBA02915B7D10033D22F /* QrScanViewController.swift in Sources */,
@@ -584,6 +606,7 @@
 				1317BC3A2915BE190033D22F /* AroundNetwork.swift in Sources */,
 				1317BC332915BE180033D22F /* StoreInfo.swift in Sources */,
 				1317BC352915BE180033D22F /* Entity.swift in Sources */,
+				1317BC4A2915C70A0033D22F /* LottyMapMarker.swift in Sources */,
 				1317BBA92915B7DA0033D22F /* BackgroundLabel.swift in Sources */,
 				1317BB872915B7A30033D22F /* SearchBarView.swift in Sources */,
 				1317BC322915BE180033D22F /* AroundUseCase.swift in Sources */,
@@ -597,6 +620,7 @@
 				1317BC3E2915BE190033D22F /* Codable+Extension.swift in Sources */,
 				1317BBAF2915B7DA0033D22F /* DottedLine.swift in Sources */,
 				1317BB802915B7A30033D22F /* MapSearchViewController.swift in Sources */,
+				1317BC432915BF730033D22F /* AroundViewModel.swift in Sources */,
 				1317BC3F2915BE190033D22F /* CALayer+Extension.swift in Sources */,
 				1317BB982915B7C70033D22F /* DetailViewModel.swift in Sources */,
 			);

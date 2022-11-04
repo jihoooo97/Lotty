@@ -1,113 +1,205 @@
 import UIKit
-import CoreLocation
+import RxSwift
+import RxCocoa
 import NMapsMap
-import Alamofire
-import Network
+import CoreLocation
 
-protocol SearchDelegate: AnyObject { func mapSearch(query: String) }
-
-class AroundViewController: UIViewController, CLLocationManagerDelegate {
-    let monitor = NWPathMonitor()
-    var locationManager = CLLocationManager()
-    let naverMapView = NMFNaverMapView()
+final class AroundViewController: UIViewController, CLLocationManagerDelegate {
+    
+    struct SelectedShop {
+        weak var marker: NMFMarker?
+        var data: Documents?
+        var lat: String?
+        var lng: String?
+        
+        mutating func save(marker: NMFMarker?, data: Documents?) {
+            self.marker = marker
+            self.data = data
+            self.lat = data?.y
+            self.lng = data?.x
+        }
+        
+        mutating func reset() {
+            self.marker = nil
+            self.data = nil
+            self.lat = data?.y
+            self.lng = data?.x
+        }
+    }
+    
+    var naverMapView: NMFMapView?
     let searchBar = SearchBarView()
     let detailView = StoreDetailView()
-    let sideButton = SideButton()
+    
+    var currentLocationButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
     let blockView = UIView()
     let alertView = AlertView()
     
-    var markerList: [LotteryMarker] = []
+    var locationManager = CLLocationManager()
     
-    var fourClover = UIImage()
-    var threeClover = UIImage()
+    let viewModel = AroundViewModel()
+    let disposeBag = DisposeBag()
+    
+    let markerBase = LottyMapMarker(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    var markersInMap: [NMFMarker?] = []
+    
+    var selectedShop = SelectedShop()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        monitor.start(queue: .global())
-        monitor.pathUpdateHandler = { path in
-            if path.status != .satisfied {
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
-                    let confirm = UIAlertAction(title: "확인", style: .default)
-                    alert.addAction(confirm)
-                    self.present(alert, animated: true)
-                }
-            }
-        }
-        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        naverMapView.mapView.touchDelegate = self
+        
         configureMap()
-        if CLLocationManager.locationServicesEnabled() {
-            let latitude = locationManager.location?.coordinate.latitude ?? 37.3593486
-            let longitude = locationManager.location?.coordinate.longitude ?? 127.104845
-            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: latitude, lng: longitude))
-            cameraUpdate.animation = .easeOut
-            naverMapView.mapView.moveCamera(cameraUpdate)
-        }
+        inputBind()
+        outputBind()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    func inputBind() {
+        
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    func outputBind() {
+        viewModel.storeInfoRelay
+            .withUnretained(self).map { $0.0 }
+            .bind(onNext: {
+                
+            }).disposed(by: disposeBag)
     }
     
     func configureMap() {
-        fourClover = resizeImage(image: UIImage(named: "clover_four_icon")!, width: 50, height: 53)
-        threeClover = resizeImage(image: UIImage(named: "clover_three_icon")!, width: 50, height: 50)
+        guard naverMapView != nil else { return }
+        self.tabBarController?.tabBar.backgroundColor = .white
         
-        if CLLocationManager.locationServicesEnabled() {
-            let width = UIScreen.main.bounds.width
-            let height = UIScreen.main.bounds.height - self.tabBarController!.tabBar.frame.size.height
-            naverMapView.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            
-            view.addSubview(naverMapView)
-            self.tabBarController?.tabBar.backgroundColor = .white
-            naverMapView.mapView.addCameraDelegate(delegate: self)
-            naverMapView.mapView.positionMode = .direction
-            naverMapView.mapView.allowsTilting = false
-            naverMapView.mapView.allowsRotating = false
-            naverMapView.showScaleBar = false
-            
-            configureNavi()
-            configureButton()
-        } else {
-            // 권한 허용 alert
+        naverMapView!.addCameraDelegate(delegate: self)
+        naverMapView!.touchDelegate = self
+        naverMapView!.allowsRotating = false
+        naverMapView!.allowsTilting = false
+        naverMapView!.minZoomLevel = 5
+        naverMapView!.positionMode = .compass
+        naverMapView!.extent = NMGLatLngBounds(southWestLat: 31.43,
+                                      southWestLng: 122.37,
+                                      northEastLat: 44.35,
+                                      northEastLng: 131)
+        let location = locationManager.location ?? CLLocation(latitude: 37.3593486, longitude: 127.104845)
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(from: location.coordinate), zoomTo: 16)
+        naverMapView!.moveCamera(cameraUpdate)
+        
+        configureNavi()
+    }
+    
+    // MARK: - Draw
+    private func deleteOldMarkers() {
+        guard naverMapView != nil else { return }
+        let markerList = viewModel.storeInfoRelay.value
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.markersInMap.forEach { $0?.mapView = nil }
+            self?.markersInMap.removeAll()
+            if markerList.count == 0 {
+                self?.selectedShop.marker = nil
+            }
         }
     }
     
-    func configureNavi() {
-        view.addSubview(searchBar)
-        searchBar.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12).isActive = true
-        searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
-        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 4).isActive = true
+    private func makeShopMarkers() {
+        let value = viewModel.storeInfoRelay.value
         
-        searchBar.addTarget(self, action: #selector(clickSearch), for: .touchUpInside)
+        deleteOldMarkers()
+        value.forEach { [weak self] shopData in
+            let marker = (self?.markerBase)!
+            self?.drawShopMarkerInMap(markerInfo: shopData, shopMarker: marker)
+        }
+        
     }
     
-    @objc func clickSearch() {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchMap") as? MapSearchViewController else { return }
-        vc.modalPresentationStyle = .fullScreen
-        vc.delegate = self
-        self.present(vc, animated: false, completion: nil)
+    func drawShopMarkerInMap(markerInfo: Documents, shopMarker: LottyMapMarker) {
+        guard let lat = Double(markerInfo.y),
+              let lng = Double(markerInfo.x) else { return }
+        
+        let position = NMGLatLng(lat: lat, lng: lng)
+        let marker = NMFMarker(position: position)
+        let isSelected = (selectedShop.lat == markerInfo.y && selectedShop.lng == markerInfo.x)
+        
+        marker.touchHandler = { [weak self] touchMarker -> Bool in
+            self?.switchShopSelectedMarker(isNew: false)
+            self?.selectedShop.save(marker: marker, data: markerInfo)
+            self?.switchShopSelectedMarker(isNew: true)
+            self?.setShopDetail(markerInfo: markerInfo)
+            return true
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            if isSelected {
+                self?.switchShopSelectedMarker(isNew: false)
+                self?.selectedShop.save(marker: marker, data: markerInfo)
+                self?.switchShopSelectedMarker(isNew: true)
+            } else {
+                shopMarker.isPressed = isSelected
+//                shopMarker.setData(markerInfo: markerInfo)
+                marker.iconImage = NMFOverlayImage(image: shopMarker.asImage())
+            }
+            
+            marker.mapView = self?.naverMapView
+            self?.markersInMap.append(marker)
+        }
+    }
+    
+    func switchShopSelectedMarker(isNew : Bool) {
+        guard let marker = selectedShop.marker,
+              let shopData = selectedShop.data else { return }
+
+        let shopMarker = self.markerBase
+        shopMarker.isPressed = isNew
+//        shopMarker.setData(markerInfo: shopData)
+        marker.zIndex = isNew ? 1 : 0
+        marker.iconImage = NMFOverlayImage(image: shopMarker.asImage())
+        showShopView()
+    }
+    
+    private func setShopDetail(markerInfo: Documents) {
+        detailView.id = markerInfo.id
+        detailView.lat = markerInfo.y
+        detailView.lng = markerInfo.x
+        
+        detailView.storeName.text = markerInfo.place_name
+        detailView.storeAddress.text = markerInfo.address_name
+        detailView.storeCall.text = markerInfo.phone
+    }
+    
+    private func showShopView() {
+        detailView.isHidden = false
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0,
+            options: .curveEaseOut,
+            animations: { [weak self] in
+                self?.detailView.transform = CGAffineTransform(translationX: 0, y: -98)
+            }
+        )
+        
+    }
+    
+    private func hideShopView() {
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0,
+            animations: { [weak self] in
+                self?.detailView.transform = CGAffineTransform(translationX: 0, y: 0)
+            },
+            completion: { [weak self] _ in
+                self?.detailView.isHidden = true
+            }
+        )
     }
     
     func configureDetail(store: Documents) {
-        detailView.id = store.id
-        detailView.lat = store.y
-        detailView.lng = store.x
-        
-        detailView.storeName.text = store.place_name
-        detailView.storeAddress.text = store.address_name
-        detailView.storeCall.text = store.phone
-        
         view.addSubview(detailView)
         detailView.heightAnchor.constraint(equalToConstant: 90).isActive = true
         detailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12).isActive = true
@@ -118,211 +210,50 @@ class AroundViewController: UIViewController, CLLocationManagerDelegate {
         detailView.naviView.addGestureRecognizer(naviTap)
     }
     
-    @objc func clickNavi() {
-        let x = locationManager.location?.coordinate.longitude ?? 127.104845
-        let y = locationManager.location?.coordinate.latitude ?? 37.3593486
-        let url = "kakaomap://route?" + "ep=\(y),\(x)" + "&ep=\(detailView.lat),\(detailView.lng)" + "&by=CAR"
-        
-        if let openApp = URL(string: url), UIApplication.shared.canOpenURL(openApp) {
-            UIApplication.shared.open(openApp)
-        } else {
-            let downApp = URL(string: "https://apps.apple.com/us/app/id304608425")!
-            UIApplication.shared.open(downApp)
-        }
-    }
+    
     
     func configureButton() {
-        view.addSubview(sideButton)
-        sideButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        sideButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        sideButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
-        sideButton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 4).isActive = true
+        view.addSubview(currentLocationButton)
+        currentLocationButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        currentLocationButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        currentLocationButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
+        currentLocationButton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 4).isActive = true
         
         let locationTap = UITapGestureRecognizer(target: self, action: #selector(clickLocationButton))
-        sideButton.currentLocationButton.addGestureRecognizer(locationTap)
+        currentLocationButton.addGestureRecognizer(locationTap)
     }
     
     @objc func clickLocationButton() {
-        let latitude = locationManager.location?.coordinate.latitude ?? 37.3593486
-        let longitude = locationManager.location?.coordinate.longitude ?? 127.104845
-        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: latitude, lng: longitude))
-        cameraUpdate.animation = .easeIn
-        naverMapView.mapView.moveCamera(cameraUpdate)
+        let location = locationManager.location ?? CLLocation(latitude: 37.3593486, longitude: 127.104845)
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(from: location.coordinate), zoomTo: 16)
+        cameraUpdate.animation = .none
+        naverMapView!.moveCamera(cameraUpdate)
     }
-    
-    func configureAlertView() {
-        blockView.translatesAutoresizingMaskIntoConstraints = false
-        blockView.backgroundColor = .black
-        blockView.alpha = 0.6
-        
-        view.addSubview(blockView)
-        blockView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        blockView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        blockView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        blockView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-        view.addSubview(alertView)
-        alertView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        alertView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        alertView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 200).isActive = true
-        alertView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        
-        alertView.confirmButton.addTarget(self, action: #selector(popAlert), for: .touchUpInside)
-    }
-    
-    @objc func popAlert() {
-        self.alertView.confirmButton.isEnabled = false
-        DispatchQueue.main.async {
-            self.alertView.removeFromSuperview()
-            self.blockView.removeFromSuperview()
-        }
-        let url = "kakaomap://"
-        if let openApp = URL(string: url), UIApplication.shared.canOpenURL(openApp) {
-            UIApplication.shared.open(openApp)
-        } else {
-            let downApp = URL(string: "https://apps.apple.com/us/app/id304608425")!
-            UIApplication.shared.open(downApp)
-        }
-    }
-    
-    func resizeImage(image: UIImage, width: CGFloat, height: CGFloat) -> UIImage {
-        UIGraphicsBeginImageContext(CGSize(width: width, height: height))
-        image.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage!
-    }
-    
-    // map 클릭 시 마커 이미지 변경
-    @objc func clickMap() {
-        let x = self.detailView.frame.minX
-        let y = UIScreen.main.bounds.height + 100
-        
-        UIView.animate(withDuration: 0.5,
-                       animations: {
-            self.detailView.frame.origin = CGPoint(x: x, y: y)
-            self.detailView.id = "-"
-        })
-        
-        for marker in self.markerList {
-            if marker.storeId != self.detailView.id {
-                marker.marker.iconImage = NMFOverlayImage(image: self.threeClover)
-            }
-        }
-    }
+
 }
+
 
 // MARK: CAMERA별 판매점 마커 갱신
-extension AroundViewController: NMFMapViewCameraDelegate {
+extension AroundViewController: NMFMapViewCameraDelegate, NMFMapViewTouchDelegate {
+    
     func mapViewCameraIdle(_ mapView: NMFMapView) {
-        if monitor.currentPath.status == .satisfied {
-            for marker in markerList {
-                if marker.storeId != self.detailView.id {
-                    self.markerList = self.markerList.filter({$0.marker != marker.marker})
-                    marker.marker.mapView = nil
-                }
-            }
-            
-            let positon = mapView.cameraPosition.target
-            let paramerters: Parameters = [
-                "x": positon.lng,
-                "y": positon.lat,
-                "query": "복권 판매점",
-                "size": 15
-            ]
-            let headers: HTTPHeaders = [
-                "Authorization": "KakaoAK 7165edf50ee98e1383adf5924f5a76ad"
-            ]
-            AF.request("https://dapi.kakao.com/v2/local/search/keyword.json", method: .get, parameters: paramerters, encoding: URLEncoding.queryString, headers: headers).validate(statusCode: 200..<300).responseDecodable(of: StoreInfo.self) { response in
-                switch response.result {
-                case .success:
-                    guard let stores = response.value?.documents else { return }
-                    for i in 0..<stores.count {
-                        let marker = LotteryMarker(marker: NMFMarker(), storeId: stores[i].id)
-                        marker.marker.position = NMGLatLng(lat: Double(stores[i].y)!, lng: Double(stores[i].x)!)
-                        if !self.markerList.contains(where: {$0.storeId == marker.storeId}) && marker.storeId != self.detailView.id {
-                            self.markerList.append(marker)
-                            marker.marker.mapView = self.naverMapView.mapView
-                        }
-                        
-                        if stores[i].id == self.detailView.id {
-                            marker.marker.iconImage = NMFOverlayImage(image: self.fourClover)
-                        } else {
-                            marker.marker.iconImage = NMFOverlayImage(image: self.threeClover)
-                        }
-                        
-                        marker.marker.touchHandler = { (overlay: NMFOverlay) -> Bool in
-                            self.configureDetail(store: stores[i])
-                            let x = self.detailView.frame.minX
-                            let y = UIScreen.main.bounds.height - 8
-                            self.detailView.frame.origin = CGPoint(x: x, y: y + 198)
-                            UIView.animate(withDuration: 0.5,
-                                           animations: {
-                                self.detailView.frame.origin = CGPoint(x: x, y: y)
-                            })
-                            
-                            marker.marker.iconImage = NMFOverlayImage(image: self.fourClover)
-                            for marker in self.markerList.filter({ $0.marker != marker.marker }) {
-                                marker.marker.iconImage = NMFOverlayImage(image: self.threeClover)
-                            }
-                            return true
-                        }
-                    }
-                case .failure:
-                    // 네트워크 O, 검색 한도 초과 시
-                    if self.monitor.currentPath.status == .satisfied {
-                        self.configureAlertView()
-                        let x = self.alertView.frame.minX
-                        let y = UIScreen.main.bounds.height - 260
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-                            UIView.animate(withDuration: 1,
-                                           animations: {
-                                self.alertView.frame.origin = CGPoint(x: x, y: y)
-                            })
-                        }
-                    }
-                }
-            }
-        } else {
-            let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
-            let confirm = UIAlertAction(title: "확인", style: .default)
-            alert.addAction(confirm)
-            self.present(alert, animated: true)
-        }
+        let coordinate = mapView.cameraPosition.target
+        viewModel.updateCoordinate(x: coordinate.lng, y: coordinate.lat)
     }
-}
-
-extension AroundViewController: NMFMapViewTouchDelegate {
+ 
     func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
-        clickMap()
+        self.switchShopSelectedMarker(isNew: false)
+        self.selectedShop.reset()
+        self.hideShopView()
     }
+    
 }
 
 // MARK: 지도 검색 결과
 extension AroundViewController: SearchDelegate {
+    
     func mapSearch(query: String) {
-        let paramerters: Parameters = [
-            "query": query,
-            "size": 1
-        ]
-        let headers: HTTPHeaders = [
-            "Authorization": "KakaoAK 7165edf50ee98e1383adf5924f5a76ad"
-        ]
-        AF.request("https://dapi.kakao.com/v2/local/search/keyword.json", method: .get, parameters: paramerters, encoding: URLEncoding.queryString, headers: headers).validate(statusCode: 200..<300).responseDecodable(of: StoreInfo.self) { response in
-            switch response.result {
-            case .success:
-                guard let result = response.value?.documents else { return }
-                guard let coord = result.first else { return }
-                let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: Double(coord.y)!, lng: Double(coord.x)!))
-                self.naverMapView.mapView.moveCamera(cameraUpdate)
-            case .failure:
-                return
-            }
-        }
+        viewModel.searchAround(query: query)
     }
-}
-
-struct LotteryMarker {
-    var marker: NMFMarker
-    var storeId: String
+    
 }

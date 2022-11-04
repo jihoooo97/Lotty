@@ -1,6 +1,10 @@
 import UIKit
 import Network
 
+protocol SearchDelegate: NSObjectProtocol {
+    func mapSearch(query: String)
+}
+
 class MapSearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UIView!
     @IBOutlet weak var searchField: UITextField!
