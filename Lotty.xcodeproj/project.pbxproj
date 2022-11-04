@@ -51,7 +51,7 @@
 		1317BC072915BBFC0033D22F /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBF32915BBFC0033D22F /* Pretendard-SemiBold.otf */; };
 		1317BC082915BBFC0033D22F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBF42915BBFC0033D22F /* AppDelegate.swift */; };
 		1317BC092915BBFC0033D22F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBF62915BBFC0033D22F /* LaunchScreen.storyboard */; };
-		1317BC0A2915BBFC0033D22F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBF82915BBFC0033D22F /* Info.plist */; };
+		1317BC0C2915BC8A0033D22F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1317BC0B2915BC8A0033D22F /* Info.plist */; };
 		13A2A21A27BB489000FE10E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21827BB489000FE10E1 /* Main.storyboard */; };
 		A6D32E6CB7D32FDD60D1607D /* Pods_Lotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A64C4C25BD8F9610714F0B0 /* Pods_Lotty.framework */; };
 /* End PBXBuildFile section */
@@ -103,7 +103,7 @@
 		1317BBF32915BBFC0033D22F /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		1317BBF42915BBFC0033D22F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1317BBF72915BBFC0033D22F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1317BBF82915BBFC0033D22F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1317BC0B2915BC8A0033D22F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		131B329527EF0EE200F9121D /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A2A21927BB489000FE10E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BDB874F062F3BED792DE7C97 /* Pods-Lotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.release.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.release.xcconfig"; sourceTree = "<group>"; };
@@ -202,11 +202,11 @@
 		1317BBE32915BBE10033D22F /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				1317BC0B2915BC8A0033D22F /* Info.plist */,
 				1317BBF42915BBFC0033D22F /* AppDelegate.swift */,
 				1317BBE52915BBFB0033D22F /* Assets.xcassets */,
 				1317BBF52915BBFC0033D22F /* Base.lproj */,
 				1317BBE72915BBFC0033D22F /* Fonts */,
-				1317BBF82915BBFC0033D22F /* Info.plist */,
 				1317BBE42915BBFB0033D22F /* SceneDelegate.swift */,
 				1317BBE62915BBFB0033D22F /* UIColor.swift */,
 			);
@@ -341,7 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1317BC0A2915BBFC0033D22F /* Info.plist in Resources */,
+				1317BC0C2915BC8A0033D22F /* Info.plist in Resources */,
 				1317BC042915BBFC0033D22F /* Pretendard-Bold.otf in Resources */,
 				1317BBFA2915BBFC0033D22F /* Assets.xcassets in Resources */,
 				1317BC022915BBFC0033D22F /* BMHANNAPro.ttf in Resources */,
