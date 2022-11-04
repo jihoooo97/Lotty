@@ -52,6 +52,24 @@
 		1317BC082915BBFC0033D22F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBF42915BBFC0033D22F /* AppDelegate.swift */; };
 		1317BC0C2915BC8A0033D22F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1317BC0B2915BC8A0033D22F /* Info.plist */; };
 		1317BC112915BD4E0033D22F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1317BC0F2915BCA60033D22F /* LaunchScreen.storyboard */; };
+		1317BC2F2915BE180033D22F /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC152915BE180033D22F /* BaseViewModel.swift */; };
+		1317BC302915BE180033D22F /* BaseNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC162915BE180033D22F /* BaseNetwork.swift */; };
+		1317BC312915BE180033D22F /* Marker+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC182915BE180033D22F /* Marker+Util.swift */; };
+		1317BC322915BE180033D22F /* AroundUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC1B2915BE180033D22F /* AroundUseCase.swift */; };
+		1317BC332915BE180033D22F /* StoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC1D2915BE180033D22F /* StoreInfo.swift */; };
+		1317BC342915BE180033D22F /* ErrorEntitiy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC1E2915BE180033D22F /* ErrorEntitiy.swift */; };
+		1317BC352915BE180033D22F /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC1F2915BE180033D22F /* Entity.swift */; };
+		1317BC362915BE180033D22F /* LotteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC202915BE180033D22F /* LotteryInfo.swift */; };
+		1317BC372915BE180033D22F /* APIAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC242915BE180033D22F /* APIAround.swift */; };
+		1317BC382915BE180033D22F /* APIBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC252915BE180033D22F /* APIBase.swift */; };
+		1317BC392915BE190033D22F /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC262915BE180033D22F /* Interceptor.swift */; };
+		1317BC3A2915BE190033D22F /* AroundNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC272915BE180033D22F /* AroundNetwork.swift */; };
+		1317BC3B2915BE190033D22F /* AroundNetworkGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC292915BE180033D22F /* AroundNetworkGateway.swift */; };
+		1317BC3C2915BE190033D22F /* GatewayBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC2A2915BE180033D22F /* GatewayBuilder.swift */; };
+		1317BC3D2915BE190033D22F /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC2C2915BE180033D22F /* UIImage+Extension.swift */; };
+		1317BC3E2915BE190033D22F /* Codable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC2D2915BE180033D22F /* Codable+Extension.swift */; };
+		1317BC3F2915BE190033D22F /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC2E2915BE180033D22F /* CALayer+Extension.swift */; };
+		1317BC412915BE1F0033D22F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC402915BE1F0033D22F /* Storage.swift */; };
 		13A2A21A27BB489000FE10E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21827BB489000FE10E1 /* Main.storyboard */; };
 		A6D32E6CB7D32FDD60D1607D /* Pods_Lotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A64C4C25BD8F9610714F0B0 /* Pods_Lotty.framework */; };
 /* End PBXBuildFile section */
@@ -104,6 +122,24 @@
 		1317BBF42915BBFC0033D22F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1317BC0B2915BC8A0033D22F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1317BC0F2915BCA60033D22F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1317BC152915BE180033D22F /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		1317BC162915BE180033D22F /* BaseNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNetwork.swift; sourceTree = "<group>"; };
+		1317BC182915BE180033D22F /* Marker+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Marker+Util.swift"; sourceTree = "<group>"; };
+		1317BC1B2915BE180033D22F /* AroundUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundUseCase.swift; sourceTree = "<group>"; };
+		1317BC1D2915BE180033D22F /* StoreInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
+		1317BC1E2915BE180033D22F /* ErrorEntitiy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorEntitiy.swift; sourceTree = "<group>"; };
+		1317BC1F2915BE180033D22F /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		1317BC202915BE180033D22F /* LotteryInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryInfo.swift; sourceTree = "<group>"; };
+		1317BC242915BE180033D22F /* APIAround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAround.swift; sourceTree = "<group>"; };
+		1317BC252915BE180033D22F /* APIBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIBase.swift; sourceTree = "<group>"; };
+		1317BC262915BE180033D22F /* Interceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
+		1317BC272915BE180033D22F /* AroundNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundNetwork.swift; sourceTree = "<group>"; };
+		1317BC292915BE180033D22F /* AroundNetworkGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundNetworkGateway.swift; sourceTree = "<group>"; };
+		1317BC2A2915BE180033D22F /* GatewayBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatewayBuilder.swift; sourceTree = "<group>"; };
+		1317BC2C2915BE180033D22F /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		1317BC2D2915BE180033D22F /* Codable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extension.swift"; sourceTree = "<group>"; };
+		1317BC2E2915BE180033D22F /* CALayer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
+		1317BC402915BE1F0033D22F /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		131B329527EF0EE200F9121D /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A2A21927BB489000FE10E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BDB874F062F3BED792DE7C97 /* Pods-Lotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.release.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.release.xcconfig"; sourceTree = "<group>"; };
@@ -235,6 +271,11 @@
 		1317BC122915BD980033D22F /* common */ = {
 			isa = PBXGroup;
 			children = (
+				1317BC212915BE180033D22F /* api */,
+				1317BC142915BE180033D22F /* base */,
+				1317BC192915BE180033D22F /* domain */,
+				1317BC2B2915BE180033D22F /* extensions */,
+				1317BC172915BE180033D22F /* utils */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -242,8 +283,101 @@
 		1317BC132915BDE50033D22F /* foundation */ = {
 			isa = PBXGroup;
 			children = (
+				1317BC402915BE1F0033D22F /* Storage.swift */,
 			);
 			path = foundation;
+			sourceTree = "<group>";
+		};
+		1317BC142915BE180033D22F /* base */ = {
+			isa = PBXGroup;
+			children = (
+				1317BC152915BE180033D22F /* BaseViewModel.swift */,
+				1317BC162915BE180033D22F /* BaseNetwork.swift */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		1317BC172915BE180033D22F /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				1317BC182915BE180033D22F /* Marker+Util.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		1317BC192915BE180033D22F /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				1317BC1A2915BE180033D22F /* usecases */,
+				1317BC1C2915BE180033D22F /* entities */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		1317BC1A2915BE180033D22F /* usecases */ = {
+			isa = PBXGroup;
+			children = (
+				1317BC1B2915BE180033D22F /* AroundUseCase.swift */,
+			);
+			path = usecases;
+			sourceTree = "<group>";
+		};
+		1317BC1C2915BE180033D22F /* entities */ = {
+			isa = PBXGroup;
+			children = (
+				1317BC1D2915BE180033D22F /* StoreInfo.swift */,
+				1317BC1E2915BE180033D22F /* ErrorEntitiy.swift */,
+				1317BC1F2915BE180033D22F /* Entity.swift */,
+				1317BC202915BE180033D22F /* LotteryInfo.swift */,
+			);
+			path = entities;
+			sourceTree = "<group>";
+		};
+		1317BC212915BE180033D22F /* api */ = {
+			isa = PBXGroup;
+			children = (
+				1317BC222915BE180033D22F /* network */,
+				1317BC282915BE180033D22F /* gateway */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		1317BC222915BE180033D22F /* network */ = {
+			isa = PBXGroup;
+			children = (
+				1317BC232915BE180033D22F /* apis */,
+				1317BC262915BE180033D22F /* Interceptor.swift */,
+				1317BC272915BE180033D22F /* AroundNetwork.swift */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		1317BC232915BE180033D22F /* apis */ = {
+			isa = PBXGroup;
+			children = (
+				1317BC242915BE180033D22F /* APIAround.swift */,
+				1317BC252915BE180033D22F /* APIBase.swift */,
+			);
+			path = apis;
+			sourceTree = "<group>";
+		};
+		1317BC282915BE180033D22F /* gateway */ = {
+			isa = PBXGroup;
+			children = (
+				1317BC292915BE180033D22F /* AroundNetworkGateway.swift */,
+				1317BC2A2915BE180033D22F /* GatewayBuilder.swift */,
+			);
+			path = gateway;
+			sourceTree = "<group>";
+		};
+		1317BC2B2915BE180033D22F /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1317BC2C2915BE180033D22F /* UIImage+Extension.swift */,
+				1317BC2D2915BE180033D22F /* Codable+Extension.swift */,
+				1317BC2E2915BE180033D22F /* CALayer+Extension.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 		13A2A20627BB489000FE10E1 = {
@@ -426,26 +560,44 @@
 				1317BB9C2915B7C70033D22F /* NumberCell.swift in Sources */,
 				1317BB992915B7C70033D22F /* HistoryCell.swift in Sources */,
 				1317BB9B2915B7C70033D22F /* FailCell.swift in Sources */,
+				1317BC312915BE180033D22F /* Marker+Util.swift in Sources */,
 				1317BB812915B7A30033D22F /* LocationHistoryCell.swift in Sources */,
 				1317BB9D2915B7C70033D22F /* LotteryViewModel.swift in Sources */,
+				1317BC3D2915BE190033D22F /* UIImage+Extension.swift in Sources */,
 				1317BB972915B7C70033D22F /* SearchLotteryViewController.swift in Sources */,
+				1317BC382915BE180033D22F /* APIBase.swift in Sources */,
 				1317BBAC2915B7DA0033D22F /* RandomViewModel.swift in Sources */,
+				1317BC2F2915BE180033D22F /* BaseViewModel.swift in Sources */,
 				1317BB8A2915B7B70033D22F /* RefreshView.swift in Sources */,
 				1317BB852915B7A30033D22F /* alertView.swift in Sources */,
+				1317BC3B2915BE190033D22F /* AroundNetworkGateway.swift in Sources */,
 				1317BBAE2915B7DA0033D22F /* CountLabel.swift in Sources */,
+				1317BC302915BE180033D22F /* BaseNetwork.swift in Sources */,
+				1317BC392915BE190033D22F /* Interceptor.swift in Sources */,
 				1317BBF92915BBFC0033D22F /* SceneDelegate.swift in Sources */,
 				1317BBAA2915B7DA0033D22F /* GameView.swift in Sources */,
+				1317BC342915BE180033D22F /* ErrorEntitiy.swift in Sources */,
 				1317BC082915BBFC0033D22F /* AppDelegate.swift in Sources */,
 				1317BBA02915B7D10033D22F /* QrScanViewController.swift in Sources */,
 				1317BBA12915B7D10033D22F /* QrScanViewModel.swift in Sources */,
+				1317BC412915BE1F0033D22F /* Storage.swift in Sources */,
+				1317BC3A2915BE190033D22F /* AroundNetwork.swift in Sources */,
+				1317BC332915BE180033D22F /* StoreInfo.swift in Sources */,
+				1317BC352915BE180033D22F /* Entity.swift in Sources */,
 				1317BBA92915B7DA0033D22F /* BackgroundLabel.swift in Sources */,
 				1317BB872915B7A30033D22F /* SearchBarView.swift in Sources */,
+				1317BC322915BE180033D22F /* AroundUseCase.swift in Sources */,
+				1317BC372915BE180033D22F /* APIAround.swift in Sources */,
 				1317BB9A2915B7C70033D22F /* SearchViewController.swift in Sources */,
 				1317BB842915B7A30033D22F /* AroundViewController.swift in Sources */,
 				1317BB822915B7A30033D22F /* LocationEmptyCell.swift in Sources */,
+				1317BC362915BE180033D22F /* LotteryInfo.swift in Sources */,
 				1317BB8B2915B7B70033D22F /* HomeViewController.swift in Sources */,
+				1317BC3C2915BE190033D22F /* GatewayBuilder.swift in Sources */,
+				1317BC3E2915BE190033D22F /* Codable+Extension.swift in Sources */,
 				1317BBAF2915B7DA0033D22F /* DottedLine.swift in Sources */,
 				1317BB802915B7A30033D22F /* MapSearchViewController.swift in Sources */,
+				1317BC3F2915BE190033D22F /* CALayer+Extension.swift in Sources */,
 				1317BB982915B7C70033D22F /* DetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
