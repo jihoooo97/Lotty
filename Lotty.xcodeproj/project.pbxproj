@@ -34,6 +34,24 @@
 		1317BBAD2915B7DA0033D22F /* RightLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA62915B7DA0033D22F /* RightLine.swift */; };
 		1317BBAE2915B7DA0033D22F /* CountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA72915B7DA0033D22F /* CountLabel.swift */; };
 		1317BBAF2915B7DA0033D22F /* DottedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA82915B7DA0033D22F /* DottedLine.swift */; };
+		1317BBF92915BBFC0033D22F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBE42915BBFB0033D22F /* SceneDelegate.swift */; };
+		1317BBFA2915BBFC0033D22F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBE52915BBFB0033D22F /* Assets.xcassets */; };
+		1317BBFB2915BBFC0033D22F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBE62915BBFB0033D22F /* UIColor.swift */; };
+		1317BBFC2915BBFC0033D22F /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBE82915BBFC0033D22F /* Pretendard-Regular.otf */; };
+		1317BBFD2915BBFC0033D22F /* BMYEONSUNG_ttf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBE92915BBFC0033D22F /* BMYEONSUNG_ttf.ttf */; };
+		1317BBFE2915BBFC0033D22F /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBEA2915BBFC0033D22F /* Pretendard-Black.otf */; };
+		1317BBFF2915BBFC0033D22F /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBEB2915BBFC0033D22F /* Pretendard-Medium.otf */; };
+		1317BC002915BBFC0033D22F /* BMDOHYEON_ttf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBEC2915BBFC0033D22F /* BMDOHYEON_ttf.ttf */; };
+		1317BC012915BBFC0033D22F /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBED2915BBFC0033D22F /* Pretendard-Light.otf */; };
+		1317BC022915BBFC0033D22F /* BMHANNAPro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBEE2915BBFC0033D22F /* BMHANNAPro.ttf */; };
+		1317BC032915BBFC0033D22F /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBEF2915BBFC0033D22F /* Pretendard-ExtraBold.otf */; };
+		1317BC042915BBFC0033D22F /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBF02915BBFC0033D22F /* Pretendard-Bold.otf */; };
+		1317BC052915BBFC0033D22F /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBF12915BBFC0033D22F /* Pretendard-Thin.otf */; };
+		1317BC062915BBFC0033D22F /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBF22915BBFC0033D22F /* Pretendard-ExtraLight.otf */; };
+		1317BC072915BBFC0033D22F /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBF32915BBFC0033D22F /* Pretendard-SemiBold.otf */; };
+		1317BC082915BBFC0033D22F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBF42915BBFC0033D22F /* AppDelegate.swift */; };
+		1317BC092915BBFC0033D22F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBF62915BBFC0033D22F /* LaunchScreen.storyboard */; };
+		1317BC0A2915BBFC0033D22F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBF82915BBFC0033D22F /* Info.plist */; };
 		13A2A21A27BB489000FE10E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21827BB489000FE10E1 /* Main.storyboard */; };
 		A6D32E6CB7D32FDD60D1607D /* Pods_Lotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A64C4C25BD8F9610714F0B0 /* Pods_Lotty.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +86,24 @@
 		1317BBA62915B7DA0033D22F /* RightLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightLine.swift; sourceTree = "<group>"; };
 		1317BBA72915B7DA0033D22F /* CountLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountLabel.swift; sourceTree = "<group>"; };
 		1317BBA82915B7DA0033D22F /* DottedLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DottedLine.swift; sourceTree = "<group>"; };
+		1317BBE42915BBFB0033D22F /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1317BBE52915BBFB0033D22F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1317BBE62915BBFB0033D22F /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		1317BBE82915BBFC0033D22F /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		1317BBE92915BBFC0033D22F /* BMYEONSUNG_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMYEONSUNG_ttf.ttf; sourceTree = "<group>"; };
+		1317BBEA2915BBFC0033D22F /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
+		1317BBEB2915BBFC0033D22F /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		1317BBEC2915BBFC0033D22F /* BMDOHYEON_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMDOHYEON_ttf.ttf; sourceTree = "<group>"; };
+		1317BBED2915BBFC0033D22F /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		1317BBEE2915BBFC0033D22F /* BMHANNAPro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNAPro.ttf; sourceTree = "<group>"; };
+		1317BBEF2915BBFC0033D22F /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		1317BBF02915BBFC0033D22F /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		1317BBF12915BBFC0033D22F /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
+		1317BBF22915BBFC0033D22F /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
+		1317BBF32915BBFC0033D22F /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		1317BBF42915BBFC0033D22F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1317BBF72915BBFC0033D22F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1317BBF82915BBFC0033D22F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		131B329527EF0EE200F9121D /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A2A21927BB489000FE10E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BDB874F062F3BED792DE7C97 /* Pods-Lotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.release.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.release.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +199,47 @@
 			path = "로또 리스트";
 			sourceTree = "<group>";
 		};
+		1317BBE32915BBE10033D22F /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				1317BBF42915BBFC0033D22F /* AppDelegate.swift */,
+				1317BBE52915BBFB0033D22F /* Assets.xcassets */,
+				1317BBF52915BBFC0033D22F /* Base.lproj */,
+				1317BBE72915BBFC0033D22F /* Fonts */,
+				1317BBF82915BBFC0033D22F /* Info.plist */,
+				1317BBE42915BBFB0033D22F /* SceneDelegate.swift */,
+				1317BBE62915BBFB0033D22F /* UIColor.swift */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+		1317BBE72915BBFC0033D22F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1317BBE82915BBFC0033D22F /* Pretendard-Regular.otf */,
+				1317BBE92915BBFC0033D22F /* BMYEONSUNG_ttf.ttf */,
+				1317BBEA2915BBFC0033D22F /* Pretendard-Black.otf */,
+				1317BBEB2915BBFC0033D22F /* Pretendard-Medium.otf */,
+				1317BBEC2915BBFC0033D22F /* BMDOHYEON_ttf.ttf */,
+				1317BBED2915BBFC0033D22F /* Pretendard-Light.otf */,
+				1317BBEE2915BBFC0033D22F /* BMHANNAPro.ttf */,
+				1317BBEF2915BBFC0033D22F /* Pretendard-ExtraBold.otf */,
+				1317BBF02915BBFC0033D22F /* Pretendard-Bold.otf */,
+				1317BBF12915BBFC0033D22F /* Pretendard-Thin.otf */,
+				1317BBF22915BBFC0033D22F /* Pretendard-ExtraLight.otf */,
+				1317BBF32915BBFC0033D22F /* Pretendard-SemiBold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		1317BBF52915BBFC0033D22F /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				1317BBF62915BBFC0033D22F /* LaunchScreen.storyboard */,
+			);
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
 		13A2A20627BB489000FE10E1 = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +259,7 @@
 				1317BB752915B6BC0033D22F /* search */,
 				1317BB762915B6C10033D22F /* qr */,
 				1317BB772915B6C60033D22F /* random */,
+				1317BBE32915BBE10033D22F /* resource */,
 			);
 			path = Lotty;
 			sourceTree = "<group>";
@@ -263,7 +341,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1317BC0A2915BBFC0033D22F /* Info.plist in Resources */,
+				1317BC042915BBFC0033D22F /* Pretendard-Bold.otf in Resources */,
+				1317BBFA2915BBFC0033D22F /* Assets.xcassets in Resources */,
+				1317BC022915BBFC0033D22F /* BMHANNAPro.ttf in Resources */,
+				1317BC092915BBFC0033D22F /* LaunchScreen.storyboard in Resources */,
+				1317BC052915BBFC0033D22F /* Pretendard-Thin.otf in Resources */,
+				1317BC032915BBFC0033D22F /* Pretendard-ExtraBold.otf in Resources */,
+				1317BC012915BBFC0033D22F /* Pretendard-Light.otf in Resources */,
+				1317BC002915BBFC0033D22F /* BMDOHYEON_ttf.ttf in Resources */,
+				1317BC062915BBFC0033D22F /* Pretendard-ExtraLight.otf in Resources */,
+				1317BBFC2915BBFC0033D22F /* Pretendard-Regular.otf in Resources */,
+				1317BC072915BBFC0033D22F /* Pretendard-SemiBold.otf in Resources */,
+				1317BBFD2915BBFC0033D22F /* BMYEONSUNG_ttf.ttf in Resources */,
 				13A2A21A27BB489000FE10E1 /* Main.storyboard in Resources */,
+				1317BBFE2915BBFC0033D22F /* Pretendard-Black.otf in Resources */,
+				1317BBFF2915BBFC0033D22F /* Pretendard-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +413,7 @@
 				1317BBAB2915B7DA0033D22F /* RandomViewController.swift in Sources */,
 				1317BB862915B7A30033D22F /* SideButton.swift in Sources */,
 				1317BBAD2915B7DA0033D22F /* RightLine.swift in Sources */,
+				1317BBFB2915BBFC0033D22F /* UIColor.swift in Sources */,
 				1317BB962915B7C70033D22F /* EmptyCell.swift in Sources */,
 				1317BB9C2915B7C70033D22F /* NumberCell.swift in Sources */,
 				1317BB992915B7C70033D22F /* HistoryCell.swift in Sources */,
@@ -331,7 +425,9 @@
 				1317BB8A2915B7B70033D22F /* RefreshView.swift in Sources */,
 				1317BB852915B7A30033D22F /* alertView.swift in Sources */,
 				1317BBAE2915B7DA0033D22F /* CountLabel.swift in Sources */,
+				1317BBF92915BBFC0033D22F /* SceneDelegate.swift in Sources */,
 				1317BBAA2915B7DA0033D22F /* GameView.swift in Sources */,
+				1317BC082915BBFC0033D22F /* AppDelegate.swift in Sources */,
 				1317BBA02915B7D10033D22F /* QrScanViewController.swift in Sources */,
 				1317BBA12915B7D10033D22F /* QrScanViewModel.swift in Sources */,
 				1317BBA92915B7DA0033D22F /* BackgroundLabel.swift in Sources */,
@@ -349,6 +445,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1317BBF62915BBFC0033D22F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1317BBF72915BBFC0033D22F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		13A2A21827BB489000FE10E1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

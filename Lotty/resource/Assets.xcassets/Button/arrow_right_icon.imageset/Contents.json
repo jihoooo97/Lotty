@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "6157647_arrow_direction_location_navigation_right_icon.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
+  }
+}
