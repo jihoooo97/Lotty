@@ -205,7 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				1317BC0B2915BC8A0033D22F /* Info.plist */,
-				1317BC0D2915BCA60033D22F /* Base.lproj */,
+				1317BC0E2915BCA60033D22F /* LaunchScreen.storyboard */,
 				1317BBF42915BBFC0033D22F /* AppDelegate.swift */,
 				1317BBE52915BBFB0033D22F /* Assets.xcassets */,
 				1317BBF52915BBFC0033D22F /* Base.lproj */,
@@ -239,14 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				1317BBF62915BBFC0033D22F /* LaunchScreen.storyboard */,
-			);
-			path = Base.lproj;
-			sourceTree = "<group>";
-		};
-		1317BC0D2915BCA60033D22F /* Base.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				1317BC0E2915BCA60033D22F /* LaunchScreen.storyboard */,
 			);
 			path = Base.lproj;
 			sourceTree = "<group>";
