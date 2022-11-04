@@ -13,7 +13,6 @@
 		1317BB832915B7A30033D22F /* StoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7B2915B7A20033D22F /* StoreDetailView.swift */; };
 		1317BB842915B7A30033D22F /* AroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7C2915B7A30033D22F /* AroundViewController.swift */; };
 		1317BB852915B7A30033D22F /* alertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7D2915B7A30033D22F /* alertView.swift */; };
-		1317BB862915B7A30033D22F /* SideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7E2915B7A30033D22F /* SideButton.swift */; };
 		1317BB872915B7A30033D22F /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7F2915B7A30033D22F /* SearchBarView.swift */; };
 		1317BB8A2915B7B70033D22F /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB882915B7B60033D22F /* RefreshView.swift */; };
 		1317BB8B2915B7B70033D22F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB892915B7B70033D22F /* HomeViewController.swift */; };
@@ -86,7 +85,6 @@
 		1317BB7B2915B7A20033D22F /* StoreDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailView.swift; sourceTree = "<group>"; };
 		1317BB7C2915B7A30033D22F /* AroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundViewController.swift; sourceTree = "<group>"; };
 		1317BB7D2915B7A30033D22F /* alertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = alertView.swift; sourceTree = "<group>"; };
-		1317BB7E2915B7A30033D22F /* SideButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideButton.swift; sourceTree = "<group>"; };
 		1317BB7F2915B7A30033D22F /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		1317BB882915B7B60033D22F /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		1317BB892915B7B70033D22F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -177,15 +175,13 @@
 			isa = PBXGroup;
 			children = (
 				1317BC462915C6A60033D22F /* mapMarker */,
-				1317BB7D2915B7A30033D22F /* alertView.swift */,
+				136C8CB42915D801006AE77C /* cell */,
 				1317BB7C2915B7A30033D22F /* AroundViewController.swift */,
 				1317BC422915BF730033D22F /* AroundViewModel.swift */,
 				1317BC442915C5430033D22F /* AroundViewController+Extension.swift */,
-				1317BB7A2915B7A20033D22F /* LocationEmptyCell.swift */,
-				1317BB792915B7A20033D22F /* LocationHistoryCell.swift */,
 				1317BB782915B7A20033D22F /* MapSearchViewController.swift */,
+				1317BB7D2915B7A30033D22F /* alertView.swift */,
 				1317BB7F2915B7A30033D22F /* SearchBarView.swift */,
-				1317BB7E2915B7A30033D22F /* SideButton.swift */,
 				1317BB7B2915B7A20033D22F /* StoreDetailView.swift */,
 			);
 			path = around;
@@ -194,8 +190,11 @@
 		1317BB752915B6BC0033D22F /* search */ = {
 			isa = PBXGroup;
 			children = (
-				1317BB912915B7C70033D22F /* 로또 리스트 */,
-				1317BB8C2915B7C70033D22F /* 로또 상세 */,
+				136C8CB32915D7DF006AE77C /* cell */,
+				1317BB922915B7C70033D22F /* SearchViewController.swift */,
+				1317BB952915B7C70033D22F /* LotteryViewModel.swift */,
+				1317BB8E2915B7C70033D22F /* SearchLotteryViewController.swift */,
+				1317BB8F2915B7C70033D22F /* DetailViewModel.swift */,
 			);
 			path = search;
 			sourceTree = "<group>";
@@ -221,28 +220,6 @@
 				1317BBA62915B7DA0033D22F /* RightLine.swift */,
 			);
 			path = random;
-			sourceTree = "<group>";
-		};
-		1317BB8C2915B7C70033D22F /* 로또 상세 */ = {
-			isa = PBXGroup;
-			children = (
-				1317BB8D2915B7C70033D22F /* EmptyCell.swift */,
-				1317BB8E2915B7C70033D22F /* SearchLotteryViewController.swift */,
-				1317BB8F2915B7C70033D22F /* DetailViewModel.swift */,
-				1317BB902915B7C70033D22F /* HistoryCell.swift */,
-			);
-			path = "로또 상세";
-			sourceTree = "<group>";
-		};
-		1317BB912915B7C70033D22F /* 로또 리스트 */ = {
-			isa = PBXGroup;
-			children = (
-				1317BB922915B7C70033D22F /* SearchViewController.swift */,
-				1317BB932915B7C70033D22F /* FailCell.swift */,
-				1317BB942915B7C70033D22F /* NumberCell.swift */,
-				1317BB952915B7C70033D22F /* LotteryViewModel.swift */,
-			);
-			path = "로또 리스트";
 			sourceTree = "<group>";
 		};
 		1317BBE32915BBE10033D22F /* resource */ = {
@@ -397,6 +374,26 @@
 				1317BC492915C70A0033D22F /* LottyMapMarker.swift */,
 			);
 			path = mapMarker;
+			sourceTree = "<group>";
+		};
+		136C8CB32915D7DF006AE77C /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				1317BB932915B7C70033D22F /* FailCell.swift */,
+				1317BB942915B7C70033D22F /* NumberCell.swift */,
+				1317BB8D2915B7C70033D22F /* EmptyCell.swift */,
+				1317BB902915B7C70033D22F /* HistoryCell.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		136C8CB42915D801006AE77C /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				1317BB7A2915B7A20033D22F /* LocationEmptyCell.swift */,
+				1317BB792915B7A20033D22F /* LocationHistoryCell.swift */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 		13A2A20627BB489000FE10E1 = {
@@ -571,7 +568,6 @@
 			files = (
 				1317BB832915B7A30033D22F /* StoreDetailView.swift in Sources */,
 				1317BBAB2915B7DA0033D22F /* RandomViewController.swift in Sources */,
-				1317BB862915B7A30033D22F /* SideButton.swift in Sources */,
 				1317BBAD2915B7DA0033D22F /* RightLine.swift in Sources */,
 				1317BBFB2915BBFC0033D22F /* UIColor.swift in Sources */,
 				1317BB962915B7C70033D22F /* EmptyCell.swift in Sources */,
