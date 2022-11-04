@@ -114,8 +114,6 @@
 		13912CCB2809B6B00077D5A6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				13A2A21827BB489000FE10E1 /* Main.storyboard */,
-				13912CD32809BB810077D5A6 /* AppDelegate */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -151,13 +149,6 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		13912CD32809BB810077D5A6 /* AppDelegate */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AppDelegate;
-			sourceTree = "<group>";
-		};
 		13A2A20627BB489000FE10E1 = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +167,7 @@
 				1317BB752915B6BC0033D22F /* search */,
 				1317BB762915B6C10033D22F /* qr */,
 				1317BB772915B6C60033D22F /* random */,
+				13A2A21827BB489000FE10E1 /* Main.storyboard */,
 				13912CCB2809B6B00077D5A6 /* UI */,
 				13802F6A27C3D4D8008EE0BC /* Storage.swift */,
 				13912CCC2809B6CD0077D5A6 /* Network */,
