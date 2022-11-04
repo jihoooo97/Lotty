@@ -198,7 +198,7 @@
 			path = "로또 리스트";
 			sourceTree = "<group>";
 		};
-		13912CD22809BA5C0077D5A6 /* Resource */ = {
+		13912CD22809BA5C0077D5A6 /* resource */ = {
 			isa = PBXGroup;
 			children = (
 				13A2A21227BB489000FE10E1 /* AppDelegate.swift */,
@@ -209,7 +209,7 @@
 				13A2A25127BB8B1400FE10E1 /* UIColor.swift */,
 				13A2A23027BB4E3200FE10E1 /* Fonts */,
 			);
-			path = Resource;
+			path = resource;
 			sourceTree = "<group>";
 		};
 		13A2A20627BB489000FE10E1 = {
@@ -231,7 +231,7 @@
 				1317BB752915B6BC0033D22F /* search */,
 				1317BB762915B6C10033D22F /* qr */,
 				1317BB772915B6C60033D22F /* random */,
-				13912CD22809BA5C0077D5A6 /* Resource */,
+				13912CD22809BA5C0077D5A6 /* resource */,
 			);
 			path = Lotty;
 			sourceTree = "<group>";
