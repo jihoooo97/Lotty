@@ -28,12 +28,33 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    var naverMapView: NMFMapView?
+    var naverMapView: NMFMapView = {
+        let mapView = NMFMapView()
+        mapView.allowsRotating = false
+        mapView.allowsTilting = false
+        mapView.minZoomLevel = 5
+        mapView.positionMode = .compass
+        mapView.minZoomLevel = 10.0
+        mapView.maxZoomLevel = 18.0
+        mapView.extent = NMGLatLngBounds(southWestLat: 31.43,
+                                      southWestLng: 122.37,
+                                      northEastLat: 44.35,
+                                      northEastLng: 131)
+        return mapView
+    }()
+    
     let searchBar = SearchBarView()
     let detailView = StoreDetailView()
     
     var currentLocationButton: UIButton = {
         let button = UIButton()
+        button.setTitle("내위치", for: .normal)
+        button.setTitleColor(UIColor.red, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Pretendard-SemiBold", size: 15)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 4
+        button.layer.applyShadow(x: 0, y: 0.5,
+                                 alpha: 0.4, blur: 2)
         return button
     }()
     
@@ -58,8 +79,9 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         
-        configureMap()
         initUI()
+        configureMap()
+        
         inputBind()
         outputBind()
     }
@@ -85,17 +107,17 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
             .bind(onNext: { (vc, result) in
                 guard let result = result.first else { return }
                 let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: Double(result.y)!, lng: Double(result.x)!))
-                vc.naverMapView!.moveCamera(cameraUpdate)
+                vc.naverMapView.moveCamera(cameraUpdate)
             }).disposed(by: disposeBag)
     }
     
     func initUI() {
         safeArea = view.safeAreaLayoutGuide
         
-        [naverMapView!, searchBar, currentLocationButton, detailView]
+        [naverMapView, searchBar, currentLocationButton, detailView]
             .forEach { view.addSubview($0) }
         
-        naverMapView!.snp.makeConstraints {
+        naverMapView.snp.makeConstraints {
             $0.leading.trailing.top.equalToSuperview()
             $0.bottom.equalTo(safeArea)
         }
@@ -113,32 +135,27 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
             $0.width.equalTo(50)
             $0.height.equalTo(30)
         }
+        
+        detailView.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(12)
+            $0.bottom.equalTo(safeArea).offset(90)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(90)
+        }
     }
     
-    func configureMap() {
-        guard naverMapView != nil else { return }
+    private func configureMap() {
         self.tabBarController?.tabBar.backgroundColor = .white
-        
-        naverMapView!.addCameraDelegate(delegate: self)
-        naverMapView!.touchDelegate = self
-        naverMapView!.allowsRotating = false
-        naverMapView!.allowsTilting = false
-        naverMapView!.minZoomLevel = 5
-        naverMapView!.positionMode = .compass
-        naverMapView!.extent = NMGLatLngBounds(southWestLat: 31.43,
-                                      southWestLng: 122.37,
-                                      northEastLat: 44.35,
-                                      northEastLng: 131)
+        naverMapView.addCameraDelegate(delegate: self)
+        naverMapView.touchDelegate = self
         let location = locationManager.location ?? CLLocation(latitude: 37.3593486, longitude: 127.104845)
         let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(from: location.coordinate), zoomTo: 16)
-        naverMapView!.moveCamera(cameraUpdate)
-        
+        naverMapView.moveCamera(cameraUpdate)
         configureNavi()
     }
     
     // MARK: - Draw
     private func deleteOldMarkers() {
-        guard naverMapView != nil else { return }
         let markerList = viewModel.storeInfoRelay.value
         
         DispatchQueue.main.async { [weak self] in
@@ -218,19 +235,18 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
     private func showShopView() {
         detailView.isHidden = false
         UIView.animate(
-            withDuration: 0.3,
+            withDuration: 0.2,
             delay: 0,
             options: .curveEaseOut,
             animations: { [weak self] in
                 self?.detailView.transform = CGAffineTransform(translationX: 0, y: -98)
             }
         )
-        
     }
     
     private func hideShopView() {
         UIView.animate(
-            withDuration: 0.3,
+            withDuration: 0.2,
             delay: 0,
             animations: { [weak self] in
                 self?.detailView.transform = CGAffineTransform(translationX: 0, y: 0)
@@ -239,16 +255,6 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
                 self?.detailView.isHidden = true
             }
         )
-    }
-    
-    func configureDetail(store: Documents) {
-        detailView.heightAnchor.constraint(equalToConstant: 90).isActive = true
-        detailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12).isActive = true
-        detailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
-        detailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8).isActive = true
-        
-        let naviTap = UITapGestureRecognizer(target: self, action: #selector(clickNavi))
-        detailView.naviView.addGestureRecognizer(naviTap)
     }
 
 }
@@ -273,7 +279,7 @@ extension AroundViewController: NMFMapViewCameraDelegate, NMFMapViewTouchDelegat
                                                               longitude: 127.104845)
         let camera = NMFCameraUpdate(scrollTo: NMGLatLng(from: location.coordinate), zoomTo: 16)
         camera.animation = .none
-        self.naverMapView?.moveCamera(camera)
+        self.naverMapView.moveCamera(camera)
     }
     
 }

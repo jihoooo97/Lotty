@@ -14,6 +14,11 @@ extension AroundViewController {
         self.present(vc, animated: false, completion: nil)
     }
     
+    func configureDetail(store: Documents) {
+        let naviTap = UITapGestureRecognizer(target: self, action: #selector(clickNavi))
+        detailView.naviView.addGestureRecognizer(naviTap)
+    }
+    
     @objc func clickNavi() {
         let x = locationManager.location?.coordinate.longitude ?? 127.104845
         let y = locationManager.location?.coordinate.latitude ?? 37.3593486
