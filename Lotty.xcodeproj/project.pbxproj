@@ -52,6 +52,7 @@
 		1317BC082915BBFC0033D22F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBF42915BBFC0033D22F /* AppDelegate.swift */; };
 		1317BC092915BBFC0033D22F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBF62915BBFC0033D22F /* LaunchScreen.storyboard */; };
 		1317BC0C2915BC8A0033D22F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1317BC0B2915BC8A0033D22F /* Info.plist */; };
+		1317BC102915BCA60033D22F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1317BC0E2915BCA60033D22F /* LaunchScreen.storyboard */; };
 		13A2A21A27BB489000FE10E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21827BB489000FE10E1 /* Main.storyboard */; };
 		A6D32E6CB7D32FDD60D1607D /* Pods_Lotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A64C4C25BD8F9610714F0B0 /* Pods_Lotty.framework */; };
 /* End PBXBuildFile section */
@@ -104,6 +105,7 @@
 		1317BBF42915BBFC0033D22F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1317BBF72915BBFC0033D22F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1317BC0B2915BC8A0033D22F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1317BC0F2915BCA60033D22F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		131B329527EF0EE200F9121D /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A2A21927BB489000FE10E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BDB874F062F3BED792DE7C97 /* Pods-Lotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.release.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.release.xcconfig"; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				1317BC0B2915BC8A0033D22F /* Info.plist */,
+				1317BC0D2915BCA60033D22F /* Base.lproj */,
 				1317BBF42915BBFC0033D22F /* AppDelegate.swift */,
 				1317BBE52915BBFB0033D22F /* Assets.xcassets */,
 				1317BBF52915BBFC0033D22F /* Base.lproj */,
@@ -236,6 +239,14 @@
 			isa = PBXGroup;
 			children = (
 				1317BBF62915BBFC0033D22F /* LaunchScreen.storyboard */,
+			);
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		1317BC0D2915BCA60033D22F /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				1317BC0E2915BCA60033D22F /* LaunchScreen.storyboard */,
 			);
 			path = Base.lproj;
 			sourceTree = "<group>";
@@ -348,6 +359,7 @@
 				1317BC092915BBFC0033D22F /* LaunchScreen.storyboard in Resources */,
 				1317BC052915BBFC0033D22F /* Pretendard-Thin.otf in Resources */,
 				1317BC032915BBFC0033D22F /* Pretendard-ExtraBold.otf in Resources */,
+				1317BC102915BCA60033D22F /* LaunchScreen.storyboard in Resources */,
 				1317BC012915BBFC0033D22F /* Pretendard-Light.otf in Resources */,
 				1317BC002915BBFC0033D22F /* BMDOHYEON_ttf.ttf in Resources */,
 				1317BC062915BBFC0033D22F /* Pretendard-ExtraLight.otf in Resources */,
@@ -449,6 +461,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				1317BBF72915BBFC0033D22F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		1317BC0E2915BCA60033D22F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1317BC0F2915BCA60033D22F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
