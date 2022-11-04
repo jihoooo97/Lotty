@@ -7,18 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		130F842D27E5E57500E01079 /* BMHANNAPro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 130F842A27E5E57500E01079 /* BMHANNAPro.ttf */; };
-		130F842F27E5E57500E01079 /* BMYEONSUNG_ttf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 130F842C27E5E57500E01079 /* BMYEONSUNG_ttf.ttf */; };
-		130F843027E5E6BE00E01079 /* BMDOHYEON_ttf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 130F842B27E5E57500E01079 /* BMDOHYEON_ttf.ttf */; };
-		130F845E27E5EAFD00E01079 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 130F845527E5EAFC00E01079 /* Pretendard-Medium.otf */; };
-		130F845F27E5EAFD00E01079 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 130F845627E5EAFC00E01079 /* Pretendard-SemiBold.otf */; };
-		130F846027E5EAFD00E01079 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 130F845727E5EAFC00E01079 /* Pretendard-Bold.otf */; };
-		130F846127E5EAFD00E01079 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 130F845827E5EAFD00E01079 /* Pretendard-Thin.otf */; };
-		130F846227E5EAFD00E01079 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 130F845927E5EAFD00E01079 /* Pretendard-Black.otf */; };
-		130F846327E5EAFD00E01079 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 130F845A27E5EAFD00E01079 /* Pretendard-Regular.otf */; };
-		130F846427E5EAFD00E01079 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 130F845B27E5EAFD00E01079 /* Pretendard-Light.otf */; };
-		130F846527E5EAFD00E01079 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 130F845C27E5EAFD00E01079 /* Pretendard-ExtraLight.otf */; };
-		130F846627E5EAFD00E01079 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 130F845D27E5EAFD00E01079 /* Pretendard-ExtraBold.otf */; };
 		1317BB802915B7A30033D22F /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB782915B7A20033D22F /* MapSearchViewController.swift */; };
 		1317BB812915B7A30033D22F /* LocationHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB792915B7A20033D22F /* LocationHistoryCell.swift */; };
 		1317BB822915B7A30033D22F /* LocationEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7A2915B7A20033D22F /* LocationEmptyCell.swift */; };
@@ -46,30 +34,13 @@
 		1317BBAD2915B7DA0033D22F /* RightLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA62915B7DA0033D22F /* RightLine.swift */; };
 		1317BBAE2915B7DA0033D22F /* CountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA72915B7DA0033D22F /* CountLabel.swift */; };
 		1317BBAF2915B7DA0033D22F /* DottedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA82915B7DA0033D22F /* DottedLine.swift */; };
-		13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21227BB489000FE10E1 /* AppDelegate.swift */; };
-		13A2A21527BB489000FE10E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A21427BB489000FE10E1 /* SceneDelegate.swift */; };
 		13A2A21A27BB489000FE10E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21827BB489000FE10E1 /* Main.storyboard */; };
-		13A2A21C27BB489100FE10E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21B27BB489100FE10E1 /* Assets.xcassets */; };
-		13A2A21F27BB489100FE10E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21D27BB489100FE10E1 /* LaunchScreen.storyboard */; };
-		13A2A25227BB8B1400FE10E1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2A25127BB8B1400FE10E1 /* UIColor.swift */; };
 		A6D32E6CB7D32FDD60D1607D /* Pods_Lotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A64C4C25BD8F9610714F0B0 /* Pods_Lotty.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0A64C4C25BD8F9610714F0B0 /* Pods_Lotty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lotty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9D15BB972C6ED830872F44 /* Pods-Lotty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.debug.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.debug.xcconfig"; sourceTree = "<group>"; };
-		130F842A27E5E57500E01079 /* BMHANNAPro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNAPro.ttf; sourceTree = "<group>"; };
-		130F842B27E5E57500E01079 /* BMDOHYEON_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMDOHYEON_ttf.ttf; sourceTree = "<group>"; };
-		130F842C27E5E57500E01079 /* BMYEONSUNG_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMYEONSUNG_ttf.ttf; sourceTree = "<group>"; };
-		130F845527E5EAFC00E01079 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
-		130F845627E5EAFC00E01079 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
-		130F845727E5EAFC00E01079 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
-		130F845827E5EAFD00E01079 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
-		130F845927E5EAFD00E01079 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
-		130F845A27E5EAFD00E01079 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
-		130F845B27E5EAFD00E01079 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
-		130F845C27E5EAFD00E01079 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
-		130F845D27E5EAFD00E01079 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		1317BB782915B7A20033D22F /* MapSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
 		1317BB792915B7A20033D22F /* LocationHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHistoryCell.swift; sourceTree = "<group>"; };
 		1317BB7A2915B7A20033D22F /* LocationEmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationEmptyCell.swift; sourceTree = "<group>"; };
@@ -98,13 +69,7 @@
 		1317BBA72915B7DA0033D22F /* CountLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountLabel.swift; sourceTree = "<group>"; };
 		1317BBA82915B7DA0033D22F /* DottedLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DottedLine.swift; sourceTree = "<group>"; };
 		131B329527EF0EE200F9121D /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13A2A21227BB489000FE10E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		13A2A21427BB489000FE10E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		13A2A21927BB489000FE10E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		13A2A21B27BB489100FE10E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		13A2A21E27BB489100FE10E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		13A2A22027BB489100FE10E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		13A2A25127BB8B1400FE10E1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		BDB874F062F3BED792DE7C97 /* Pods-Lotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.release.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,20 +163,6 @@
 			path = "로또 리스트";
 			sourceTree = "<group>";
 		};
-		13912CD22809BA5C0077D5A6 /* resource */ = {
-			isa = PBXGroup;
-			children = (
-				13A2A21227BB489000FE10E1 /* AppDelegate.swift */,
-				13A2A21427BB489000FE10E1 /* SceneDelegate.swift */,
-				13A2A22027BB489100FE10E1 /* Info.plist */,
-				13A2A21B27BB489100FE10E1 /* Assets.xcassets */,
-				13A2A21D27BB489100FE10E1 /* LaunchScreen.storyboard */,
-				13A2A25127BB8B1400FE10E1 /* UIColor.swift */,
-				13A2A23027BB4E3200FE10E1 /* Fonts */,
-			);
-			path = resource;
-			sourceTree = "<group>";
-		};
 		13A2A20627BB489000FE10E1 = {
 			isa = PBXGroup;
 			children = (
@@ -231,28 +182,8 @@
 				1317BB752915B6BC0033D22F /* search */,
 				1317BB762915B6C10033D22F /* qr */,
 				1317BB772915B6C60033D22F /* random */,
-				13912CD22809BA5C0077D5A6 /* resource */,
 			);
 			path = Lotty;
-			sourceTree = "<group>";
-		};
-		13A2A23027BB4E3200FE10E1 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				130F845927E5EAFD00E01079 /* Pretendard-Black.otf */,
-				130F845727E5EAFC00E01079 /* Pretendard-Bold.otf */,
-				130F845D27E5EAFD00E01079 /* Pretendard-ExtraBold.otf */,
-				130F845C27E5EAFD00E01079 /* Pretendard-ExtraLight.otf */,
-				130F845B27E5EAFD00E01079 /* Pretendard-Light.otf */,
-				130F845527E5EAFC00E01079 /* Pretendard-Medium.otf */,
-				130F845A27E5EAFD00E01079 /* Pretendard-Regular.otf */,
-				130F845627E5EAFC00E01079 /* Pretendard-SemiBold.otf */,
-				130F845827E5EAFD00E01079 /* Pretendard-Thin.otf */,
-				130F842B27E5E57500E01079 /* BMDOHYEON_ttf.ttf */,
-				130F842A27E5E57500E01079 /* BMHANNAPro.ttf */,
-				130F842C27E5E57500E01079 /* BMYEONSUNG_ttf.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		3EDD3A305017908757C67039 /* Frameworks */ = {
@@ -332,21 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				130F846027E5EAFD00E01079 /* Pretendard-Bold.otf in Resources */,
-				130F842F27E5E57500E01079 /* BMYEONSUNG_ttf.ttf in Resources */,
-				13A2A21F27BB489100FE10E1 /* LaunchScreen.storyboard in Resources */,
-				130F846327E5EAFD00E01079 /* Pretendard-Regular.otf in Resources */,
-				130F845E27E5EAFD00E01079 /* Pretendard-Medium.otf in Resources */,
-				13A2A21C27BB489100FE10E1 /* Assets.xcassets in Resources */,
-				130F842D27E5E57500E01079 /* BMHANNAPro.ttf in Resources */,
-				130F845F27E5EAFD00E01079 /* Pretendard-SemiBold.otf in Resources */,
 				13A2A21A27BB489000FE10E1 /* Main.storyboard in Resources */,
-				130F846627E5EAFD00E01079 /* Pretendard-ExtraBold.otf in Resources */,
-				130F846127E5EAFD00E01079 /* Pretendard-Thin.otf in Resources */,
-				130F846427E5EAFD00E01079 /* Pretendard-Light.otf in Resources */,
-				130F846527E5EAFD00E01079 /* Pretendard-ExtraLight.otf in Resources */,
-				130F846227E5EAFD00E01079 /* Pretendard-Black.otf in Resources */,
-				130F843027E5E6BE00E01079 /* BMDOHYEON_ttf.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,13 +318,10 @@
 			files = (
 				1317BB832915B7A30033D22F /* StoreDetailView.swift in Sources */,
 				1317BBAB2915B7DA0033D22F /* RandomViewController.swift in Sources */,
-				13A2A25227BB8B1400FE10E1 /* UIColor.swift in Sources */,
 				1317BB862915B7A30033D22F /* SideButton.swift in Sources */,
 				1317BBAD2915B7DA0033D22F /* RightLine.swift in Sources */,
 				1317BB962915B7C70033D22F /* EmptyCell.swift in Sources */,
 				1317BB9C2915B7C70033D22F /* NumberCell.swift in Sources */,
-				13A2A21327BB489000FE10E1 /* AppDelegate.swift in Sources */,
-				13A2A21527BB489000FE10E1 /* SceneDelegate.swift in Sources */,
 				1317BB992915B7C70033D22F /* HistoryCell.swift in Sources */,
 				1317BB9B2915B7C70033D22F /* FailCell.swift in Sources */,
 				1317BB812915B7A30033D22F /* LocationHistoryCell.swift in Sources */,
@@ -441,14 +355,6 @@
 				13A2A21927BB489000FE10E1 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		13A2A21D27BB489100FE10E1 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13A2A21E27BB489100FE10E1 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
