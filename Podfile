@@ -11,6 +11,7 @@ target 'Lotty' do
 
   # UI
   pod 'SnapKit'
+  pod 'Then'
 
   # navermap
   pod 'NMapsMap'
