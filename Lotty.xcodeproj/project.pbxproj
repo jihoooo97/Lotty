@@ -76,8 +76,8 @@
 		1368149A2918360500191720 /* LotteryNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814992918360500191720 /* LotteryNetwork.swift */; };
 		1368149C2918362D00191720 /* LotteryNetworkGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368149B2918362D00191720 /* LotteryNetworkGateway.swift */; };
 		1368149E2918384600191720 /* LotteryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368149D2918384600191720 /* LotteryUseCase.swift */; };
-		136814A229184FD800191720 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814A129184FD800191720 /* NavigationController.swift */; };
 		136814A42918512500191720 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814A32918512500191720 /* TabBarController.swift */; };
+		136814A82918579900191720 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814A72918579900191720 /* NavigationController.swift */; };
 		13A2A21A27BB489000FE10E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21827BB489000FE10E1 /* Main.storyboard */; };
 		A6D32E6CB7D32FDD60D1607D /* Pods_Lotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A64C4C25BD8F9610714F0B0 /* Pods_Lotty.framework */; };
 /* End PBXBuildFile section */
@@ -156,8 +156,8 @@
 		136814992918360500191720 /* LotteryNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryNetwork.swift; sourceTree = "<group>"; };
 		1368149B2918362D00191720 /* LotteryNetworkGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryNetworkGateway.swift; sourceTree = "<group>"; };
 		1368149D2918384600191720 /* LotteryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryUseCase.swift; sourceTree = "<group>"; };
-		136814A129184FD800191720 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		136814A32918512500191720 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		136814A72918579900191720 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		13A2A21927BB489000FE10E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BDB874F062F3BED792DE7C97 /* Pods-Lotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.release.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -291,7 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				1317BC152915BE180033D22F /* BaseViewModel.swift */,
-				136814A129184FD800191720 /* NavigationController.swift */,
+				136814A72918579900191720 /* NavigationController.swift */,
 				136814A32918512500191720 /* TabBarController.swift */,
 			);
 			path = base;
@@ -623,9 +623,9 @@
 				136814942918341E00191720 /* NumberCell.swift in Sources */,
 				1317BBA02915B7D10033D22F /* QrScanViewController.swift in Sources */,
 				1317BBA12915B7D10033D22F /* QrScanViewModel.swift in Sources */,
+				136814A82918579900191720 /* NavigationController.swift in Sources */,
 				1317BC412915BE1F0033D22F /* Storage.swift in Sources */,
 				1317BC3A2915BE190033D22F /* AroundNetwork.swift in Sources */,
-				136814A229184FD800191720 /* NavigationController.swift in Sources */,
 				136814912918341E00191720 /* LotteryListViewModel.swift in Sources */,
 				1368148F2918341E00191720 /* LotteryListViewController.swift in Sources */,
 				1317BC332915BE180033D22F /* StoreInfo.swift in Sources */,
