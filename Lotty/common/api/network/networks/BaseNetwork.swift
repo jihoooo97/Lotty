@@ -5,12 +5,12 @@ import RxSwift
 class BaseNetwork: NSObject {
     
     func request<T: Codable>(
-        api: APIBase,
-        param: APIRequest? = nil,
+        api: ApiBase,
+        param: ApiRequest? = nil,
         encoding: ParameterEncoding = URLEncoding.default,
         responseType: T.Type,
         success: ((T?) -> Void)?,
-        failure: ((APIErrorResponse) -> Void)?
+        failure: ((ApiErrorResponse) -> Void)?
     ) {
         AF.request(api.getUrl(),
                    method: api.method,
@@ -74,7 +74,7 @@ class BaseNetwork: NSObject {
                         Error Description: \(error.localizedDescription))
                         """)
 
-                    let apiError = APIErrorResponse()
+                    let apiError = ApiErrorResponse()
                     apiError.code = "\(error.responseCode ?? -1)"
                     apiError.detail = error.localizedDescription
 

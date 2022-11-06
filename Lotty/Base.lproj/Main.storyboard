@@ -295,10 +295,10 @@
             </objects>
             <point key="canvasLocation" x="-1374" y="1982"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Lottery List View Controller-->
         <scene sceneID="ORF-rj-Zyi">
             <objects>
-                <viewController id="wqN-Mz-JcS" customClass="SearchViewController" customModule="Lotty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wqN-Mz-JcS" customClass="LotteryListViewController" customModule="Lotty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iWP-FA-UdH">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -610,13 +610,12 @@
                             <inset key="imageInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
                             <color key="tintColor" name="B500"/>
                             <connections>
-                                <segue destination="WVX-9n-pSn" kind="show" identifier="searchLottery" id="uNF-jG-XUo"/>
+                                <segue destination="WVX-9n-pSn" kind="show" identifier="detailLottery" id="4Ql-S1-wD2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="pTC-6n-8KX" id="QgK-mC-vvO"/>
-                        <segue destination="WVX-9n-pSn" kind="show" identifier="detailLottery" id="lkz-EI-KPn"/>
+                        <outlet property="tableView" destination="pTC-6n-8KX" id="9Tk-Pe-Img"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xsR-Tc-fSN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1205,7 +1204,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-355" y="2809"/>
+            <point key="canvasLocation" x="-355" y="2764"/>
         </scene>
         <!--번호 생성-->
         <scene sceneID="DY2-ja-FQ5">
@@ -1689,7 +1688,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="wqN-Mz-JcS" kind="relationship" relationship="rootViewController" id="Paa-de-Va5"/>
+                        <segue destination="wqN-Mz-JcS" kind="relationship" relationship="rootViewController" id="oRe-md-Kmd"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kc8-Dv-SPv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1697,9 +1696,6 @@
             <point key="canvasLocation" x="-354" y="1162"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="uNF-jG-XUo"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow_left_icon" width="28" height="28"/>
         <image name="arrow_right_icon" width="512" height="512"/>

@@ -8,6 +8,10 @@ class GatewayBuilder: NSObject {
         return AroundNetwork()
     }
     
+    static func lotteryNetworkGateway() -> LotteryNetworkGateway {
+        return LotteryNetwork()
+    }
+    
     
     // MARK: Database
     

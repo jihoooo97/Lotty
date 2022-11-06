@@ -15,7 +15,7 @@ class AroundNetwork: BaseNetwork, AroundNetworkGateway {
         param.size = 15
         
         request(
-            api: APIAround(),
+            api: ApiAround(),
             param: param,
             encoding: URLEncoding.queryString,
             responseType: AroundResponse.self,
@@ -42,7 +42,7 @@ class AroundNetwork: BaseNetwork, AroundNetworkGateway {
         param.size = 1
         
         request(
-            api: APIAround(),
+            api: ApiAround(),
             param: param,
             encoding: URLEncoding.queryString,
             responseType: AroundResponse.self,

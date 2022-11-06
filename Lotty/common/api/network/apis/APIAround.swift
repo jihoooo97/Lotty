@@ -1,7 +1,7 @@
 import Foundation
 import Alamofire
 
-class APIAround: APIBase {
+class ApiAround: ApiBase {
 
     override init() {
         super.init()
@@ -16,13 +16,13 @@ class APIAround: APIBase {
 }
 
 
-class AroundRequest: APIRequest {
+class AroundRequest: ApiRequest {
     var x: Double? // longitude
     var y: Double? // latitude
     var query: String? = "복권 판매점"
     var size: Int?
 }
 
-class AroundResponse: APIResponse {
+class AroundResponse: ApiResponse {
     let documents: [Documents]
 }

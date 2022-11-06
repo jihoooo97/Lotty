@@ -16,14 +16,6 @@
 		1317BB872915B7A30033D22F /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7F2915B7A30033D22F /* SearchBarView.swift */; };
 		1317BB8A2915B7B70033D22F /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB882915B7B60033D22F /* RefreshView.swift */; };
 		1317BB8B2915B7B70033D22F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB892915B7B70033D22F /* HomeViewController.swift */; };
-		1317BB962915B7C70033D22F /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB8D2915B7C70033D22F /* EmptyCell.swift */; };
-		1317BB972915B7C70033D22F /* SearchLotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB8E2915B7C70033D22F /* SearchLotteryViewController.swift */; };
-		1317BB982915B7C70033D22F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB8F2915B7C70033D22F /* DetailViewModel.swift */; };
-		1317BB992915B7C70033D22F /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB902915B7C70033D22F /* HistoryCell.swift */; };
-		1317BB9A2915B7C70033D22F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB922915B7C70033D22F /* SearchViewController.swift */; };
-		1317BB9B2915B7C70033D22F /* FailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB932915B7C70033D22F /* FailCell.swift */; };
-		1317BB9C2915B7C70033D22F /* NumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB942915B7C70033D22F /* NumberCell.swift */; };
-		1317BB9D2915B7C70033D22F /* LotteryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB952915B7C70033D22F /* LotteryViewModel.swift */; };
 		1317BBA02915B7D10033D22F /* QrScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB9E2915B7D10033D22F /* QrScanViewController.swift */; };
 		1317BBA12915B7D10033D22F /* QrScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB9F2915B7D10033D22F /* QrScanViewModel.swift */; };
 		1317BBA92915B7DA0033D22F /* BackgroundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA22915B7DA0033D22F /* BackgroundLabel.swift */; };
@@ -58,8 +50,8 @@
 		1317BC342915BE180033D22F /* ErrorEntitiy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC1E2915BE180033D22F /* ErrorEntitiy.swift */; };
 		1317BC352915BE180033D22F /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC1F2915BE180033D22F /* Entity.swift */; };
 		1317BC362915BE180033D22F /* LotteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC202915BE180033D22F /* LotteryInfo.swift */; };
-		1317BC372915BE180033D22F /* APIAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC242915BE180033D22F /* APIAround.swift */; };
-		1317BC382915BE180033D22F /* APIBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC252915BE180033D22F /* APIBase.swift */; };
+		1317BC372915BE180033D22F /* ApiAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC242915BE180033D22F /* ApiAround.swift */; };
+		1317BC382915BE180033D22F /* ApiBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC252915BE180033D22F /* ApiBase.swift */; };
 		1317BC392915BE190033D22F /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC262915BE180033D22F /* Interceptor.swift */; };
 		1317BC3A2915BE190033D22F /* AroundNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC272915BE180033D22F /* AroundNetwork.swift */; };
 		1317BC3B2915BE190033D22F /* AroundNetworkGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC292915BE180033D22F /* AroundNetworkGateway.swift */; };
@@ -72,6 +64,19 @@
 		1317BC452915C5430033D22F /* AroundViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC442915C5430033D22F /* AroundViewController+Extension.swift */; };
 		1317BC482915C6F70033D22F /* BaseMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC472915C6F70033D22F /* BaseMapMarker.swift */; };
 		1317BC4A2915C70A0033D22F /* LottyMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC492915C70A0033D22F /* LottyMapMarker.swift */; };
+		1368148E2918341E00191720 /* SearchLotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814852918341D00191720 /* SearchLotteryViewController.swift */; };
+		1368148F2918341E00191720 /* LotteryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814862918341D00191720 /* LotteryListViewController.swift */; };
+		136814902918341E00191720 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814872918341D00191720 /* DetailViewModel.swift */; };
+		136814912918341E00191720 /* LotteryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814882918341D00191720 /* LotteryListViewModel.swift */; };
+		136814922918341E00191720 /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368148A2918341D00191720 /* EmptyCell.swift */; };
+		136814932918341E00191720 /* FailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368148B2918341D00191720 /* FailCell.swift */; };
+		136814942918341E00191720 /* NumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368148C2918341D00191720 /* NumberCell.swift */; };
+		136814952918341E00191720 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368148D2918341D00191720 /* HistoryCell.swift */; };
+		13681497291834E600191720 /* ApiLottery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13681496291834E600191720 /* ApiLottery.swift */; };
+		1368149A2918360500191720 /* LotteryNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814992918360500191720 /* LotteryNetwork.swift */; };
+		1368149C2918362D00191720 /* LotteryNetworkGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368149B2918362D00191720 /* LotteryNetworkGateway.swift */; };
+		1368149E2918384600191720 /* LotteryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368149D2918384600191720 /* LotteryUseCase.swift */; };
+		136814A02918493200191720 /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368149F2918493200191720 /* Sequence+Extension.swift */; };
 		13A2A21A27BB489000FE10E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21827BB489000FE10E1 /* Main.storyboard */; };
 		A6D32E6CB7D32FDD60D1607D /* Pods_Lotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A64C4C25BD8F9610714F0B0 /* Pods_Lotty.framework */; };
 /* End PBXBuildFile section */
@@ -88,14 +93,6 @@
 		1317BB7F2915B7A30033D22F /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		1317BB882915B7B60033D22F /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		1317BB892915B7B70033D22F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		1317BB8D2915B7C70033D22F /* EmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
-		1317BB8E2915B7C70033D22F /* SearchLotteryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLotteryViewController.swift; sourceTree = "<group>"; };
-		1317BB8F2915B7C70033D22F /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
-		1317BB902915B7C70033D22F /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
-		1317BB922915B7C70033D22F /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		1317BB932915B7C70033D22F /* FailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailCell.swift; sourceTree = "<group>"; };
-		1317BB942915B7C70033D22F /* NumberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberCell.swift; sourceTree = "<group>"; };
-		1317BB952915B7C70033D22F /* LotteryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryViewModel.swift; sourceTree = "<group>"; };
 		1317BB9E2915B7D10033D22F /* QrScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrScanViewController.swift; sourceTree = "<group>"; };
 		1317BB9F2915B7D10033D22F /* QrScanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrScanViewModel.swift; sourceTree = "<group>"; };
 		1317BBA22915B7DA0033D22F /* BackgroundLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundLabel.swift; sourceTree = "<group>"; };
@@ -131,8 +128,8 @@
 		1317BC1E2915BE180033D22F /* ErrorEntitiy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorEntitiy.swift; sourceTree = "<group>"; };
 		1317BC1F2915BE180033D22F /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		1317BC202915BE180033D22F /* LotteryInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryInfo.swift; sourceTree = "<group>"; };
-		1317BC242915BE180033D22F /* APIAround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAround.swift; sourceTree = "<group>"; };
-		1317BC252915BE180033D22F /* APIBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIBase.swift; sourceTree = "<group>"; };
+		1317BC242915BE180033D22F /* ApiAround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiAround.swift; sourceTree = "<group>"; };
+		1317BC252915BE180033D22F /* ApiBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiBase.swift; sourceTree = "<group>"; };
 		1317BC262915BE180033D22F /* Interceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
 		1317BC272915BE180033D22F /* AroundNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundNetwork.swift; sourceTree = "<group>"; };
 		1317BC292915BE180033D22F /* AroundNetworkGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundNetworkGateway.swift; sourceTree = "<group>"; };
@@ -146,6 +143,19 @@
 		1317BC472915C6F70033D22F /* BaseMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapMarker.swift; sourceTree = "<group>"; };
 		1317BC492915C70A0033D22F /* LottyMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottyMapMarker.swift; sourceTree = "<group>"; };
 		131B329527EF0EE200F9121D /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		136814852918341D00191720 /* SearchLotteryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLotteryViewController.swift; sourceTree = "<group>"; };
+		136814862918341D00191720 /* LotteryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryListViewController.swift; sourceTree = "<group>"; };
+		136814872918341D00191720 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		136814882918341D00191720 /* LotteryListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryListViewModel.swift; sourceTree = "<group>"; };
+		1368148A2918341D00191720 /* EmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
+		1368148B2918341D00191720 /* FailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailCell.swift; sourceTree = "<group>"; };
+		1368148C2918341D00191720 /* NumberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberCell.swift; sourceTree = "<group>"; };
+		1368148D2918341D00191720 /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		13681496291834E600191720 /* ApiLottery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLottery.swift; sourceTree = "<group>"; };
+		136814992918360500191720 /* LotteryNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryNetwork.swift; sourceTree = "<group>"; };
+		1368149B2918362D00191720 /* LotteryNetworkGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryNetworkGateway.swift; sourceTree = "<group>"; };
+		1368149D2918384600191720 /* LotteryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryUseCase.swift; sourceTree = "<group>"; };
+		1368149F2918493200191720 /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
 		13A2A21927BB489000FE10E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BDB874F062F3BED792DE7C97 /* Pods-Lotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.release.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,11 +200,11 @@
 		1317BB752915B6BC0033D22F /* search */ = {
 			isa = PBXGroup;
 			children = (
-				136C8CB32915D7DF006AE77C /* cell */,
-				1317BB922915B7C70033D22F /* SearchViewController.swift */,
-				1317BB952915B7C70033D22F /* LotteryViewModel.swift */,
-				1317BB8E2915B7C70033D22F /* SearchLotteryViewController.swift */,
-				1317BB8F2915B7C70033D22F /* DetailViewModel.swift */,
+				136814892918341D00191720 /* cell */,
+				136814862918341D00191720 /* LotteryListViewController.swift */,
+				136814882918341D00191720 /* LotteryListViewModel.swift */,
+				136814852918341D00191720 /* SearchLotteryViewController.swift */,
+				136814872918341D00191720 /* DetailViewModel.swift */,
 			);
 			path = search;
 			sourceTree = "<group>";
@@ -258,8 +268,8 @@
 		1317BC122915BD980033D22F /* common */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC212915BE180033D22F /* api */,
 				1317BC142915BE180033D22F /* base */,
+				1317BC212915BE180033D22F /* api */,
 				1317BC192915BE180033D22F /* domain */,
 				1317BC2B2915BE180033D22F /* extensions */,
 				1317BC172915BE180033D22F /* utils */,
@@ -279,7 +289,6 @@
 			isa = PBXGroup;
 			children = (
 				1317BC152915BE180033D22F /* BaseViewModel.swift */,
-				1317BC162915BE180033D22F /* BaseNetwork.swift */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -305,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				1317BC1B2915BE180033D22F /* AroundUseCase.swift */,
+				1368149D2918384600191720 /* LotteryUseCase.swift */,
 			);
 			path = usecases;
 			sourceTree = "<group>";
@@ -312,9 +322,9 @@
 		1317BC1C2915BE180033D22F /* entities */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC1D2915BE180033D22F /* StoreInfo.swift */,
-				1317BC1E2915BE180033D22F /* ErrorEntitiy.swift */,
 				1317BC1F2915BE180033D22F /* Entity.swift */,
+				1317BC1E2915BE180033D22F /* ErrorEntitiy.swift */,
+				1317BC1D2915BE180033D22F /* StoreInfo.swift */,
 				1317BC202915BE180033D22F /* LotteryInfo.swift */,
 			);
 			path = entities;
@@ -332,9 +342,9 @@
 		1317BC222915BE180033D22F /* network */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC232915BE180033D22F /* apis */,
 				1317BC262915BE180033D22F /* Interceptor.swift */,
-				1317BC272915BE180033D22F /* AroundNetwork.swift */,
+				1317BC232915BE180033D22F /* apis */,
+				13681498291835E600191720 /* networks */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -342,8 +352,9 @@
 		1317BC232915BE180033D22F /* apis */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC242915BE180033D22F /* APIAround.swift */,
-				1317BC252915BE180033D22F /* APIBase.swift */,
+				1317BC252915BE180033D22F /* ApiBase.swift */,
+				1317BC242915BE180033D22F /* ApiAround.swift */,
+				13681496291834E600191720 /* ApiLottery.swift */,
 			);
 			path = apis;
 			sourceTree = "<group>";
@@ -351,8 +362,9 @@
 		1317BC282915BE180033D22F /* gateway */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC292915BE180033D22F /* AroundNetworkGateway.swift */,
 				1317BC2A2915BE180033D22F /* GatewayBuilder.swift */,
+				1317BC292915BE180033D22F /* AroundNetworkGateway.swift */,
+				1368149B2918362D00191720 /* LotteryNetworkGateway.swift */,
 			);
 			path = gateway;
 			sourceTree = "<group>";
@@ -363,6 +375,7 @@
 				1317BC2C2915BE180033D22F /* UIImage+Extension.swift */,
 				1317BC2D2915BE180033D22F /* Codable+Extension.swift */,
 				1317BC2E2915BE180033D22F /* CALayer+Extension.swift */,
+				1368149F2918493200191720 /* Sequence+Extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -376,15 +389,25 @@
 			path = mapMarker;
 			sourceTree = "<group>";
 		};
-		136C8CB32915D7DF006AE77C /* cell */ = {
+		136814892918341D00191720 /* cell */ = {
 			isa = PBXGroup;
 			children = (
-				1317BB932915B7C70033D22F /* FailCell.swift */,
-				1317BB942915B7C70033D22F /* NumberCell.swift */,
-				1317BB8D2915B7C70033D22F /* EmptyCell.swift */,
-				1317BB902915B7C70033D22F /* HistoryCell.swift */,
+				1368148A2918341D00191720 /* EmptyCell.swift */,
+				1368148B2918341D00191720 /* FailCell.swift */,
+				1368148C2918341D00191720 /* NumberCell.swift */,
+				1368148D2918341D00191720 /* HistoryCell.swift */,
 			);
 			path = cell;
+			sourceTree = "<group>";
+		};
+		13681498291835E600191720 /* networks */ = {
+			isa = PBXGroup;
+			children = (
+				1317BC162915BE180033D22F /* BaseNetwork.swift */,
+				1317BC272915BE180033D22F /* AroundNetwork.swift */,
+				136814992918360500191720 /* LotteryNetwork.swift */,
+			);
+			path = networks;
 			sourceTree = "<group>";
 		};
 		136C8CB42915D801006AE77C /* cell */ = {
@@ -567,24 +590,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				1317BB832915B7A30033D22F /* StoreDetailView.swift in Sources */,
+				1368149C2918362D00191720 /* LotteryNetworkGateway.swift in Sources */,
 				1317BBAB2915B7DA0033D22F /* RandomViewController.swift in Sources */,
+				136814932918341E00191720 /* FailCell.swift in Sources */,
+				136814A02918493200191720 /* Sequence+Extension.swift in Sources */,
 				1317BBAD2915B7DA0033D22F /* RightLine.swift in Sources */,
 				1317BBFB2915BBFC0033D22F /* UIColor.swift in Sources */,
-				1317BB962915B7C70033D22F /* EmptyCell.swift in Sources */,
-				1317BB9C2915B7C70033D22F /* NumberCell.swift in Sources */,
-				1317BB992915B7C70033D22F /* HistoryCell.swift in Sources */,
-				1317BB9B2915B7C70033D22F /* FailCell.swift in Sources */,
 				1317BC312915BE180033D22F /* Marker+Util.swift in Sources */,
+				136814952918341E00191720 /* HistoryCell.swift in Sources */,
 				1317BB812915B7A30033D22F /* LocationHistoryCell.swift in Sources */,
-				1317BB9D2915B7C70033D22F /* LotteryViewModel.swift in Sources */,
 				1317BC3D2915BE190033D22F /* UIImage+Extension.swift in Sources */,
-				1317BB972915B7C70033D22F /* SearchLotteryViewController.swift in Sources */,
-				1317BC382915BE180033D22F /* APIBase.swift in Sources */,
+				1317BC382915BE180033D22F /* ApiBase.swift in Sources */,
 				1317BC452915C5430033D22F /* AroundViewController+Extension.swift in Sources */,
 				1317BBAC2915B7DA0033D22F /* RandomViewModel.swift in Sources */,
 				1317BC2F2915BE180033D22F /* BaseViewModel.swift in Sources */,
+				136814902918341E00191720 /* DetailViewModel.swift in Sources */,
 				1317BB8A2915B7B70033D22F /* RefreshView.swift in Sources */,
 				1317BB852915B7A30033D22F /* alertView.swift in Sources */,
+				1368149E2918384600191720 /* LotteryUseCase.swift in Sources */,
 				1317BC3B2915BE190033D22F /* AroundNetworkGateway.swift in Sources */,
 				1317BBAE2915B7DA0033D22F /* CountLabel.swift in Sources */,
 				1317BC302915BE180033D22F /* BaseNetwork.swift in Sources */,
@@ -593,30 +616,35 @@
 				1317BBAA2915B7DA0033D22F /* GameView.swift in Sources */,
 				1317BC482915C6F70033D22F /* BaseMapMarker.swift in Sources */,
 				1317BC342915BE180033D22F /* ErrorEntitiy.swift in Sources */,
+				13681497291834E600191720 /* ApiLottery.swift in Sources */,
 				1317BC082915BBFC0033D22F /* AppDelegate.swift in Sources */,
+				136814942918341E00191720 /* NumberCell.swift in Sources */,
 				1317BBA02915B7D10033D22F /* QrScanViewController.swift in Sources */,
 				1317BBA12915B7D10033D22F /* QrScanViewModel.swift in Sources */,
 				1317BC412915BE1F0033D22F /* Storage.swift in Sources */,
 				1317BC3A2915BE190033D22F /* AroundNetwork.swift in Sources */,
+				136814912918341E00191720 /* LotteryListViewModel.swift in Sources */,
+				1368148F2918341E00191720 /* LotteryListViewController.swift in Sources */,
 				1317BC332915BE180033D22F /* StoreInfo.swift in Sources */,
 				1317BC352915BE180033D22F /* Entity.swift in Sources */,
 				1317BC4A2915C70A0033D22F /* LottyMapMarker.swift in Sources */,
 				1317BBA92915B7DA0033D22F /* BackgroundLabel.swift in Sources */,
 				1317BB872915B7A30033D22F /* SearchBarView.swift in Sources */,
 				1317BC322915BE180033D22F /* AroundUseCase.swift in Sources */,
-				1317BC372915BE180033D22F /* APIAround.swift in Sources */,
-				1317BB9A2915B7C70033D22F /* SearchViewController.swift in Sources */,
+				1317BC372915BE180033D22F /* ApiAround.swift in Sources */,
 				1317BB842915B7A30033D22F /* AroundViewController.swift in Sources */,
 				1317BB822915B7A30033D22F /* LocationEmptyCell.swift in Sources */,
+				1368149A2918360500191720 /* LotteryNetwork.swift in Sources */,
 				1317BC362915BE180033D22F /* LotteryInfo.swift in Sources */,
 				1317BB8B2915B7B70033D22F /* HomeViewController.swift in Sources */,
 				1317BC3C2915BE190033D22F /* GatewayBuilder.swift in Sources */,
+				136814922918341E00191720 /* EmptyCell.swift in Sources */,
 				1317BC3E2915BE190033D22F /* Codable+Extension.swift in Sources */,
 				1317BBAF2915B7DA0033D22F /* DottedLine.swift in Sources */,
+				1368148E2918341E00191720 /* SearchLotteryViewController.swift in Sources */,
 				1317BB802915B7A30033D22F /* MapSearchViewController.swift in Sources */,
 				1317BC432915BF730033D22F /* AroundViewModel.swift in Sources */,
 				1317BC3F2915BE190033D22F /* CALayer+Extension.swift in Sources */,
-				1317BB982915B7C70033D22F /* DetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
