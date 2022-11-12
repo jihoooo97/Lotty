@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
         refreshView.center.x = (scrollView.refreshControl?.frame.width)! / 2
         
         scrollView.refreshControl?.tintColor = .clear
-        scrollView.refreshControl?.backgroundColor = .B500
+        scrollView.refreshControl?.backgroundColor = LottyColors.B500
         scrollView.refreshControl?.addSubview(refreshView)
         
         setContentView()
@@ -41,7 +41,7 @@ class HomeViewController: UIViewController {
         randomButton.addGestureRecognizer(randomButtonTap)
         
         mapButton.layer.borderWidth = 1
-        mapButton.layer.borderColor = UIColor.B600.cgColor
+        mapButton.layer.borderColor = LottyColors.B600.cgColor
         mapButton.layer.cornerRadius = 8
         mapButton.layer.masksToBounds = false
         mapButton.layer.shadowColor = UIColor.black.cgColor

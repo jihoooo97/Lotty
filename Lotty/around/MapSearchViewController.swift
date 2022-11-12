@@ -1,74 +1,100 @@
 import UIKit
-import Network
+import SnapKit
+import RxSwift
+import RxCocoa
+import Then
 
 protocol SearchDelegate: NSObjectProtocol {
     func mapSearch(query: String)
 }
 
-class MapSearchViewController: UIViewController {
-    @IBOutlet weak var searchBar: UIView!
-    @IBOutlet weak var searchField: UITextField!
-    @IBOutlet weak var clearView: UIView!
-    @IBOutlet weak var historyTableView: UITableView!
-
+final class MapSearchViewController: UIViewController {
+    
+    var backButton = UIButton()
+    var searchTextField = UITextField()
+    
+    var topView = UIView()
+    var historyLabel = UILabel()
+    var clearButton = UIButton()
+    
+    var historyTableView = UITableView()
+    
+    var safeArea = UILayoutGuide()
+    
+    let viewModel = AroundSearchViewModel()
+    var disposeBag = DisposeBag()
+    
     weak var delegate: SearchDelegate?
-
-    let monitor = NWPathMonitor()
-    private var historyList: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        monitor.start(queue: DispatchQueue.global())
-        monitor.pathUpdateHandler = { path in
-            if path.status != .satisfied {
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
-                    let confirm = UIAlertAction(title: "확인", style: .default)
-                    alert.addAction(confirm)
-                    self.present(alert, animated: true)
-                }
-            }
-        }
+        initAttributes()
+        initUI()
+        inputBind()
+        outputBind()
         
-        historyTableView.dataSource = self
         historyTableView.delegate = self
-        searchField.delegate = self
+        searchTextField.delegate = self
         historyTableView.backgroundColor = .white
-        configureNavi()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        historyList = Storage.retrive("location_history.json", from: .documents, as: [String].self) ?? []
         
-        searchField.becomeFirstResponder()
+//        viewModel.getHistoryList()
+        searchTextField.becomeFirstResponder()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        Storage.store(self.historyList, to: .documents, as: "location_history.json")
-        monitor.cancel()
-    }
-    
-    func configureNavi() {
-        searchBar.layer.cornerRadius = 8
-        searchField.textColor = .G900
-        searchField.attributedPlaceholder = NSAttributedString(
-            string: "지역 이름으로 검색하세요",
-            attributes: [.foregroundColor: UIColor.Placeholder]
-        )
+    func inputBind() {
+        backButton.rx.tap
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .withUnretained(self).map { $0.0 }
+            .bind(onNext: {
+                $0.dismiss(animated: false)
+            }).disposed(by: disposeBag)
         
-        let clearTap = UITapGestureRecognizer(target: self, action: #selector(clearHistory))
-        clearView.addGestureRecognizer(clearTap)
+        clearButton.rx.tap
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .withUnretained(self).map { $0.0 }
+            .bind(onNext: {
+                $0.clearHistory()
+            }).disposed(by: disposeBag)
     }
     
-    @objc func clearHistory() {
+    func outputBind() {
+        viewModel.historyListRelay
+            .observe(on: MainScheduler.instance)
+            .bind(to: historyTableView.rx.items(
+                cellIdentifier: "locationHistoryCell", cellType: LocationHistoryCell.self
+            )) { [weak self] (index, item, cell) in
+                cell.locationLabel.text = item
+
+                cell.clickButtonHandler = {
+                    guard var historyList = self?.viewModel.historyListRelay.value else { return }
+                    self?.searchTextField.resignFirstResponder()
+                    
+                    historyList.remove(at: index)
+                    historyList.insert(cell.locationLabel.text!, at: 0)
+                    self?.viewModel.historyListRelay.accept(historyList)
+                    
+                    self?.delegate?.mapSearch(query: cell.locationLabel.text!)
+                    self?.dismiss(animated: false)
+                }
+                
+                cell.deleteButtonHandler = {
+                    guard var historyList = self?.viewModel.historyListRelay.value else { return }
+                    historyList.remove(at: index)
+                    self?.viewModel.historyListRelay.accept(historyList)
+                }
+            }.disposed(by: disposeBag)
+    }
+    
+    private func clearHistory() {
         let alert = UIAlertController(title: "알림", message: "최근 조회 목록을 모두 삭제하시겠습니까?", preferredStyle: .alert)
-        let confirm = UIAlertAction(title: "확인", style: .default) { action in
-            self.historyList = []
+        let confirm = UIAlertAction(title: "확인", style: .default) { [weak self] ction in
+            self?.viewModel.historyListRelay.accept([])
             Storage.remove("location_history.json", from: .documents)
-            self.historyTableView.reloadData()
         }
         let cancel = UIAlertAction(title: "취소", style: .default)
         alert.addAction(confirm)
@@ -76,60 +102,34 @@ class MapSearchViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    @IBAction func back(_ sender: Any) {
-        self.dismiss(animated: false, completion: nil)
-    }
+//    func tapView() {
+//        searchTextField.resignFirstResponder()
+//    }
     
-    @IBAction func tapView(_ sender: Any) {
-        searchField.resignFirstResponder()
-    }
 }
 
-extension MapSearchViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if historyList.count > 0 { return historyList.count }
-        else { return 1 }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if historyList.count > 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "locationHistoryCell", for: indexPath) as? LocationHistoryCell else { return UITableViewCell() }
-            cell.locationLabel.text = historyList[indexPath.row]
-            cell.clickButtonHandler = {
-                if self.monitor.currentPath.status == .satisfied {
-                    self.searchField.resignFirstResponder()
-                    self.historyList.remove(at: indexPath.row)
-                    self.historyList.insert(cell.locationLabel.text!, at: 0)
-                    self.delegate?.mapSearch(query: cell.locationLabel.text!)
-                    self.dismiss(animated: false)
-                } else {
-                    let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
-                    let confirm = UIAlertAction(title: "확인", style: .default)
-                    alert.addAction(confirm)
-                    self.present(alert, animated: true)
-                }
-            }
-            cell.deleteButtonHandler = {
-                self.historyList.remove(at: indexPath.row)
-                self.historyTableView.reloadData()
-            }
-            return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "locationEmptyCell", for: indexPath) as? LocationEmptyCell else { return UITableViewCell() }
-            cell.explainLabel.text = "최근 검색어가 없어요"
-            return cell
-        }
-    }
-}
+
+//extension MapSearchViewController: UITableViewDataSource {
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "locationEmptyCell", for: indexPath) as? LocationEmptyCell else { return UITableViewCell() }
+//        cell.explainLabel.text = "최근 검색어가 없어요"
+//        return cell
+//    }
+//
+//}
 
 extension MapSearchViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if historyList.count > 0 { return 50 }
+        if viewModel.historyListRelay.value.count > 0 { return 50 }
         else { return 150 }
     }
+    
 }
 
 extension MapSearchViewController: UITextFieldDelegate {
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
     }
@@ -137,18 +137,99 @@ extension MapSearchViewController: UITextFieldDelegate {
     // [!] 자음, 모음만 검색하는것 처리
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        if self.monitor.currentPath.status == .satisfied {
-            if !self.historyList.contains(textField.text!)  {
-                self.historyList.insert(textField.text!, at: 0)
-            }
-            self.delegate?.mapSearch(query: textField.text!)
-            self.dismiss(animated: false)
-        } else {
-            let alert = UIAlertController(title: "오류", message: "네트워크 연결을 확인해주세요", preferredStyle: .alert)
-            let confirm = UIAlertAction(title: "확인", style: .default)
-            alert.addAction(confirm)
-            self.present(alert, animated: true)
+        var historyList = viewModel.historyListRelay.value
+        if !historyList.contains(textField.text!)  {
+            historyList.insert(textField.text!, at: 0)
+            viewModel.historyListRelay.accept(historyList)
         }
+        self.delegate?.mapSearch(query: textField.text!)
+        self.dismiss(animated: false)
         return true
     }
+    
+}
+
+extension MapSearchViewController: BaseViewController {
+    
+    func initAttributes() {
+        safeArea = view.safeAreaLayoutGuide
+        
+        backButton = UIButton().then {
+            $0.setImage(LottyIcons.backButton, for: .normal)
+            $0.tintColor = LottyColors.G600
+        }
+        
+        searchTextField = UITextField().then {
+            $0.backgroundColor = LottyColors.Placeholder
+            $0.layer.cornerRadius = 8
+            $0.textColor = LottyColors.G900
+            $0.font = LottyFonts.medium(size: 16)
+            $0.attributedPlaceholder = NSAttributedString(
+                string: "지역 이름으로 검색하세요",
+                attributes: [.foregroundColor: LottyColors.Placeholder]
+            )
+            $0.delegate = self
+        }
+        
+        topView = UIView().then {
+            $0.backgroundColor = .white
+        }
+        
+        historyLabel = UILabel().then {
+            $0.textColor = LottyColors.Placeholder
+            $0.font = LottyFonts.semiBold(size: 15)
+            $0.text = "최근 검색어"
+        }
+        
+        clearButton = UIButton().then {
+            $0.setImage(LottyIcons.trashIcon, for: .normal)
+            $0.tintColor = LottyColors.Placeholder
+            $0.titleLabel?.textColor = LottyColors.Placeholder
+            $0.setTitle("전체 삭제", for: .normal)
+        }
+        
+        historyTableView = UITableView().then {
+            $0.backgroundColor = .white
+            $0.delegate = self
+            $0.separatorStyle = .none
+            $0.showsVerticalScrollIndicator = false
+            $0.showsHorizontalScrollIndicator = false
+            $0.register(LocationHistoryCell.self, forCellReuseIdentifier: "locationHistoryCell")
+        }
+        
+    }
+    
+    func initUI() {
+        [backButton, searchTextField, topView, historyTableView]
+            .forEach { view.addSubview($0) }
+        
+        [historyLabel, clearButton]
+            .forEach { topView.addSubview($0) }
+        
+        backButton.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(12)
+            $0.centerY.equalTo(searchTextField)
+            $0.width.height.equalTo(30)
+        }
+        
+        searchTextField.snp.makeConstraints {
+            $0.leading.equalTo(backButton.snp.trailing).offset(12)
+            $0.trailing.equalToSuperview().offset(-12)
+            $0.top.equalTo(safeArea).offset(4)
+            $0.height.equalTo(44)
+        }
+        
+        topView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(searchTextField.snp.bottom).offset(10)
+            $0.height.equalTo(40)
+        }
+        
+        historyTableView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(topView.snp.bottom)
+            $0.bottom.equalTo(safeArea)
+        }
+    }
+    
 }

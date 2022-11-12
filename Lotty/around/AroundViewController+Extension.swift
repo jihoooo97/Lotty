@@ -8,10 +8,10 @@ extension AroundViewController {
     }
     
     @objc func clickSearch() {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchMap") as? MapSearchViewController else { return }
-        vc.modalPresentationStyle = .fullScreen
-        vc.delegate = self
-        self.present(vc, animated: false, completion: nil)
+        let mapSearchViewController = MapSearchViewController()
+        mapSearchViewController.modalPresentationStyle = .fullScreen
+        mapSearchViewController.delegate = self
+        self.present(mapSearchViewController, animated: false, completion: nil)
     }
     
     func configureDetail(store: Documents) {

@@ -14,7 +14,7 @@ class BackgroundLabel: UILabel {
     func setLabel() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.sizeToFit()
-        self.textColor = .B600
+        self.textColor = LottyColors.B600
         self.alpha = 0.5
     }
 }

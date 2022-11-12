@@ -106,7 +106,7 @@ class QrScanViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
         line.frame = rectOfInterest
         line.backgroundColor = .none
         line.layer.borderWidth = 0.5
-        line.layer.borderColor = UIColor.B500.cgColor
+        line.layer.borderColor = LottyColors.B500.cgColor
         qrView.addSubview(line)
         
         let leftBoard = UIView()

@@ -11,4 +11,8 @@ class BaseViewModel: NSObject {
         
     }
     
+    deinit {
+        disposeBag = DisposeBag()
+    }
+    
 }

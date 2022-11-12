@@ -1,34 +1,28 @@
 import UIKit
 import SnapKit
+import Then
 import RxSwift
 import RxCocoa
 
 final class LotteryListViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    var navigationBar = UIView()
+    var titleLabel = UILabel()
+    var searchButton = UIButton()
+    var lotteyTableView = UITableView()
     
+    var safeArea = UILayoutGuide()
     private var refreshControl = UIRefreshControl()
     
     let viewModel = LotteryListViewModel()
     let disposeBag = DisposeBag()
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detailLottery" {
-            let vc = segue.destination as! SearchLotteryViewController
-            vc.viewModel.lotteryInfo = sender as! LotteryInfo
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.backgroundColor = .white
-        tableView.refreshControl = refreshControl
-        tableView.refreshControl?.tintColor = .AlphaB600
-        tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
-        configureNavi()
+        initattributes()
+        initUI()
+        inputBind()
         outputBind()
         
         viewModel.getRecentNumber()
@@ -41,7 +35,19 @@ final class LotteryListViewController: UIViewController {
         viewModel.loadHistory()
     }
     
+    func inputBind() {
+        searchButton.rx.tap
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .withUnretained(self).map { $0.0 }
+            .bind(onNext: {
+                let viewModel = LotterySearchViewModel()
+                let lotterySearchViController = LotterySearchViewController(viewModel)
+                $0.navigationController?.pushViewController(lotterySearchViController, animated: true)
+            }).disposed(by: disposeBag)
+    }
+    
     func outputBind() {
+        // section 처리가 곤란함
 //        viewModel.lotteryListRelay
 //            .filter { $0.count >= 0 }
 //            .observe(on: MainScheduler.instance)
@@ -54,48 +60,17 @@ final class LotteryListViewController: UIViewController {
         
         viewModel.lotteryListRelay
             .bind(onNext: { [weak self] lotteryList in
-                self?.tableView.reloadData()
+                self?.lotteyTableView.reloadData()
             }).disposed(by: disposeBag)
-    }
-    
-    func configureNavi() {
-        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 44))
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 65, height: 44))
-        label.text = "조회하기"
-        label.textColor = .G900
-        label.font = UIFont(name: "Pretendard-Bold", size: 18)!
-        customView.addSubview(label)
-        
-        let leftButton = UIBarButtonItem(customView: customView)
-        self.navigationItem.leftBarButtonItem = leftButton
-//        self.navigationController?.navigationBar.titleTextAttributes = [
-//            .foregroundColor: UIColor.G900,
-//            .font: UIFont(name: "Pretendard-Bold", size: 18)!
-//        ]
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-        
-        // 글자 간격
-//        let attrString = NSMutableAttributedString(string: explainLabel.text!)
-//        let paragraphStyle = NSMutableParagraphStyle()
-//        paragraphStyle.lineSpacing = 6
-//        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
-//        explainLabel.attributedText = attrString
-    }
-    
-    func numberFormatter(number: Int) -> String {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        return numberFormatter.string(from: NSNumber(value: number))!
     }
     
     @objc func pullToRefresh() {
         viewModel.lotteryItems = []
         viewModel.page = 0
         viewModel.getRecentNumber()
-        // [!] 테이블뷰 갱신 오류
+        
         self.viewModel.getLotteryNumber(drwNo: self.viewModel.recentNumber)
-        self.tableView.reloadData()
-        self.tableView.refreshControl?.endRefreshing()
+        self.lotteyTableView.refreshControl?.endRefreshing()
     }
     
 }
@@ -114,56 +89,25 @@ extension LotteryListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "numberCloseCell", for: indexPath) as? NumberCloseCell else { return UITableViewCell() }
-            if viewModel.lotteryItems[indexPath.section].open == true {
-                cell.status.image = UIImage(named: "arrow_up_icon")
-            } else {
-                cell.status.image = UIImage(named: "arrow_down_icon")
-            }
-            cell.drwNo.text = "\(viewModel.lotteryItems[indexPath.section].lottery.drwNo)회"
+            let cell = tableView.dequeueReusableCell(withIdentifier: NumberCloseCell.cellId, for: indexPath) as! NumberCloseCell
+            cell.setData(lottery: viewModel.lotteryItems[indexPath.section])
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "numberCell", for: indexPath) as? NumberCell else { return FailCell() }
+            let cell = tableView.dequeueReusableCell(withIdentifier: NumberCell.cellId, for: indexPath) as! NumberCell
             let lotteryItem = viewModel.lotteryListRelay.value
-            cell.date.text = lotteryItem[indexPath.section].lottery.drwNoDate
-            cell.no1.text = "\(lotteryItem[indexPath.section].lottery.drwtNo1)"
-            cell.no2.text = "\(lotteryItem[indexPath.section].lottery.drwtNo2)"
-            cell.no3.text = "\(lotteryItem[indexPath.section].lottery.drwtNo3)"
-            cell.no4.text = "\(lotteryItem[indexPath.section].lottery.drwtNo4)"
-            cell.no5.text = "\(lotteryItem[indexPath.section].lottery.drwtNo5)"
-            cell.no6.text = "\(lotteryItem[indexPath.section].lottery.drwtNo6)"
-            cell.bonusNo.text = "\(lotteryItem[indexPath.section].lottery.bnusNo)"
-            cell.winCount.text = "총 \(lotteryItem[indexPath.section].lottery.firstPrzwnerCo)명 당첨"
-            cell.winAmount.text = numberFormatter(number: lotteryItem[indexPath.section].lottery.firstWinamnt) + "원"
-            cell.detailButtonHandler = {
-                self.viewModel.updateHistory(section: indexPath.section)
-                self.viewModel.saveHistory()
-                self.performSegue(withIdentifier: "detailLottery", sender: lotteryItem[indexPath.section].lottery)
+            
+            cell.setData(lottery: lotteryItem[indexPath.section])
+            
+            cell.detailButtonHandler = { [weak self] in
+                let lotteryInfo = self?.viewModel.lotteryListRelay.value[indexPath.section]
+                self?.viewModel.updateHistory(section: indexPath.section)
+                self?.viewModel.saveHistory()
+                let lotterySearchViewController = LotterySearchViewController(LotterySearchViewModel())
+                lotterySearchViewController.lotteryInfo = lotteryInfo
+                self?.navigationController?.pushViewController(lotterySearchViewController  , animated: true)
             }
-            setRound(label: cell.no1)
-            setRound(label: cell.no2)
-            setRound(label: cell.no3)
-            setRound(label: cell.no4)
-            setRound(label: cell.no5)
-            setRound(label: cell.no6)
-            setRound(label: cell.bonusNo)
+            
             return cell
-        }
-    }
-    
-    func setRound(label: UILabel) {
-        label.layer.masksToBounds = true
-        label.layer.cornerRadius = 18
-        if Int(label.text!)! <= 10 {
-            label.backgroundColor = .firstColor
-        } else if Int(label.text!)! <= 20 {
-            label.backgroundColor = .secondColor
-        } else if Int(label.text!)! <= 30 {
-            label.backgroundColor = .thirdColor
-        } else if Int(label.text!)! <= 40 {
-            label.backgroundColor = .fourthColor
-        } else {
-            label.backgroundColor = .fifthColor
         }
     }
     
@@ -178,17 +122,19 @@ extension LotteryListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? NumberCloseCell else { return }
-        guard let index = tableView.indexPath(for: cell) else { return }
-        if index.row == indexPath.row && index.row == 0 {
-            if viewModel.lotteryItems[indexPath.section].open == true {
-                viewModel.lotteryItems[indexPath.section].open = false
-                let section = IndexSet.init(integer: indexPath.section)
-                tableView.reloadSections(section, with: .fade)
-            } else {
-                viewModel.lotteryItems[indexPath.section].open = true
-                let section = IndexSet.init(integer: indexPath.section)
-                tableView.reloadSections(section, with: .fade)
+        if indexPath.row == 0 {
+            guard let cell = tableView.cellForRow(at: indexPath) as? NumberCloseCell else { return }
+            guard let index = tableView.indexPath(for: cell) else { return }
+            if index.row == indexPath.row && index.row == 0 {
+                if viewModel.lotteryItems[indexPath.section].open == true {
+                    viewModel.lotteryItems[indexPath.section].open = false
+                    let section = IndexSet.init(integer: indexPath.section)
+                    tableView.reloadSections(section, with: .fade)
+                } else {
+                    viewModel.lotteryItems[indexPath.section].open = true
+                    let section = IndexSet.init(integer: indexPath.section)
+                    tableView.reloadSections(section, with: .fade)
+                }
             }
         }
     }
@@ -199,19 +145,15 @@ extension LotteryListViewController: UITableViewDelegate {
 extension LotteryListViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let contentOffset_y = tableView.contentOffset.y
-        let tableViewContentSize = tableView.contentSize.height
-        let pagination_y = tableView.bounds.size.height
+        let contentOffset_y = lotteyTableView.contentOffset.y
+        let tableViewContentSize = lotteyTableView.contentSize.height
+        let pagination_y = lotteyTableView.bounds.size.height
 
         if contentOffset_y > (tableViewContentSize - pagination_y) && contentOffset_y > 0 {
             if !viewModel.fetchingMore {
                 beingFetch()
             }
         }
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        self.tableView.reloadData()
     }
     
     // 페이지 갱신
@@ -229,6 +171,74 @@ extension LotteryListViewController: UIScrollViewDelegate {
                 }
                 self.viewModel.fetchingMore = false
             }
+        }
+    }
+    
+}
+
+extension LotteryListViewController {
+    
+    func initattributes() {
+        view.backgroundColor = .white
+        safeArea = view.safeAreaLayoutGuide
+        
+        navigationBar = UIView().then {
+            $0.backgroundColor = .clear
+        }
+        
+        titleLabel = UILabel().then {
+            $0.textAlignment = .center
+            $0.textColor = LottyColors.G900
+            $0.font = LottyFonts.bold(size: 18)
+            $0.text = "조회하기"
+        }
+        
+        searchButton = UIButton().then {
+            $0.tintColor = LottyColors.B500
+            $0.setImage(LottyIcons.search, for: .normal)
+        }
+        
+        lotteyTableView = UITableView().then {
+            $0.backgroundColor = .white
+            $0.dataSource = self
+            $0.delegate = self
+            $0.separatorStyle = .none
+            $0.refreshControl = refreshControl
+            $0.refreshControl?.tintColor = LottyColors.AlphaB600
+            $0.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+            $0.register(NumberCell.self, forCellReuseIdentifier: NumberCell.cellId)
+            $0.register(NumberCloseCell.self, forCellReuseIdentifier: NumberCloseCell.cellId)
+        }
+    }
+    
+    func initUI() {
+        [navigationBar, lotteyTableView]
+            .forEach { view.addSubview($0) }
+        
+        [titleLabel, searchButton]
+            .forEach { navigationBar.addSubview($0) }
+        
+        navigationBar.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(safeArea)
+            $0.height.equalTo(44)
+        }
+        
+        titleLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(16)
+            $0.centerY.equalToSuperview()
+        }
+        
+        searchButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.centerY.equalToSuperview()
+            $0.width.height.equalTo(20)
+        }
+        
+        lotteyTableView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(navigationBar.snp.bottom)
+            $0.bottom.equalTo(safeArea)
         }
     }
     

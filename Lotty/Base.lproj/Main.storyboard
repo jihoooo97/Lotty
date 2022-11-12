@@ -7,7 +7,6 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -31,25 +30,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--내 주변-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="AroundViewController" customModule="Lotty" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="내 주변" image="map_icon" id="HYD-4J-qWw">
-                        <color key="badgeColor" name="B500"/>
-                    </tabBarItem>
-                    <navigationItem key="navigationItem" id="MVj-Lh-R0D"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1374" y="1162"/>
-        </scene>
         <!--Map Search View Controller-->
         <scene sceneID="Q0F-CX-KO2">
             <objects>
@@ -68,9 +48,6 @@
                                 <color key="tintColor" red="0.2901960784" green="0.3294117647" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="arrow_left_icon"/>
-                                <connections>
-                                    <action selector="back:" destination="bvD-g1-PWj" eventType="touchUpInside" id="Zlh-vj-UPT"/>
-                                </connections>
                             </button>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UfP-KE-RX9">
                                 <rect key="frame" x="54" y="48" width="324" height="44"/>
@@ -279,19 +256,9 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Vgq-Jt-AjP"/>
-                    <connections>
-                        <outlet property="clearView" destination="CA0-A6-7gb" id="AUz-Kz-eOQ"/>
-                        <outlet property="historyTableView" destination="iaA-dC-SoN" id="nXL-6G-ZGc"/>
-                        <outlet property="searchBar" destination="UfP-KE-RX9" id="SPy-tC-N3e"/>
-                        <outlet property="searchField" destination="ZCe-G9-7L5" id="SSd-ux-MwO"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iap-Ud-AmB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="srN-tP-xjj">
-                    <connections>
-                        <action selector="tapView:" destination="bvD-g1-PWj" id="4r1-BT-2y7"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="srN-tP-xjj"/>
             </objects>
             <point key="canvasLocation" x="-1374" y="1982"/>
         </scene>
@@ -467,7 +434,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,500,000,000원" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6e-ef-QVM">
                                                     <rect key="frame" x="94" y="135.33333333333334" width="202" height="29"/>
                                                     <fontDescription key="fontDescription" name="BMDoHyeon" family="BM DoHyeon" pointSize="24"/>
-                                                    <color key="textColor" red="0.13725490200000001" green="0.57647058819999997" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" name="B500"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03u-53-j8Q">
@@ -1656,7 +1623,6 @@
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="d81-mD-uWe"/>
                         <segue destination="88Q-lY-zTC" kind="relationship" relationship="viewControllers" id="Xkj-CQ-ic8"/>
                         <segue destination="GDC-ai-Nmt" kind="relationship" relationship="viewControllers" id="YSh-pR-sXV"/>
                         <segue destination="irN-Fy-TA2" kind="relationship" relationship="viewControllers" id="Fki-gw-jXd"/>
@@ -1714,34 +1680,31 @@
         <image name="trash_icon" width="32" height="32"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AlphaB600">
-            <color red="0.63137254901960782" green="0.74117647058823533" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63099998235702515" green="0.74099999666213989" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="B500">
-            <color red="0.13725490196078433" green="0.57647058823529407" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.13699999451637268" green="0.57599997520446777" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="B600">
-            <color red="0.26666666666666666" green="0.4823529411764706" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.2669999897480011" green="0.48199999332427979" blue="0.99599999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="G300">
-            <color red="0.70196078431372544" green="0.73333333333333328" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.70200002193450928" green="0.73299998044967651" blue="0.82700002193450928" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="G400">
-            <color red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="G50">
-            <color red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="G60">
-            <color red="0.93333333333333335" green="0.93333333333333335" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.93300002813339233" green="0.93300002813339233" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="G900">
-            <color red="0.050980392156862744" green="0.058823529411764705" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.050999999046325684" green="0.059000000357627869" blue="0.078000001609325409" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="b500">
             <color red="0.13725490196078433" green="0.57647058823529407" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

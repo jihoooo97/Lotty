@@ -9,7 +9,7 @@ class AlertView: UIView {
         label.text = "일일 검색량을 초과했습니다 kakaomap에서 계속 검색해주세요"
         label.textAlignment = .center
         label.font = UIFont(name: "Pretendard-Bold", size: 15)
-        label.textColor = .G900
+        label.textColor = LottyColors.G900
         return label
     }()
     
@@ -18,7 +18,7 @@ class AlertView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("확인", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.backgroundColor = .B600
+        button.backgroundColor = LottyColors.B600
         button.layer.cornerRadius = 4
         return button
     }()

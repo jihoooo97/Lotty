@@ -11,7 +11,7 @@ class StoreDetailView: UIView {
         label.sizeToFit()
         label.text = "가게 이름"
         label.font = UIFont(name: "Pretendard-SemiBold", size: 17)
-        label.textColor = .G900
+        label.textColor = LottyColors.G900
         return label
     }()
     
@@ -21,7 +21,7 @@ class StoreDetailView: UIView {
         label.sizeToFit()
         label.text = "가게 주소"
         label.font = UIFont(name: "Pretendard-Regular", size: 15)
-        label.textColor = .G500
+        label.textColor = LottyColors.G500
         label.numberOfLines = 2
         return label
     }()
@@ -32,14 +32,14 @@ class StoreDetailView: UIView {
         label.sizeToFit()
         label.text = "가게 전화번호"
         label.font = UIFont(name: "Pretendard-Regular", size: 15)
-        label.textColor = .B500
+        label.textColor = LottyColors.B500
         return label
     }()
     
     let naviView: UIView = {
        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .B600
+        view.backgroundColor = LottyColors.B600
         view.layer.cornerRadius = 4
  
         let imageView = UIImageView()

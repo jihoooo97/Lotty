@@ -8,7 +8,7 @@ class GameView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.text = "A 게임"
-        label.textColor = .G900
+        label.textColor = LottyColors.G900
         label.font = UIFont(name: "BMDoHyeon", size: 14)
         return label
     }()
@@ -17,7 +17,7 @@ class GameView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.text = "45"
-        label.textColor = .G900
+        label.textColor = LottyColors.G900
         label.font = UIFont(name: "BMDoHyeon", size: 14)
         return label
     }()
@@ -26,7 +26,7 @@ class GameView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.text = "45"
-        label.textColor = .G900
+        label.textColor = LottyColors.G900
         label.font = UIFont(name: "BMDoHyeon", size: 14)
         return label
     }()
@@ -35,7 +35,7 @@ class GameView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.text = "45"
-        label.textColor = .G900
+        label.textColor = LottyColors.G900
         label.font = UIFont(name: "BMDoHyeon", size: 14)
         return label
     }()
@@ -44,7 +44,7 @@ class GameView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.text = "45"
-        label.textColor = .G900
+        label.textColor = LottyColors.G900
         label.font = UIFont(name: "BMDoHyeon", size: 14)
         return label
     }()
@@ -53,7 +53,7 @@ class GameView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.text = "45"
-        label.textColor = .G900
+        label.textColor = LottyColors.G900
         label.font = UIFont(name: "BMDoHyeon", size: 14)
         return label
     }()
@@ -62,7 +62,7 @@ class GameView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.text = "45"
-        label.textColor = .G900
+        label.textColor = LottyColors.G900
         label.font = UIFont(name: "BMDoHyeon", size: 15)
         return label
     }()

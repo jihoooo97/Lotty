@@ -33,7 +33,7 @@ class CountLabel: UILabel {
     private func setupSubviews() {
         let label = UILabel()
         label.frame.origin = CGPoint(x: 0, y: 0)
-        label.textColor = .G900
+        label.textColor = LottyColors.G900
         label.font = UIFont(name: "BMDoHyeon", size: 14)
         label.text = "30"
         label.sizeToFit()
@@ -65,7 +65,7 @@ class CountLabel: UILabel {
         for text in textsForScroll {
             let label = UILabel()
             label.text = text
-            label.textColor = .G900
+            label.textColor = LottyColors.G900
             label.font = UIFont(name: "BMDoHyeon", size: 14)
             label.sizeToFit()
             label.textAlignment = .center

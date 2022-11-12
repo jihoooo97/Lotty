@@ -23,7 +23,7 @@ class RightLine: UIView {
     func commonInit() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
-        self.backgroundColor = .B600
+        self.backgroundColor = LottyColors.B600
         self.alpha = 0.5
         
         addSubview(contentLabel)

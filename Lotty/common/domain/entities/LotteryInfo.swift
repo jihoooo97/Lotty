@@ -1,6 +1,6 @@
 import Foundation
 
-struct LotteryInfo: Codable {
+struct LotteryInfo: Entity {
     let drwNoDate: String
     let drwNo: Int            // 회차
     var firstAccumamnt: Int   // 총 상금
@@ -15,6 +15,25 @@ struct LotteryInfo: Codable {
     let bnusNo: Int
     let returnValue: String
     let totSellamnt: Int
+    
+    static func initLottery() -> LotteryInfo {
+        return LotteryInfo(
+            drwNoDate: "",
+            drwNo: 0,
+            firstAccumamnt: 0,
+            firstWinamnt: 0,
+            firstPrzwnerCo: 0,
+            drwtNo1: 0,
+            drwtNo2: 0,
+            drwtNo3: 0,
+            drwtNo4: 0,
+            drwtNo5: 0,
+            drwtNo6: 0,
+            bnusNo: 0,
+            returnValue: "",
+            totSellamnt: 0
+        )
+    }
 }
 
 struct LotteryItem {

@@ -29,7 +29,7 @@ class RefreshView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.text = "00"
-        label.textColor = .B500
+        label.textColor = LottyColors.B500
         return label
     }()
     
@@ -116,7 +116,7 @@ class RefreshView: UIView {
     private func setupSubviews() {
         let label = UILabel()
         label.frame.origin = CGPoint(x: 0, y: 0)
-        label.textColor = .G900
+        label.textColor = LottyColors.G900
         label.text = "0"
         label.sizeToFit()
         label.textAlignment = .center

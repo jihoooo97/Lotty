@@ -5,14 +5,14 @@ class SearchBarView: UIButton {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "find_icon")
-        imageView.tintColor = .G400
+        imageView.tintColor = LottyColors.G400
         return imageView
     }()
     let searchLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
-        label.textColor = .G400
+        label.textColor = LottyColors.G400
         label.text = "지역 이름으로 검색하세요"
         label.font = UIFont(name: "Pretendard-Medium", size: 16)
         return label
