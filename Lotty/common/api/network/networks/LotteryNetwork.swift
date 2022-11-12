@@ -20,7 +20,11 @@ class LotteryNetwork: BaseNetwork, LotteryNetworkGateway {
             },
             failure: { error in
                 print("network - \(error)")
-                failure?(ErrorEntitiy())
+                let errorEntity = ErrorEntitiy()
+                errorEntity.code = error.code
+                errorEntity.message = error.message
+                errorEntity.detail = error.detail
+                failure?(errorEntity)
             })
     }
     

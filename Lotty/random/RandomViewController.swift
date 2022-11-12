@@ -1,205 +1,384 @@
 import UIKit
+import SnapKit
+import Then
 import RxSwift
 import RxCocoa
+import AVFoundation
 
-class RandomViewController: UIViewController {
-    @IBOutlet weak var topLine: DottedLine!
-    @IBOutlet weak var bottomLine: DottedLine!
+final class RandomViewController: UIViewController, ViewController {
     
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var lotteryNumber: UILabel!
-    @IBOutlet weak var getDay: UILabel!
-    @IBOutlet weak var luckyDay: UILabel!
-    @IBOutlet weak var endDay: UILabel!
-    @IBOutlet weak var createButton: UIButton!
-    @IBOutlet weak var leadingLine: UILabel!
-    
+    var scrollView = UIScrollView()
+    var containerView = UIView()
+    var backgroundLogo1 = UIImageView()
+    var backgroundLogo2 = UIImageView()
+    var backgroundLogo3 = UIImageView()
     let rightLine = RightLine()
+    
+    var titleLogo = UIImageView()
+    var qrScanImage = UIImageView()
+    var drawNumberLabel = UILabel()
+    var publishDayLabel = UILabel()
+    var drawingDayLabel = UILabel()
+    var dueDayLabel = UILabel()
+    
+    let topLine = DottedLine()
     let AGame = GameView()
     let BGame = GameView()
     let CGame = GameView()
     let DGame = GameView()
     let EGame = GameView()
+    let bottomLine = DottedLine()
+
+    var priceLabelTitle = UILabel()
+    var priceLabel = UILabel()
+    var createLotteryButton = UIButton()
+    
+    var safeArea = UILayoutGuide()
+    
+    let viewModel = RandomViewModel()
+    var disposeBag = DisposeBag()
+    
+    var gameList: [GameView] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        contentView.addSubview(rightLine)
-        rightLine.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.5).isActive = true
-        rightLine.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        rightLine.widthAnchor.constraint(equalToConstant: contentView.frame.height).isActive = true
-        rightLine.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        initAttributes()
+        initUI()
+        inputBind()
+        outputBind()
+        
         setView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.backgroundColor = .white
+    func inputBind() {
+        createLotteryButton.rx.tap
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
+            .withUnretained(self).map { $0.0 }
+            .bind(onNext: {
+                HapticManager.shared.hapticImpact(style: .medium)
+                _ = $0.viewModel.getDrawNumber()
+                $0.viewModel.getPublishDay()
+                $0.viewModel.getDrawDay()
+                $0.viewModel.getDueDay()
+                $0.createNumber()
+            }).disposed(by: disposeBag)
     }
     
-    func setCount(game: GameView, numberList: [Int]) {
-        game.No1.configure(with: numberList[0])
-        game.No2.configure(with: numberList[1])
-        game.No3.configure(with: numberList[2])
-        game.No4.configure(with: numberList[3])
-        game.No5.configure(with: numberList[4])
-        game.No6.configure(with: numberList[5])
+    func outputBind() {
+        viewModel.drawNumberRelay
+            .distinctUntilChanged()
+            .withUnretained(self).map { ($0.0, $0.1) }
+            .bind(onNext: { (vc, drawNumber) in
+                vc.drawNumberLabel.text = "제 " + drawNumber + " 회"
+            }).disposed(by: disposeBag)
         
-        game.No1.animate()
-        game.No2.animate()
-        game.No3.animate()
-        game.No4.animate()
-        game.No5.animate()
-        game.No6.animate()
-    }
-    
-    func setView() {
-        lotteryNumber.text = "제 \(getRecentNumber() + 1) 회"
-        getDay.text = getNowTime()
-        luckyDay.text = getNextDay(day: "next")
-        endDay.text = getNextDay(day: "end")
+        viewModel.publishDayRelay
+            .withUnretained(self).map { ($0.0, $0.1) }
+            .bind(onNext: { (vc, publishDay) in
+                vc.publishDayLabel.text = "발   행   일  :  " + publishDay
+            }).disposed(by: disposeBag)
         
-        AGame.GameName.text = "A 게임"
-        view.addSubview(AGame)
-        AGame.leadingAnchor.constraint(equalTo: leadingLine.leadingAnchor, constant: -10).isActive = true
-        AGame.topAnchor.constraint(equalTo: topLine.bottomAnchor, constant: 20).isActive = true
-        AGame.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        AGame.isHidden = true
+        viewModel.drawingDayRelay
+            .distinctUntilChanged()
+            .withUnretained(self).map { ($0.0, $0.1) }
+            .bind(onNext: { (vc, drawingDay) in
+                vc.drawingDayLabel.text = "추   첨   일  :  " + drawingDay
+            }).disposed(by: disposeBag)
         
-        BGame.GameName.text = "B 게임"
-        view.addSubview(BGame)
-        BGame.leadingAnchor.constraint(equalTo: AGame.leadingAnchor).isActive = true
-        BGame.topAnchor.constraint(equalTo: AGame.bottomAnchor, constant: 20).isActive = true
-        BGame.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        BGame.isHidden = true
+        viewModel.dueDayRelay
+            .distinctUntilChanged()
+            .withUnretained(self).map { ($0.0, $0.1) }
+            .bind(onNext: { (vc, dueDay) in
+                vc.dueDayLabel.text = "지 급 기 한  :  " + dueDay
+            }).disposed(by: disposeBag)
         
-        CGame.GameName.text = "C 게임"
-        view.addSubview(CGame)
-        CGame.leadingAnchor.constraint(equalTo: BGame.leadingAnchor).isActive = true
-        CGame.topAnchor.constraint(equalTo: BGame.bottomAnchor, constant: 20).isActive = true
-        CGame.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        CGame.isHidden = true
-        
-        DGame.GameName.text = "D 게임"
-        view.addSubview(DGame)
-        DGame.leadingAnchor.constraint(equalTo: CGame.leadingAnchor).isActive = true
-        DGame.topAnchor.constraint(equalTo: CGame.bottomAnchor, constant: 20).isActive = true
-        DGame.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        DGame.isHidden = true
-        
-        EGame.GameName.text = "E 게임"
-        view.addSubview(EGame)
-        EGame.leadingAnchor.constraint(equalTo: DGame.leadingAnchor).isActive = true
-        EGame.topAnchor.constraint(equalTo: DGame.bottomAnchor, constant: 20).isActive = true
-        EGame.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        EGame.isHidden = true
-        
-        createButton.layer.borderWidth = 1
-        createButton.layer.borderColor = UIColor.white.cgColor
-        createButton.layer.cornerRadius = 4
-        createButton.layer.masksToBounds = false
-        createButton.layer.shadowColor = UIColor.black.cgColor
-        createButton.layer.shadowOffset = CGSize(width: 0, height: 0.5)
-        createButton.layer.shadowOpacity = 0.4
-        createButton.layer.shadowRadius = 1
-    }
-    
-    func setNumber() -> [[Int]] {
-        var randomList: [[Int]] = []
-        for _ in 0...4 {
-            var randomNo: [Int] = []
-            for _ in 0..<6 {
-                var drwtNo = Int.random(in: 1...45)
-                while randomNo.contains(drwtNo) {
-                    drwtNo = Int.random(in: 1...45)
-                }
-                randomNo.append(drwtNo)
-            }
-            randomNo.sort()
-            randomList.append(randomNo)
-        }
-        return randomList
-    }
-    
-    func getNowTime() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd (E) kk:mm:ss"
-        formatter.locale = Locale(identifier: "ko")
-        
-        let now = Date()
-        return formatter.string(from: now)
-    }
-    
-    func getRecentNumber() -> Int {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        formatter.locale = Locale(identifier: "ko")
-        
-        let base = 1002
-        let origin = Date()
-        let now = formatter.string(from: origin)
-        
-        guard let startTime = formatter.date(from: "2022-02-12 20:45:00") else { return 0 }
-        guard let endTime = formatter.date(from: now) else { return 0 }
-        
-        let subTime = Int(endTime.timeIntervalSince(startTime)) / 60
-        let count = subTime / 10080
-        return base + count
-    }
-    
-    func getNextDay(day: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd (E) HH:mm:ss"
-        formatter.locale = Locale(identifier: "ko")
-        
-        guard let start = formatter.date(from: "2022/03/05 (토) 20:45:00") else { return "error" }
-        var addTime = Date()
-        if day == "next" {
-            addTime = start.addingTimeInterval(TimeInterval((getRecentNumber() - 1004) * 86400 * 7))
-        } else if day == "end" {
-            addTime = start.addingTimeInterval(TimeInterval(((getRecentNumber() - 1004) * 7 + 364) * 86400))
-        }
-        return formatter.string(from: addTime)
-    }
-    
-    @IBAction func createNumber(_ sender: Any) {
-        getDay.text = getNowTime()
-        AGame.isHidden = true
-        BGame.isHidden = true
-        CGame.isHidden = true
-        DGame.isHidden = true
-        EGame.isHidden = true
-        
-        let randomList = self.setNumber()
-        let gameA = randomList[0]
-        let gameB = randomList[1]
-        let gameC = randomList[2]
-        let gameD = randomList[3]
-        let gameE = randomList[4]
-        
-        // 순서대로 게임 보여주기
-        createButton.isEnabled = false
-        DispatchQueue.main.async {
-            self.AGame.isHidden = false
-            self.setCount(game: self.AGame, numberList: gameA)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05) {
-                self.BGame.isHidden = false
-                self.setCount(game: self.BGame, numberList: gameB)
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05) {
-                    self.CGame.isHidden = false
-                    self.setCount(game: self.CGame, numberList: gameC)
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05) {
-                        self.DGame.isHidden = false
-                        self.setCount(game: self.DGame, numberList: gameD)
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05) {
-                            self.EGame.isHidden = false
-                            self.setCount(game: self.EGame, numberList: gameE)
-                            self.createButton.isEnabled = true
-                        }
+        viewModel.lotteryNumberListRelay
+            .withUnretained(self).map { ($0.0, $0.1) }
+            .bind(onNext: { (vc, numberList) in
+                // 순서대로 게임 보여주기
+                vc.gameList.enumerated().forEach { game in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05 * Double(game.offset)) {
+                        game.element.isHidden = false
+                        game.element.setCount(numberList: numberList[game.offset])
                     }
                 }
-            }
+            }).disposed(by: disposeBag)
+    }
+    
+    private func setView() {
+        topLine.addDashedBorder()
+        bottomLine.addDashedBorder()
+        
+        gameList = [AGame, BGame, CGame, DGame, EGame]
+        
+        gameList.forEach {
+            $0.isHidden = true
+        }
+    }
+    
+
+    
+    func createNumber() {
+        gameList.forEach {
+            $0.isHidden = true
         }
         
+        viewModel.setNumber()
     }
+}
+
+
+extension RandomViewController {
+    
+    func initAttributes() {
+        view.backgroundColor = .white
+        safeArea = view.safeAreaLayoutGuide
+        
+        scrollView = UIScrollView().then {
+            $0.layer.masksToBounds = false
+            $0.backgroundColor = .white
+            $0.showsVerticalScrollIndicator = false
+            $0.showsHorizontalScrollIndicator = false
+        }
+        
+        containerView = UIView().then {
+            $0.layer.masksToBounds = false
+            $0.backgroundColor = .white
+        }
+        
+        backgroundLogo1 = UIImageView().then {
+            $0.image = UIImage(named: "lomin_icon")!
+            $0.tintColor = LottyColors.AlphaB600
+            $0.contentMode = .scaleAspectFill
+        }
+        
+        backgroundLogo2 = UIImageView().then {
+            $0.image = UIImage(named: "lomin_icon")!
+            $0.tintColor = LottyColors.AlphaB600
+            $0.contentMode = .scaleAspectFill
+        }
+        
+        backgroundLogo3 = UIImageView().then {
+            $0.image = UIImage(named: "lomin_icon")!
+            $0.tintColor = LottyColors.AlphaB600
+            $0.contentMode = .scaleAspectFill
+        }
+        
+        titleLogo = UIImageView().then {
+            $0.image = UIImage(named: "splash_lomin")!
+            $0.contentMode = .scaleAspectFill
+        }
+        
+        qrScanImage = UIImageView().then {
+            $0.image = LottyIcons.qr
+            $0.tintColor = LottyColors.G900
+            $0.contentMode = .scaleAspectFit
+        }
+        
+        drawNumberLabel = UILabel().then {
+            $0.textAlignment = .center
+            $0.textColor = LottyColors.G900
+            $0.font = LottyFonts.dohyeon(size: 20)
+            $0.text = "제 ---- 회"
+        }
+        
+        publishDayLabel = UILabel().then {
+            $0.textAlignment = .left
+            $0.textColor = LottyColors.G900
+            $0.font = LottyFonts.dohyeon(size: 15)
+            $0.text = "발   행   일  :  ----/--/-- (-) --:--:--"
+        }
+        
+        drawingDayLabel = UILabel().then {
+            $0.textAlignment = .left
+            $0.textColor = LottyColors.G900
+            $0.font = LottyFonts.dohyeon(size: 15)
+            $0.text = "추   첨   일  :  ----/--/-- (-) --:--:--"
+        }
+        
+        dueDayLabel = UILabel().then {
+            $0.textAlignment = .left
+            $0.textColor = LottyColors.G900
+            $0.font = LottyFonts.dohyeon(size: 15)
+            $0.text = "지 급 기 한  :  ----/--/--"
+        }
+        
+        AGame.gameNameLabel.text = "A 게임"
+        BGame.gameNameLabel.text = "B 게임"
+        CGame.gameNameLabel.text = "C 게임"
+        DGame.gameNameLabel.text = "D 게임"
+        EGame.gameNameLabel.text = "E 게임"
+        
+        priceLabelTitle = UILabel().then {
+            $0.textAlignment = .left
+            $0.textColor = LottyColors.G900
+            $0.font = LottyFonts.dohyeon(size: 17)
+            $0.text = "금 액"
+        }
+        
+        priceLabel = UILabel().then {
+            $0.textAlignment = .right
+            $0.textColor = LottyColors.G900
+            $0.font = LottyFonts.dohyeon(size: 17)
+            $0.text = "₩5,000"
+        }
+        
+        createLotteryButton = UIButton().then {
+            $0.setTitle("번호 생성", for: .normal)
+            $0.setTitleColor(LottyColors.B600, for: .normal)
+            $0.titleLabel?.font = LottyFonts.bold(size: 15)
+            $0.backgroundColor = .white
+            $0.layer.borderWidth = 1
+            $0.layer.borderColor = UIColor.white.cgColor
+            $0.layer.cornerRadius = 4
+            $0.layer.masksToBounds = false
+            $0.layer.cornerRadius = 4
+            $0.layer.applyShadow(x: 0, y: 0.5,
+                                 alpha: 0.4, blur: 2)
+        }
+    }
+    
+    func initUI() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(containerView)
+        
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        containerView.snp.makeConstraints {
+            $0.edges.width.equalToSuperview()
+            $0.height.greaterThanOrEqualToSuperview()
+        }
+        
+        [backgroundLogo1, backgroundLogo2, backgroundLogo3,
+         rightLine, titleLogo, qrScanImage,drawNumberLabel,
+         publishDayLabel, drawingDayLabel, dueDayLabel,
+         topLine, bottomLine, AGame, BGame, CGame, DGame, EGame,
+         priceLabelTitle, priceLabel, createLotteryButton]
+            .forEach { containerView.addSubview($0) }
+        
+        backgroundLogo1.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.top.equalToSuperview().offset(-20)
+            $0.width.equalTo(160)
+            $0.height.equalTo(80)
+        }
+        
+        backgroundLogo2.snp.makeConstraints {
+            $0.leading.equalTo(backgroundLogo1)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(160)
+            $0.height.equalTo(80)
+        }
+        
+        backgroundLogo3.snp.makeConstraints {
+            $0.leading.equalTo(backgroundLogo1)
+            $0.bottom.equalToSuperview().offset(-30)
+            $0.width.equalTo(160)
+            $0.height.equalTo(80)
+        }
+        
+        rightLine.snp.makeConstraints {
+            $0.centerX.equalTo(view.snp.trailing).offset(-13)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(view.snp.height)
+            $0.height.equalTo(25)
+        }
+        
+        titleLogo.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(20)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(250)
+            $0.height.equalTo(80)
+        }
+        
+        qrScanImage.snp.makeConstraints {
+            $0.trailing.equalTo(titleLogo)
+            $0.bottom.equalTo(titleLogo).offset(4)
+            $0.width.height.equalTo(50)
+        }
+        
+        drawNumberLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLogo.snp.bottom).offset(20)
+            $0.centerX.equalToSuperview()
+        }
+        
+        publishDayLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(42)
+            $0.top.equalTo(drawNumberLabel.snp.bottom).offset(10)
+        }
+        
+        drawingDayLabel.snp.makeConstraints {
+            $0.leading.equalTo(publishDayLabel)
+            $0.top.equalTo(publishDayLabel.snp.bottom).offset(2)
+        }
+        
+        dueDayLabel.snp.makeConstraints {
+            $0.leading.equalTo(publishDayLabel)
+            $0.top.equalTo(drawingDayLabel.snp.bottom).offset(2)
+        }
+        
+        topLine.snp.makeConstraints {
+            $0.leading.equalTo(publishDayLabel).offset(-15)
+            $0.top.equalTo(dueDayLabel.snp.bottom).offset(20)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(1)
+        }
+        
+        AGame.snp.makeConstraints {
+            $0.leading.equalTo(topLine).offset(8)
+            $0.top.equalTo(topLine.snp.bottom).offset(20)
+            $0.height.equalTo(20)
+        }
+        
+        BGame.snp.makeConstraints {
+            $0.leading.equalTo(AGame)
+            $0.top.equalTo(AGame.snp.bottom).offset(20)
+            $0.height.equalTo(20)
+        }
+        
+        CGame.snp.makeConstraints {
+            $0.leading.equalTo(AGame)
+            $0.top.equalTo(BGame.snp.bottom).offset(20)
+            $0.height.equalTo(20)
+        }
+        
+        DGame.snp.makeConstraints {
+            $0.leading.equalTo(AGame)
+            $0.top.equalTo(CGame.snp.bottom).offset(20)
+            $0.height.equalTo(20)
+        }
+        
+        EGame.snp.makeConstraints {
+            $0.leading.equalTo(AGame)
+            $0.top.equalTo(DGame.snp.bottom).offset(20)
+            $0.height.equalTo(20)
+        }
+        
+        bottomLine.snp.makeConstraints {
+            $0.leading.trailing.equalTo(topLine)
+            $0.top.equalTo(EGame.snp.bottom).offset(20)
+            $0.height.equalTo(1)
+        }
+        
+        priceLabelTitle.snp.makeConstraints {
+            $0.leading.equalTo(publishDayLabel)
+            $0.top.equalTo(bottomLine).offset(20)
+        }
+        
+        priceLabel.snp.makeConstraints {
+            $0.trailing.equalTo(bottomLine)
+            $0.centerY.equalTo(priceLabelTitle)
+        }
+        
+        createLotteryButton.snp.makeConstraints {
+            $0.leading.trailing.equalTo(bottomLine)
+            $0.top.equalTo(priceLabelTitle.snp.bottom).offset(40)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(60)
+        }
+    }
+    
 }

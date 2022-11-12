@@ -26,7 +26,8 @@ final class LotterySearchViewModel: BaseViewModel {
                 if lottery.firstAccumamnt == 0 {
                     lottery.firstAccumamnt = lottery.firstPrzwnerCo * lottery.firstWinamnt
                 }
-                self?.lotteryInfoRelay.accept(lottery)
+                self?._lotteryInfo = lottery
+                self?.lotteryInfoRelay.accept(self?._lotteryInfo)
                 self?.updateHistory(index: -1)
             },
             failure: { error in
@@ -36,6 +37,7 @@ final class LotterySearchViewModel: BaseViewModel {
     }
     
     func clickHistory(index: Int) {
+        if index < 0 { return }
         lotteryUseCase.getLottery(
             drwNo: _historyList[index],
             success: { [weak self] response in
@@ -43,11 +45,15 @@ final class LotterySearchViewModel: BaseViewModel {
                 if lottery.firstAccumamnt == 0 {
                     lottery.firstAccumamnt = lottery.firstPrzwnerCo * lottery.firstWinamnt
                 }
-                self?.lotteryInfoRelay.accept(lottery)
+                self?._lotteryInfo = lottery
+                self?.lotteryInfoRelay.accept(self?._lotteryInfo)
                 self?.updateHistory(index: index)
             },
             failure: { error in
                 print(error)
+                if error.code == "-1" {
+                    print("test")
+                }
             }
         )
     }
@@ -67,7 +73,7 @@ final class LotterySearchViewModel: BaseViewModel {
     }
     
     func updateHistory(index: Int) {
-        if index >= 0 { // 리스트 클릭해서 검색
+        if index > 0 { // 리스트 클릭해서 검색
             _historyList.remove(at: index)
             _historyList.insert(_lotteryInfo.drwNo, at: 0)
         } else { // 회차 입력해서 검색

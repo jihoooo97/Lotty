@@ -14,16 +14,12 @@ extension AroundViewController {
         self.present(mapSearchViewController, animated: false, completion: nil)
     }
     
-    func configureDetail(store: Documents) {
-        let naviTap = UITapGestureRecognizer(target: self, action: #selector(clickNavi))
-        detailView.naviView.addGestureRecognizer(naviTap)
-    }
-    
     @objc func clickNavi() {
         let x = locationManager.location?.coordinate.longitude ?? 127.104845
         let y = locationManager.location?.coordinate.latitude ?? 37.3593486
         let url = "kakaomap://route?" + "ep=\(y),\(x)" + "&ep=\(detailView.lat),\(detailView.lng)" + "&by=CAR"
         
+        print(url)
         if let openApp = URL(string: url), UIApplication.shared.canOpenURL(openApp) {
             UIApplication.shared.open(openApp)
         } else {

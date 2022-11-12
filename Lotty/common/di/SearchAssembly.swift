@@ -8,27 +8,17 @@
 import Foundation
 import Swinject
 
-class SearchContainer: NSObject {
-    
-    let container = Container()
-    
-    override init() {
-        
-        container.register(LotterySearchViewModel.self) { _ in
-            return LotterySearchViewModel()
-        }
-        
-        let viewModel = container.resolve(LotterySearchViewModel.self)
-        
-    }
-    
-}
-
 class SearchAssembly: Assembly {
     
     func assemble(container: Container) {
-        container.register(LotterySearchViewModel.self) { _ in
-            return LotterySearchViewModel()
+        container.register(LotterySearchViewModel.self) { r in
+            LotterySearchViewModel()
+        }
+        
+        container.register(LotterySearchViewController.self) { r in
+            let viewController = LotterySearchViewController()
+            viewController.viewModel = r.resolve(LotterySearchViewModel.self)
+            return viewController
         }
     }
 

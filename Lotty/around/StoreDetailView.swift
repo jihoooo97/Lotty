@@ -1,6 +1,7 @@
 import UIKit
 
 class StoreDetailView: UIView {
+    
     var id = ""
     var lat = ""
     var lng = ""
@@ -37,16 +38,16 @@ class StoreDetailView: UIView {
     }()
     
     let naviView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = LottyColors.B600
         view.layer.cornerRadius = 4
- 
+        
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "navigation_icon")
         imageView.tintColor = .white
-
+        
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
@@ -59,11 +60,10 @@ class StoreDetailView: UIView {
         imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-
+        
         view.addSubview(label)
         label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 2).isActive = true
         label.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
-        
         return view
     }()
     
@@ -99,7 +99,7 @@ class StoreDetailView: UIView {
     func commonConstraint() {
         // 가게 이름
         storeName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12).isActive = true
-        storeName.trailingAnchor.constraint(equalTo: naviView.leadingAnchor, constant: 4).isActive = true
+        storeName.trailingAnchor.constraint(equalTo: naviView.leadingAnchor, constant: -4).isActive = true
         storeName.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
         
         // 가게 주소
@@ -119,4 +119,5 @@ class StoreDetailView: UIView {
         naviView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -12).isActive = true
         naviView.widthAnchor.constraint(equalTo: naviView.heightAnchor).isActive = true
     }
+    
 }

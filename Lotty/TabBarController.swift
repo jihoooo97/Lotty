@@ -11,8 +11,8 @@ class TabBarController: UITabBarController {
 
     let aroundView = AroundViewController()
     let searchView = LotteryListViewController()
-    let randomView = RandomViewController()
     let qrView = QrScanViewController()
+    let randomView = RandomViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,19 +30,24 @@ class TabBarController: UITabBarController {
         searchView.tabBarItem.image = UIImage(named: "find_icon")!
         searchView.title = "번호 조회"
         
-        randomView.tabBarItem.badgeColor = UIColor(named: "B500")!
-        randomView.tabBarItem.image = UIImage(named: "slot_icon")!
-        randomView.title = "번호 생성"
-        
         qrView.tabBarItem.badgeColor = UIColor(named: "B500")!
         qrView.tabBarItem.image = UIImage(named: "qr_scan_icon")!
         qrView.title = "QR 코드"
         
-        setViewControllers([aroundView, searchView, randomView, qrView], animated: false)
+        randomView.tabBarItem.badgeColor = UIColor(named: "B500")!
+        randomView.tabBarItem.image = UIImage(named: "slot_icon")!
+        randomView.title = "번호 생성"
+        
+        setViewControllers([aroundView, searchView, qrView, randomView], animated: false)
     }
     
     private func initUI() {
-        
+//        tabBar.backgroundColor = .white
+//        tabBar.tintColor = .white
+        tabBarController?.tabBar.backgroundColor = .white
+        tabBarController?.tabBar.tintColor = .white
+        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().backgroundColor = UIColor.white
     }
     
 }

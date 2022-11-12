@@ -11,28 +11,52 @@ import RxRelay
 
 final class AroundSearchViewModel: BaseViewModel {
 
+    private var _historyList: [String] = []
     let historyListRelay = BehaviorRelay<[String]>(value: [])
+    
     
     override init() {
         super.init()
         
-        getHistoryList()
+        loadHistory()
     }
     
     deinit {
+        saveHistory()
+    }
+    
+    
+    func loadHistory() {
+        _historyList = Storage.retrive(
+            "location_history.json",
+            from: .documents,
+            as: [String].self
+        ) ?? []
+        historyListRelay.accept(_historyList)
+    }
+    
+    func saveHistory() {
         Storage.store(
-            historyListRelay.value,
+            _historyList,
             to: .documents,
             as: "location_history.json"
         )
     }
     
-    func getHistoryList() {
-        historyListRelay.accept(Storage.retrive(
-            "location_history.json",
-            from: .documents,
-            as: [String].self
-        ) ?? [])
+    func updateHistory(index: Int, query: String) {
+        if index > 0 { // 리스트 클릭해서 검색
+            _historyList.remove(at: index)
+            _historyList.insert(query, at: 0)
+        } else { // 회차 입력해서 검색
+            _historyList = _historyList.filter { $0 != query }
+            _historyList.insert(query, at: 0)
+        }
+        historyListRelay.accept(_historyList)
+    }
+    
+    func deleteHistory(index: Int) {
+        _historyList.remove(at: index)
+        historyListRelay.accept(_historyList)
     }
     
 }

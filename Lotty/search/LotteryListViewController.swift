@@ -3,6 +3,7 @@ import SnapKit
 import Then
 import RxSwift
 import RxCocoa
+import Swinject
 
 final class LotteryListViewController: UIViewController {
     
@@ -40,9 +41,9 @@ final class LotteryListViewController: UIViewController {
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withUnretained(self).map { $0.0 }
             .bind(onNext: {
-                let viewModel = LotterySearchViewModel()
-                let lotterySearchViController = LotterySearchViewController(viewModel)
-                $0.navigationController?.pushViewController(lotterySearchViController, animated: true)
+                let assembler = Assembler([SearchAssembly()])
+                let lotterySearchViewController = assembler.resolver.resolve(LotterySearchViewController.self)!
+                $0.navigationController?.pushViewController(lotterySearchViewController, animated: true)
             }).disposed(by: disposeBag)
     }
     
@@ -99,10 +100,12 @@ extension LotteryListViewController: UITableViewDataSource {
             cell.setData(lottery: lotteryItem[indexPath.section])
             
             cell.detailButtonHandler = { [weak self] in
+                HapticManager.shared.hapticImpact(style: .soft)
                 let lotteryInfo = self?.viewModel.lotteryListRelay.value[indexPath.section]
                 self?.viewModel.updateHistory(section: indexPath.section)
                 self?.viewModel.saveHistory()
-                let lotterySearchViewController = LotterySearchViewController(LotterySearchViewModel())
+                let assembler = Assembler([SearchAssembly()])
+                let lotterySearchViewController = assembler.resolver.resolve(LotterySearchViewController.self)!
                 lotterySearchViewController.lotteryInfo = lotteryInfo
                 self?.navigationController?.pushViewController(lotterySearchViewController  , animated: true)
             }
@@ -232,7 +235,7 @@ extension LotteryListViewController {
         searchButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().offset(-16)
             $0.centerY.equalToSuperview()
-            $0.width.height.equalTo(20)
+            $0.width.height.equalTo(25)
         }
         
         lotteyTableView.snp.makeConstraints {

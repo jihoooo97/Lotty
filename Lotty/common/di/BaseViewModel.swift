@@ -2,12 +2,11 @@ import Foundation
 import Alamofire
 import RxSwift
 
-class BaseViewModel: NSObject {
+class BaseViewModel: ViewModel {
     
     var disposeBag = DisposeBag()
     
-    override init() {
-        super.init()
+    init() {
         
     }
     

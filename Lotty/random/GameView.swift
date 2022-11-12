@@ -1,117 +1,136 @@
 import UIKit
+import SnapKit
+import Then
 
-class GameView: UIView {
-    var multipleAttributes = [NSAttributedString.Key : Any]()
+final class GameView: UIView {
     
-    let GameName: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.sizeToFit()
-        label.text = "A 게임"
-        label.textColor = LottyColors.G900
-        label.font = UIFont(name: "BMDoHyeon", size: 14)
-        return label
-    }()
-    let No1: CountLabel = {
-        let label = CountLabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.sizeToFit()
-        label.text = "45"
-        label.textColor = LottyColors.G900
-        label.font = UIFont(name: "BMDoHyeon", size: 14)
-        return label
-    }()
-    let No2: CountLabel = {
-        let label = CountLabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.sizeToFit()
-        label.text = "45"
-        label.textColor = LottyColors.G900
-        label.font = UIFont(name: "BMDoHyeon", size: 14)
-        return label
-    }()
-    let No3: CountLabel = {
-        let label = CountLabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.sizeToFit()
-        label.text = "45"
-        label.textColor = LottyColors.G900
-        label.font = UIFont(name: "BMDoHyeon", size: 14)
-        return label
-    }()
-    let No4: CountLabel = {
-        let label = CountLabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.sizeToFit()
-        label.text = "45"
-        label.textColor = LottyColors.G900
-        label.font = UIFont(name: "BMDoHyeon", size: 14)
-        return label
-    }()
-    let No5: CountLabel = {
-        let label = CountLabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.sizeToFit()
-        label.text = "45"
-        label.textColor = LottyColors.G900
-        label.font = UIFont(name: "BMDoHyeon", size: 14)
-        return label
-    }()
-    let No6: CountLabel = {
-        let label = CountLabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.sizeToFit()
-        label.text = "45"
-        label.textColor = LottyColors.G900
-        label.font = UIFont(name: "BMDoHyeon", size: 15)
-        return label
-    }()
+    let gameNameLabel = UILabel().then {
+        $0.sizeToFit()
+        $0.text = "A 게임"
+        $0.textColor = LottyColors.G900
+        $0.font = UIFont(name: "BMDoHyeon", size: 14)
+    }
+    
+    let no1Label = CountLabel().then {
+        $0.sizeToFit()
+        $0.text = "45"
+        $0.textColor = LottyColors.G900
+        $0.font = UIFont(name: "BMDoHyeon", size: 13)
+    }
+    
+    let no2Label = CountLabel().then {
+        $0.sizeToFit()
+        $0.text = "45"
+        $0.textColor = LottyColors.G900
+        $0.font = UIFont(name: "BMDoHyeon", size: 13)
+    }
+    
+    let no3Label = CountLabel().then {
+        $0.sizeToFit()
+        $0.text = "45"
+        $0.textColor = LottyColors.G900
+        $0.font = UIFont(name: "BMDoHyeon", size: 13)
+    }
+    
+    let no4Label = CountLabel().then {
+        $0.sizeToFit()
+        $0.text = "45"
+        $0.textColor = LottyColors.G900
+        $0.font = UIFont(name: "BMDoHyeon", size: 13)
+    }
+    
+    let no5Label = CountLabel().then {
+        $0.sizeToFit()
+        $0.text = "45"
+        $0.textColor = LottyColors.G900
+        $0.font = UIFont(name: "BMDoHyeon", size: 13)
+    }
+    
+    let no6Label = CountLabel().then {
+        $0.sizeToFit()
+        $0.text = "45"
+        $0.textColor = LottyColors.G900
+        $0.font = UIFont(name: "BMDoHyeon", size: 13)
+    }
+    
+    let bonusNoLabel = CountLabel().then {
+        $0.sizeToFit()
+        $0.text = "45"
+        $0.textColor = LottyColors.G900
+        $0.font = UIFont(name: "BMDoHyeon", size: 13)
+    }
+    
+    var noList: [CountLabel] = []
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+        
+        initUI()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit()
+        fatalError("init(coder:) has not been implemented")
     }
     
-    func commonInit() {
-        translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .white
+    
+    
+    func setCount(numberList: [Int]) {
+        noList.enumerated().forEach {
+            $0.element.configure(with: numberList[$0.offset])
+            $0.element.animate()
+        }
+    }
+    
+    func initUI() {
+        backgroundColor = .clear
         frame = CGRect(x: 0, y: 0, width: 50, height: 20)
         
-        addSubview(GameName)
-        addSubview(No1)
-        addSubview(No2)
-        addSubview(No3)
-        addSubview(No4)
-        addSubview(No5)
-        addSubview(No6)
-        commonConstraint()
+        noList = [no1Label, no2Label, no3Label,
+                  no4Label, no5Label, no6Label, bonusNoLabel]
+        
+        [gameNameLabel, no1Label, no2Label, no3Label,
+         no4Label, no5Label, no6Label, bonusNoLabel]
+            .forEach { self.addSubview($0) }
+        
+        gameNameLabel.snp.makeConstraints {
+            $0.leading.centerY.equalToSuperview()
+        }
+        
+        no1Label.snp.makeConstraints {
+            $0.leading.equalTo(gameNameLabel.snp.trailing).offset(25)
+            $0.centerY.equalToSuperview()
+        }
+        
+        no2Label.snp.makeConstraints {
+            $0.leading.equalTo(no1Label.snp.trailing).offset(35)
+            $0.centerY.equalToSuperview()
+        }
+        
+        no3Label.snp.makeConstraints {
+            $0.leading.equalTo(no2Label.snp.trailing).offset(35)
+            $0.centerY.equalToSuperview()
+        }
+        
+        no4Label.snp.makeConstraints {
+            $0.leading.equalTo(no3Label.snp.trailing).offset(35)
+            $0.centerY.equalToSuperview()
+        }
+        
+        no5Label.snp.makeConstraints {
+            $0.leading.equalTo(no4Label.snp.trailing).offset(35)
+            $0.centerY.equalToSuperview()
+        }
+        
+        no6Label.snp.makeConstraints {
+            $0.leading.equalTo(no5Label.snp.trailing).offset(35)
+            $0.centerY.equalToSuperview()
+        }
+        
+        bonusNoLabel.snp.makeConstraints {
+            $0.leading.equalTo(no6Label.snp.trailing).offset(35)
+            $0.centerY.equalToSuperview()
+        }
     }
     
-    func commonConstraint() {
-        GameName.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        GameName.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        
-        No1.leadingAnchor.constraint(equalTo: GameName.trailingAnchor, constant: 30).isActive = true
-        No1.centerYAnchor.constraint(equalTo: GameName.centerYAnchor).isActive = true
-        
-        No2.leadingAnchor.constraint(equalTo: No1.trailingAnchor, constant: 40).isActive = true
-        No2.centerYAnchor.constraint(equalTo: No1.centerYAnchor).isActive = true
-        
-        No3.leadingAnchor.constraint(equalTo: No2.trailingAnchor, constant: 40).isActive = true
-        No3.centerYAnchor.constraint(equalTo: No2.centerYAnchor).isActive = true
-        
-        No4.leadingAnchor.constraint(equalTo: No3.trailingAnchor, constant: 40).isActive = true
-        No4.centerYAnchor.constraint(equalTo: No3.centerYAnchor).isActive = true
-        
-        No5.leadingAnchor.constraint(equalTo: No4.trailingAnchor, constant: 40).isActive = true
-        No5.centerYAnchor.constraint(equalTo: No4.centerYAnchor).isActive = true
-        
-        No6.leadingAnchor.constraint(equalTo: No5.trailingAnchor, constant: 40).isActive = true
-        No6.centerYAnchor.constraint(equalTo: No5.centerYAnchor).isActive = true
-    }
 }

@@ -152,6 +152,9 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
         let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(from: location.coordinate), zoomTo: 16)
         naverMapView.moveCamera(cameraUpdate)
         configureNavi()
+        
+        let naviTap = UITapGestureRecognizer(target: self, action: #selector(clickNavi))
+        detailView.naviView.addGestureRecognizer(naviTap)
     }
     
     // MARK: - Draw
@@ -211,12 +214,10 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     private func switchShopSelectedMarker(isNew : Bool) {
-        guard let marker = selectedShop.marker,
-              let shopData = selectedShop.data else { return }
+        guard let marker = selectedShop.marker else { return }
 
         let shopMarker = self.markerBase
         shopMarker.isPressed = isNew
-//        shopMarker.setData(markerInfo: shopData)
         marker.zIndex = isNew ? 1 : 0
         marker.iconImage = NMFOverlayImage(image: shopMarker.asImage())
         showShopView()
