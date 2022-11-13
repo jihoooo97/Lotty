@@ -58,13 +58,9 @@ final class QrScanViewController: UIViewController, ViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func inputBind() {
-        
-    }
+    func inputBind() { }
     
-    func outputBind() {
-        
-    }
+    func outputBind() { }
     
     func requireCamera() {
         let alert = UIAlertController(title: "알림", message: "카메라 권한이 필요합니다.\n설정에서 카메라 권한을 허용으로 변경해주세요.", preferredStyle: .alert)
@@ -76,11 +72,6 @@ final class QrScanViewController: UIViewController, ViewController {
         let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
         if let captureDevice = captureDevice {
             do {
-                // 제한하고 싶은 영역
-                let rect = CGRect(x: (view.frame.width - 150) / 2,
-                                  y: 50,
-                                  width: 150,
-                                  height: 150)
                 let input = try AVCaptureDeviceInput(device: captureDevice)
                 captureSession.addInput(input)
                 
@@ -90,10 +81,17 @@ final class QrScanViewController: UIViewController, ViewController {
                 output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
                 output.metadataObjectTypes = [.qr]
                 
-                let rectConverted = setVideoLayer(rect: rect)
-                output.rectOfInterest = rectConverted
-                initCameraFrame()
-                captureSession.startRunning()
+                DispatchQueue.main.async { [weak self] in
+                    // 제한하고 싶은 영역
+                    let rect = CGRect(x: ((self?.view.frame.width)! - 150) / 2,
+                                      y: 50,
+                                      width: 150,
+                                      height: 150)
+                    let rectConverted = self?.setVideoLayer(rect: rect)
+                    output.rectOfInterest = rectConverted!
+                    self?.initCameraFrame()
+                    self?.captureSession.startRunning()
+                }
             } catch {
                 print("error")
             }
@@ -123,28 +121,28 @@ final class QrScanViewController: UIViewController, ViewController {
 extension QrScanViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        captureSession.startRunning()
         if metadataObjects.count == 0 { return }
         
         let metaDataObject = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
-        guard let StringCodeValue = metaDataObject.stringValue else { return }
+        guard let stringValue = metaDataObject.stringValue else { return }
         
         noQrView.isHidden = true
-        if before == StringCodeValue { return }
+        if before == stringValue { return }
         guard let _ = self.videoPreviewLayer.transformedMetadataObject(for: metaDataObject) else { return }
-        guard let url = URL(string: StringCodeValue) else { return }
-        let request = URLRequest(url: url)
-        webView.load(request)
-        before = StringCodeValue
+        if stringValue.hasPrefix("http://") || stringValue.hasPrefix("https://") {
+            
+            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+            
+            guard let url = URL(string: stringValue) else { return }
+            let request = URLRequest(url: url)
+            webView.load(request)
+            before = stringValue
+        }
     }
     
 }
 
-extension QrScanViewController: WKUIDelegate, WKNavigationDelegate {
-    
-    
-    
-}
+extension QrScanViewController: WKUIDelegate, WKNavigationDelegate { }
 
 extension QrScanViewController {
    
@@ -205,7 +203,7 @@ extension QrScanViewController {
         
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: CGRect(x: 0, y: 0,
-                                          width: view.frame.width, height: 750),
+                                          width: view.frame.width, height: 500),
                             configuration: webConfiguration).then {
             $0.uiDelegate = self
             $0.allowsBackForwardNavigationGestures = true
@@ -258,7 +256,7 @@ extension QrScanViewController {
         webView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.top.equalTo(qrContainerView.snp.bottom)
-            $0.height.equalTo(750)
+            $0.height.equalTo(500)
         }
     }
     
