@@ -84,6 +84,11 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
         
         inputBind()
         outputBind()
+        
+        for family in UIFont.familyNames.sorted() {
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font names: \(names)")
+        }
     }
     
     func inputBind() {

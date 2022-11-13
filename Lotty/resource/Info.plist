@@ -20,9 +20,9 @@
 		<string>Pretendard-Light</string>
 		<string>Pretendard-Bold.otf</string>
 		<string>Pretendard-Regular.otf</string>
-		<string>BMDOHYEON_ttf</string>
-		<string>BMHANNAPro</string>
-		<string>BMYEONSUNG_ttf</string>
+		<string>BMDOHYEON_ttf.ttf</string>
+		<string>BMHANNAPro.ttf</string>
+		<string>BMYEONSUNG_ttf.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

@@ -8,7 +8,7 @@ extension AroundViewController {
     }
     
     @objc func clickSearch() {
-        let mapSearchViewController = MapSearchViewController()
+        let mapSearchViewController = AroundSearchViewController()
         mapSearchViewController.modalPresentationStyle = .fullScreen
         mapSearchViewController.delegate = self
         self.present(mapSearchViewController, animated: false, completion: nil)

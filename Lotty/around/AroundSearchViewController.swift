@@ -8,7 +8,7 @@ protocol SearchDelegate: NSObjectProtocol {
     func mapSearch(query: String)
 }
 
-final class MapSearchViewController: UIViewController {
+final class AroundSearchViewController: UIViewController {
     
     var navigationBar = UIView()
     var backButton = UIButton()
@@ -97,7 +97,7 @@ final class MapSearchViewController: UIViewController {
     
 }
 
-extension MapSearchViewController: UITableViewDelegate {
+extension AroundSearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if viewModel.historyListRelay.value.count > 0 { return 50 }
@@ -106,7 +106,7 @@ extension MapSearchViewController: UITableViewDelegate {
     
 }
 
-extension MapSearchViewController: UISearchBarDelegate {
+extension AroundSearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
@@ -118,7 +118,7 @@ extension MapSearchViewController: UISearchBarDelegate {
     
 }
 
-extension MapSearchViewController: ViewController {
+extension AroundSearchViewController: ViewController {
     
     func initAttributes() {
         view.backgroundColor = .white
@@ -160,7 +160,7 @@ extension MapSearchViewController: ViewController {
             $0.textAlignment = .center
             $0.textColor = LottyColors.Placeholder
             $0.font = LottyFonts.semiBold(size: 15)
-            $0.text = "최근 본 회차"
+            $0.text = "최근 검색어"
         }
         
         historyClearButton = UIButton().then {

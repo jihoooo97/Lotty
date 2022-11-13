@@ -30,7 +30,7 @@ enum LottyFonts {
     }
     
     static func dohyeon(size: CGFloat) -> UIFont {
-        return UIFont(name: "BMDOHYEON", size: size)!
+        return UIFont(name: "BMDoHyeon", size: size)!
     }
     
     static func hannaPro(size: CGFloat) -> UIFont {
