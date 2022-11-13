@@ -42,7 +42,11 @@ final class AroundViewModel: BaseViewModel {
                 guard let result = response?.documents else { return }
                 self.storeInfoRelay.accept(result)
             }, failure: { error in
-                print(error)
+                if let detail = error.detail {
+                    if detail.contains("offline") {
+                        AlertManager.shared.showNetworkErrorAlert()
+                    }
+                }
             })
     }
     
@@ -53,7 +57,11 @@ final class AroundViewModel: BaseViewModel {
                 guard let result = response?.documents else { return }
                 self?.searchResultRelay.accept(result)
             }, failure: { error in
-                print(error)
+                if let detail = error.detail {
+                    if detail.contains("offline") {
+                        AlertManager.shared.showNetworkErrorAlert()
+                    }
+                }
             })
     }
     

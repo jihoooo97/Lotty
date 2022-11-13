@@ -15,8 +15,16 @@ final class LotterySearchViewModel: BaseViewModel {
     
     override init() {
         super.init()
+        
+        loadHistory()
     }
+
     
+    // MARK: Lottery
+    func updateLottery(lottery: LotteryInfo) {
+        _lotteryInfo = lottery
+        lotteryInfoRelay.accept(_lotteryInfo)
+    }
     
     func searchDrwNo(drwNo: Int) {
         lotteryUseCase.getLottery(
@@ -29,40 +37,20 @@ final class LotterySearchViewModel: BaseViewModel {
                 self?._lotteryInfo = lottery
                 self?.lotteryInfoRelay.accept(self?._lotteryInfo)
                 self?.updateHistory(index: -1)
+                self?.saveHistory()
             },
-            failure: { error in
-                print(error)
-            }
-        )
-    }
-    
-    func clickHistory(index: Int) {
-        if index < 0 { return }
-        lotteryUseCase.getLottery(
-            drwNo: _historyList[index],
-            success: { [weak self] response in
-                guard var lottery = response else { return }
-                if lottery.firstAccumamnt == 0 {
-                    lottery.firstAccumamnt = lottery.firstPrzwnerCo * lottery.firstWinamnt
-                }
-                self?._lotteryInfo = lottery
-                self?.lotteryInfoRelay.accept(self?._lotteryInfo)
-                self?.updateHistory(index: index)
-            },
-            failure: { error in
-                print(error)
-                if error.code == "-1" {
-                    print("test")
+            failure: { [weak self] error in
+                self?.lotteryInfoRelay.accept(nil)
+                if let detail = error.detail {
+                    if detail.contains("offline") {
+                        AlertManager.shared.showNetworkErrorAlert()
+                    }
                 }
             }
         )
     }
     
-    func updateLottery(lottery: LotteryInfo) {
-        _lotteryInfo = lottery
-        lotteryInfoRelay.accept(_lotteryInfo)
-    }
-    
+    // MARK: History
     func loadHistory() {
         _historyList = Storage.retrive("lottery_history.json", from: .documents, as: [Int].self) ?? []
         historyListRelay.accept(_historyList)
@@ -92,6 +80,30 @@ final class LotterySearchViewModel: BaseViewModel {
         _historyList = []
         historyListRelay.accept(_historyList)
         Storage.remove("lottery_history.json", from: .documents)
+    }
+    
+    func clickHistory(index: Int) {
+        if index < 0 { return }
+        lotteryUseCase.getLottery(
+            drwNo: _historyList[index],
+            success: { [weak self] response in
+                guard var lottery = response else { return }
+                if lottery.firstAccumamnt == 0 {
+                    lottery.firstAccumamnt = lottery.firstPrzwnerCo * lottery.firstWinamnt
+                }
+                self?._lotteryInfo = lottery
+                self?.lotteryInfoRelay.accept(self?._lotteryInfo)
+                self?.updateHistory(index: index)
+                self?.saveHistory()
+            },
+            failure: { error in
+                if let detail = error.detail {
+                    if detail.contains("offline") {
+                        AlertManager.shared.showNetworkErrorAlert()
+                    }
+                }
+            }
+        )
     }
     
 }

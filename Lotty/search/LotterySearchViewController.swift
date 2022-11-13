@@ -10,6 +10,7 @@ final class LotterySearchViewController: UIViewController, ViewController {
     var backButton = UIButton()
     var searchBar = UISearchBar()
     
+    var scrollView = UIScrollView()
     var stackView = UIStackView()
     
     // MARK: LotteryView
@@ -68,15 +69,11 @@ final class LotterySearchViewController: UIViewController, ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
-        
-        viewModel?.loadHistory()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         self.tabBarController?.tabBar.isHidden = false
-        viewModel?.saveHistory()
     }
     
     func inputBind() {
@@ -87,19 +84,22 @@ final class LotterySearchViewController: UIViewController, ViewController {
                 $0.navigationController?.popViewController(animated: true)
             }).disposed(by: disposeBag)
         
+//        searchBar.searchTextField.rx.text
+//            .orEmpty
+//            .distinctUntilChanged()
+//            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+//            .withUnretained(self).map { ($0.0, $0.1) }
+//            .bind(onNext: { (vc, text) in
+//                if let drwNo = Int(text) {
+//                    vc.viewModel?.searchDrwNo(drwNo: drwNo)
+//                }
+//            }).disposed(by: disposeBag)
+        
         historyClearButton.rx.tap
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withUnretained(self).map { $0.0 }
             .bind(onNext: {
                 $0.clearHistoy()
-            }).disposed(by: disposeBag)
-        
-        historyTableView.rx.itemSelected
-            .throttle(.seconds(1), scheduler: MainScheduler.instance)
-            .withUnretained(self).map { ($0.0, $0.1) }
-            .bind(onNext: { (vc, index) in
-                vc.searchBar.searchTextField.resignFirstResponder()
-                vc.viewModel?.clickHistory(index: index.row)
             }).disposed(by: disposeBag)
     }
     
@@ -108,7 +108,11 @@ final class LotterySearchViewController: UIViewController, ViewController {
             .observe(on: MainScheduler.instance)
             .withUnretained(self).map { ($0.0, $0.1) }
             .bind(onNext: { (vc, lottery) in
-                guard let lottery = lottery else { return }
+                guard let lottery = lottery else {
+                    vc.containerView.isHidden = true
+                    vc.historyTopIndicator.isHidden = true
+                    return
+                }
                 vc.containerView.isHidden = false
                 vc.historyTopIndicator.isHidden = false
                 vc.drwNoTitleLabel.text = "\(lottery.drwNo)회"
@@ -134,6 +138,11 @@ final class LotterySearchViewController: UIViewController, ViewController {
             ) { [weak self] (index, item, cell) in
                 cell.drwNo.text = "\(item)회"
                 
+                cell.clickButtonHandler = {
+                    self?.searchBar.searchTextField.resignFirstResponder()
+                    self?.viewModel?.clickHistory(index: index)
+                }
+                
                 cell.deleteButtonHandler = {
                     self?.viewModel?.deleteHistory(index: index)
                 }
@@ -142,24 +151,10 @@ final class LotterySearchViewController: UIViewController, ViewController {
     
     func setFirstInfo() {
         guard let lottery = lotteryInfo?.lottery else {
-            containerView.isHidden = true
-            historyTopIndicator.isHidden = true
             searchBar.searchTextField.becomeFirstResponder()
             return
         }
-        self.drwNoTitleLabel.text = "\(lottery.drwNo)회"
-        self.dateLabel.text = lottery.drwNoDate
-        self.drwNo1Label.lotteryNo = lottery.drwtNo1
-        self.drwNo2Label.lotteryNo = lottery.drwtNo2
-        self.drwNo3Label.lotteryNo = lottery.drwtNo3
-        self.drwNo4Label.lotteryNo = lottery.drwtNo4
-        self.drwNo5Label.lotteryNo = lottery.drwtNo5
-        self.drwNo6Label.lotteryNo = lottery.drwtNo6
-        self.bonusNoLabel.lotteryNo = lottery.bnusNo
-        self.winCountLabel.text = "\(lottery.firstPrzwnerCo)" + "명"
-        self.winAmountLabel.text = lottery.firstWinamnt.numberFormatter() + "원"
-        self.totalWinAmountLabel.text = lottery.firstAccumamnt.numberFormatter() + "원"
-        self.totalAmountLabel.text = lottery.totSellamnt.numberFormatter() + "원"
+        viewModel?.updateLottery(lottery: lottery)
     }
     
     func clearHistoy() {
@@ -192,7 +187,14 @@ extension LotterySearchViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        self.viewModel?.searchDrwNo(drwNo: Int(searchBar.text!) ?? 0)
+        if let drwNo = Int(searchBar.text!) {
+            viewModel?.searchDrwNo(drwNo: drwNo)
+        } else {
+            AlertManager.shared.showAlert(
+                title: "검색 오류",
+                message: "검색은 로또 회차 번호만 가능합니다.\nex) 1002"
+            )
+        }
         searchBar.text = ""
     }
     
@@ -231,18 +233,23 @@ extension LotterySearchViewController {
             $0.layer.borderColor = UIColor.white.cgColor
             $0.backgroundColor = .white
             $0.barTintColor = .white
-            $0.keyboardType = .numberPad
+            $0.keyboardType = .numbersAndPunctuation
             $0.delegate = self
+        }
+        
+        scrollView = UIScrollView().then {
+            $0.backgroundColor = .white
+            $0.showsVerticalScrollIndicator = false
+            $0.showsHorizontalScrollIndicator = false
+            $0.keyboardDismissMode = .onDrag
         }
         
         stackView = UIStackView().then {
             $0.axis = .vertical
             $0.distribution = .fill
             $0.alignment = .center
-//            $0.spacing = 48
             $0.backgroundColor = .white
-//            $0.isLayoutMarginsRelativeArrangement = true
-//            $0.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 48, trailing: 0)
+//            $0.autoresizingMask = .flexibleHeight
         }
         
         // MARK: LotteryView
@@ -369,27 +376,34 @@ extension LotterySearchViewController {
         historyTableView = UITableView().then {
             $0.backgroundColor = .white
             $0.separatorStyle = .none
-//            $0.allowsSelection = false
             $0.keyboardDismissMode = .onDrag
+            $0.showsHorizontalScrollIndicator = false
             $0.delegate = self
             $0.register(HistoryCell.self, forCellReuseIdentifier: HistoryCell.cellId)
         }
     }
     
     func initUI() {
-        [navigationBar, stackView]
+        [navigationBar, scrollView]
             .forEach { view.addSubview($0) }
 
+        scrollView.addSubview(stackView)
+        
         navigationBar.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.top.equalTo(safeArea)
             $0.height.equalTo(44)
         }
         
-        stackView.snp.makeConstraints {
+        scrollView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.top.equalTo(navigationBar.snp.bottom)
             $0.bottom.equalTo(safeArea)
+        }
+        
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.height.equalTo(view)
         }
         
         [backButton, searchBar]
@@ -429,6 +443,10 @@ extension LotterySearchViewController {
             $0.height.equalTo(66)
         }
         
+        historyTableView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+        }
+        
         historyTitleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(24)
             $0.centerY.equalToSuperview()
@@ -438,10 +456,7 @@ extension LotterySearchViewController {
             $0.trailing.equalToSuperview().offset(-26)
             $0.centerY.equalToSuperview()
             $0.width.equalTo(70)
-        }
-        
-        historyTableView.snp.makeConstraints {
-            $0.width.equalToSuperview()
+            $0.height.equalTo(20)
         }
         
         [drwNoTitleLabel, dateLabel, lotteryContainerView,

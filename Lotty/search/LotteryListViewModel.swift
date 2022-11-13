@@ -33,13 +33,16 @@ final class LotteryListViewModel: BaseViewModel {
                         } else {
                             self?.lotteryItems.append(LotteryItem(lottery: lottery))
                         }
-                        print(self?.lotteryItems.count)
                         self?.lotteryItems.sort(by: { $0.lottery.drwNo > $1.lottery.drwNo })
                         self?.lotteryListRelay.accept(self?.lotteryItems ?? [])
                     }
                 },
                 failure: { error in
-                    print(error)
+                    if let detail = error.detail {
+                        if detail.contains("offline") {
+                            AlertManager.shared.showNetworkErrorAlert()
+                        }
+                    }
                 }
             )
         }

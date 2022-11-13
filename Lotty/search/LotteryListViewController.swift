@@ -33,6 +33,7 @@ final class LotteryListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.backgroundColor = .white
+        
         viewModel.loadHistory()
     }
     

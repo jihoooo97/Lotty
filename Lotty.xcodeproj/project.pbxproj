@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1317BB802915B7A30033D22F /* AroundSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB782915B7A20033D22F /* AroundSearchViewController.swift */; };
-		1317BB812915B7A30033D22F /* LocationHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB792915B7A20033D22F /* LocationHistoryCell.swift */; };
-		1317BB822915B7A30033D22F /* LocationEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7A2915B7A20033D22F /* LocationEmptyCell.swift */; };
 		1317BB832915B7A30033D22F /* StoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7B2915B7A20033D22F /* StoreDetailView.swift */; };
 		1317BB842915B7A30033D22F /* AroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7C2915B7A30033D22F /* AroundViewController.swift */; };
 		1317BB852915B7A30033D22F /* alertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7D2915B7A30033D22F /* alertView.swift */; };
@@ -58,6 +56,8 @@
 		1363CCD12920AA3600257958 /* BMDOHYEON_ttf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1363CCCE2920AA3600257958 /* BMDOHYEON_ttf.ttf */; };
 		1363CCD22920AA3600257958 /* BMHANNAPro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1363CCCF2920AA3600257958 /* BMHANNAPro.ttf */; };
 		1363CCD32920AA3600257958 /* BMYEONSUNG_ttf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1363CCD02920AA3600257958 /* BMYEONSUNG_ttf.ttf */; };
+		1363CCD52920B2C700257958 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363CCD42920B2C700257958 /* UIApplication+Extension.swift */; };
+		1363CCD72920B32B00257958 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363CCD62920B32B00257958 /* AlertManager.swift */; };
 		1368148E2918341E00191720 /* LotterySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814852918341D00191720 /* LotterySearchViewController.swift */; };
 		1368148F2918341E00191720 /* LotteryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814862918341D00191720 /* LotteryListViewController.swift */; };
 		136814902918341E00191720 /* LotterySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814872918341D00191720 /* LotterySearchViewModel.swift */; };
@@ -94,8 +94,6 @@
 		0A64C4C25BD8F9610714F0B0 /* Pods_Lotty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lotty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9D15BB972C6ED830872F44 /* Pods-Lotty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.debug.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.debug.xcconfig"; sourceTree = "<group>"; };
 		1317BB782915B7A20033D22F /* AroundSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundSearchViewController.swift; sourceTree = "<group>"; };
-		1317BB792915B7A20033D22F /* LocationHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHistoryCell.swift; sourceTree = "<group>"; };
-		1317BB7A2915B7A20033D22F /* LocationEmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationEmptyCell.swift; sourceTree = "<group>"; };
 		1317BB7B2915B7A20033D22F /* StoreDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailView.swift; sourceTree = "<group>"; };
 		1317BB7C2915B7A30033D22F /* AroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundViewController.swift; sourceTree = "<group>"; };
 		1317BB7D2915B7A30033D22F /* alertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = alertView.swift; sourceTree = "<group>"; };
@@ -146,6 +144,8 @@
 		1363CCCE2920AA3600257958 /* BMDOHYEON_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMDOHYEON_ttf.ttf; sourceTree = "<group>"; };
 		1363CCCF2920AA3600257958 /* BMHANNAPro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNAPro.ttf; sourceTree = "<group>"; };
 		1363CCD02920AA3600257958 /* BMYEONSUNG_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMYEONSUNG_ttf.ttf; sourceTree = "<group>"; };
+		1363CCD42920B2C700257958 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		1363CCD62920B32B00257958 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		136814852918341D00191720 /* LotterySearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotterySearchViewController.swift; sourceTree = "<group>"; };
 		136814862918341D00191720 /* LotteryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryListViewController.swift; sourceTree = "<group>"; };
 		136814872918341D00191720 /* LotterySearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotterySearchViewModel.swift; sourceTree = "<group>"; };
@@ -203,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				1317BC462915C6A60033D22F /* mapMarker */,
-				136C8CB42915D801006AE77C /* cell */,
 				1317BB7C2915B7A30033D22F /* AroundViewController.swift */,
 				1317BC422915BF730033D22F /* AroundViewModel.swift */,
 				1317BC442915C5430033D22F /* AroundViewController+Extension.swift */,
@@ -239,12 +238,12 @@
 		1317BB772915B6C60033D22F /* random */ = {
 			isa = PBXGroup;
 			children = (
-				1317BBA22915B7DA0033D22F /* BackgroundLabel.swift */,
-				1317BBA72915B7DA0033D22F /* CountLabel.swift */,
-				1317BBA82915B7DA0033D22F /* DottedLine.swift */,
-				1317BBA32915B7DA0033D22F /* GameView.swift */,
 				1317BBA42915B7DA0033D22F /* RandomViewController.swift */,
 				1317BBA52915B7DA0033D22F /* RandomViewModel.swift */,
+				1317BBA22915B7DA0033D22F /* BackgroundLabel.swift */,
+				1317BBA32915B7DA0033D22F /* GameView.swift */,
+				1317BBA72915B7DA0033D22F /* CountLabel.swift */,
+				1317BBA82915B7DA0033D22F /* DottedLine.swift */,
 				1317BBA62915B7DA0033D22F /* RightLine.swift */,
 			);
 			path = random;
@@ -307,6 +306,7 @@
 				1368150B2918E4C500191720 /* LottyColors.swift */,
 				136815132918F60B00191720 /* LottyFonts.swift */,
 				1368152B291FF9A600191720 /* HapticManager.swift */,
+				1363CCD62920B32B00257958 /* AlertManager.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -387,6 +387,7 @@
 				1317BC2E2915BE180033D22F /* CALayer+Extension.swift */,
 				136815172919D77C00191720 /* Int+Extension.swift */,
 				136815192919DA1000191720 /* UILabel+Extension.swift */,
+				1363CCD42920B2C700257958 /* UIApplication+Extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -440,15 +441,6 @@
 				13681527291F516000191720 /* SearchAssembly.swift */,
 			);
 			path = di;
-			sourceTree = "<group>";
-		};
-		136C8CB42915D801006AE77C /* cell */ = {
-			isa = PBXGroup;
-			children = (
-				1317BB7A2915B7A20033D22F /* LocationEmptyCell.swift */,
-				1317BB792915B7A20033D22F /* LocationHistoryCell.swift */,
-			);
-			path = cell;
 			sourceTree = "<group>";
 		};
 		13A2A20627BB489000FE10E1 = {
@@ -631,7 +623,6 @@
 				1317BC312915BE180033D22F /* Marker+Util.swift in Sources */,
 				136814952918341E00191720 /* HistoryCell.swift in Sources */,
 				136815182919D77C00191720 /* Int+Extension.swift in Sources */,
-				1317BB812915B7A30033D22F /* LocationHistoryCell.swift in Sources */,
 				1317BC3D2915BE190033D22F /* UIImage+Extension.swift in Sources */,
 				13681528291F516000191720 /* SearchAssembly.swift in Sources */,
 				1317BC382915BE180033D22F /* ApiBase.swift in Sources */,
@@ -646,6 +637,7 @@
 				1368149E2918384600191720 /* LotteryUseCase.swift in Sources */,
 				1317BC3B2915BE190033D22F /* AroundNetworkGateway.swift in Sources */,
 				1317BBAE2915B7DA0033D22F /* CountLabel.swift in Sources */,
+				1363CCD52920B2C700257958 /* UIApplication+Extension.swift in Sources */,
 				1317BC302915BE180033D22F /* BaseNetwork.swift in Sources */,
 				1317BC392915BE190033D22F /* Interceptor.swift in Sources */,
 				1317BBF92915BBFC0033D22F /* SceneDelegate.swift in Sources */,
@@ -670,10 +662,10 @@
 				1317BC322915BE180033D22F /* AroundUseCase.swift in Sources */,
 				1317BC372915BE180033D22F /* ApiAround.swift in Sources */,
 				1317BB842915B7A30033D22F /* AroundViewController.swift in Sources */,
-				1317BB822915B7A30033D22F /* LocationEmptyCell.swift in Sources */,
 				13681525291F471E00191720 /* ViewController.swift in Sources */,
 				1368149A2918360500191720 /* LotteryNetwork.swift in Sources */,
 				1368150C2918E4C500191720 /* LottyColors.swift in Sources */,
+				1363CCD72920B32B00257958 /* AlertManager.swift in Sources */,
 				136815122918F0CF00191720 /* LottyIcons.swift in Sources */,
 				1317BC362915BE180033D22F /* LotteryInfo.swift in Sources */,
 				1317BB8B2915B7B70033D22F /* HomeViewController.swift in Sources */,

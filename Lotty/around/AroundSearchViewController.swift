@@ -49,18 +49,6 @@ final class AroundSearchViewController: UIViewController {
                 $0.dismiss(animated: false)
             }).disposed(by: disposeBag)
         
-        historyTableView.rx.itemSelected
-            .throttle(.seconds(1), scheduler: MainScheduler.instance)
-            .withUnretained(self).map { ($0.0, $0.1) }
-            .bind(onNext: { (vc, index) in
-                let historyList = vc.viewModel.historyListRelay.value
-                vc.searchBar.searchTextField.resignFirstResponder()
-
-                vc.delegate?.mapSearch(query: historyList[index.row])
-                vc.viewModel.updateHistory(index: index.row, query: historyList[index.row])
-                vc.dismiss(animated: false)
-            }).disposed(by: disposeBag)
-        
         historyClearButton.rx.tap
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withUnretained(self).map { $0.0 }
@@ -77,10 +65,19 @@ final class AroundSearchViewController: UIViewController {
             )) { [weak self] (index, item, cell) in
                 cell.drwNo.text = item
                 
+                cell.clickButtonHandler = {
+                    self?.searchBar.searchTextField.resignFirstResponder()
+
+                    self?.delegate?.mapSearch(query: item)
+                    self?.viewModel.updateHistory(index: index, query: item)
+                    self?.dismiss(animated: false)
+                }
+                
                 cell.deleteButtonHandler = {
                     self?.viewModel.deleteHistory(index: index)
                 }
             }.disposed(by: disposeBag)
+        
     }
     
     private func clearHistory() {
