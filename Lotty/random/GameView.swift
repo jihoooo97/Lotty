@@ -53,13 +53,6 @@ final class GameView: UIView {
         $0.font = UIFont(name: "BMDoHyeon", size: 13)
     }
     
-    let bonusNoLabel = CountLabel().then {
-        $0.sizeToFit()
-        $0.text = "45"
-        $0.textColor = LottyColors.G900
-        $0.font = UIFont(name: "BMDoHyeon", size: 13)
-    }
-    
     var noList: [CountLabel] = []
     
     
@@ -87,10 +80,10 @@ final class GameView: UIView {
         frame = CGRect(x: 0, y: 0, width: 50, height: 20)
         
         noList = [no1Label, no2Label, no3Label,
-                  no4Label, no5Label, no6Label, bonusNoLabel]
+                  no4Label, no5Label, no6Label]
         
         [gameNameLabel, no1Label, no2Label, no3Label,
-         no4Label, no5Label, no6Label, bonusNoLabel]
+         no4Label, no5Label, no6Label]
             .forEach { self.addSubview($0) }
         
         gameNameLabel.snp.makeConstraints {
@@ -103,32 +96,27 @@ final class GameView: UIView {
         }
         
         no2Label.snp.makeConstraints {
-            $0.leading.equalTo(no1Label.snp.trailing).offset(35)
+            $0.leading.equalTo(no1Label.snp.trailing).offset(40)
             $0.centerY.equalToSuperview()
         }
         
         no3Label.snp.makeConstraints {
-            $0.leading.equalTo(no2Label.snp.trailing).offset(35)
+            $0.leading.equalTo(no2Label.snp.trailing).offset(40)
             $0.centerY.equalToSuperview()
         }
         
         no4Label.snp.makeConstraints {
-            $0.leading.equalTo(no3Label.snp.trailing).offset(35)
+            $0.leading.equalTo(no3Label.snp.trailing).offset(40)
             $0.centerY.equalToSuperview()
         }
         
         no5Label.snp.makeConstraints {
-            $0.leading.equalTo(no4Label.snp.trailing).offset(35)
+            $0.leading.equalTo(no4Label.snp.trailing).offset(40)
             $0.centerY.equalToSuperview()
         }
         
         no6Label.snp.makeConstraints {
-            $0.leading.equalTo(no5Label.snp.trailing).offset(35)
-            $0.centerY.equalToSuperview()
-        }
-        
-        bonusNoLabel.snp.makeConstraints {
-            $0.leading.equalTo(no6Label.snp.trailing).offset(35)
+            $0.leading.equalTo(no5Label.snp.trailing).offset(40)
             $0.centerY.equalToSuperview()
         }
     }

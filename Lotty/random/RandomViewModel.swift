@@ -79,7 +79,7 @@ final class RandomViewModel: BaseViewModel {
         var randomList: [[Int]] = []
         for _ in 0...4 {
             var randomNo: [Int] = []
-            for _ in 0...6 {
+            for _ in 0...5 {
                 var drwtNo = Int.random(in: 1...45)
                 while randomNo.contains(drwtNo) {
                     drwtNo = Int.random(in: 1...45)
