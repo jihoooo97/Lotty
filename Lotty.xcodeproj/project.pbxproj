@@ -92,6 +92,13 @@
 		1374D43529F30A6C006DB5BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D42729F30A6C006DB5BA /* AppDelegate.swift */; };
 		1374D43629F30A6C006DB5BA /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D42829F30A6C006DB5BA /* NavigationController.swift */; };
 		1374D43729F30A6C006DB5BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D42929F30A6C006DB5BA /* SceneDelegate.swift */; };
+		1374D44029F30D90006DB5BA /* SearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D43929F30D90006DB5BA /* SearchAssembly.swift */; };
+		1374D44129F30D90006DB5BA /* AroundAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D43A29F30D90006DB5BA /* AroundAssembly.swift */; };
+		1374D44229F30D90006DB5BA /* DataAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D43B29F30D90006DB5BA /* DataAssembly.swift */; };
+		1374D44329F30D90006DB5BA /* QRAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D43C29F30D90006DB5BA /* QRAssembly.swift */; };
+		1374D44429F30D90006DB5BA /* DomainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D43D29F30D90006DB5BA /* DomainAssembly.swift */; };
+		1374D44529F30D90006DB5BA /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D43E29F30D90006DB5BA /* Injector.swift */; };
+		1374D44629F30D90006DB5BA /* RandomAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D43F29F30D90006DB5BA /* RandomAssembly.swift */; };
 		13A2A21A27BB489000FE10E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21827BB489000FE10E1 /* Main.storyboard */; };
 		A6D32E6CB7D32FDD60D1607D /* Pods_Lotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A64C4C25BD8F9610714F0B0 /* Pods_Lotty.framework */; };
 /* End PBXBuildFile section */
@@ -186,6 +193,13 @@
 		1374D42729F30A6C006DB5BA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1374D42829F30A6C006DB5BA /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		1374D42929F30A6C006DB5BA /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1374D43929F30D90006DB5BA /* SearchAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAssembly.swift; sourceTree = "<group>"; };
+		1374D43A29F30D90006DB5BA /* AroundAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundAssembly.swift; sourceTree = "<group>"; };
+		1374D43B29F30D90006DB5BA /* DataAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAssembly.swift; sourceTree = "<group>"; };
+		1374D43C29F30D90006DB5BA /* QRAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRAssembly.swift; sourceTree = "<group>"; };
+		1374D43D29F30D90006DB5BA /* DomainAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainAssembly.swift; sourceTree = "<group>"; };
+		1374D43E29F30D90006DB5BA /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
+		1374D43F29F30D90006DB5BA /* RandomAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomAssembly.swift; sourceTree = "<group>"; };
 		13A2A21927BB489000FE10E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BDB874F062F3BED792DE7C97 /* Pods-Lotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.release.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -583,11 +597,26 @@
 		1374D41829F30A6C006DB5BA /* App */ = {
 			isa = PBXGroup;
 			children = (
+				1374D43829F30D90006DB5BA /* DI */,
 				1374D42729F30A6C006DB5BA /* AppDelegate.swift */,
 				1374D42929F30A6C006DB5BA /* SceneDelegate.swift */,
 				1374D42829F30A6C006DB5BA /* NavigationController.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		1374D43829F30D90006DB5BA /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				1374D43929F30D90006DB5BA /* SearchAssembly.swift */,
+				1374D43A29F30D90006DB5BA /* AroundAssembly.swift */,
+				1374D43B29F30D90006DB5BA /* DataAssembly.swift */,
+				1374D43C29F30D90006DB5BA /* QRAssembly.swift */,
+				1374D43D29F30D90006DB5BA /* DomainAssembly.swift */,
+				1374D43E29F30D90006DB5BA /* Injector.swift */,
+				1374D43F29F30D90006DB5BA /* RandomAssembly.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 		13A2A20627BB489000FE10E1 = {
@@ -762,6 +791,7 @@
 				1374D38C29F30A3F006DB5BA /* LotteryDTO.swift in Sources */,
 				1374D3AD29F30A49006DB5BA /* Data+Extension.swift in Sources */,
 				1374D37E29F30A3F006DB5BA /* StoreRepositoryProtocol.swift in Sources */,
+				1374D44429F30D90006DB5BA /* DomainAssembly.swift in Sources */,
 				1374D41629F30A63006DB5BA /* LotteryView.swift in Sources */,
 				1374D39029F30A3F006DB5BA /* TargetType.swift in Sources */,
 				1374D37F29F30A3F006DB5BA /* LotteryRepositoryProtocol.swift in Sources */,
@@ -772,10 +802,14 @@
 				1374D3FA29F30A5C006DB5BA /* GameListView.swift in Sources */,
 				1374D3E929F30A5C006DB5BA /* LotteryListViewController.swift in Sources */,
 				1374D38029F30A3F006DB5BA /* Game.swift in Sources */,
+				1374D44629F30D90006DB5BA /* RandomAssembly.swift in Sources */,
 				1374D3F329F30A5C006DB5BA /* LottyMapMarker.swift in Sources */,
+				1374D44329F30D90006DB5BA /* QRAssembly.swift in Sources */,
 				1374D3E429F30A5C006DB5BA /* QRReaderView.swift in Sources */,
 				1374D41729F30A63006DB5BA /* LotteryDetailView.swift in Sources */,
+				1374D44029F30D90006DB5BA /* SearchAssembly.swift in Sources */,
 				1374D3FB29F30A5C006DB5BA /* GameView.swift in Sources */,
+				1374D44229F30D90006DB5BA /* DataAssembly.swift in Sources */,
 				1374D3EB29F30A5C006DB5BA /* AroundSearchViewModel.swift in Sources */,
 				1374D3F629F30A5C006DB5BA /* AroundViewController.swift in Sources */,
 				1374D3E629F30A5C006DB5BA /* LotteryListViewModel.swift in Sources */,
@@ -810,10 +844,12 @@
 				1374D3FF29F30A5C006DB5BA /* RandomViewController.swift in Sources */,
 				1374D3F129F30A5C006DB5BA /* AlertView.swift in Sources */,
 				1374D3FC29F30A5C006DB5BA /* RightLine.swift in Sources */,
+				1374D44529F30D90006DB5BA /* Injector.swift in Sources */,
 				1374D3F429F30A5C006DB5BA /* MarkerFactory.swift in Sources */,
 				1374D3B129F30A49006DB5BA /* AlertManager.swift in Sources */,
 				1374D38929F30A3F006DB5BA /* StoreRepository.swift in Sources */,
 				1374D40F29F30A63006DB5BA /* NumberCell.swift in Sources */,
+				1374D44129F30D90006DB5BA /* AroundAssembly.swift in Sources */,
 				1374D3F529F30A5C006DB5BA /* StoreDetailView.swift in Sources */,
 				1374D3F029F30A5C006DB5BA /* SearchBarView.swift in Sources */,
 				1374D3B429F30A49006DB5BA /* Marker+Util.swift in Sources */,
