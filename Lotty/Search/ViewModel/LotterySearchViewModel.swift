@@ -1,0 +1,91 @@
+import Foundation
+import RxSwift
+import RxRelay
+
+final class LotterySearchViewModel: BaseViewModel {
+    
+    private let lotteryUsecase: LotteryUsecaseProtocol
+    private let historyUsecase: HistoryUsecaseProtocol
+    
+    // MARK: Input
+    let inputTapHistory = PublishRelay<History>()
+    let inputDeleteHistory = PublishRelay<History>()
+    let inputClearHistory = PublishRelay<Void>()
+    
+    // MARK: Output
+    let lotteryInfoRelay = PublishRelay<Lottery>()
+    let historyListRelay = BehaviorRelay<[History]>(value: [])
+    let searchResultErrorRelay = PublishRelay<Void>()
+    
+    init(
+        lotteryUsecase: LotteryUsecaseProtocol,
+        historyUsecase: HistoryUsecaseProtocol
+    ) {
+        self.lotteryUsecase = lotteryUsecase
+        self.historyUsecase = historyUsecase
+        super.init()
+        
+        loadHistory()
+        inputBind()
+    }
+
+    
+    private func inputBind() {
+        inputTapHistory
+            .bind { [weak self] history in
+                guard let turn = Int(history.keyword) else { return }
+                self?.searchLottery(turn: turn)
+            }
+            .disposed(by: disposeBag)
+        
+        inputDeleteHistory
+            .bind { [weak self] history in
+                let turn = history.keyword
+                self?.deleteHistory(turn: turn)
+                self?.loadHistory()
+            }
+            .disposed(by: disposeBag)
+        
+        inputClearHistory
+            .bind { [weak self] event in
+                self?.clearHistory()
+                self?.loadHistory()
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK: Lottery
+    func searchLottery(turn: Int) {
+        lotteryUsecase.getLottery(turn: turn) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let lottery):
+                self.lotteryInfoRelay.accept(lottery)
+                self.selectHistory(turn: String(turn))
+                self.loadHistory()
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.searchResultErrorRelay.accept(())
+            }
+        }
+    }
+    
+    // MARK: History
+    func selectHistory(turn: String) {
+        historyUsecase.select(keyword: turn, type: .lottery)
+    }
+    
+    func loadHistory() {
+        let historyList = historyUsecase.load(type: .lottery)
+        historyListRelay.accept(historyList)
+    }
+    
+    func deleteHistory(turn: String) {
+        historyUsecase.delete(keyword: turn, type: .lottery)
+    }
+    
+    func clearHistory() {
+        historyUsecase.clear(type: .lottery)
+    }
+    
+}

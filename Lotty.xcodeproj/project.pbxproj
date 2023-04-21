@@ -7,85 +7,107 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1317BB802915B7A30033D22F /* AroundSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB782915B7A20033D22F /* AroundSearchViewController.swift */; };
-		1317BB832915B7A30033D22F /* StoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7B2915B7A20033D22F /* StoreDetailView.swift */; };
-		1317BB842915B7A30033D22F /* AroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7C2915B7A30033D22F /* AroundViewController.swift */; };
-		1317BB852915B7A30033D22F /* alertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7D2915B7A30033D22F /* alertView.swift */; };
-		1317BB872915B7A30033D22F /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB7F2915B7A30033D22F /* SearchBarView.swift */; };
-		1317BB8A2915B7B70033D22F /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB882915B7B60033D22F /* RefreshView.swift */; };
-		1317BB8B2915B7B70033D22F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB892915B7B70033D22F /* HomeViewController.swift */; };
-		1317BBA02915B7D10033D22F /* QrScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BB9E2915B7D10033D22F /* QrScanViewController.swift */; };
-		1317BBA92915B7DA0033D22F /* BackgroundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA22915B7DA0033D22F /* BackgroundLabel.swift */; };
-		1317BBAA2915B7DA0033D22F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA32915B7DA0033D22F /* GameView.swift */; };
-		1317BBAB2915B7DA0033D22F /* RandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA42915B7DA0033D22F /* RandomViewController.swift */; };
-		1317BBAC2915B7DA0033D22F /* RandomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA52915B7DA0033D22F /* RandomViewModel.swift */; };
-		1317BBAD2915B7DA0033D22F /* RightLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA62915B7DA0033D22F /* RightLine.swift */; };
-		1317BBAE2915B7DA0033D22F /* CountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA72915B7DA0033D22F /* CountLabel.swift */; };
-		1317BBAF2915B7DA0033D22F /* DottedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBA82915B7DA0033D22F /* DottedLine.swift */; };
-		1317BBF92915BBFC0033D22F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBE42915BBFB0033D22F /* SceneDelegate.swift */; };
 		1317BBFA2915BBFC0033D22F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBE52915BBFB0033D22F /* Assets.xcassets */; };
 		1317BBFC2915BBFC0033D22F /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBE82915BBFC0033D22F /* Pretendard-Regular.otf */; };
 		1317BBFF2915BBFC0033D22F /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBEB2915BBFC0033D22F /* Pretendard-Medium.otf */; };
 		1317BC012915BBFC0033D22F /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBED2915BBFC0033D22F /* Pretendard-Light.otf */; };
 		1317BC042915BBFC0033D22F /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBF02915BBFC0033D22F /* Pretendard-Bold.otf */; };
 		1317BC072915BBFC0033D22F /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1317BBF32915BBFC0033D22F /* Pretendard-SemiBold.otf */; };
-		1317BC082915BBFC0033D22F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BBF42915BBFC0033D22F /* AppDelegate.swift */; };
 		1317BC112915BD4E0033D22F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1317BC0F2915BCA60033D22F /* LaunchScreen.storyboard */; };
-		1317BC2F2915BE180033D22F /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC152915BE180033D22F /* BaseViewModel.swift */; };
-		1317BC302915BE180033D22F /* BaseNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC162915BE180033D22F /* BaseNetwork.swift */; };
-		1317BC312915BE180033D22F /* Marker+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC182915BE180033D22F /* Marker+Util.swift */; };
-		1317BC322915BE180033D22F /* AroundUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC1B2915BE180033D22F /* AroundUseCase.swift */; };
-		1317BC332915BE180033D22F /* StoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC1D2915BE180033D22F /* StoreInfo.swift */; };
-		1317BC342915BE180033D22F /* ErrorEntitiy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC1E2915BE180033D22F /* ErrorEntitiy.swift */; };
-		1317BC352915BE180033D22F /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC1F2915BE180033D22F /* Entity.swift */; };
-		1317BC362915BE180033D22F /* LotteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC202915BE180033D22F /* LotteryInfo.swift */; };
-		1317BC372915BE180033D22F /* ApiAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC242915BE180033D22F /* ApiAround.swift */; };
-		1317BC382915BE180033D22F /* ApiBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC252915BE180033D22F /* ApiBase.swift */; };
-		1317BC392915BE190033D22F /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC262915BE180033D22F /* Interceptor.swift */; };
-		1317BC3A2915BE190033D22F /* AroundNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC272915BE180033D22F /* AroundNetwork.swift */; };
-		1317BC3B2915BE190033D22F /* AroundNetworkGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC292915BE180033D22F /* AroundNetworkGateway.swift */; };
-		1317BC3C2915BE190033D22F /* GatewayBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC2A2915BE180033D22F /* GatewayBuilder.swift */; };
-		1317BC3D2915BE190033D22F /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC2C2915BE180033D22F /* UIImage+Extension.swift */; };
-		1317BC3E2915BE190033D22F /* Codable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC2D2915BE180033D22F /* Codable+Extension.swift */; };
-		1317BC3F2915BE190033D22F /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC2E2915BE180033D22F /* CALayer+Extension.swift */; };
-		1317BC412915BE1F0033D22F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC402915BE1F0033D22F /* Storage.swift */; };
-		1317BC432915BF730033D22F /* AroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC422915BF730033D22F /* AroundViewModel.swift */; };
-		1317BC452915C5430033D22F /* AroundViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC442915C5430033D22F /* AroundViewController+Extension.swift */; };
-		1317BC482915C6F70033D22F /* BaseMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC472915C6F70033D22F /* BaseMapMarker.swift */; };
-		1317BC4A2915C70A0033D22F /* LottyMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BC492915C70A0033D22F /* LottyMapMarker.swift */; };
 		1363CCD12920AA3600257958 /* BMDOHYEON_ttf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1363CCCE2920AA3600257958 /* BMDOHYEON_ttf.ttf */; };
 		1363CCD22920AA3600257958 /* BMHANNAPro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1363CCCF2920AA3600257958 /* BMHANNAPro.ttf */; };
 		1363CCD32920AA3600257958 /* BMYEONSUNG_ttf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1363CCD02920AA3600257958 /* BMYEONSUNG_ttf.ttf */; };
-		1363CCD52920B2C700257958 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363CCD42920B2C700257958 /* UIApplication+Extension.swift */; };
-		1363CCD72920B32B00257958 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363CCD62920B32B00257958 /* AlertManager.swift */; };
-		1368148E2918341E00191720 /* LotterySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814852918341D00191720 /* LotterySearchViewController.swift */; };
-		1368148F2918341E00191720 /* LotteryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814862918341D00191720 /* LotteryListViewController.swift */; };
-		136814902918341E00191720 /* LotterySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814872918341D00191720 /* LotterySearchViewModel.swift */; };
-		136814912918341E00191720 /* LotteryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814882918341D00191720 /* LotteryListViewModel.swift */; };
-		136814922918341E00191720 /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368148A2918341D00191720 /* EmptyCell.swift */; };
-		136814932918341E00191720 /* FailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368148B2918341D00191720 /* FailCell.swift */; };
-		136814942918341E00191720 /* NumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368148C2918341D00191720 /* NumberCell.swift */; };
-		136814952918341E00191720 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368148D2918341D00191720 /* HistoryCell.swift */; };
-		13681497291834E600191720 /* ApiLottery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13681496291834E600191720 /* ApiLottery.swift */; };
-		1368149A2918360500191720 /* LotteryNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814992918360500191720 /* LotteryNetwork.swift */; };
-		1368149C2918362D00191720 /* LotteryNetworkGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368149B2918362D00191720 /* LotteryNetworkGateway.swift */; };
-		1368149E2918384600191720 /* LotteryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368149D2918384600191720 /* LotteryUseCase.swift */; };
 		136814A42918512500191720 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814A32918512500191720 /* TabBarController.swift */; };
 		136814A82918579900191720 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136814A72918579900191720 /* NavigationController.swift */; };
-		1368150C2918E4C500191720 /* LottyColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368150B2918E4C500191720 /* LottyColors.swift */; };
 		1368150E2918E53200191720 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1368150D2918E53200191720 /* Color.xcassets */; };
-		136815102918ECE600191720 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368150F2918ECE600191720 /* BaseViewController.swift */; };
-		136815122918F0CF00191720 /* LottyIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136815112918F0CF00191720 /* LottyIcons.swift */; };
-		136815142918F60B00191720 /* LottyFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136815132918F60B00191720 /* LottyFonts.swift */; };
-		136815162918FED300191720 /* AroundSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136815152918FED300191720 /* AroundSearchViewModel.swift */; };
-		136815182919D77C00191720 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136815172919D77C00191720 /* Int+Extension.swift */; };
-		1368151A2919DA1100191720 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136815192919DA1000191720 /* UILabel+Extension.swift */; };
-		1368151D2919DCB300191720 /* LotteryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368151C2919DCB300191720 /* LotteryLabel.swift */; };
-		13681521291C9B2700191720 /* NumberCloseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13681520291C9B2700191720 /* NumberCloseCell.swift */; };
-		13681525291F471E00191720 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13681524291F471E00191720 /* ViewController.swift */; };
-		13681528291F516000191720 /* SearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13681527291F516000191720 /* SearchAssembly.swift */; };
-		1368152A291F57DF00191720 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13681529291F57DF00191720 /* ViewModel.swift */; };
-		1368152C291FF9A600191720 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368152B291FF9A600191720 /* HapticManager.swift */; };
+		1374D37E29F30A3F006DB5BA /* StoreRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D35E29F30A3F006DB5BA /* StoreRepositoryProtocol.swift */; };
+		1374D37F29F30A3F006DB5BA /* LotteryRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D35F29F30A3F006DB5BA /* LotteryRepositoryProtocol.swift */; };
+		1374D38029F30A3F006DB5BA /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D36129F30A3F006DB5BA /* Game.swift */; };
+		1374D38129F30A3F006DB5BA /* Lottery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D36229F30A3F006DB5BA /* Lottery.swift */; };
+		1374D38229F30A3F006DB5BA /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D36329F30A3F006DB5BA /* Store.swift */; };
+		1374D38329F30A3F006DB5BA /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D36429F30A3F006DB5BA /* History.swift */; };
+		1374D38429F30A3F006DB5BA /* LotteryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D36629F30A3F006DB5BA /* LotteryUsecase.swift */; };
+		1374D38529F30A3F006DB5BA /* HistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D36729F30A3F006DB5BA /* HistoryUsecase.swift */; };
+		1374D38629F30A3F006DB5BA /* StoreUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D36829F30A3F006DB5BA /* StoreUsecase.swift */; };
+		1374D38729F30A3F006DB5BA /* GameUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D36929F30A3F006DB5BA /* GameUsecase.swift */; };
+		1374D38829F30A3F006DB5BA /* LottyRO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D36C29F30A3F006DB5BA /* LottyRO.swift */; };
+		1374D38929F30A3F006DB5BA /* StoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D36E29F30A3F006DB5BA /* StoreRepository.swift */; };
+		1374D38A29F30A3F006DB5BA /* HistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D36F29F30A3F006DB5BA /* HistoryRepository.swift */; };
+		1374D38B29F30A3F006DB5BA /* LotteryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D37029F30A3F006DB5BA /* LotteryRepository.swift */; };
+		1374D38C29F30A3F006DB5BA /* LotteryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D37229F30A3F006DB5BA /* LotteryDTO.swift */; };
+		1374D38D29F30A3F006DB5BA /* StoreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D37329F30A3F006DB5BA /* StoreDTO.swift */; };
+		1374D38E29F30A3F006DB5BA /* StoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D37529F30A3F006DB5BA /* StoreAPI.swift */; };
+		1374D38F29F30A3F006DB5BA /* LotteryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D37629F30A3F006DB5BA /* LotteryAPI.swift */; };
+		1374D39029F30A3F006DB5BA /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D37829F30A3F006DB5BA /* TargetType.swift */; };
+		1374D39129F30A3F006DB5BA /* LottyAPIEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D37929F30A3F006DB5BA /* LottyAPIEventLogger.swift */; };
+		1374D39229F30A3F006DB5BA /* LottyRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D37A29F30A3F006DB5BA /* LottyRequestInterceptor.swift */; };
+		1374D39329F30A3F006DB5BA /* StoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D37C29F30A3F006DB5BA /* StoreDataStore.swift */; };
+		1374D39429F30A3F006DB5BA /* LotteryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D37D29F30A3F006DB5BA /* LotteryDataStore.swift */; };
+		1374D3A729F30A49006DB5BA /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D39729F30A49006DB5BA /* BaseViewModel.swift */; };
+		1374D3A829F30A49006DB5BA /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D39929F30A49006DB5BA /* UIApplication+Extension.swift */; };
+		1374D3A929F30A49006DB5BA /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D39A29F30A49006DB5BA /* Int+Extension.swift */; };
+		1374D3AA29F30A49006DB5BA /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D39B29F30A49006DB5BA /* UILabel+Extension.swift */; };
+		1374D3AB29F30A49006DB5BA /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D39C29F30A49006DB5BA /* UIImage+Extension.swift */; };
+		1374D3AC29F30A49006DB5BA /* Codable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D39D29F30A49006DB5BA /* Codable+Extension.swift */; };
+		1374D3AD29F30A49006DB5BA /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D39E29F30A49006DB5BA /* Data+Extension.swift */; };
+		1374D3AE29F30A49006DB5BA /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D39F29F30A49006DB5BA /* CALayer+Extension.swift */; };
+		1374D3AF29F30A49006DB5BA /* LottyColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3A129F30A49006DB5BA /* LottyColors.swift */; };
+		1374D3B029F30A49006DB5BA /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3A229F30A49006DB5BA /* HapticManager.swift */; };
+		1374D3B129F30A49006DB5BA /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3A329F30A49006DB5BA /* AlertManager.swift */; };
+		1374D3B229F30A49006DB5BA /* LottyIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3A429F30A49006DB5BA /* LottyIcons.swift */; };
+		1374D3B329F30A49006DB5BA /* LottyFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3A529F30A49006DB5BA /* LottyFonts.swift */; };
+		1374D3B429F30A49006DB5BA /* Marker+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3A629F30A49006DB5BA /* Marker+Util.swift */; };
+		1374D3E329F30A5C006DB5BA /* QRScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3B729F30A5C006DB5BA /* QRScanViewModel.swift */; };
+		1374D3E429F30A5C006DB5BA /* QRReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3B929F30A5C006DB5BA /* QRReaderView.swift */; };
+		1374D3E529F30A5C006DB5BA /* QrScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3BB29F30A5C006DB5BA /* QrScanViewController.swift */; };
+		1374D3E629F30A5C006DB5BA /* LotteryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3BE29F30A5C006DB5BA /* LotteryListViewModel.swift */; };
+		1374D3E729F30A5C006DB5BA /* LotterySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3BF29F30A5C006DB5BA /* LotterySearchViewModel.swift */; };
+		1374D3E829F30A5C006DB5BA /* LotterySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3C129F30A5C006DB5BA /* LotterySearchViewController.swift */; };
+		1374D3E929F30A5C006DB5BA /* LotteryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3C229F30A5C006DB5BA /* LotteryListViewController.swift */; };
+		1374D3EA29F30A5C006DB5BA /* AroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3C529F30A5C006DB5BA /* AroundViewModel.swift */; };
+		1374D3EB29F30A5C006DB5BA /* AroundSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3C629F30A5C006DB5BA /* AroundSearchViewModel.swift */; };
+		1374D3EC29F30A5C006DB5BA /* AroundSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3C829F30A5C006DB5BA /* AroundSearchCoordinator.swift */; };
+		1374D3ED29F30A5C006DB5BA /* AroundCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3C929F30A5C006DB5BA /* AroundCoordinator.swift */; };
+		1374D3EE29F30A5C006DB5BA /* AroundViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3CA29F30A5C006DB5BA /* AroundViewController+Extension.swift */; };
+		1374D3EF29F30A5C006DB5BA /* LottyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3CC29F30A5C006DB5BA /* LottyMapView.swift */; };
+		1374D3F029F30A5C006DB5BA /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3CD29F30A5C006DB5BA /* SearchBarView.swift */; };
+		1374D3F129F30A5C006DB5BA /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3CE29F30A5C006DB5BA /* AlertView.swift */; };
+		1374D3F229F30A5C006DB5BA /* BaseMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3D029F30A5C006DB5BA /* BaseMapMarker.swift */; };
+		1374D3F329F30A5C006DB5BA /* LottyMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3D129F30A5C006DB5BA /* LottyMapMarker.swift */; };
+		1374D3F429F30A5C006DB5BA /* MarkerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3D229F30A5C006DB5BA /* MarkerFactory.swift */; };
+		1374D3F529F30A5C006DB5BA /* StoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3D329F30A5C006DB5BA /* StoreDetailView.swift */; };
+		1374D3F629F30A5C006DB5BA /* AroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3D529F30A5C006DB5BA /* AroundViewController.swift */; };
+		1374D3F729F30A5C006DB5BA /* AroundSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3D629F30A5C006DB5BA /* AroundSearchViewController.swift */; };
+		1374D3F829F30A5C006DB5BA /* RandomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3D929F30A5C006DB5BA /* RandomViewModel.swift */; };
+		1374D3F929F30A5C006DB5BA /* CountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3DB29F30A5C006DB5BA /* CountLabel.swift */; };
+		1374D3FA29F30A5C006DB5BA /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3DC29F30A5C006DB5BA /* GameListView.swift */; };
+		1374D3FB29F30A5C006DB5BA /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3DD29F30A5C006DB5BA /* GameView.swift */; };
+		1374D3FC29F30A5C006DB5BA /* RightLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3DE29F30A5C006DB5BA /* RightLine.swift */; };
+		1374D3FD29F30A5C006DB5BA /* BackgroundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3DF29F30A5C006DB5BA /* BackgroundLabel.swift */; };
+		1374D3FE29F30A5C006DB5BA /* DottedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3E029F30A5C006DB5BA /* DottedLine.swift */; };
+		1374D3FF29F30A5C006DB5BA /* RandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D3E229F30A5C006DB5BA /* RandomViewController.swift */; };
+		1374D40F29F30A63006DB5BA /* NumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D40329F30A63006DB5BA /* NumberCell.swift */; };
+		1374D41029F30A63006DB5BA /* LotteryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D40429F30A63006DB5BA /* LotteryTableView.swift */; };
+		1374D41129F30A63006DB5BA /* NumberCloseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D40529F30A63006DB5BA /* NumberCloseCell.swift */; };
+		1374D41229F30A63006DB5BA /* HistoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D40729F30A63006DB5BA /* HistoryTableView.swift */; };
+		1374D41329F30A63006DB5BA /* HistoryTableViewTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D40829F30A63006DB5BA /* HistoryTableViewTopView.swift */; };
+		1374D41429F30A63006DB5BA /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D40929F30A63006DB5BA /* HistoryCell.swift */; };
+		1374D41529F30A63006DB5BA /* LotteryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D40B29F30A63006DB5BA /* LotteryLabel.swift */; };
+		1374D41629F30A63006DB5BA /* LotteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D40D29F30A63006DB5BA /* LotteryView.swift */; };
+		1374D41729F30A63006DB5BA /* LotteryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D40E29F30A63006DB5BA /* LotteryDetailView.swift */; };
+		1374D42A29F30A6C006DB5BA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D41A29F30A6C006DB5BA /* AppCoordinator.swift */; };
+		1374D42B29F30A6C006DB5BA /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D41B29F30A6C006DB5BA /* TabBarCoordinator.swift */; };
+		1374D42C29F30A6C006DB5BA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D41C29F30A6C006DB5BA /* Coordinator.swift */; };
+		1374D42D29F30A6C006DB5BA /* SearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D41E29F30A6C006DB5BA /* SearchAssembly.swift */; };
+		1374D42E29F30A6C006DB5BA /* AroundAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D41F29F30A6C006DB5BA /* AroundAssembly.swift */; };
+		1374D42F29F30A6C006DB5BA /* DataAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D42029F30A6C006DB5BA /* DataAssembly.swift */; };
+		1374D43029F30A6C006DB5BA /* QRAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D42129F30A6C006DB5BA /* QRAssembly.swift */; };
+		1374D43129F30A6C006DB5BA /* DomainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D42229F30A6C006DB5BA /* DomainAssembly.swift */; };
+		1374D43229F30A6C006DB5BA /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D42329F30A6C006DB5BA /* Injector.swift */; };
+		1374D43329F30A6C006DB5BA /* RandomAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D42429F30A6C006DB5BA /* RandomAssembly.swift */; };
+		1374D43529F30A6C006DB5BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D42729F30A6C006DB5BA /* AppDelegate.swift */; };
+		1374D43629F30A6C006DB5BA /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D42829F30A6C006DB5BA /* NavigationController.swift */; };
+		1374D43729F30A6C006DB5BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D42929F30A6C006DB5BA /* SceneDelegate.swift */; };
 		13A2A21A27BB489000FE10E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21827BB489000FE10E1 /* Main.storyboard */; };
 		A6D32E6CB7D32FDD60D1607D /* Pods_Lotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A64C4C25BD8F9610714F0B0 /* Pods_Lotty.framework */; };
 /* End PBXBuildFile section */
@@ -93,87 +115,109 @@
 /* Begin PBXFileReference section */
 		0A64C4C25BD8F9610714F0B0 /* Pods_Lotty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lotty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9D15BB972C6ED830872F44 /* Pods-Lotty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.debug.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.debug.xcconfig"; sourceTree = "<group>"; };
-		1317BB782915B7A20033D22F /* AroundSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundSearchViewController.swift; sourceTree = "<group>"; };
-		1317BB7B2915B7A20033D22F /* StoreDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailView.swift; sourceTree = "<group>"; };
-		1317BB7C2915B7A30033D22F /* AroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundViewController.swift; sourceTree = "<group>"; };
-		1317BB7D2915B7A30033D22F /* alertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = alertView.swift; sourceTree = "<group>"; };
-		1317BB7F2915B7A30033D22F /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
-		1317BB882915B7B60033D22F /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
-		1317BB892915B7B70033D22F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		1317BB9E2915B7D10033D22F /* QrScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrScanViewController.swift; sourceTree = "<group>"; };
-		1317BBA22915B7DA0033D22F /* BackgroundLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundLabel.swift; sourceTree = "<group>"; };
-		1317BBA32915B7DA0033D22F /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
-		1317BBA42915B7DA0033D22F /* RandomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomViewController.swift; sourceTree = "<group>"; };
-		1317BBA52915B7DA0033D22F /* RandomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomViewModel.swift; sourceTree = "<group>"; };
-		1317BBA62915B7DA0033D22F /* RightLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightLine.swift; sourceTree = "<group>"; };
-		1317BBA72915B7DA0033D22F /* CountLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountLabel.swift; sourceTree = "<group>"; };
-		1317BBA82915B7DA0033D22F /* DottedLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DottedLine.swift; sourceTree = "<group>"; };
-		1317BBE42915BBFB0033D22F /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1317BBE52915BBFB0033D22F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1317BBE82915BBFC0033D22F /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		1317BBEB2915BBFC0033D22F /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		1317BBED2915BBFC0033D22F /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		1317BBF02915BBFC0033D22F /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		1317BBF32915BBFC0033D22F /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
-		1317BBF42915BBFC0033D22F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1317BC0B2915BC8A0033D22F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1317BC0F2915BCA60033D22F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1317BC152915BE180033D22F /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
-		1317BC162915BE180033D22F /* BaseNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNetwork.swift; sourceTree = "<group>"; };
-		1317BC182915BE180033D22F /* Marker+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Marker+Util.swift"; sourceTree = "<group>"; };
-		1317BC1B2915BE180033D22F /* AroundUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundUseCase.swift; sourceTree = "<group>"; };
-		1317BC1D2915BE180033D22F /* StoreInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
-		1317BC1E2915BE180033D22F /* ErrorEntitiy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorEntitiy.swift; sourceTree = "<group>"; };
-		1317BC1F2915BE180033D22F /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
-		1317BC202915BE180033D22F /* LotteryInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryInfo.swift; sourceTree = "<group>"; };
-		1317BC242915BE180033D22F /* ApiAround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiAround.swift; sourceTree = "<group>"; };
-		1317BC252915BE180033D22F /* ApiBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiBase.swift; sourceTree = "<group>"; };
-		1317BC262915BE180033D22F /* Interceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
-		1317BC272915BE180033D22F /* AroundNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundNetwork.swift; sourceTree = "<group>"; };
-		1317BC292915BE180033D22F /* AroundNetworkGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundNetworkGateway.swift; sourceTree = "<group>"; };
-		1317BC2A2915BE180033D22F /* GatewayBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatewayBuilder.swift; sourceTree = "<group>"; };
-		1317BC2C2915BE180033D22F /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		1317BC2D2915BE180033D22F /* Codable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extension.swift"; sourceTree = "<group>"; };
-		1317BC2E2915BE180033D22F /* CALayer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
-		1317BC402915BE1F0033D22F /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		1317BC422915BF730033D22F /* AroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AroundViewModel.swift; sourceTree = "<group>"; };
-		1317BC442915C5430033D22F /* AroundViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AroundViewController+Extension.swift"; sourceTree = "<group>"; };
-		1317BC472915C6F70033D22F /* BaseMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapMarker.swift; sourceTree = "<group>"; };
-		1317BC492915C70A0033D22F /* LottyMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottyMapMarker.swift; sourceTree = "<group>"; };
 		131B329527EF0EE200F9121D /* Lotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1363CCCE2920AA3600257958 /* BMDOHYEON_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMDOHYEON_ttf.ttf; sourceTree = "<group>"; };
 		1363CCCF2920AA3600257958 /* BMHANNAPro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNAPro.ttf; sourceTree = "<group>"; };
 		1363CCD02920AA3600257958 /* BMYEONSUNG_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMYEONSUNG_ttf.ttf; sourceTree = "<group>"; };
-		1363CCD42920B2C700257958 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
-		1363CCD62920B32B00257958 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
-		136814852918341D00191720 /* LotterySearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotterySearchViewController.swift; sourceTree = "<group>"; };
-		136814862918341D00191720 /* LotteryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryListViewController.swift; sourceTree = "<group>"; };
-		136814872918341D00191720 /* LotterySearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotterySearchViewModel.swift; sourceTree = "<group>"; };
-		136814882918341D00191720 /* LotteryListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryListViewModel.swift; sourceTree = "<group>"; };
-		1368148A2918341D00191720 /* EmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
-		1368148B2918341D00191720 /* FailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailCell.swift; sourceTree = "<group>"; };
-		1368148C2918341D00191720 /* NumberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberCell.swift; sourceTree = "<group>"; };
-		1368148D2918341D00191720 /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
-		13681496291834E600191720 /* ApiLottery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLottery.swift; sourceTree = "<group>"; };
-		136814992918360500191720 /* LotteryNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryNetwork.swift; sourceTree = "<group>"; };
-		1368149B2918362D00191720 /* LotteryNetworkGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryNetworkGateway.swift; sourceTree = "<group>"; };
-		1368149D2918384600191720 /* LotteryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryUseCase.swift; sourceTree = "<group>"; };
 		136814A32918512500191720 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		136814A72918579900191720 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		1368150B2918E4C500191720 /* LottyColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottyColors.swift; sourceTree = "<group>"; };
 		1368150D2918E53200191720 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
-		1368150F2918ECE600191720 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		136815112918F0CF00191720 /* LottyIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottyIcons.swift; sourceTree = "<group>"; };
-		136815132918F60B00191720 /* LottyFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottyFonts.swift; sourceTree = "<group>"; };
-		136815152918FED300191720 /* AroundSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AroundSearchViewModel.swift; sourceTree = "<group>"; };
-		136815172919D77C00191720 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
-		136815192919DA1000191720 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
-		1368151C2919DCB300191720 /* LotteryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryLabel.swift; sourceTree = "<group>"; };
-		13681520291C9B2700191720 /* NumberCloseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberCloseCell.swift; sourceTree = "<group>"; };
-		13681524291F471E00191720 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		13681527291F516000191720 /* SearchAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAssembly.swift; sourceTree = "<group>"; };
-		13681529291F57DF00191720 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		1368152B291FF9A600191720 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		1374D35E29F30A3F006DB5BA /* StoreRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreRepositoryProtocol.swift; sourceTree = "<group>"; };
+		1374D35F29F30A3F006DB5BA /* LotteryRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryRepositoryProtocol.swift; sourceTree = "<group>"; };
+		1374D36129F30A3F006DB5BA /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		1374D36229F30A3F006DB5BA /* Lottery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lottery.swift; sourceTree = "<group>"; };
+		1374D36329F30A3F006DB5BA /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		1374D36429F30A3F006DB5BA /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		1374D36629F30A3F006DB5BA /* LotteryUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryUsecase.swift; sourceTree = "<group>"; };
+		1374D36729F30A3F006DB5BA /* HistoryUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryUsecase.swift; sourceTree = "<group>"; };
+		1374D36829F30A3F006DB5BA /* StoreUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreUsecase.swift; sourceTree = "<group>"; };
+		1374D36929F30A3F006DB5BA /* GameUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameUsecase.swift; sourceTree = "<group>"; };
+		1374D36C29F30A3F006DB5BA /* LottyRO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottyRO.swift; sourceTree = "<group>"; };
+		1374D36E29F30A3F006DB5BA /* StoreRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreRepository.swift; sourceTree = "<group>"; };
+		1374D36F29F30A3F006DB5BA /* HistoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryRepository.swift; sourceTree = "<group>"; };
+		1374D37029F30A3F006DB5BA /* LotteryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryRepository.swift; sourceTree = "<group>"; };
+		1374D37229F30A3F006DB5BA /* LotteryDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryDTO.swift; sourceTree = "<group>"; };
+		1374D37329F30A3F006DB5BA /* StoreDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDTO.swift; sourceTree = "<group>"; };
+		1374D37529F30A3F006DB5BA /* StoreAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreAPI.swift; sourceTree = "<group>"; };
+		1374D37629F30A3F006DB5BA /* LotteryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryAPI.swift; sourceTree = "<group>"; };
+		1374D37829F30A3F006DB5BA /* TargetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		1374D37929F30A3F006DB5BA /* LottyAPIEventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottyAPIEventLogger.swift; sourceTree = "<group>"; };
+		1374D37A29F30A3F006DB5BA /* LottyRequestInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottyRequestInterceptor.swift; sourceTree = "<group>"; };
+		1374D37C29F30A3F006DB5BA /* StoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDataStore.swift; sourceTree = "<group>"; };
+		1374D37D29F30A3F006DB5BA /* LotteryDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryDataStore.swift; sourceTree = "<group>"; };
+		1374D39729F30A49006DB5BA /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		1374D39929F30A49006DB5BA /* UIApplication+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		1374D39A29F30A49006DB5BA /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		1374D39B29F30A49006DB5BA /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		1374D39C29F30A49006DB5BA /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		1374D39D29F30A49006DB5BA /* Codable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extension.swift"; sourceTree = "<group>"; };
+		1374D39E29F30A49006DB5BA /* Data+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
+		1374D39F29F30A49006DB5BA /* CALayer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
+		1374D3A129F30A49006DB5BA /* LottyColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottyColors.swift; sourceTree = "<group>"; };
+		1374D3A229F30A49006DB5BA /* HapticManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		1374D3A329F30A49006DB5BA /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		1374D3A429F30A49006DB5BA /* LottyIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottyIcons.swift; sourceTree = "<group>"; };
+		1374D3A529F30A49006DB5BA /* LottyFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottyFonts.swift; sourceTree = "<group>"; };
+		1374D3A629F30A49006DB5BA /* Marker+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Marker+Util.swift"; sourceTree = "<group>"; };
+		1374D3B729F30A5C006DB5BA /* QRScanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScanViewModel.swift; sourceTree = "<group>"; };
+		1374D3B929F30A5C006DB5BA /* QRReaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRReaderView.swift; sourceTree = "<group>"; };
+		1374D3BB29F30A5C006DB5BA /* QrScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrScanViewController.swift; sourceTree = "<group>"; };
+		1374D3BE29F30A5C006DB5BA /* LotteryListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryListViewModel.swift; sourceTree = "<group>"; };
+		1374D3BF29F30A5C006DB5BA /* LotterySearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotterySearchViewModel.swift; sourceTree = "<group>"; };
+		1374D3C129F30A5C006DB5BA /* LotterySearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotterySearchViewController.swift; sourceTree = "<group>"; };
+		1374D3C229F30A5C006DB5BA /* LotteryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryListViewController.swift; sourceTree = "<group>"; };
+		1374D3C529F30A5C006DB5BA /* AroundViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundViewModel.swift; sourceTree = "<group>"; };
+		1374D3C629F30A5C006DB5BA /* AroundSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundSearchViewModel.swift; sourceTree = "<group>"; };
+		1374D3C829F30A5C006DB5BA /* AroundSearchCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundSearchCoordinator.swift; sourceTree = "<group>"; };
+		1374D3C929F30A5C006DB5BA /* AroundCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundCoordinator.swift; sourceTree = "<group>"; };
+		1374D3CA29F30A5C006DB5BA /* AroundViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AroundViewController+Extension.swift"; sourceTree = "<group>"; };
+		1374D3CC29F30A5C006DB5BA /* LottyMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottyMapView.swift; sourceTree = "<group>"; };
+		1374D3CD29F30A5C006DB5BA /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		1374D3CE29F30A5C006DB5BA /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		1374D3D029F30A5C006DB5BA /* BaseMapMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMapMarker.swift; sourceTree = "<group>"; };
+		1374D3D129F30A5C006DB5BA /* LottyMapMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottyMapMarker.swift; sourceTree = "<group>"; };
+		1374D3D229F30A5C006DB5BA /* MarkerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerFactory.swift; sourceTree = "<group>"; };
+		1374D3D329F30A5C006DB5BA /* StoreDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailView.swift; sourceTree = "<group>"; };
+		1374D3D529F30A5C006DB5BA /* AroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundViewController.swift; sourceTree = "<group>"; };
+		1374D3D629F30A5C006DB5BA /* AroundSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundSearchViewController.swift; sourceTree = "<group>"; };
+		1374D3D929F30A5C006DB5BA /* RandomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomViewModel.swift; sourceTree = "<group>"; };
+		1374D3DB29F30A5C006DB5BA /* CountLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountLabel.swift; sourceTree = "<group>"; };
+		1374D3DC29F30A5C006DB5BA /* GameListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameListView.swift; sourceTree = "<group>"; };
+		1374D3DD29F30A5C006DB5BA /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		1374D3DE29F30A5C006DB5BA /* RightLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightLine.swift; sourceTree = "<group>"; };
+		1374D3DF29F30A5C006DB5BA /* BackgroundLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundLabel.swift; sourceTree = "<group>"; };
+		1374D3E029F30A5C006DB5BA /* DottedLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DottedLine.swift; sourceTree = "<group>"; };
+		1374D3E229F30A5C006DB5BA /* RandomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomViewController.swift; sourceTree = "<group>"; };
+		1374D40329F30A63006DB5BA /* NumberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberCell.swift; sourceTree = "<group>"; };
+		1374D40429F30A63006DB5BA /* LotteryTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryTableView.swift; sourceTree = "<group>"; };
+		1374D40529F30A63006DB5BA /* NumberCloseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberCloseCell.swift; sourceTree = "<group>"; };
+		1374D40729F30A63006DB5BA /* HistoryTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableView.swift; sourceTree = "<group>"; };
+		1374D40829F30A63006DB5BA /* HistoryTableViewTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewTopView.swift; sourceTree = "<group>"; };
+		1374D40929F30A63006DB5BA /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		1374D40B29F30A63006DB5BA /* LotteryLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryLabel.swift; sourceTree = "<group>"; };
+		1374D40D29F30A63006DB5BA /* LotteryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryView.swift; sourceTree = "<group>"; };
+		1374D40E29F30A63006DB5BA /* LotteryDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryDetailView.swift; sourceTree = "<group>"; };
+		1374D41A29F30A6C006DB5BA /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		1374D41B29F30A6C006DB5BA /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		1374D41C29F30A6C006DB5BA /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		1374D41E29F30A6C006DB5BA /* SearchAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAssembly.swift; sourceTree = "<group>"; };
+		1374D41F29F30A6C006DB5BA /* AroundAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundAssembly.swift; sourceTree = "<group>"; };
+		1374D42029F30A6C006DB5BA /* DataAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAssembly.swift; sourceTree = "<group>"; };
+		1374D42129F30A6C006DB5BA /* QRAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRAssembly.swift; sourceTree = "<group>"; };
+		1374D42229F30A6C006DB5BA /* DomainAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainAssembly.swift; sourceTree = "<group>"; };
+		1374D42329F30A6C006DB5BA /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
+		1374D42429F30A6C006DB5BA /* RandomAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomAssembly.swift; sourceTree = "<group>"; };
+		1374D42729F30A6C006DB5BA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1374D42829F30A6C006DB5BA /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		1374D42929F30A6C006DB5BA /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		13A2A21927BB489000FE10E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BDB874F062F3BED792DE7C97 /* Pods-Lotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.release.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,77 +234,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1317BB732915B6A50033D22F /* home */ = {
+		1317BBE32915BBE10033D22F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				1317BB892915B7B70033D22F /* HomeViewController.swift */,
-				1317BB882915B7B60033D22F /* RefreshView.swift */,
-			);
-			path = home;
-			sourceTree = "<group>";
-		};
-		1317BB742915B6B50033D22F /* around */ = {
-			isa = PBXGroup;
-			children = (
-				1317BC462915C6A60033D22F /* mapMarker */,
-				1317BB7C2915B7A30033D22F /* AroundViewController.swift */,
-				1317BC422915BF730033D22F /* AroundViewModel.swift */,
-				1317BC442915C5430033D22F /* AroundViewController+Extension.swift */,
-				1317BB782915B7A20033D22F /* AroundSearchViewController.swift */,
-				136815152918FED300191720 /* AroundSearchViewModel.swift */,
-				1317BB7D2915B7A30033D22F /* alertView.swift */,
-				1317BB7F2915B7A30033D22F /* SearchBarView.swift */,
-				1317BB7B2915B7A20033D22F /* StoreDetailView.swift */,
-			);
-			path = around;
-			sourceTree = "<group>";
-		};
-		1317BB752915B6BC0033D22F /* search */ = {
-			isa = PBXGroup;
-			children = (
-				136814892918341D00191720 /* cell */,
-				136814862918341D00191720 /* LotteryListViewController.swift */,
-				136814882918341D00191720 /* LotteryListViewModel.swift */,
-				136814852918341D00191720 /* LotterySearchViewController.swift */,
-				136814872918341D00191720 /* LotterySearchViewModel.swift */,
-			);
-			path = search;
-			sourceTree = "<group>";
-		};
-		1317BB762915B6C10033D22F /* qr */ = {
-			isa = PBXGroup;
-			children = (
-				1317BB9E2915B7D10033D22F /* QrScanViewController.swift */,
-			);
-			path = qr;
-			sourceTree = "<group>";
-		};
-		1317BB772915B6C60033D22F /* random */ = {
-			isa = PBXGroup;
-			children = (
-				1317BBA42915B7DA0033D22F /* RandomViewController.swift */,
-				1317BBA52915B7DA0033D22F /* RandomViewModel.swift */,
-				1317BBA22915B7DA0033D22F /* BackgroundLabel.swift */,
-				1317BBA32915B7DA0033D22F /* GameView.swift */,
-				1317BBA72915B7DA0033D22F /* CountLabel.swift */,
-				1317BBA82915B7DA0033D22F /* DottedLine.swift */,
-				1317BBA62915B7DA0033D22F /* RightLine.swift */,
-			);
-			path = random;
-			sourceTree = "<group>";
-		};
-		1317BBE32915BBE10033D22F /* resource */ = {
-			isa = PBXGroup;
-			children = (
-				1317BBF42915BBFC0033D22F /* AppDelegate.swift */,
-				1317BBE42915BBFB0033D22F /* SceneDelegate.swift */,
 				1317BC0B2915BC8A0033D22F /* Info.plist */,
 				1317BC0F2915BCA60033D22F /* LaunchScreen.storyboard */,
 				1317BBE52915BBFB0033D22F /* Assets.xcassets */,
 				1368150D2918E53200191720 /* Color.xcassets */,
 				1317BBE72915BBFC0033D22F /* Fonts */,
 			);
-			path = resource;
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		1317BBE72915BBFC0033D22F /* Fonts */ = {
@@ -278,169 +261,411 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		1317BC122915BD980033D22F /* common */ = {
+		1374D35C29F30A3F006DB5BA /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC212915BE180033D22F /* api */,
-				1317BC192915BE180033D22F /* domain */,
-				13681526291F514300191720 /* di */,
-				1317BC2B2915BE180033D22F /* extensions */,
-				1317BC172915BE180033D22F /* utils */,
+				1374D35D29F30A3F006DB5BA /* Protocol */,
+				1374D36029F30A3F006DB5BA /* Model */,
+				1374D36529F30A3F006DB5BA /* Usecase */,
 			);
-			path = common;
+			path = Domain;
 			sourceTree = "<group>";
 		};
-		1317BC132915BDE50033D22F /* foundation */ = {
+		1374D35D29F30A3F006DB5BA /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC402915BE1F0033D22F /* Storage.swift */,
+				1374D35E29F30A3F006DB5BA /* StoreRepositoryProtocol.swift */,
+				1374D35F29F30A3F006DB5BA /* LotteryRepositoryProtocol.swift */,
 			);
-			path = foundation;
+			path = Protocol;
 			sourceTree = "<group>";
 		};
-		1317BC172915BE180033D22F /* utils */ = {
+		1374D36029F30A3F006DB5BA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC182915BE180033D22F /* Marker+Util.swift */,
-				136815112918F0CF00191720 /* LottyIcons.swift */,
-				1368150B2918E4C500191720 /* LottyColors.swift */,
-				136815132918F60B00191720 /* LottyFonts.swift */,
-				1368152B291FF9A600191720 /* HapticManager.swift */,
-				1363CCD62920B32B00257958 /* AlertManager.swift */,
+				1374D36129F30A3F006DB5BA /* Game.swift */,
+				1374D36229F30A3F006DB5BA /* Lottery.swift */,
+				1374D36329F30A3F006DB5BA /* Store.swift */,
+				1374D36429F30A3F006DB5BA /* History.swift */,
 			);
-			path = utils;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		1317BC192915BE180033D22F /* domain */ = {
+		1374D36529F30A3F006DB5BA /* Usecase */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC1A2915BE180033D22F /* usecases */,
-				1317BC1C2915BE180033D22F /* entities */,
+				1374D36629F30A3F006DB5BA /* LotteryUsecase.swift */,
+				1374D36729F30A3F006DB5BA /* HistoryUsecase.swift */,
+				1374D36829F30A3F006DB5BA /* StoreUsecase.swift */,
+				1374D36929F30A3F006DB5BA /* GameUsecase.swift */,
 			);
-			path = domain;
+			path = Usecase;
 			sourceTree = "<group>";
 		};
-		1317BC1A2915BE180033D22F /* usecases */ = {
+		1374D36A29F30A3F006DB5BA /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC1B2915BE180033D22F /* AroundUseCase.swift */,
-				1368149D2918384600191720 /* LotteryUseCase.swift */,
+				1374D36B29F30A3F006DB5BA /* Database */,
+				1374D36D29F30A3F006DB5BA /* Repository */,
+				1374D37129F30A3F006DB5BA /* Entity */,
+				1374D37429F30A3F006DB5BA /* Network */,
+				1374D37B29F30A3F006DB5BA /* DataStore */,
 			);
-			path = usecases;
+			path = Data;
 			sourceTree = "<group>";
 		};
-		1317BC1C2915BE180033D22F /* entities */ = {
+		1374D36B29F30A3F006DB5BA /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC1F2915BE180033D22F /* Entity.swift */,
-				1317BC1E2915BE180033D22F /* ErrorEntitiy.swift */,
-				1317BC1D2915BE180033D22F /* StoreInfo.swift */,
-				1317BC202915BE180033D22F /* LotteryInfo.swift */,
+				1374D36C29F30A3F006DB5BA /* LottyRO.swift */,
 			);
-			path = entities;
+			path = Database;
 			sourceTree = "<group>";
 		};
-		1317BC212915BE180033D22F /* api */ = {
+		1374D36D29F30A3F006DB5BA /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC222915BE180033D22F /* network */,
-				1317BC282915BE180033D22F /* gateway */,
+				1374D36E29F30A3F006DB5BA /* StoreRepository.swift */,
+				1374D36F29F30A3F006DB5BA /* HistoryRepository.swift */,
+				1374D37029F30A3F006DB5BA /* LotteryRepository.swift */,
 			);
-			path = api;
+			path = Repository;
 			sourceTree = "<group>";
 		};
-		1317BC222915BE180033D22F /* network */ = {
+		1374D37129F30A3F006DB5BA /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC262915BE180033D22F /* Interceptor.swift */,
-				1317BC232915BE180033D22F /* apis */,
-				13681498291835E600191720 /* networks */,
+				1374D37229F30A3F006DB5BA /* LotteryDTO.swift */,
+				1374D37329F30A3F006DB5BA /* StoreDTO.swift */,
 			);
-			path = network;
+			path = Entity;
 			sourceTree = "<group>";
 		};
-		1317BC232915BE180033D22F /* apis */ = {
+		1374D37429F30A3F006DB5BA /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC252915BE180033D22F /* ApiBase.swift */,
-				1317BC242915BE180033D22F /* ApiAround.swift */,
-				13681496291834E600191720 /* ApiLottery.swift */,
+				1374D37529F30A3F006DB5BA /* StoreAPI.swift */,
+				1374D37629F30A3F006DB5BA /* LotteryAPI.swift */,
+				1374D37729F30A3F006DB5BA /* Base */,
 			);
-			path = apis;
+			path = Network;
 			sourceTree = "<group>";
 		};
-		1317BC282915BE180033D22F /* gateway */ = {
+		1374D37729F30A3F006DB5BA /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC2A2915BE180033D22F /* GatewayBuilder.swift */,
-				1317BC292915BE180033D22F /* AroundNetworkGateway.swift */,
-				1368149B2918362D00191720 /* LotteryNetworkGateway.swift */,
+				1374D37829F30A3F006DB5BA /* TargetType.swift */,
+				1374D37929F30A3F006DB5BA /* LottyAPIEventLogger.swift */,
+				1374D37A29F30A3F006DB5BA /* LottyRequestInterceptor.swift */,
 			);
-			path = gateway;
+			path = Base;
 			sourceTree = "<group>";
 		};
-		1317BC2B2915BE180033D22F /* extensions */ = {
+		1374D37B29F30A3F006DB5BA /* DataStore */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC2C2915BE180033D22F /* UIImage+Extension.swift */,
-				1317BC2D2915BE180033D22F /* Codable+Extension.swift */,
-				1317BC2E2915BE180033D22F /* CALayer+Extension.swift */,
-				136815172919D77C00191720 /* Int+Extension.swift */,
-				136815192919DA1000191720 /* UILabel+Extension.swift */,
-				1363CCD42920B2C700257958 /* UIApplication+Extension.swift */,
+				1374D37C29F30A3F006DB5BA /* StoreDataStore.swift */,
+				1374D37D29F30A3F006DB5BA /* LotteryDataStore.swift */,
 			);
-			path = extensions;
+			path = DataStore;
 			sourceTree = "<group>";
 		};
-		1317BC462915C6A60033D22F /* mapMarker */ = {
+		1374D39529F30A49006DB5BA /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				1317BC472915C6F70033D22F /* BaseMapMarker.swift */,
-				1317BC492915C70A0033D22F /* LottyMapMarker.swift */,
+				1374D39629F30A49006DB5BA /* di */,
+				1374D39829F30A49006DB5BA /* Extension */,
+				1374D3A029F30A49006DB5BA /* Util */,
 			);
-			path = mapMarker;
+			path = Common;
 			sourceTree = "<group>";
 		};
-		136814892918341D00191720 /* cell */ = {
+		1374D39629F30A49006DB5BA /* di */ = {
 			isa = PBXGroup;
 			children = (
-				1368148A2918341D00191720 /* EmptyCell.swift */,
-				1368148B2918341D00191720 /* FailCell.swift */,
-				1368148C2918341D00191720 /* NumberCell.swift */,
-				13681520291C9B2700191720 /* NumberCloseCell.swift */,
-				1368148D2918341D00191720 /* HistoryCell.swift */,
-			);
-			path = cell;
-			sourceTree = "<group>";
-		};
-		13681498291835E600191720 /* networks */ = {
-			isa = PBXGroup;
-			children = (
-				1317BC162915BE180033D22F /* BaseNetwork.swift */,
-				1317BC272915BE180033D22F /* AroundNetwork.swift */,
-				136814992918360500191720 /* LotteryNetwork.swift */,
-			);
-			path = networks;
-			sourceTree = "<group>";
-		};
-		1368151B2919DC6F00191720 /* uicomponent */ = {
-			isa = PBXGroup;
-			children = (
-				1368151C2919DCB300191720 /* LotteryLabel.swift */,
-			);
-			path = uicomponent;
-			sourceTree = "<group>";
-		};
-		13681526291F514300191720 /* di */ = {
-			isa = PBXGroup;
-			children = (
-				13681524291F471E00191720 /* ViewController.swift */,
-				1368150F2918ECE600191720 /* BaseViewController.swift */,
-				13681529291F57DF00191720 /* ViewModel.swift */,
-				1317BC152915BE180033D22F /* BaseViewModel.swift */,
-				13681527291F516000191720 /* SearchAssembly.swift */,
+				1374D39729F30A49006DB5BA /* BaseViewModel.swift */,
 			);
 			path = di;
+			sourceTree = "<group>";
+		};
+		1374D39829F30A49006DB5BA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1374D39929F30A49006DB5BA /* UIApplication+Extension.swift */,
+				1374D39A29F30A49006DB5BA /* Int+Extension.swift */,
+				1374D39B29F30A49006DB5BA /* UILabel+Extension.swift */,
+				1374D39C29F30A49006DB5BA /* UIImage+Extension.swift */,
+				1374D39D29F30A49006DB5BA /* Codable+Extension.swift */,
+				1374D39E29F30A49006DB5BA /* Data+Extension.swift */,
+				1374D39F29F30A49006DB5BA /* CALayer+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		1374D3A029F30A49006DB5BA /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3A129F30A49006DB5BA /* LottyColors.swift */,
+				1374D3A229F30A49006DB5BA /* HapticManager.swift */,
+				1374D3A329F30A49006DB5BA /* AlertManager.swift */,
+				1374D3A429F30A49006DB5BA /* LottyIcons.swift */,
+				1374D3A529F30A49006DB5BA /* LottyFonts.swift */,
+				1374D3A629F30A49006DB5BA /* Marker+Util.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		1374D3B529F30A5C006DB5BA /* QR */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3B629F30A5C006DB5BA /* ViewModel */,
+				1374D3B829F30A5C006DB5BA /* View */,
+				1374D3BA29F30A5C006DB5BA /* ViewController */,
+			);
+			path = QR;
+			sourceTree = "<group>";
+		};
+		1374D3B629F30A5C006DB5BA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3B729F30A5C006DB5BA /* QRScanViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1374D3B829F30A5C006DB5BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3B929F30A5C006DB5BA /* QRReaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1374D3BA29F30A5C006DB5BA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3BB29F30A5C006DB5BA /* QrScanViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		1374D3BC29F30A5C006DB5BA /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3BD29F30A5C006DB5BA /* ViewModel */,
+				1374D3C029F30A5C006DB5BA /* ViewController */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		1374D3BD29F30A5C006DB5BA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3BE29F30A5C006DB5BA /* LotteryListViewModel.swift */,
+				1374D3BF29F30A5C006DB5BA /* LotterySearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1374D3C029F30A5C006DB5BA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3C129F30A5C006DB5BA /* LotterySearchViewController.swift */,
+				1374D3C229F30A5C006DB5BA /* LotteryListViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		1374D3C329F30A5C006DB5BA /* Around */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3C429F30A5C006DB5BA /* ViewModel */,
+				1374D3C729F30A5C006DB5BA /* Coordinator */,
+				1374D3CA29F30A5C006DB5BA /* AroundViewController+Extension.swift */,
+				1374D3CB29F30A5C006DB5BA /* View */,
+				1374D3D429F30A5C006DB5BA /* ViewController */,
+			);
+			path = Around;
+			sourceTree = "<group>";
+		};
+		1374D3C429F30A5C006DB5BA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3C529F30A5C006DB5BA /* AroundViewModel.swift */,
+				1374D3C629F30A5C006DB5BA /* AroundSearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1374D3C729F30A5C006DB5BA /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3C829F30A5C006DB5BA /* AroundSearchCoordinator.swift */,
+				1374D3C929F30A5C006DB5BA /* AroundCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		1374D3CB29F30A5C006DB5BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3CC29F30A5C006DB5BA /* LottyMapView.swift */,
+				1374D3CD29F30A5C006DB5BA /* SearchBarView.swift */,
+				1374D3CE29F30A5C006DB5BA /* AlertView.swift */,
+				1374D3CF29F30A5C006DB5BA /* Marker */,
+				1374D3D329F30A5C006DB5BA /* StoreDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1374D3CF29F30A5C006DB5BA /* Marker */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3D029F30A5C006DB5BA /* BaseMapMarker.swift */,
+				1374D3D129F30A5C006DB5BA /* LottyMapMarker.swift */,
+				1374D3D229F30A5C006DB5BA /* MarkerFactory.swift */,
+			);
+			path = Marker;
+			sourceTree = "<group>";
+		};
+		1374D3D429F30A5C006DB5BA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3D529F30A5C006DB5BA /* AroundViewController.swift */,
+				1374D3D629F30A5C006DB5BA /* AroundSearchViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		1374D3D729F30A5C006DB5BA /* Random */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3D829F30A5C006DB5BA /* ViewModel */,
+				1374D3DA29F30A5C006DB5BA /* View */,
+				1374D3E129F30A5C006DB5BA /* ViewController */,
+			);
+			path = Random;
+			sourceTree = "<group>";
+		};
+		1374D3D829F30A5C006DB5BA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3D929F30A5C006DB5BA /* RandomViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1374D3DA29F30A5C006DB5BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3DB29F30A5C006DB5BA /* CountLabel.swift */,
+				1374D3DC29F30A5C006DB5BA /* GameListView.swift */,
+				1374D3DD29F30A5C006DB5BA /* GameView.swift */,
+				1374D3DE29F30A5C006DB5BA /* RightLine.swift */,
+				1374D3DF29F30A5C006DB5BA /* BackgroundLabel.swift */,
+				1374D3E029F30A5C006DB5BA /* DottedLine.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1374D3E129F30A5C006DB5BA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1374D3E229F30A5C006DB5BA /* RandomViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		1374D40029F30A63006DB5BA /* UIComponent */ = {
+			isa = PBXGroup;
+			children = (
+				1374D40129F30A63006DB5BA /* TableView */,
+				1374D40A29F30A63006DB5BA /* Label */,
+				1374D40C29F30A63006DB5BA /* View */,
+			);
+			path = UIComponent;
+			sourceTree = "<group>";
+		};
+		1374D40129F30A63006DB5BA /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				1374D40229F30A63006DB5BA /* LotteryTableView */,
+				1374D40629F30A63006DB5BA /* HistoryTableView */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		1374D40229F30A63006DB5BA /* LotteryTableView */ = {
+			isa = PBXGroup;
+			children = (
+				1374D40329F30A63006DB5BA /* NumberCell.swift */,
+				1374D40429F30A63006DB5BA /* LotteryTableView.swift */,
+				1374D40529F30A63006DB5BA /* NumberCloseCell.swift */,
+			);
+			path = LotteryTableView;
+			sourceTree = "<group>";
+		};
+		1374D40629F30A63006DB5BA /* HistoryTableView */ = {
+			isa = PBXGroup;
+			children = (
+				1374D40729F30A63006DB5BA /* HistoryTableView.swift */,
+				1374D40829F30A63006DB5BA /* HistoryTableViewTopView.swift */,
+				1374D40929F30A63006DB5BA /* HistoryCell.swift */,
+			);
+			path = HistoryTableView;
+			sourceTree = "<group>";
+		};
+		1374D40A29F30A63006DB5BA /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				1374D40B29F30A63006DB5BA /* LotteryLabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		1374D40C29F30A63006DB5BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1374D40D29F30A63006DB5BA /* LotteryView.swift */,
+				1374D40E29F30A63006DB5BA /* LotteryDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1374D41829F30A6C006DB5BA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1374D42729F30A6C006DB5BA /* AppDelegate.swift */,
+				1374D42929F30A6C006DB5BA /* SceneDelegate.swift */,
+				1374D41929F30A6C006DB5BA /* Coordinator */,
+				1374D41D29F30A6C006DB5BA /* DI */,
+				1374D42829F30A6C006DB5BA /* NavigationController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1374D41929F30A6C006DB5BA /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				1374D41A29F30A6C006DB5BA /* AppCoordinator.swift */,
+				1374D41B29F30A6C006DB5BA /* TabBarCoordinator.swift */,
+				1374D41C29F30A6C006DB5BA /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		1374D41D29F30A6C006DB5BA /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				1374D41E29F30A6C006DB5BA /* SearchAssembly.swift */,
+				1374D41F29F30A6C006DB5BA /* AroundAssembly.swift */,
+				1374D42029F30A6C006DB5BA /* DataAssembly.swift */,
+				1374D42129F30A6C006DB5BA /* QRAssembly.swift */,
+				1374D42229F30A6C006DB5BA /* DomainAssembly.swift */,
+				1374D42329F30A6C006DB5BA /* Injector.swift */,
+				1374D42429F30A6C006DB5BA /* RandomAssembly.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 		13A2A20627BB489000FE10E1 = {
@@ -456,18 +681,19 @@
 		13A2A21127BB489000FE10E1 /* Lotty */ = {
 			isa = PBXGroup;
 			children = (
+				1374D41829F30A6C006DB5BA /* App */,
+				1374D3C329F30A5C006DB5BA /* Around */,
+				1374D3B529F30A5C006DB5BA /* QR */,
+				1374D3D729F30A5C006DB5BA /* Random */,
+				1374D3BC29F30A5C006DB5BA /* Search */,
+				1374D36A29F30A3F006DB5BA /* Data */,
+				1374D35C29F30A3F006DB5BA /* Domain */,
+				1374D39529F30A49006DB5BA /* Common */,
+				1374D40029F30A63006DB5BA /* UIComponent */,
 				13A2A21827BB489000FE10E1 /* Main.storyboard */,
 				136814A72918579900191720 /* NavigationController.swift */,
 				136814A32918512500191720 /* TabBarController.swift */,
-				1317BB732915B6A50033D22F /* home */,
-				1317BB742915B6B50033D22F /* around */,
-				1317BB752915B6BC0033D22F /* search */,
-				1317BB762915B6C10033D22F /* qr */,
-				1317BB772915B6C60033D22F /* random */,
-				1317BC122915BD980033D22F /* common */,
-				1317BC132915BDE50033D22F /* foundation */,
-				1368151B2919DC6F00191720 /* uicomponent */,
-				1317BBE32915BBE10033D22F /* resource */,
+				1317BBE32915BBE10033D22F /* Resource */,
 			);
 			path = Lotty;
 			sourceTree = "<group>";
@@ -613,74 +839,96 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1368151D2919DCB300191720 /* LotteryLabel.swift in Sources */,
-				1317BB832915B7A30033D22F /* StoreDetailView.swift in Sources */,
-				1368149C2918362D00191720 /* LotteryNetworkGateway.swift in Sources */,
-				1317BBAB2915B7DA0033D22F /* RandomViewController.swift in Sources */,
-				136814932918341E00191720 /* FailCell.swift in Sources */,
-				1317BBAD2915B7DA0033D22F /* RightLine.swift in Sources */,
-				1368152A291F57DF00191720 /* ViewModel.swift in Sources */,
-				1317BC312915BE180033D22F /* Marker+Util.swift in Sources */,
-				136814952918341E00191720 /* HistoryCell.swift in Sources */,
-				136815182919D77C00191720 /* Int+Extension.swift in Sources */,
-				1317BC3D2915BE190033D22F /* UIImage+Extension.swift in Sources */,
-				13681528291F516000191720 /* SearchAssembly.swift in Sources */,
-				1317BC382915BE180033D22F /* ApiBase.swift in Sources */,
-				1317BC452915C5430033D22F /* AroundViewController+Extension.swift in Sources */,
-				1317BBAC2915B7DA0033D22F /* RandomViewModel.swift in Sources */,
-				136815162918FED300191720 /* AroundSearchViewModel.swift in Sources */,
-				1317BC2F2915BE180033D22F /* BaseViewModel.swift in Sources */,
-				136814902918341E00191720 /* LotterySearchViewModel.swift in Sources */,
-				1317BB8A2915B7B70033D22F /* RefreshView.swift in Sources */,
-				1368151A2919DA1100191720 /* UILabel+Extension.swift in Sources */,
-				1317BB852915B7A30033D22F /* alertView.swift in Sources */,
-				1368149E2918384600191720 /* LotteryUseCase.swift in Sources */,
-				1317BC3B2915BE190033D22F /* AroundNetworkGateway.swift in Sources */,
-				1317BBAE2915B7DA0033D22F /* CountLabel.swift in Sources */,
-				1363CCD52920B2C700257958 /* UIApplication+Extension.swift in Sources */,
-				1317BC302915BE180033D22F /* BaseNetwork.swift in Sources */,
-				1317BC392915BE190033D22F /* Interceptor.swift in Sources */,
-				1317BBF92915BBFC0033D22F /* SceneDelegate.swift in Sources */,
-				1317BBAA2915B7DA0033D22F /* GameView.swift in Sources */,
-				1317BC482915C6F70033D22F /* BaseMapMarker.swift in Sources */,
-				1317BC342915BE180033D22F /* ErrorEntitiy.swift in Sources */,
-				13681497291834E600191720 /* ApiLottery.swift in Sources */,
-				1317BC082915BBFC0033D22F /* AppDelegate.swift in Sources */,
-				136814942918341E00191720 /* NumberCell.swift in Sources */,
-				1317BBA02915B7D10033D22F /* QrScanViewController.swift in Sources */,
+				1374D38C29F30A3F006DB5BA /* LotteryDTO.swift in Sources */,
+				1374D3EE29F30A5C006DB5BA /* AroundViewController+Extension.swift in Sources */,
+				1374D3AD29F30A49006DB5BA /* Data+Extension.swift in Sources */,
+				1374D37E29F30A3F006DB5BA /* StoreRepositoryProtocol.swift in Sources */,
+				1374D41629F30A63006DB5BA /* LotteryView.swift in Sources */,
+				1374D39029F30A3F006DB5BA /* TargetType.swift in Sources */,
+				1374D37F29F30A3F006DB5BA /* LotteryRepositoryProtocol.swift in Sources */,
+				1374D3B029F30A49006DB5BA /* HapticManager.swift in Sources */,
+				1374D42E29F30A6C006DB5BA /* AroundAssembly.swift in Sources */,
+				1374D42D29F30A6C006DB5BA /* SearchAssembly.swift in Sources */,
+				1374D3B229F30A49006DB5BA /* LottyIcons.swift in Sources */,
+				1374D3EF29F30A5C006DB5BA /* LottyMapView.swift in Sources */,
+				1374D39129F30A3F006DB5BA /* LottyAPIEventLogger.swift in Sources */,
+				1374D3FA29F30A5C006DB5BA /* GameListView.swift in Sources */,
+				1374D3E929F30A5C006DB5BA /* LotteryListViewController.swift in Sources */,
+				1374D3EC29F30A5C006DB5BA /* AroundSearchCoordinator.swift in Sources */,
+				1374D38029F30A3F006DB5BA /* Game.swift in Sources */,
+				1374D3F329F30A5C006DB5BA /* LottyMapMarker.swift in Sources */,
+				1374D3E429F30A5C006DB5BA /* QRReaderView.swift in Sources */,
+				1374D41729F30A63006DB5BA /* LotteryDetailView.swift in Sources */,
+				1374D3FB29F30A5C006DB5BA /* GameView.swift in Sources */,
+				1374D3EB29F30A5C006DB5BA /* AroundSearchViewModel.swift in Sources */,
+				1374D3F629F30A5C006DB5BA /* AroundViewController.swift in Sources */,
+				1374D3E629F30A5C006DB5BA /* LotteryListViewModel.swift in Sources */,
+				1374D42C29F30A6C006DB5BA /* Coordinator.swift in Sources */,
+				1374D3B329F30A49006DB5BA /* LottyFonts.swift in Sources */,
+				1374D39229F30A3F006DB5BA /* LottyRequestInterceptor.swift in Sources */,
+				1374D3F929F30A5C006DB5BA /* CountLabel.swift in Sources */,
+				1374D41029F30A63006DB5BA /* LotteryTableView.swift in Sources */,
+				1374D41229F30A63006DB5BA /* HistoryTableView.swift in Sources */,
+				1374D38229F30A3F006DB5BA /* Store.swift in Sources */,
+				1374D38329F30A3F006DB5BA /* History.swift in Sources */,
+				1374D3F829F30A5C006DB5BA /* RandomViewModel.swift in Sources */,
+				1374D3AC29F30A49006DB5BA /* Codable+Extension.swift in Sources */,
+				1374D39429F30A3F006DB5BA /* LotteryDataStore.swift in Sources */,
+				1374D41429F30A63006DB5BA /* HistoryCell.swift in Sources */,
+				1374D38129F30A3F006DB5BA /* Lottery.swift in Sources */,
+				1374D38629F30A3F006DB5BA /* StoreUsecase.swift in Sources */,
+				1374D38729F30A3F006DB5BA /* GameUsecase.swift in Sources */,
+				1374D42F29F30A6C006DB5BA /* DataAssembly.swift in Sources */,
+				1374D38A29F30A3F006DB5BA /* HistoryRepository.swift in Sources */,
+				1374D38B29F30A3F006DB5BA /* LotteryRepository.swift in Sources */,
+				1374D3A929F30A49006DB5BA /* Int+Extension.swift in Sources */,
+				1374D3AF29F30A49006DB5BA /* LottyColors.swift in Sources */,
+				1374D38429F30A3F006DB5BA /* LotteryUsecase.swift in Sources */,
+				1374D3F729F30A5C006DB5BA /* AroundSearchViewController.swift in Sources */,
+				1374D39329F30A3F006DB5BA /* StoreDataStore.swift in Sources */,
+				1374D43629F30A6C006DB5BA /* NavigationController.swift in Sources */,
+				1374D3A729F30A49006DB5BA /* BaseViewModel.swift in Sources */,
+				1374D43529F30A6C006DB5BA /* AppDelegate.swift in Sources */,
+				1374D41529F30A63006DB5BA /* LotteryLabel.swift in Sources */,
+				1374D38829F30A3F006DB5BA /* LottyRO.swift in Sources */,
+				1374D3FD29F30A5C006DB5BA /* BackgroundLabel.swift in Sources */,
+				1374D3E329F30A5C006DB5BA /* QRScanViewModel.swift in Sources */,
+				1374D3AE29F30A49006DB5BA /* CALayer+Extension.swift in Sources */,
+				1374D3FF29F30A5C006DB5BA /* RandomViewController.swift in Sources */,
+				1374D42A29F30A6C006DB5BA /* AppCoordinator.swift in Sources */,
+				1374D3F129F30A5C006DB5BA /* AlertView.swift in Sources */,
+				1374D3FC29F30A5C006DB5BA /* RightLine.swift in Sources */,
 				136814A82918579900191720 /* NavigationController.swift in Sources */,
-				1317BC412915BE1F0033D22F /* Storage.swift in Sources */,
-				1317BC3A2915BE190033D22F /* AroundNetwork.swift in Sources */,
-				136814912918341E00191720 /* LotteryListViewModel.swift in Sources */,
-				1368152C291FF9A600191720 /* HapticManager.swift in Sources */,
-				1368148F2918341E00191720 /* LotteryListViewController.swift in Sources */,
-				1317BC332915BE180033D22F /* StoreInfo.swift in Sources */,
-				1317BC352915BE180033D22F /* Entity.swift in Sources */,
-				1317BC4A2915C70A0033D22F /* LottyMapMarker.swift in Sources */,
-				1317BBA92915B7DA0033D22F /* BackgroundLabel.swift in Sources */,
-				1317BB872915B7A30033D22F /* SearchBarView.swift in Sources */,
-				1317BC322915BE180033D22F /* AroundUseCase.swift in Sources */,
-				1317BC372915BE180033D22F /* ApiAround.swift in Sources */,
-				1317BB842915B7A30033D22F /* AroundViewController.swift in Sources */,
-				13681525291F471E00191720 /* ViewController.swift in Sources */,
-				1368149A2918360500191720 /* LotteryNetwork.swift in Sources */,
-				1368150C2918E4C500191720 /* LottyColors.swift in Sources */,
-				1363CCD72920B32B00257958 /* AlertManager.swift in Sources */,
-				136815122918F0CF00191720 /* LottyIcons.swift in Sources */,
-				1317BC362915BE180033D22F /* LotteryInfo.swift in Sources */,
-				1317BB8B2915B7B70033D22F /* HomeViewController.swift in Sources */,
-				136815142918F60B00191720 /* LottyFonts.swift in Sources */,
+				1374D3F429F30A5C006DB5BA /* MarkerFactory.swift in Sources */,
+				1374D3B129F30A49006DB5BA /* AlertManager.swift in Sources */,
+				1374D38929F30A3F006DB5BA /* StoreRepository.swift in Sources */,
+				1374D42B29F30A6C006DB5BA /* TabBarCoordinator.swift in Sources */,
+				1374D43329F30A6C006DB5BA /* RandomAssembly.swift in Sources */,
+				1374D40F29F30A63006DB5BA /* NumberCell.swift in Sources */,
+				1374D3F529F30A5C006DB5BA /* StoreDetailView.swift in Sources */,
+				1374D3F029F30A5C006DB5BA /* SearchBarView.swift in Sources */,
+				1374D43129F30A6C006DB5BA /* DomainAssembly.swift in Sources */,
+				1374D3B429F30A49006DB5BA /* Marker+Util.swift in Sources */,
+				1374D38D29F30A3F006DB5BA /* StoreDTO.swift in Sources */,
+				1374D3E829F30A5C006DB5BA /* LotterySearchViewController.swift in Sources */,
+				1374D43229F30A6C006DB5BA /* Injector.swift in Sources */,
+				1374D43729F30A6C006DB5BA /* SceneDelegate.swift in Sources */,
+				1374D41329F30A63006DB5BA /* HistoryTableViewTopView.swift in Sources */,
+				1374D3E529F30A5C006DB5BA /* QrScanViewController.swift in Sources */,
+				1374D43029F30A6C006DB5BA /* QRAssembly.swift in Sources */,
+				1374D38F29F30A3F006DB5BA /* LotteryAPI.swift in Sources */,
+				1374D3ED29F30A5C006DB5BA /* AroundCoordinator.swift in Sources */,
+				1374D38529F30A3F006DB5BA /* HistoryUsecase.swift in Sources */,
+				1374D41129F30A63006DB5BA /* NumberCloseCell.swift in Sources */,
+				1374D3FE29F30A5C006DB5BA /* DottedLine.swift in Sources */,
+				1374D3AB29F30A49006DB5BA /* UIImage+Extension.swift in Sources */,
+				1374D3F229F30A5C006DB5BA /* BaseMapMarker.swift in Sources */,
 				136814A42918512500191720 /* TabBarController.swift in Sources */,
-				1317BC3C2915BE190033D22F /* GatewayBuilder.swift in Sources */,
-				136814922918341E00191720 /* EmptyCell.swift in Sources */,
-				1317BC3E2915BE190033D22F /* Codable+Extension.swift in Sources */,
-				1317BBAF2915B7DA0033D22F /* DottedLine.swift in Sources */,
-				1368148E2918341E00191720 /* LotterySearchViewController.swift in Sources */,
-				13681521291C9B2700191720 /* NumberCloseCell.swift in Sources */,
-				1317BB802915B7A30033D22F /* AroundSearchViewController.swift in Sources */,
-				1317BC432915BF730033D22F /* AroundViewModel.swift in Sources */,
-				1317BC3F2915BE190033D22F /* CALayer+Extension.swift in Sources */,
-				136815102918ECE600191720 /* BaseViewController.swift in Sources */,
+				1374D3AA29F30A49006DB5BA /* UILabel+Extension.swift in Sources */,
+				1374D3A829F30A49006DB5BA /* UIApplication+Extension.swift in Sources */,
+				1374D3EA29F30A5C006DB5BA /* AroundViewModel.swift in Sources */,
+				1374D3E729F30A5C006DB5BA /* LotterySearchViewModel.swift in Sources */,
+				1374D38E29F30A3F006DB5BA /* StoreAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
