@@ -99,6 +99,12 @@
 		1374D44429F30D90006DB5BA /* DomainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D43D29F30D90006DB5BA /* DomainAssembly.swift */; };
 		1374D44529F30D90006DB5BA /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D43E29F30D90006DB5BA /* Injector.swift */; };
 		1374D44629F30D90006DB5BA /* RandomAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D43F29F30D90006DB5BA /* RandomAssembly.swift */; };
+		1374D44B29F30DB1006DB5BA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D44829F30DB1006DB5BA /* AppCoordinator.swift */; };
+		1374D44C29F30DB1006DB5BA /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D44929F30DB1006DB5BA /* TabBarCoordinator.swift */; };
+		1374D44D29F30DB1006DB5BA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D44A29F30DB1006DB5BA /* Coordinator.swift */; };
+		1374D45229F30DBB006DB5BA /* AroundSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D44F29F30DBB006DB5BA /* AroundSearchCoordinator.swift */; };
+		1374D45329F30DBB006DB5BA /* AroundCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D45029F30DBB006DB5BA /* AroundCoordinator.swift */; };
+		1374D45429F30DBB006DB5BA /* AroundViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374D45129F30DBB006DB5BA /* AroundViewController+Extension.swift */; };
 		13A2A21A27BB489000FE10E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A2A21827BB489000FE10E1 /* Main.storyboard */; };
 		A6D32E6CB7D32FDD60D1607D /* Pods_Lotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A64C4C25BD8F9610714F0B0 /* Pods_Lotty.framework */; };
 /* End PBXBuildFile section */
@@ -200,6 +206,12 @@
 		1374D43D29F30D90006DB5BA /* DomainAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainAssembly.swift; sourceTree = "<group>"; };
 		1374D43E29F30D90006DB5BA /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
 		1374D43F29F30D90006DB5BA /* RandomAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomAssembly.swift; sourceTree = "<group>"; };
+		1374D44829F30DB1006DB5BA /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		1374D44929F30DB1006DB5BA /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		1374D44A29F30DB1006DB5BA /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		1374D44F29F30DBB006DB5BA /* AroundSearchCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundSearchCoordinator.swift; sourceTree = "<group>"; };
+		1374D45029F30DBB006DB5BA /* AroundCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundCoordinator.swift; sourceTree = "<group>"; };
+		1374D45129F30DBB006DB5BA /* AroundViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AroundViewController+Extension.swift"; sourceTree = "<group>"; };
 		13A2A21927BB489000FE10E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BDB874F062F3BED792DE7C97 /* Pods-Lotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotty.release.xcconfig"; path = "Target Support Files/Pods-Lotty/Pods-Lotty.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -452,6 +464,8 @@
 		1374D3C329F30A5C006DB5BA /* Around */ = {
 			isa = PBXGroup;
 			children = (
+				1374D45129F30DBB006DB5BA /* AroundViewController+Extension.swift */,
+				1374D44E29F30DBB006DB5BA /* Coordinator */,
 				1374D3CB29F30A5C006DB5BA /* View */,
 				1374D3D429F30A5C006DB5BA /* ViewController */,
 				1374D3C429F30A5C006DB5BA /* ViewModel */,
@@ -598,6 +612,7 @@
 			isa = PBXGroup;
 			children = (
 				1374D43829F30D90006DB5BA /* DI */,
+				1374D44729F30DB1006DB5BA /* Coordinator */,
 				1374D42729F30A6C006DB5BA /* AppDelegate.swift */,
 				1374D42929F30A6C006DB5BA /* SceneDelegate.swift */,
 				1374D42829F30A6C006DB5BA /* NavigationController.swift */,
@@ -617,6 +632,25 @@
 				1374D43F29F30D90006DB5BA /* RandomAssembly.swift */,
 			);
 			path = DI;
+			sourceTree = "<group>";
+		};
+		1374D44729F30DB1006DB5BA /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				1374D44829F30DB1006DB5BA /* AppCoordinator.swift */,
+				1374D44929F30DB1006DB5BA /* TabBarCoordinator.swift */,
+				1374D44A29F30DB1006DB5BA /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		1374D44E29F30DBB006DB5BA /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				1374D44F29F30DBB006DB5BA /* AroundSearchCoordinator.swift */,
+				1374D45029F30DBB006DB5BA /* AroundCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		13A2A20627BB489000FE10E1 = {
@@ -789,6 +823,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1374D38C29F30A3F006DB5BA /* LotteryDTO.swift in Sources */,
+				1374D45329F30DBB006DB5BA /* AroundCoordinator.swift in Sources */,
 				1374D3AD29F30A49006DB5BA /* Data+Extension.swift in Sources */,
 				1374D37E29F30A3F006DB5BA /* StoreRepositoryProtocol.swift in Sources */,
 				1374D44429F30D90006DB5BA /* DomainAssembly.swift in Sources */,
@@ -796,6 +831,7 @@
 				1374D39029F30A3F006DB5BA /* TargetType.swift in Sources */,
 				1374D37F29F30A3F006DB5BA /* LotteryRepositoryProtocol.swift in Sources */,
 				1374D3B029F30A49006DB5BA /* HapticManager.swift in Sources */,
+				1374D44C29F30DB1006DB5BA /* TabBarCoordinator.swift in Sources */,
 				1374D3B229F30A49006DB5BA /* LottyIcons.swift in Sources */,
 				1374D3EF29F30A5C006DB5BA /* LottyMapView.swift in Sources */,
 				1374D39129F30A3F006DB5BA /* LottyAPIEventLogger.swift in Sources */,
@@ -807,6 +843,7 @@
 				1374D44329F30D90006DB5BA /* QRAssembly.swift in Sources */,
 				1374D3E429F30A5C006DB5BA /* QRReaderView.swift in Sources */,
 				1374D41729F30A63006DB5BA /* LotteryDetailView.swift in Sources */,
+				1374D44D29F30DB1006DB5BA /* Coordinator.swift in Sources */,
 				1374D44029F30D90006DB5BA /* SearchAssembly.swift in Sources */,
 				1374D3FB29F30A5C006DB5BA /* GameView.swift in Sources */,
 				1374D44229F30D90006DB5BA /* DataAssembly.swift in Sources */,
@@ -843,8 +880,11 @@
 				1374D3AE29F30A49006DB5BA /* CALayer+Extension.swift in Sources */,
 				1374D3FF29F30A5C006DB5BA /* RandomViewController.swift in Sources */,
 				1374D3F129F30A5C006DB5BA /* AlertView.swift in Sources */,
+				1374D45429F30DBB006DB5BA /* AroundViewController+Extension.swift in Sources */,
 				1374D3FC29F30A5C006DB5BA /* RightLine.swift in Sources */,
+				1374D44B29F30DB1006DB5BA /* AppCoordinator.swift in Sources */,
 				1374D44529F30D90006DB5BA /* Injector.swift in Sources */,
+				1374D45229F30DBB006DB5BA /* AroundSearchCoordinator.swift in Sources */,
 				1374D3F429F30A5C006DB5BA /* MarkerFactory.swift in Sources */,
 				1374D3B129F30A49006DB5BA /* AlertManager.swift in Sources */,
 				1374D38929F30A3F006DB5BA /* StoreRepository.swift in Sources */,
