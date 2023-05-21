@@ -4,8 +4,8 @@ import RxCocoa
 import NMapsMap
 import CoreLocation
 
-final class AroundViewController: UIViewController, CLLocationManagerDelegate {
-    
+final class AroundViewController: UIViewController {
+
     weak var coordinator: AroundCoordinator?
     private let viewModel: AroundViewModel
     private var disposeBag = DisposeBag()
@@ -53,6 +53,7 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
     private let markerBase = LottyMapMarker(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     private var markersInMap: [NMFMarker?] = []
     private var selectedShop = SelectedShop()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -266,13 +267,6 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
         )
     }
     
-    private func tapSearchButton() {
-        let mapSearchViewController = AroundSearchViewController(viewModel: AroundSearchViewModel(usecase: HistoryUsecase(repository: HistoryRepository())))
-        mapSearchViewController.modalPresentationStyle = .fullScreen
-        mapSearchViewController.delegate = self
-        self.present(mapSearchViewController, animated: false, completion: nil)
-    }
-    
     private func tapNaviButton() {
         guard
             let x = locationManager.location?.coordinate.longitude,
@@ -298,7 +292,7 @@ final class AroundViewController: UIViewController, CLLocationManagerDelegate {
 
 
 // MARK: CAMERA별 판매점 마커 갱신
-extension AroundViewController: NMFMapViewCameraDelegate, NMFMapViewTouchDelegate {
+extension AroundViewController: NMFMapViewCameraDelegate, NMFMapViewTouchDelegate, CLLocationManagerDelegate {
     
     func mapViewCameraIdle(_ mapView: NMFMapView) {
         let coordinate = mapView.cameraPosition.target

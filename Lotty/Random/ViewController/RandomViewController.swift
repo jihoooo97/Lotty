@@ -5,6 +5,7 @@ import AVFoundation
 
 final class RandomViewController: UIViewController {
     
+    weak var coordinator: RandomCoordinator?
     private let viewModel: RandomViewModel
     private var disposeBag = DisposeBag()
     
@@ -80,8 +81,6 @@ final class RandomViewController: UIViewController {
 extension RandomViewController {
     
     private func initAttributes() {
-        view.backgroundColor = .white
-        
         scrollView = UIScrollView().then {
             $0.layer.masksToBounds = false
             $0.backgroundColor = .white

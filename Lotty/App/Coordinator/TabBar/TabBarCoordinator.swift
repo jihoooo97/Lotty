@@ -24,7 +24,7 @@ enum TabBarPage: String, CaseIterable {
         switch self {
         case .around: return 0
         case .search: return 1
-        case .qr: return 2
+        case .qr:     return 2
         case .random: return 3
         }
     }
@@ -45,13 +45,13 @@ enum TabBarPage: String, CaseIterable {
     func tabBarIcon() -> UIImage {
         switch self {
         case .around:
-            return UIImage(named: "map_icon")!
+            return .init(named: "map_icon")!
         case .search:
-            return UIImage(named: "find_icon")!
+            return .init(named: "find_icon")!
         case .qr:
-            return UIImage(named: "qr_scan_icon")!
+            return .init(named: "qr_scan_icon")!
         case .random:
-            return UIImage(named: "slot_icon")!
+            return .init(named: "slot_icon")!
         }
     }
 }
@@ -110,6 +110,7 @@ final class LottyTabBarCoordinator: NSObject, TabBarCoordinator {
         tabBarController.selectedIndex = TabBarPage.around.pageOrderNumber()
         tabBarController.view.backgroundColor = .white
         tabBarController.tabBar.backgroundColor = .white
+        tabBarController.tabBar.barTintColor = .white
         tabBarController.tabBar.tintColor = LottyColors.B500
         
         navigationController.pushViewController(tabBarController, animated: true)
@@ -146,14 +147,30 @@ final class LottyTabBarCoordinator: NSObject, TabBarCoordinator {
             aroundCoordinator.start()
             
         case .search:
-            let lotteryListViewController = injector.resolve(LotteryListViewController.self)
-            tabNavigationController.pushViewController(lotteryListViewController, animated: true)
+            let lotteryListCoordinator = DefaultLotteryListCoordinator(
+                tabNavigationController,
+                injector: injector
+            )
+            lotteryListCoordinator.finishDelegate = self
+            self.childCoordinators.append(lotteryListCoordinator)
+            lotteryListCoordinator.start()
+            
         case .qr:
-            let qrViewController = injector.resolve(QrScanViewController.self)
-            tabNavigationController.pushViewController(qrViewController, animated: true)
+            let qrScanCoordinator = DefaultQrScanCoordinator(
+                tabNavigationController,
+                injector: injector
+            )
+            qrScanCoordinator.finishDelegate = self
+            self.childCoordinators.append(qrScanCoordinator)
+            qrScanCoordinator.start()
+            
         case .random:
-            let randomViewController = injector.resolve(RandomViewController.self)
-            tabNavigationController.pushViewController(randomViewController, animated: true)
+            let randomCoordinator = DefaultRandomCoordinator(
+                tabNavigationController,
+                injector: injector
+            )
+            self.childCoordinators.append(randomCoordinator)
+            randomCoordinator.start()
         }
     }
     
@@ -163,9 +180,11 @@ final class LottyTabBarCoordinator: NSObject, TabBarCoordinator {
 extension LottyTabBarCoordinator: CoordinatorFinishDelegate {
     
     func coordinatorDidFinish(childCoordinator: Coordinator) {
-        self.childCoordinators = childCoordinators.filter {
-            $0.type != childCoordinator.type
-        }
+        self.childCoordinators = childCoordinators.filter { $0.type != childCoordinator.type }
         
+        if childCoordinator.type == .around {
+            navigationController.viewControllers.removeLast()
+        }
     }
+    
 }

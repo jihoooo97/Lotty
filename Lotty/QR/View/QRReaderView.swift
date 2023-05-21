@@ -64,16 +64,17 @@ final class QRReaderView: UIView {
             output.setMetadataObjectsDelegate(delegate, queue: DispatchQueue.main)
             output.metadataObjectTypes = [.qr]
             
-            DispatchQueue.main.async { [weak self] in
-                // 제한하고 싶은 영역
-                let rect = CGRect(
-                    x: ((self?.frame.width)! - 150) / 2,
-                    y: 50,
-                    width: 150, height: 150
-                )
-                let rectConverted = self?.setVideoLayer(rect: rect)
-                output.rectOfInterest = rectConverted!
-                self?.initConstraints()
+            // 제한하고 싶은 영역
+            let rect = CGRect(
+                x: ((self.frame.width) - 150) / 2,
+                y: 50,
+                width: 150, height: 150
+            )
+            let rectConverted = self.setVideoLayer(rect: rect)
+            output.rectOfInterest = rectConverted
+            self.initConstraints()
+            
+            DispatchQueue.global(qos: .background).async { [weak self] in
                 self?.captureSession.startRunning()
             }
         } catch {

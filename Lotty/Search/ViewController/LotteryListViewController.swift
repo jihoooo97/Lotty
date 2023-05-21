@@ -1,12 +1,12 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import Swinject
 
 final class LotteryListViewController: UIViewController {
-    
+
+    weak var coordinator: LotteryListCoordinator?
     private let viewModel: LotteryListViewModel
-    private var disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
     init(viewModel: LotteryListViewModel) {
         self.viewModel = viewModel
@@ -34,19 +34,13 @@ final class LotteryListViewController: UIViewController {
         inputBind()
         outputBind()
     }
-    
+
     
     private func inputBind() {
         searchButton.rx.tap
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withUnretained(self).map { $0.0 }
-            .bind(onNext: { vc in
-                // [!] DI, Coordinator
-                let assembler = Assembler([SearchAssembly()])
-                let lotterySearchViewController = assembler.resolver.resolve(LotterySearchViewController.self)!
-                vc.hidesBottomBarWhenPushed = true
-                vc.navigationController?.pushViewController(lotterySearchViewController, animated: true)
-            })
+            .bind { $0.coordinator?.pushLotterySearchViewController(lottery: nil) }
             .disposed(by: disposeBag)
         
         refreshControl.rx.controlEvent(.valueChanged)
@@ -111,12 +105,8 @@ extension LotteryListViewController: UITableViewDataSource {
                 guard let self = self else { return }
                 HapticManager.shared.hapticImpact(style: .soft)
                 
-                // [!] DI, Coordinator
-                let lotteryInfo = self.viewModel.lotteryList[indexPath.section]
-                let assembler = Assembler([SearchAssembly()])
-                let lotterySearchViewController = assembler.resolver.resolve(LotterySearchViewController.self)!
-                lotterySearchViewController.setFirstInfo(lottery: lotteryInfo)
-                self.navigationController?.pushViewController(lotterySearchViewController, animated: true)
+                let lottery = self.viewModel.lotteryList[indexPath.section]
+                self.coordinator?.pushLotterySearchViewController(lottery: lottery)
             }
 
             return cell
@@ -154,10 +144,6 @@ private extension LotteryListViewController {
     
     private func initAttributes() {
         view.backgroundColor = .white
-        
-        navigationBar = UIView().then {
-            $0.backgroundColor = .clear
-        }
         
         titleLabel = UILabel().then {
             $0.text = "조회하기"

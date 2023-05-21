@@ -6,6 +6,7 @@ import WebKit
 
 final class QrScanViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     
+    weak var coordinator: QrScanCoordinator?
     private let viewModel: QRScanViewModel
     private var disposeBag = DisposeBag()
     

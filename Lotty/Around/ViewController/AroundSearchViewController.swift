@@ -43,8 +43,8 @@ final class AroundSearchViewController: UIViewController {
         bindHistoryTableView()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         searchBar.searchTextField.becomeFirstResponder()
     }
     
@@ -52,10 +52,11 @@ final class AroundSearchViewController: UIViewController {
         backButton.rx.tap
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withUnretained(self).map { $0.0 }
-            .bind(onNext: { vc in
+            .bind { vc in
                 vc.searchBar.resignFirstResponder()
-                vc.navigationController?.popViewController(animated: false)
-            }).disposed(by: disposeBag)
+                vc.coordinator?.finish()
+            }
+            .disposed(by: disposeBag)
         
         searchBar.rx.searchButtonClicked
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
@@ -64,7 +65,7 @@ final class AroundSearchViewController: UIViewController {
                 guard let keyword = vc.searchBar.text else { return }
                 vc.viewModel.selectHistory(keyword: keyword)
                 vc.delegate?.mapSearch(keyword: keyword)
-                vc.navigationController?.popViewController(animated: false)
+                vc.coordinator?.finish()
             }
             .disposed(by: disposeBag)
     }
@@ -82,7 +83,7 @@ final class AroundSearchViewController: UIViewController {
                     self?.searchBar.resignFirstResponder()
                     self?.viewModel.inputTapHistory.accept(data)
                     self?.delegate?.mapSearch(keyword: data.keyword)
-                    self?.navigationController?.popViewController(animated: false)
+                    self?.coordinator?.finish()
                 }
 
                 cell.deleteButtonHandler = {

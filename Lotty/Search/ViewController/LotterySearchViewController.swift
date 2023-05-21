@@ -4,6 +4,7 @@ import RxCocoa
 
 final class LotterySearchViewController: UIViewController {
     
+    weak var coordinator: LotterySearchCoordinator?
     private let viewModel: LotterySearchViewModel
     private var disposeBag = DisposeBag()
     
@@ -44,9 +45,7 @@ final class LotterySearchViewController: UIViewController {
         backButton.rx.tap
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withUnretained(self).map { $0.0 }
-            .bind { vc in
-                vc.navigationController?.popViewController(animated: true)
-            }
+            .bind { $0.coordinator?.finish() }
             .disposed(by: disposeBag)
     }
     

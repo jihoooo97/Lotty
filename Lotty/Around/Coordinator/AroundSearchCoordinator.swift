@@ -31,8 +31,15 @@ final class DefaultAroundSearchCoordinator: AroundSearchCoordinator {
     }
     
     func pushAroundSearchViewController() {
+        guard let aroundViewController = navigationController
+            .viewControllers
+            .compactMap({ $0 as? AroundViewController })
+            .first
+        else { return }
+        
         let aroundSearchViewController = injector.resolve(AroundSearchViewController.self)
         aroundSearchViewController.coordinator = self
+        aroundSearchViewController.delegate = aroundViewController
         self.navigationController.pushViewController(aroundSearchViewController, animated: true)
     }
     

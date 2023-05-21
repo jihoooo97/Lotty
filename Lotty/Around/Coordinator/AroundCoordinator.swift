@@ -37,16 +37,29 @@ final class DefaultAroundCoordinator: AroundCoordinator {
         self.navigationController.pushViewController(aroundViewController, animated: true)
     }
     
-    func pushAroundSearchViewController() {
-        guard let aroundViewController = navigationController
-            .viewControllers
-            .compactMap({ $0 as? AroundViewController })
-            .first
-        else { return }
+    func pushAroundSearchViewController() {        
+        let aroundSearchCoordinator = DefaultAroundSearchCoordinator(
+            self.navigationController,
+            injector: injector
+        )
+        aroundSearchCoordinator.finishDelegate = self//.finishDelegate
+        self.childCoordinators.append(aroundSearchCoordinator)
+        aroundSearchCoordinator.start()
+    }
+    
+}
+
+
+extension DefaultAroundCoordinator: CoordinatorFinishDelegate {
+    
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        self.childCoordinators = childCoordinators.filter {
+            $0.type != childCoordinator.type
+        }
         
-        let aroundSearchViewController = injector.resolve(AroundSearchViewController.self)
-        aroundSearchViewController.delegate = aroundViewController
-        self.navigationController.pushViewController(aroundSearchViewController, animated: true)
+        if childCoordinator.type == .around {
+            navigationController.popToRootViewController(animated: true)
+        }
     }
     
 }
