@@ -5,9 +5,7 @@
 
 <br>
 
-**AppStore  * 22.03.26 앱스토어 출시**
-
-[‎로또의민족](https://apps.apple.com/kr/app/로또의민족/id1615526962)
+앱스토어: [‎로또의민족](https://apps.apple.com/kr/app/로또의민족/id1615526962)
 
 <br><br>
 
