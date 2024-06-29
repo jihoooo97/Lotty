@@ -6,6 +6,17 @@ let project = Project.makeModule(
     product: .app,
     infoPlist: .extendingDefault(
         with: [
+            "UIApplicationSceneManifest": [
+                "UIApplicationSupportsMultipleScenes": false,
+                "UISceneConfigurations": [
+                    "UIWindowSceneSessionRoleApplication": [
+                        "Item 0 (Default Configuration)": [
+                            "UISceneConfigurationName": "Default Configuration",
+                            "UISceneDelegateClassName": "$(PRODUCT_MODULE_NAME).SceneDelegate"
+                        ]
+                    ]
+                ]
+            ],
             "UILaunchScreen": [
                 "UIColorName": "",
                 "UIImageName": "",
@@ -26,6 +37,7 @@ let project = Project.makeModule(
             target: "Presentation",
             path: .relativeToRoot("Projects/Presentation")
         ),
-        .external(name: "Swinject")
+        .external(name: "Swinject"),
+        .external(name: "RealmSwift")
     ]
 )

@@ -1,5 +1,7 @@
 import UIKit
 import Swinject
+import Presentation
+import CommonUI
 
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -16,13 +18,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         injector.assemble([
             DataAssembly(),
-            DomainAssembly()
+            DomainAssembly(),
+            PresentationAssembly()
         ])
         
         window = UIWindow(windowScene: windowScene)
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .systemBackground
-        window?.rootViewController = viewController
+        let tabBarController = TabBarController(injector: injector)
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
 

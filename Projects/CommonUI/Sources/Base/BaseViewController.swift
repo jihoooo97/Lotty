@@ -1,6 +1,10 @@
 import UIKit
+import RxSwift
 
 open class BaseViewController: UIViewController {
+    
+    public var injector: Injector?
+    public let disposeBag = DisposeBag()
     
     public init() {
         super.init(nibName: nil, bundle: nil)
@@ -12,10 +16,13 @@ open class BaseViewController: UIViewController {
     }
     
     
+    public lazy var safeArea = view.safeAreaLayoutGuide
+    
+    
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
         setUIProperty()
         setLayout()
     }

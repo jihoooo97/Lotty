@@ -5,6 +5,7 @@
 //  Created by 유지호 on 2023/04/15.
 //
 
+import Domain
 import Foundation
 
 public final class LotteryRepositoryImpl: LotteryRepository {

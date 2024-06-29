@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol GameUseCaseProtocol {
+public protocol GameUseCase {
     func getTurn() -> Int
     func getPublishDay() -> String
     func getDrawDay() -> String
@@ -15,7 +15,7 @@ public protocol GameUseCaseProtocol {
     func getNumberList() -> [[Int]]
 }
 
-public final class GameUsecase: GameUseCaseProtocol {
+public final class GameUseCaseImpl: GameUseCase {
 
     public init() { }
     
@@ -63,7 +63,7 @@ public final class GameUsecase: GameUseCaseProtocol {
             let start = formatter.date(from: "2022/03/05 (토) 20:45:00")
         else { return "----/--/-- (-) --:--:--" }
         
-        let addTime = start.addingTimeInterval(TimeInterval((getTurn() - 1004) * 86400 * 7))
+        let addTime = start.addingTimeInterval(TimeInterval((getTurn() - 1005) * 86400 * 7))
         let drawDay = formatter.string(from: addTime)
         return drawDay
     }
@@ -78,7 +78,7 @@ public final class GameUsecase: GameUseCaseProtocol {
             let start = formatter.date(from: "2022/03/05 (토)")
         else { return "----/--/-- (-) --:--:--" }
         
-        let addTime = start.addingTimeInterval(TimeInterval(((getTurn() - 1004) * 7 + 364) * 86400))
+        let addTime = start.addingTimeInterval(TimeInterval(((getTurn() - 1005) * 7 + 364) * 86400))
         let dueDay = formatter.string(from: addTime)
         return dueDay
     }

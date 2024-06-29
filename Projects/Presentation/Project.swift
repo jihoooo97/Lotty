@@ -16,6 +16,9 @@ let project = Project.makeModule(
         .project(
             target: "CommonUI",
             path: .relativeToRoot("Projects/CommonUI")
-        )
+        ),
+        .external(name: "RxSwift"),
+        .external(name: "RxCocoa"),
+        .external(name: "SnapKit")
     ]
 )

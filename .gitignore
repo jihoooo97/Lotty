@@ -64,7 +64,7 @@ DerivedData/
 *.xcconfig
 
 # CocoaPods
-# Pods/
+Pods/
 
 ### Tuist derived files ###
 graph.dot

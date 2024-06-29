@@ -38,13 +38,15 @@ extension StoreAPI: TargetType {
             return .query([
                 "x": x,
                 "y": y,
-                "query": "복권 판매점",
-                "size": 15
+                "radius": 3000,
+                "query": "로또 판매점",
+                "size": 15,
+                "sort": "distance"
             ])
             
         case let .searchStore(keyword):
             return .query([
-                "query": keyword + " 복권 판매점",
+                "query": keyword + " 로또 판매점",
                 "size": 1
             ])
         }

@@ -11,23 +11,23 @@ import Swinject
 final class DomainAssembly: Assembly {
     
     func assemble(container: Container) {
-        container.register(StoreUsecase.self) { resolver in
+        container.register(StoreUseCase.self) { resolver in
             let repository = resolver.resolve(StoreRepository.self)!
-            return StoreUsecase(repository: repository)
+            return StoreUseCaseImpl(repository: repository)
         }
         
-        container.register(LotteryUsecase.self) { resolver in
+        container.register(LotteryUseCase.self) { resolver in
             let repository = resolver.resolve(LotteryRepository.self)!
-            return LotteryUsecase(repository: repository)
+            return LotteryUseCaseImpl(repository: repository)
         }
         
-        container.register(HistoryUsecase.self) { resolver in
+        container.register(HistoryUseCase.self) { resolver in
             let repository = resolver.resolve(HistoryRepository.self)!
-            return HistoryUsecase(repository: repository)
+            return HistoryUseCaseImpl(repository: repository)
         }
         
-        container.register(GameUsecase.self) { resolver in
-            return GameUsecase()
+        container.register(GameUseCase.self) { resolver in
+            return GameUseCaseImpl()
         }
     }
     

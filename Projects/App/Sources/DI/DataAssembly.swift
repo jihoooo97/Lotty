@@ -6,6 +6,7 @@
 //
 
 import Data
+import Domain
 import Swinject
 
 final class DataAssembly: Assembly {
@@ -15,7 +16,7 @@ final class DataAssembly: Assembly {
         container.register(StoreDataStore.self) { resolver in
             return StoreDataStore()
         }
-        container.register(StoreRepositoryImpl.self) { resolver in
+        container.register(StoreRepository.self) { resolver in
             let dataStore = resolver.resolve(StoreDataStore.self)!
             return StoreRepositoryImpl(dataStore: dataStore)
         }
@@ -25,13 +26,13 @@ final class DataAssembly: Assembly {
             return LotteryDataStore()
         }
         
-        container.register(LotteryRepositoryImpl.self) { resolver in
+        container.register(LotteryRepository.self) { resolver in
             let dataStore = resolver.resolve(LotteryDataStore.self)!
             return LotteryRepositoryImpl(dataStore: dataStore)
         }
         
         // MARK: History
-        container.register(HistoryRepositoryImpl.self) { resolver in
+        container.register(HistoryRepository.self) { resolver in
             return HistoryRepositoryImpl()
         }
     }
