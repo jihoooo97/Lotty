@@ -1,32 +1,21 @@
 # Uncomment the next line to define a global platform for your project
-  platform :ios, '14.0'
+# platform :ios, '15.0'
+
+# Comment the next line if you don't want to use dynamic frameworks
+use_frameworks!
+
+workspace 'Lotty.xcworkspace'
+project 'Projects/App/Lotty.xcodeproj'
+project 'Projects/Presentation/Presentation.xcodeproj'
+project 'Projects/Common/Common.xcodeproj'
+project 'Projects/CommonUI/CommonUI.xcodeproj'
 
 target 'Lotty' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for Lotty
-
-  # Network
-  pod 'Alamofire', '~> 5.5'
-
-  # Database
-  pod 'RealmSwift', '~> 10'
-
-  # UI
-  pod 'SnapKit'
-  pod 'Then'
-
-  # navermap
+  project 'Projects/App/Lotty.xcodeproj'
   pod 'NMapsMap'
+end
 
-  # Rx
-  pod 'RxSwift', '6.5.0'
-  pod 'RxCocoa', '6.5.0'
-  pod 'RxDataSources', '~> 5.0'
-  pod 'ReactorKit'
-
-  # DI
-  pod 'Swinject'
-
+target 'Presentation' do
+  project 'Projects/Presentation/Presentation.xcodeproj'
+  pod 'NMapsMap'
 end

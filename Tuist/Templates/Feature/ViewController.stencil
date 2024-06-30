@@ -1,0 +1,10 @@
+import UIKit
+import CommonUI
+
+final class {{ name }}ViewController: BaseViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+}

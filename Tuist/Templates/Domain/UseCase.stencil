@@ -1,0 +1,9 @@
+import Foundation
+
+protocol UseCaseProtocol {
+
+}
+
+final class UseCase: UseCaseProtocol {
+
+}
