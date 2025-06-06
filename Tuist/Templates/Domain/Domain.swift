@@ -1,26 +1,28 @@
+//
+//  Domain.swift
+//  BaseFeatureManifests
+//
+//  Created by 유지호 on 6/5/25.
+//
+
 import ProjectDescription
 
-let domainPath = "Projects/Domain"
+let domainPath = "Projects/Modules/Domain"
 
 let template = Template(
     description: "Domain Template",
-    attributes: [],
     items: [
         .file(
             path: domainPath + "/Project.swift",
             templatePath: "Project.stencil"
         ),
         .file(
-            path: domainPath + "/Sources/Repository/Repository.swift",
-            templatePath: "Repository.stencil"
+            path: domainPath + "/Tests/Sources/DomainTests.swift",
+            templatePath: "Tests.stencil"
         ),
         .file(
-            path: domainPath + "/Sources/UseCase/UseCase.swift",
-            templatePath: "UseCase.stencil"
+            path: domainPath + "/Sources/Empty.swift",
+            templatePath: .relativeToRoot("Tuist/Templates/Empty.stencil")
         ),
-        .file(
-            path: domainPath + "/Tests/DomainTests.swift",
-            templatePath: "DomainTests.stencil"
-        )
     ]
 )

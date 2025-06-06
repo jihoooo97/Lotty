@@ -1,19 +1,15 @@
+//
+//  Project.swift
+//
+
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-let project = Project.makeModule(
-    name: "{{ name }}",
-    product: .app,
-    infoPlist: .file(path: "Resources/Info.plist"),
-    resources: ["Resources/**"],
-    dependencies: [
-        .project(
-            target: "Data",
-            path: .relativeToRoot("Projects/Data")
-        ),
-        .project(
-            target: "Domain",
-            path: .relativeToRoot("Projects/Domain")
-        )
-    ]
+let project = Project.createModule(
+    name: Project.workspaceName,
+    targets: [.app],
+    internalDependencies: [
+        .Modules.networks.project,
+        .Features.root.project
+    ],
 )

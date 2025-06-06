@@ -1,21 +1,10 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-let project = Project.makeModule(
-    name: "{{ name }}",
-    product: .staticFramework,
-    dependencies: [
-        .project(
-            target: "Domain",
-            path: .relativeToRoot("Projects/Domain")
-        ),
-        .project(
-            target: "Common",
-            path: .relativeToRoot("Projects/Common")
-        ),
-        .project(
-            target: "CommonUI",
-            path: .relativeToRoot("Projects/CommonUI")
-        )
-    ]
+let project = Project.createModule(
+    name: "{{ name }}Feature",
+    targets: [.staticFramework, .unitTest, .demo],
+    internalDependencies: [
+        .Features.base.project
+    ],
 )

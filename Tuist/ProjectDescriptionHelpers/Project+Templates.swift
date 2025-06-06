@@ -2,86 +2,137 @@ import ProjectDescription
 
 public extension Project {
     
-    static func makeModule(
+    static func createModule(
         name: String,
-        destinations: Destinations = [.iPhone],
-        product: Product,
-        organizationName: String = "jiho",
-        deploymentTarget: DeploymentTargets? = .iOS("15.0"),
-        infoPlist: InfoPlist = .default,
-        sources: SourceFilesList = ["Sources/**"],
-        resources: ResourceFileElements? = nil,
-        dependencies: [TargetDependency] = [],
-        packages: [Package] = []
+        targets: Set<TargetModule> = [.staticFramework, .unitTest, .demo],
+        packages: [Package] = [],
+        internalDependencies: [TargetDependency] = [], // 모듈 의존성
+        externalDependencies: [TargetDependency] = [], // 외부 라이브러리 의존성
+        hasResources: Bool = false
     ) -> Project {
-        let settings: Settings = .settings(
-            base: [:],
-            configurations: [
-                .debug(name: .debug),
-                .release(name: .release)
-            ],
-            defaultSettings: .recommended
-        )
+        let configurationName: ConfigurationName = "Develop"
+        let hasDynamicFramework = targets.contains(.dynamicFramework)
+        let baseSettings: SettingsDictionary = .baseSettings.setCodeSignManual()
         
-        let appTarget: Target = .target(
-            name: name,
-            destinations: destinations,
-            product: product,
-            bundleId: "com.\(organizationName).\(name)",
-            deploymentTargets: deploymentTarget,
-            infoPlist: infoPlist,
-            sources: sources,
-            resources: resources,
-            dependencies: dependencies
-        )
-
-        let testTarget: Target = .target(
-            name: "\(name)Tests",
-            destinations: destinations,
-            product: .unitTests,
-            bundleId: "com.\(organizationName).\(name)Tests",
-            deploymentTargets: deploymentTarget,
-            infoPlist: nil,
-            sources: ["Tests/**"],
-            dependencies: []
-        )
+        var projectTargets: [Target] = []
+        var schemes: [Scheme] = []
         
-        let schemes: [Scheme] = [.makeScheme(name: name, target: .debug)]
-        let targets: [Target] = [appTarget]
+        
+        
+        // MARK: App
+        
+        if targets.contains(.app) {
+            let settings = baseSettings.setProvisioning()
+            
+            let target = Target.target(
+                name: name,
+                destinations: .iOS,
+                product: .app,
+                bundleId: Self.bundlePrefix + "Release",
+                deploymentTargets: Self.deploymentTarget,
+                infoPlist: .extendingDefault(with: Project.defaultInfoPlist),
+                sources: ["Sources/**"],
+                resources: [.glob(pattern: "Resources/**")],
+//                entitlements: "\(name).entitlements",
+                dependencies: [
+                    internalDependencies,
+                    externalDependencies
+                ].flatMap { $0 },
+                settings: .settings(base: settings)
+            )
+            
+            projectTargets.append(target)
+        }
+        
+        
+        
+        // MARK: Framework
+        
+        if targets.contains(where: { $0.hasFramework }) {
+            let settings = baseSettings
+            
+            let target = Target.target(
+                name: name,
+                destinations: .iOS,
+                product: hasDynamicFramework ? .framework : .staticFramework,
+                bundleId: Self.bundlePrefix + name,
+                deploymentTargets: Self.deploymentTarget,
+                infoPlist: .default,
+                sources: ["Sources/**"],
+                resources: hasResources ? [.glob(pattern: "Resources/**")] : [],
+                dependencies: internalDependencies + externalDependencies,
+                settings: .settings(base: settings)
+            )
+            
+            projectTargets.append(target)
+        }
+        
+        
+        
+        // MARK: DemoApp
+        
+        if targets.contains(.demo) {
+            let deps: [TargetDependency] = [.target(name: name)]
+            
+            let target = Target.target(
+                name: "\(name)Demo",
+                destinations: .iOS,
+                product: .app,
+                bundleId: Self.bundlePrefix + name + "Demo",
+                deploymentTargets: Self.deploymentTarget,
+                infoPlist: .extendingDefault(with: Project.demoInfoPlist(name)),
+                sources: ["Demo/Sources/**"],
+                resources: [.glob(pattern: "Demo/Resources/**", excluding: ["Demo/Resources/dummy.txt"])],
+                dependencies: deps,
+                settings: .settings(base: baseSettings)
+            )
+            
+            projectTargets.append(target)
+        }
+        
+        
+        
+        // MARK: Tests
+        
+        if targets.contains(.unitTest) {
+            let deps: [TargetDependency] = [.target(name: name)]
+            
+            let target = Target.target(
+                name: "\(name)Tests",
+                destinations: .iOS,
+                product: .unitTests,
+                bundleId: Self.bundlePrefix + name + "Tests",
+                deploymentTargets: Self.deploymentTarget,
+                infoPlist: .default,
+                sources: ["Tests/Sources/**"],
+                dependencies: deps,
+                settings: .settings(base: SettingsDictionary().setCodeSignManual())
+            )
+            
+            projectTargets.append(target)
+        }
+        
+        
+        
+        // MARK: Scheme
+        
+        let additionalSchemes = targets.contains(.demo)
+        ? [Scheme.makeScheme(configs: configurationName, name: name),
+           Scheme.makeDemoScheme(configs: configurationName, name: name)]
+        : [Scheme.makeScheme(configs: configurationName, name: name)]
+        schemes += additionalSchemes
+        
+        var scheme = targets.contains(.app)
+        ? appSchemes
+        : schemes
         
         return Project(
             name: name,
-            organizationName: organizationName,
+            organizationName: Self.workspaceName,
             packages: packages,
-            settings: settings,
-            targets: targets,
-            schemes: schemes,
-            resourceSynthesizers: []
-        )
-    }
-    
-}
-
-
-extension Scheme {
-    
-    static func makeScheme(
-        name: String,
-        target: ConfigurationName
-    ) -> Scheme {
-        return .scheme(
-            name: name,
-            shared: true,
-            buildAction: .buildAction(targets: ["\(name)"]),
-            testAction: .targets(
-                ["\(name)Tests"],
-                configuration: target,
-                options: .options(coverage: true, codeCoverageTargets: ["\(name)"])
-            ),
-            runAction: .runAction(configuration: target),
-            archiveAction: .archiveAction(configuration: target),
-            profileAction: .profileAction(configuration: target),
-            analyzeAction: .analyzeAction(configuration: target)
+            settings: .settings(),
+            targets: projectTargets
+//            schemes: scheme
         )
     }
     

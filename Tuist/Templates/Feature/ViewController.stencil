@@ -1,5 +1,8 @@
 import UIKit
-import CommonUI
+
+import Core
+import UIComponent
+import BaseFeature
 
 final class {{ name }}ViewController: BaseViewController {
 
