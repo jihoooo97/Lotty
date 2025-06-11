@@ -15,23 +15,23 @@ public final class LocationManager: NSObject {
     
     private let manager = CLLocationManager()
     
-    public var location: CLLocation?
+    public var location: CLLocation = .init(latitude: 37.4979278, longitude: 127.0275833)
     
     public var latitude: Double {
-        location?.coordinate.latitude ?? 0.0
+        location.coordinate.latitude
     }
     
     public var longitude: Double {
-        location?.coordinate.longitude ?? 0.0
+        location.coordinate.longitude
     }
+    
     
     private override init() {
         super.init()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
-//        manager.pausesLocationUpdatesAutomatically = false
-//        manager.requestWhenInUseAuthorization()
     }
+    
     
     public func requestAuthorization() {
         manager.requestWhenInUseAuthorization()
@@ -47,10 +47,11 @@ public final class LocationManager: NSObject {
     }
 }
 
+
 extension LocationManager: CLLocationManagerDelegate {
     
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
+        guard let location = locations.first else { return }
         self.location = location
     }
     
@@ -59,11 +60,11 @@ extension LocationManager: CLLocationManagerDelegate {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
         case .denied, .restricted:
-            print("권한 요청 거부됨")
             stopUpdate()
         case .authorizedAlways, .authorizedWhenInUse:
             startUpdate()
-        @unknown default: return
+        @unknown default:
+            debugPrint("Unknown Location Authorization")
         }
     }
     
