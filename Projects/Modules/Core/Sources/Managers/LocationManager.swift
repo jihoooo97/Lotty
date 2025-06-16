@@ -14,17 +14,15 @@ public final class LocationManager: NSObject {
     public static let shared = LocationManager()
     
     private let manager = CLLocationManager()
-    
-    public var location: CLLocation = .init(latitude: 37.4979278, longitude: 127.0275833)
-    
+    public var userLocation: CLLocation = .init(latitude: 37.4979278, longitude: 127.0275833)
+      
     public var latitude: Double {
-        location.coordinate.latitude
+        userLocation.coordinate.latitude
     }
     
     public var longitude: Double {
-        location.coordinate.longitude
+        userLocation.coordinate.longitude
     }
-    
     
     private override init() {
         super.init()
@@ -38,40 +36,39 @@ public final class LocationManager: NSObject {
     }
     
     public func startUpdate() {
-        manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
     }
     
     public func stopUpdate() {
         manager.stopUpdatingLocation()
     }
+    
 }
 
 
 extension LocationManager: CLLocationManagerDelegate {
     
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else { return }
-        self.location = location
+        guard let location = locations.last else { return }
+        userLocation = location
     }
     
     public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
-        case .notDetermined:
-            manager.requestWhenInUseAuthorization()
-        case .denied, .restricted:
-            stopUpdate()
         case .authorizedAlways, .authorizedWhenInUse:
             startUpdate()
+        case .notDetermined:
+            requestAuthorization()
+        case .denied, .restricted:
+            stopUpdate()
+            debugPrint("사용자 위치 권한 필요")
         @unknown default:
             debugPrint("Unknown Location Authorization")
         }
     }
     
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
-        print(error.localizedDescription)
+        debugPrint(error.localizedDescription)
     }
-    
-    
     
 }
