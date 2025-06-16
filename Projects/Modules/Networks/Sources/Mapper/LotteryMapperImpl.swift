@@ -21,9 +21,10 @@ public final class LotteryMapperImpl: LotteryMapper {
     }
     
     
-    public func getLotteryNumber(_ drawNo: Int) -> Single<LotteryModel> {
+    public func getLotteryNumber(_ drawNo: Int) -> Observable<LotteryModel> {
         service.getLotteryNumber(drawNo)
             .map { $0.toDomain() }
+            .asObservable()
     }
     
 }
