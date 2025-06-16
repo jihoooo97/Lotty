@@ -10,7 +10,7 @@ public extension UIView {
         color: UIColor = .black,
         x: CGFloat = 0,
         y: CGFloat = 0,
-        alpha: Float = 0.5,
+        alpha: Float = 0.2,
         blur: CGFloat = 4
     ) {
         self.layer.shadowColor = color.cgColor

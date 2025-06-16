@@ -37,8 +37,3 @@ open class BaseViewController: UIViewController {
     open func setLayout() { }
     
 }
-
-
-extension BaseViewController: UINavigationControllerDelegate {
-    
-}
