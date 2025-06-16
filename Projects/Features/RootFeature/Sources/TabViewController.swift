@@ -1,9 +1,13 @@
+import Core
+import Domain
 import BaseFeature
 import MapFeature
 
 import UIKit
 
 public final class TabViewController: UITabBarController {
+    
+    private let mapFeatureBuilder = MapFeatureBuilder()
     
     public init() {
         super.init(nibName: nil, bundle: nil)
@@ -25,9 +29,9 @@ public final class TabViewController: UITabBarController {
     private func initTabBarController(with tabViewControllers: [UIViewController]) {
         self.setViewControllers(tabViewControllers, animated: true)
         self.selectedIndex = Tab.map.pageOrderNumber()
-        self.view.backgroundColor = .white
         self.tabBar.backgroundColor = .white
-        self.tabBar.barTintColor = .white
+        self.tabBar.layer.cornerRadius = 12
+        self.tabBar.applyShadow()
         self.tabBar.tintColor = .tintColor
     }
     
@@ -42,29 +46,23 @@ public final class TabViewController: UITabBarController {
     private func makeTabNavigationController(of page: Tab) -> UINavigationController {
         let tabNavigationController = UINavigationController()
         tabNavigationController.tabBarItem = initTabBarItem(of: page)
+        tabNavigationController.isNavigationBarHidden = true
         
         switch page {
         case .map:
-            let mapViewController = LottyMapViewController()
-            mapViewController.view.backgroundColor = .white
-//            tabNavigationController.isNavigationBarHidden = true
+            let mapViewController = mapFeatureBuilder.buildLottyMapVC(builder: mapFeatureBuilder)
             tabNavigationController.pushViewController(mapViewController, animated: true)
         case .search:
             let lotteryViewController = BaseViewController()
-            lotteryViewController.view.backgroundColor = .white
-//            tabNavigationController.isNavigationBarHidden = true
             tabNavigationController.pushViewController(lotteryViewController, animated: true)
         case .qr:
             let qrViewController = BaseViewController()
-            qrViewController.view.backgroundColor = .white
-//            tabNavigationController.isNavigationBarHidden = true
             tabNavigationController.pushViewController(qrViewController, animated: true)
         case .random:
             let randomViewController = BaseViewController()
-            randomViewController.view.backgroundColor = .white
-//            tabNavigationController.isNavigationBarHidden = true
             tabNavigationController.pushViewController(randomViewController, animated: true)
         }
+        
         return tabNavigationController
     }
 }
@@ -106,10 +104,10 @@ enum Tab: String, CaseIterable {
     
     func tabIcon() -> UIImage {
         switch self {
-        case .map: return .init(systemName: "globe")!
-        case .search: return .init(systemName: "globe")!
-        case .qr:     return .init(systemName: "globe")!
-        case .random: return .init(systemName: "globe")!
+        case .map: return .init(systemName: "map")!
+        case .search: return .init(systemName: "list.number")!
+        case .qr:     return .init(systemName: "qrcode.viewfinder")!
+        case .random: return .init(systemName: "circle.hexagonpath")!
         }
     }
 }
