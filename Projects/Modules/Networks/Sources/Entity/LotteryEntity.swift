@@ -49,9 +49,9 @@ public struct LotteryEntity: Decodable {
             winNo6: winNo6,
             bonusNo: bonusNo,
             winnerCount: winnerCount,
-            winnerPrizeAmount: "\(winnerPrizeAmount)",
-            prizeAmount: "\(prizeAmount)",
-            totalSellAmount: "\(totalSellAmount)"
+            winnerPrizeAmount: winnerPrizeAmount,
+            prizeAmount: prizeAmount,
+            totalSellAmount: totalSellAmount
         )
     }
 }

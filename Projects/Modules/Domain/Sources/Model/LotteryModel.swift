@@ -11,10 +11,8 @@ public struct LotteryModel {
     public var isOpen: Bool
     public let drawnDate: String
     public let drawNo: Int
-    public let winNo1, winNo2, winNo3, winNo4: Int, winNo5, winNo6, bonusNo: Int
-    public let winnerCount: Int
-    public let winnerPrizeAmount, prizeAmount: String
-    public let totalSellAmount: String
+    public let winNo1, winNo2, winNo3, winNo4, winNo5, winNo6, bonusNo: Int
+    public let winnerCount, winnerPrizeAmount, prizeAmount, totalSellAmount: Int
     
     public init(
         isOpen: Bool,
@@ -28,9 +26,9 @@ public struct LotteryModel {
         winNo6: Int,
         bonusNo: Int,
         winnerCount: Int,
-        winnerPrizeAmount: String,
-        prizeAmount: String,
-        totalSellAmount: String
+        winnerPrizeAmount: Int,
+        prizeAmount: Int,
+        totalSellAmount: Int
     ) {
         self.isOpen = isOpen
         self.drawnDate = drawnDate

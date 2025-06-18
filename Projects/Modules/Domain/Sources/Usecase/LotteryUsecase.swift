@@ -13,26 +13,26 @@ import RxSwift
 import RxRelay
 
 public protocol LotteryUsecase {
-    var lotteryInto: PublishRelay<LotteryModel> { get }
+    var lotteryInfo: PublishRelay<LotteryModel> { get }
     var lotteryList: PublishRelay<[LotteryModel]> { get }
     
     func getLotteryNumber(_ drawNo: Int)
-    func getLotteryNumbers(_ drawNo: Int, page: Int)
+    func getLotteryNumbers(page: Int)
 }
 
-public final class DefautLotteryUsecase: LotteryUsecase {
+public final class DefaultLotteryUsecase: LotteryUsecase {
     
     private let mapper: LotteryMapper
     private let bag = DisposeBag()
     
-    public let lotteryInto = PublishRelay<LotteryModel>()
+    public let lotteryInfo = PublishRelay<LotteryModel>()
     public let lotteryList = PublishRelay<[LotteryModel]>()
     
     private var recentDrawNo = 1176
     
     public init(mapper: LotteryMapper) {
         self.mapper = mapper
-        checkRecentTurn()
+        checkRecentDrawNo()
     }
     
     
@@ -40,43 +40,58 @@ public final class DefautLotteryUsecase: LotteryUsecase {
         mapper.getLotteryNumber(drawNo)
             .withUnretained(self)
             .subscribe { owner, lottery in
-                owner.lotteryInto.accept(lottery)
+                owner.lotteryInfo.accept(lottery)
             }.disposed(by: bag)
     }
     
-    public func getLotteryNumbers(_ drawNo: Int, page: Int) {
+    public func getLotteryNumbers(page: Int) {
         Observable.from((page * 10)..<(page + 1) * 10)
             .filter { self.recentDrawNo - $0 >= 1 }
-            .concatMap { self.mapper.getLotteryNumber($0) }
+            .concatMap { self.mapper.getLotteryNumber(self.recentDrawNo - $0) }
+            .map { lottery in
+                if lottery.drawNo == self.recentDrawNo {
+                    var lottery = lottery
+                    lottery.isOpen = true
+                    return lottery
+                } else {
+                    return lottery
+                }
+            }
             .toArray()
             .subscribe(onSuccess: { [weak self] lotteryList in
                 self?.lotteryList.accept(lotteryList)
             }).disposed(by: bag)
-        
-//        var lotteryList: [LotteryModel] = []
-//        
-//        for index in (page * 10)..<(page + 1) * 10 {
-//            if recentDrawNo - index < 1 { return }
-//            
-//            mapper.getLotteryNumber(recentDrawNo - index)
-//                .withUnretained(self)
-//                .subscribe { owner, lottery in
-//                    var lottery = lottery
-//                    lottery.isOpen = lottery.drawNo == owner.recentDrawNo
-//                    lotteryList.append(lottery)
-//                }.disposed(by: bag)
-//        }
-//        
-//        self.lotteryList.accept(lotteryList)
     }
     
-    private func checkRecentTurn() {
-        guard let baseDate = Date.fullDate(from: "2025-06-14 20:45:00"),
-              let targetDate = Date.fullDate(from: Date.now.fullDateString())
-        else { return }
+    private func checkRecentDrawNo() {
+        let calendar = Calendar(identifier: .gregorian)
+        let timeZone = TimeZone(identifier: "Asia/Seoul")!
         
-        let dateInterval = Int(targetDate.timeIntervalSince(baseDate) / (60 * 60 * 24))
-        recentDrawNo += dateInterval
+        var baseComponents = DateComponents()
+        baseComponents.year = 2002
+        baseComponents.month = 12
+        baseComponents.day = 7
+        baseComponents.hour = 20
+        baseComponents.minute = 45
+        baseComponents.timeZone = timeZone
+        
+        guard let baseDate = calendar.date(from: baseComponents) else { return }
+        
+        let timeInterval = Date.now.timeIntervalSince(baseDate)
+        
+        // 1주일 = 60 * 60 * 24 * 7 = 604800초
+        let weekSeconds: TimeInterval = 604800
+        let fullWeeksPassed = Int(timeInterval / weekSeconds)
+        
+        // 이번 주 토요일 20:45를 계산
+//        let nextSaturday = calendar.nextDate(
+//            after: Date.now,
+//            matching: DateComponents(hour: 20, minute: 45, weekday: 7),
+//            matchingPolicy: .nextTimePreservingSmallerComponents,
+//            direction: .backward
+//        )
+        
+        recentDrawNo = 1 + fullWeeksPassed
     }
     
 }
