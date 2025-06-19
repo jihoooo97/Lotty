@@ -14,9 +14,11 @@ public final class LotteryMainViewController: BaseViewController {
     
     private let fetchLotteryList = PublishRelay<Void>()
 
+    public weak var builder: SearchFeatureBuilder?
     private let viewModel: LotteryMainViewModel
     
-    public init(viewModel: LotteryMainViewModel) {
+    public init(builder: SearchFeatureBuilder, viewModel: LotteryMainViewModel) {
+        self.builder = builder
         self.viewModel = viewModel
         super.init()
     }
@@ -34,14 +36,19 @@ public final class LotteryMainViewController: BaseViewController {
         
         searchButton.rx.tap
             .asDriver()
-            .drive { _ in
+            .drive { [weak self] _ in
                 HapticManager.run()
+                
+                guard let searchViewController = self?.builder?.buildLotterySearchVC() else { return }
+                self?.navigationController?.pushViewController(searchViewController, animated: true)
             }.disposed(by: bag)
         
         qrButton.rx.tap
             .asDriver()
-            .drive { _ in
+            .drive { [weak self] _ in
                 HapticManager.run()
+
+                self?.present(QRViewController(), animated: true)
             }.disposed(by: bag)
         
         lotteryTableView.rx.itemSelected
@@ -53,7 +60,7 @@ public final class LotteryMainViewController: BaseViewController {
             }.disposed(by: bag)
         
         lotteryTableView.rx.contentOffset
-            .throttle(.seconds(1), latest: true, scheduler: MainScheduler.instance)
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .map { [weak self] offset in
                 let contentHeight = self?.lotteryTableView.contentSize.height ?? .zero
                 let tableViewHeight = self?.lotteryTableView.frame.height ?? 0

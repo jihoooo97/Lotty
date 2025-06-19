@@ -10,6 +10,7 @@ import UIKit
 public final class TabViewController: UITabBarController {
     
     private let mapFeatureBuilder = MapFeatureBuilder()
+    private let searchFeatureBuilder = SearchFeatureBuilder()
     
     public init() {
         super.init(nibName: nil, bundle: nil)
@@ -57,13 +58,9 @@ public final class TabViewController: UITabBarController {
             let mapViewController = mapFeatureBuilder.buildLottyMapVC(builder: mapFeatureBuilder)
             tabNavigationController.pushViewController(mapViewController, animated: true)
         case .search:
-            let viewModel = LotteryMainViewModel(lotteryUsecase: DIContainer.shared.resolve(LotteryUsecase.self))
-            let lotteryViewController = LotteryMainViewController(viewModel: viewModel)
+            let lotteryViewController = searchFeatureBuilder.buildLotteryMainVC(builder: searchFeatureBuilder)
             tabNavigationController.isNavigationBarHidden = false
             tabNavigationController.pushViewController(lotteryViewController, animated: true)
-//        case .qr:
-//            let qrViewController = BaseViewController()
-//            tabNavigationController.pushViewController(qrViewController, animated: true)
         case .random:
             let randomViewController = BaseViewController()
             tabNavigationController.pushViewController(randomViewController, animated: true)
@@ -84,8 +81,7 @@ enum Tab: String, CaseIterable {
         switch index {
         case 0: self = .map
         case 1: self = .search
-//        case 2: self = .qr
-        case 3: self = .random
+        case 2: self = .random
         default: return nil
         }
     }
@@ -94,8 +90,7 @@ enum Tab: String, CaseIterable {
         switch self {
         case .map: return 0
         case .search: return 1
-//        case .qr:     return 2
-        case .random: return 3
+        case .random: return 2
         }
     }
     
@@ -103,7 +98,6 @@ enum Tab: String, CaseIterable {
         switch self {
         case .map: return "내 주변"
         case .search: return "번호 조회"
-//        case .qr:     return "QR 스캔"
         case .random: return "번호 생성"
         }
     }
@@ -112,7 +106,6 @@ enum Tab: String, CaseIterable {
         switch self {
         case .map: return .init(systemName: "map")!
         case .search: return .init(systemName: "list.number")!
-//        case .qr:     return .init(systemName: "qrcode.viewfinder")!
         case .random: return .init(systemName: "circle.hexagonpath")!
         }
     }

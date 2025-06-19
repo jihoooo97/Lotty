@@ -29,6 +29,15 @@ extension SceneDelegate {
             let usecase = DefaultStoreUsecase(mapper: self.container.resolve(StoreMapper.self))
             return usecase
         }
+        
+        container.register(LotteryMapper.self) {
+            return LotteryMapperImpl(service: DefaultLotteryService())
+        }
+        
+        container.register(LotteryUsecase.self) { [unowned self] in
+            let usecase = DefaultLotteryUsecase(mapper: self.container.resolve(LotteryMapper.self))
+            return usecase
+        }
     }
     
 }

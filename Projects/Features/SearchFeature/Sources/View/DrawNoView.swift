@@ -36,14 +36,14 @@ public final class DrawNoView: UIStackView {
     }
     
     
-    public func configure(drawNo: Int..., bonusNo: Int) {
-        guard drawNo.count == 6 else { return }
-        firstNoLabel.number = drawNo[0]
-        secondNoLabel.number = drawNo[1]
-        thirdNoLabel.number = drawNo[2]
-        fourthNoLabel.number = drawNo[3]
-        fifthNoLabel.number = drawNo[4]
-        sixthNoLabel.number = drawNo[5]
+    public func configure(winNo: [Int], bonusNo: Int) {
+        guard winNo.count == 6 else { return }
+        firstNoLabel.number = winNo[0]
+        secondNoLabel.number = winNo[1]
+        thirdNoLabel.number = winNo[2]
+        fourthNoLabel.number = winNo[3]
+        fifthNoLabel.number = winNo[4]
+        sixthNoLabel.number = winNo[5]
         bonusNoLabel.number = bonusNo
     }
     

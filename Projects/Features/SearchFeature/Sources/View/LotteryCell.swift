@@ -17,7 +17,7 @@ public final class LotteryCell: UITableViewCell {
     
     private lazy var stackView = UIStackView()
     private lazy var titleView = UIView()
-    private lazy var infoStackView = UIStackView()
+    private lazy var infoView = LotteryInfoView()
     
     
     // MARK: Title Propertie
@@ -45,31 +45,11 @@ public final class LotteryCell: UITableViewCell {
     }
 
     
-    public func configure(with item: LotteryModel) {
-        drawNoLabel.text = "\(item.drawNo)" + "회"
-        statusImage.image = item.isOpen ? .init(systemName: "chevron.up") : .init(systemName: "chevron.down")
-        
-        drawnDateLabel.text = item.drawnDate
-        drawNoView.configure(drawNo: item.winNo1, item.winNo2, item.winNo3, item.winNo4, item.winNo5, item.winNo6, bonusNo: item.bonusNo)
-        
-        let winnerCountString = NSMutableAttributedString(string: item.winnerCount.formatted() + "명")
-        let winnerCountAttributedString = NSAttributedString(
-            string: " 당첨",
-            attributes: [.font: UIFont.monospacedSystemFont(ofSize: 14.0, weight: .medium)]
-        )
-        
-        winnerCountString.append(winnerCountAttributedString)
-        winnerCountLabel.attributedText = winnerCountString
-        
-        let winAmountAttributedString = NSMutableAttributedString(string: "인당 " + item.winnerPrizeAmount.formatted() + "원")
-        winAmountAttributedString.addAttribute(
-            .font,
-            value: UIFont.monospacedSystemFont(ofSize: 14.0, weight: .medium),
-            range: .init(location: 0, length: 2)
-        )
-        
-        winAmountLabel.attributedText = winAmountAttributedString
-        infoStackView.isHidden = !item.isOpen
+    public func configure(with lottery: LotteryModel) {
+        drawNoLabel.text = "\(lottery.drawNo)" + "회"
+        statusImage.image = lottery.isOpen ? .init(systemName: "chevron.up") : .init(systemName: "chevron.down")
+        infoView.configure(with: lottery)
+        infoView.isHidden = !lottery.isOpen
     }
 
     private func setUIProperty() {
@@ -100,45 +80,12 @@ public final class LotteryCell: UITableViewCell {
             imageView.tintColor = .darkGray
             return imageView
         }()
-        
-        infoStackView = {
-            let stackView = UIStackView()
-            stackView.axis = .vertical
-            stackView.alignment = .center
-            stackView.spacing = 8
-            stackView.isLayoutMarginsRelativeArrangement = true
-            stackView.layoutMargins = .init(top: 16, left: 0, bottom: 16, right: 0)
-            return stackView
-        }()
-        
-        drawnDateLabel = {
-            let label = UILabel()
-            label.font = .systemFont(ofSize: 16.0, weight: .medium)
-            label.numberOfLines = 1
-            return label
-        }()
-        
-        winnerCountLabel = {
-            let label = UILabel()
-            label.textAlignment = .center
-            label.font = .monospacedSystemFont(ofSize: 20.0, weight: .semibold)
-            return label
-        }()
-        
-        winAmountLabel = {
-            let label = UILabel()
-            label.textAlignment = .center
-            label.font = .systemFont(ofSize: 24.0, weight: .medium)
-            label.numberOfLines = 1
-            return label
-        }()
     }
     
     private func setLayout() {
         contentView.addSubview(stackView)
-        stackView.addArrangedSubviews(titleView, infoStackView, UIView())
+        stackView.addArrangedSubviews(titleView, infoView, UIView())
         titleView.addSubviews(drawNoLabel, statusImage)
-        infoStackView.addArrangedSubviews(drawnDateLabel, drawNoView, winnerCountLabel, winAmountLabel)
         
         stackView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
