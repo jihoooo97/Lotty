@@ -4,6 +4,7 @@ import Domain
 import BaseFeature
 import MapFeature
 import SearchFeature
+import RandomFeature
 
 import UIKit
 
@@ -62,7 +63,7 @@ public final class TabViewController: UITabBarController {
             tabNavigationController.isNavigationBarHidden = false
             tabNavigationController.pushViewController(lotteryViewController, animated: true)
         case .random:
-            let randomViewController = BaseViewController()
+            let randomViewController = DrawViewController(viewModel: DrawViewModel())
             tabNavigationController.pushViewController(randomViewController, animated: true)
         }
         
