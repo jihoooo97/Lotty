@@ -14,11 +14,19 @@ public final class DottedLine: UIView {
     
     private let dotColor: UIColor
     private let dotWidth: CGFloat
+    private let pattern: [CGFloat]
     
-    public init(_ color: UIColor = .systemBackground, width: CGFloat) {
+    public init(
+        _ color: UIColor = .label,
+        width: CGFloat = 2.0,
+        pattern: [CGFloat] = [9, 6]
+    ) {
         self.dotColor = color
         self.dotWidth = width
+        self.pattern = pattern
         super.init(frame: .zero)
+        
+        self.backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
@@ -31,13 +39,9 @@ public final class DottedLine: UIView {
         path.lineWidth = dotWidth
         path.move(to: CGPoint(x: 0, y: 0))
         path.addLine(to: CGPoint(x: self.frame.maxX, y: 0))
-        
-        let pattern: [CGFloat] = [9, 6]
         path.setLineDash(pattern, count: pattern.count, phase: 0)
         dotColor.set()
-        
         path.stroke()
     }
-    
     
 }
