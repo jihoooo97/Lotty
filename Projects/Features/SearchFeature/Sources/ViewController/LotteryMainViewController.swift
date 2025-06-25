@@ -12,6 +12,8 @@ public final class LotteryMainViewController: BaseViewController {
     private lazy var qrButton = UIBarButtonItem()
     private lazy var lotteryTableView = UITableView()
     
+    private let refreshControll = UIRefreshControl()
+    
     private let fetchLotteryList = PublishRelay<Void>()
 
     public weak var builder: SearchFeatureBuilder?
@@ -31,7 +33,11 @@ public final class LotteryMainViewController: BaseViewController {
     
     
     private func bindViewModel() {
-        let input = LotteryMainViewModel.Input(tableViewDidScroll: fetchLotteryList.asObservable())
+        let input = LotteryMainViewModel.Input(
+            tableViewDidRefresh: refreshControll.rx.controlEvent(.valueChanged).asObservable(),
+            tableViewDidScroll: fetchLotteryList.asObservable()
+        )
+        
         let output = viewModel.transform(from: input)
         
         searchButton.rx.tap
@@ -77,6 +83,13 @@ public final class LotteryMainViewController: BaseViewController {
             .drive(lotteryTableView.rx.items(cellIdentifier: LotteryCell.identifier, cellType: LotteryCell.self)) { row, item, cell in
                 cell.configure(with: item)
             }.disposed(by: bag)
+        
+        output.isLoading
+            .asDriver(onErrorJustReturn: true)
+            .filter { !$0 }
+            .drive { [weak self] _ in
+                self?.refreshControll.endRefreshing()
+            }.disposed(by: bag)
     }
     
     public override func setUIProperty() {
@@ -96,9 +109,9 @@ public final class LotteryMainViewController: BaseViewController {
             let tableView = UITableView()
             tableView.separatorStyle = .none
             tableView.rowHeight = UITableView.automaticDimension
-//            tableView.estimatedRowHeight = 56
             tableView.contentInset = .init(top: 0, left: 0, bottom: 20, right: 0)
-            tableView.refreshControl?.tintColor = .tintColor
+            tableView.refreshControl = refreshControll
+            tableView.refreshControl?.tintColor = .tintColor.withAlphaComponent(0.5)
             tableView.register(LotteryCell.self, forCellReuseIdentifier: LotteryCell.identifier)
             return tableView
         }()
