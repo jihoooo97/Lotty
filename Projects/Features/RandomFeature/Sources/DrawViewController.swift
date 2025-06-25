@@ -8,22 +8,21 @@ import RxCocoa
 
 public final class DrawViewController: BaseViewController {
 
-    private lazy var titleLabel = UILabel()
+    private lazy var titleLogo = UIImageView()
     private lazy var qrScanImage = UIImageView()
     private lazy var drawNoLabel = UILabel()
     private lazy var publishingDateLabel = UILabel()
     private lazy var drawnDateLabel = UILabel()
     private lazy var dueDateLabel = UILabel()
     
-//    private let topLine = DottedLine()
-//    private let bottomLine = DottedLine()
-//    private lazy var gameListView = GameListView()
+    private lazy var lotteryView = DrawnLotteryView()
 
     private lazy var priceLabelTitle = UILabel()
     private lazy var priceLabel = UILabel()
     
-    private let fortuneLabel = UILabel()
     private lazy var drawButton = UIButton()
+    
+    private let rightLine = UIView()
     
     private let fortuneMent = ["당첨 예감!", "좋은 꿈 꾸셨나봐요?", "느낌이 좋은데요?", "대박 느낌!"]
     
@@ -55,14 +54,14 @@ public final class DrawViewController: BaseViewController {
             .disposed(by: bag)
         
         output.publishingDate
-            .map { "발  행  일 : " + $0 }
-            .asDriver(onErrorJustReturn: "발  행  일 : ----/--/-- (-) --:--:--")
+            .map { "발   행   일 : " + $0 }
+            .asDriver(onErrorJustReturn: "발   행   일 : ----/--/-- (-) --:--:--")
             .drive(publishingDateLabel.rx.text)
             .disposed(by: bag)
         
         output.drawnDate
-            .map { "추  첨  일 : " + $0 }
-            .asDriver(onErrorJustReturn: "추  첨  일 : ----/--/-- (-) --:--:--")
+            .map { "추   첨   일 : " + $0 }
+            .asDriver(onErrorJustReturn: "추   첨   일 : ----/--/-- (-) --:--:--")
             .drive(drawnDateLabel.rx.text)
             .disposed(by: bag)
         
@@ -71,23 +70,28 @@ public final class DrawViewController: BaseViewController {
             .asDriver(onErrorJustReturn: "지 급 기 한 : ----/--/--")
             .drive { [weak self] dueDate in
                 self?.dueDateLabel.text = dueDate
-                self?.fortuneLabel.text = self?.fortuneMent.randomElement()
+            }.disposed(by: bag)
+        
+        output.winNoList
+            .asDriver(onErrorJustReturn: [])
+            .drive { [weak self] winNoList in
+                self?.lotteryView.drawLottery(with: winNoList)
             }.disposed(by: bag)
     }
     
     public override func setUIProperty() {
-        titleLabel = {
-            let label = UILabel()
-            label.text = "추첨하기"
-            return label
+        titleLogo = {
+            let imageView = UIImageView()
+            imageView.image = .icon(named: "logo_main")?.withRenderingMode(.alwaysOriginal)
+            return imageView
         }()
         
         qrScanImage = {
             let imageView = UIImageView()
-            imageView.image = .init(systemName: "globe")
-//            imageView.image = LottyIcons.qr
-//            imageView.tintColor = LottyColors.G900
+            imageView.image = .init(systemName: "qrcode")
+            imageView.tintColor = .label
             imageView.contentMode = .scaleAspectFit
+            imageView.preferredSymbolConfiguration = .init(font: .monospacedSystemFont(ofSize: 18.0, weight: .semibold))
             return imageView
         }()
         
@@ -101,22 +105,22 @@ public final class DrawViewController: BaseViewController {
         
         publishingDateLabel = {
             let label = UILabel()
-            label.text = "발  행  일 : ----/--/-- (-) --:--:--"
-            label.font = .systemFont(ofSize: 16.0, weight: .semibold)
+            label.text = "발   행   일 : ----/--/-- (-) --:--:--"
+            label.font = .systemFont(ofSize: 16.0, weight: .bold)
             return label
         }()
         
         drawnDateLabel = {
             let label = UILabel()
-            label.text = "추  첨  일 : ----/--/-- (-) --:--:--"
-            label.font = .systemFont(ofSize: 16.0, weight: .semibold)
+            label.text = "추   첨   일 : ----/--/-- (-) --:--:--"
+            label.font = .systemFont(ofSize: 16.0, weight: .bold)
             return label
         }()
         
         dueDateLabel = {
             let label = UILabel()
             label.text = "지 급 기 한 : ----/--/--"
-            label.font = .systemFont(ofSize: 16.0, weight: .semibold)
+            label.font = .systemFont(ofSize: 16.0, weight: .bold)
             return label
         }()
         
@@ -138,97 +142,116 @@ public final class DrawViewController: BaseViewController {
         drawButton = {
             let button = UIButton()
             button.configuration = .plain()
-            button.configuration?.title = "번호 생성"
-            button.titleLabel?.font = .monospacedSystemFont(ofSize: 18.0, weight: .semibold)
+            let title = NSAttributedString(
+                string: "번호생성",
+                attributes: [
+                    .font: UIFont.monospacedSystemFont(ofSize: 18.0, weight: .semibold),
+                    .foregroundColor: UIComponentAsset.accentColor.color
+                ]
+            )
+            button.configuration?.attributedTitle = AttributedString(title)
             button.backgroundColor = .systemBackground
-            button.layer.cornerRadius = 16
             button.border(.systemBackground, width: 1, radius: 16)
             button.applyShadow(y: 0.5)
             return button
         }()
+        
+        rightLine.backgroundColor = UIComponentAsset.accentColor.color.withAlphaComponent(0.5)
     }
     
     public override func setLayout() {
+        let leftIcon1 = UIImageView(image: .icon(named: "icon_lomin"))
+        leftIcon1.tintColor = UIComponentAsset.accentColor.color.withAlphaComponent(0.5)
+        let leftIcon2 = UIImageView(image: .icon(named: "icon_lomin"))
+        leftIcon2.tintColor = UIComponentAsset.accentColor.color.withAlphaComponent(0.5)
+        let leftIcon3 = UIImageView(image: .icon(named: "icon_lomin"))
+        leftIcon3.tintColor = UIComponentAsset.accentColor.color.withAlphaComponent(0.5)
+        
         view.addSubviews(
-            titleLabel, qrScanImage, drawNoLabel,
+            leftIcon1, leftIcon2, leftIcon3, rightLine,
+            titleLogo, qrScanImage, drawNoLabel,
             publishingDateLabel, drawnDateLabel, dueDateLabel,
-//            topLine, bottomLine, gameListView,
-            priceLabelTitle, priceLabel,
-            fortuneLabel, drawButton
+            lotteryView,
+            priceLabelTitle, priceLabel, drawButton
         )
         
-        titleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeArea).offset(20)
-            $0.centerX.equalTo(safeArea)
-//            $0.width.equalTo(250)
-//            $0.height.equalTo(80)
-        }
-        
-        qrScanImage.snp.makeConstraints {
-            $0.left.equalTo(titleLabel.snp.right)
-            $0.centerY.equalTo(titleLabel)
-            $0.width.height.equalTo(50)
-        }
-        
-        drawNoLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
-            $0.centerX.equalTo(safeArea)
-        }
-        
-        publishingDateLabel.snp.makeConstraints {
-            $0.left.equalTo(safeArea).offset(42)
-            $0.top.equalTo(drawNoLabel.snp.bottom).offset(10)
-        }
-        
-        drawnDateLabel.snp.makeConstraints {
-            $0.left.equalTo(publishingDateLabel)
-            $0.top.equalTo(publishingDateLabel.snp.bottom).offset(2)
-        }
-        
-        dueDateLabel.snp.makeConstraints {
-            $0.left.equalTo(publishingDateLabel)
-            $0.top.equalTo(drawnDateLabel.snp.bottom).offset(2)
-        }
-        
-//        topLine.snp.makeConstraints {
-//            $0.left.equalTo(publishDayLabel).offset(-15)
-//            $0.top.equalTo(dueDayLabel.snp.bottom).offset(20)
-//            $0.centerX.equalToSuperview()
-//            $0.height.equalTo(1)
-//        }
-//        
-//        gameListView.snp.makeConstraints {
-//            $0.left.equalTo(topLine)
-//            $0.right.equalTo(topLine)
-//            $0.top.equalTo(topLine.snp.bottom).offset(20)
-//        }
-//        
-//        bottomLine.snp.makeConstraints {
-//            $0.left.right.equalTo(topLine)
-//            $0.top.equalTo(gameListView.snp.bottom).offset(20)
-//            $0.height.equalTo(1)
-//        }
-        
-        priceLabelTitle.snp.makeConstraints {
-            $0.left.equalTo(publishingDateLabel)
-            $0.top.equalTo(dueDateLabel.snp.bottom).offset(20)
-        }
-        
-        priceLabel.snp.makeConstraints {
-            $0.right.equalTo(dueDateLabel)
-            $0.centerY.equalTo(priceLabelTitle)
-        }
-        
-        fortuneLabel.snp.makeConstraints { make in
+        titleLogo.snp.makeConstraints { make in
+            make.top.equalTo(safeArea)
             make.centerX.equalTo(safeArea)
-            make.top.equalTo(priceLabelTitle.snp.bottom).offset(40)
+            make.width.equalTo(titleLogo.snp.height).multipliedBy(2)
+            make.height.equalTo(90)
         }
         
-        drawButton.snp.makeConstraints {
-            $0.left.right.equalTo(dueDateLabel)
-            $0.top.equalTo(fortuneLabel.snp.bottom).offset(40)
-            $0.centerX.equalToSuperview()
-            $0.height.equalTo(60)
+        qrScanImage.snp.makeConstraints { make in
+            make.left.equalTo(titleLogo.snp.right)
+            make.bottom.equalTo(titleLogo)
+            make.size.equalTo(60)
+        }
+        
+        drawNoLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLogo.snp.bottom).offset(20)
+            make.centerX.equalTo(safeArea)
+        }
+        
+        publishingDateLabel.snp.makeConstraints { make in
+            make.left.equalTo(safeArea).offset(42)
+            make.top.equalTo(drawNoLabel.snp.bottom).offset(10)
+        }
+        
+        drawnDateLabel.snp.makeConstraints { make in
+            make.left.equalTo(publishingDateLabel)
+            make.top.equalTo(publishingDateLabel.snp.bottom).offset(4)
+        }
+        
+        dueDateLabel.snp.makeConstraints { make in
+            make.left.equalTo(publishingDateLabel)
+            make.top.equalTo(drawnDateLabel.snp.bottom).offset(4)
+        }
+        
+        lotteryView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalTo(safeArea).multipliedBy(0.8)
+            make.top.equalTo(dueDateLabel.snp.bottom).offset(12)
+        }
+        
+        priceLabelTitle.snp.makeConstraints { make in
+            make.left.equalTo(lotteryView).inset(8)
+            make.top.equalTo(lotteryView.snp.bottom).offset(20)
+        }
+        
+        priceLabel.snp.makeConstraints { make in
+            make.right.equalTo(lotteryView).inset(8)
+            make.centerY.equalTo(priceLabelTitle)
+        }
+        
+        drawButton.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(lotteryView)
+            make.top.equalTo(priceLabel.snp.bottom).offset(40)
+            make.height.equalTo(60)
+        }
+        
+        leftIcon1.snp.makeConstraints { make in
+            make.left.top.equalTo(safeArea)
+            make.width.equalTo(160)
+            make.height.equalTo(100)
+        }
+        
+        leftIcon2.snp.makeConstraints { make in
+            make.left.centerY.equalTo(safeArea)
+            make.width.equalTo(160)
+            make.height.equalTo(100)
+        }
+        
+        leftIcon3.snp.makeConstraints { make in
+            make.left.bottom.equalTo(safeArea)
+            make.width.equalTo(160)
+            make.height.equalTo(100)
+        }
+        
+        rightLine.snp.makeConstraints { make in
+            make.right.equalToSuperview().inset(8)
+            make.verticalEdges.equalToSuperview()
+            make.width.equalTo(30)
         }
     }
 
