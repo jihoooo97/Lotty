@@ -32,7 +32,7 @@ public final class TabViewController: UITabBarController {
     
     private func initTabBarController(with tabViewControllers: [UIViewController]) {
         self.setViewControllers(tabViewControllers, animated: true)
-        self.selectedIndex = Tab.map.pageOrderNumber()
+        self.selectedIndex = Tab.search.pageOrderNumber
         self.tabBar.backgroundColor = .white
         self.tabBar.layer.cornerRadius = 12
         self.tabBar.applyShadow()
@@ -43,9 +43,9 @@ public final class TabViewController: UITabBarController {
     
     private func initTabBarItem(of page: Tab) -> UITabBarItem {
         return .init(
-            title: page.tabTitle(),
-            image: page.tabIcon(),
-            tag: page.pageOrderNumber()
+            title: page.tabTitle,
+            image: page.tabIcon,
+            tag: page.pageOrderNumber
         )
     }
     
@@ -55,13 +55,13 @@ public final class TabViewController: UITabBarController {
         tabNavigationController.isNavigationBarHidden = true
         
         switch page {
-        case .map:
-            let mapViewController = mapFeatureBuilder.buildLottyMapVC(builder: mapFeatureBuilder)
-            tabNavigationController.pushViewController(mapViewController, animated: true)
         case .search:
             let lotteryViewController = searchFeatureBuilder.buildLotteryMainVC(builder: searchFeatureBuilder)
             tabNavigationController.isNavigationBarHidden = false
             tabNavigationController.pushViewController(lotteryViewController, animated: true)
+        case .map:
+            let mapViewController = mapFeatureBuilder.buildLottyMapVC(builder: mapFeatureBuilder)
+            tabNavigationController.pushViewController(mapViewController, animated: true)
         case .random:
             let randomViewController = DrawViewController(viewModel: DrawViewModel())
             tabNavigationController.pushViewController(randomViewController, animated: true)
@@ -73,40 +73,39 @@ public final class TabViewController: UITabBarController {
 
 
 enum Tab: String, CaseIterable {
-    case map
     case search
-//    case qr
+    case map
     case random
     
     init?(index: Int) {
         switch index {
-        case 0: self = .map
-        case 1: self = .search
+        case 0: self = .search
+        case 1: self = .map
         case 2: self = .random
         default: return nil
         }
     }
     
-    func pageOrderNumber() -> Int {
+    var pageOrderNumber: Int {
         switch self {
-        case .map: return 0
-        case .search: return 1
+        case .search: return 0
+        case .map: return 1
         case .random: return 2
         }
     }
     
-    func tabTitle() -> String {
+    var tabTitle: String {
         switch self {
-        case .map: return "내 주변"
         case .search: return "번호 조회"
+        case .map: return "내 주변"
         case .random: return "번호 생성"
         }
     }
     
-    func tabIcon() -> UIImage {
+    var tabIcon: UIImage {
         switch self {
-        case .map: return .init(systemName: "map")!
         case .search: return .init(systemName: "list.number")!
+        case .map: return .init(systemName: "map")!
         case .random: return .init(systemName: "circle.hexagonpath")!
         }
     }
