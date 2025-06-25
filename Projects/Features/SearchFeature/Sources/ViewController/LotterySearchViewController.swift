@@ -147,25 +147,28 @@ public final class LotterySearchViewController: BaseViewController {
         let dividor = UIView()
         dividor.backgroundColor = .lightGray.withAlphaComponent(0.2)
         
-        view.addSubviews(stackView, tableView)
-        stackView.addArrangedSubviews(drawNoLabel, lotteryInfoView, dividor, tableViewHeader)
-        stackView.setCustomSpacing(20, after: lotteryInfoView)
+        view.addSubviews(stackView, dividor, tableViewHeader, tableView)
+        stackView.addArrangedSubviews(drawNoLabel, lotteryInfoView)
         
         stackView.snp.makeConstraints { make in
-            make.horizontalEdges.top.equalTo(safeArea)
-        }
-        
-        tableView.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalTo(safeArea)
-            make.top.equalTo(stackView.snp.bottom)
+            make.horizontalEdges.top.equalTo(safeArea).inset(20)
         }
         
         dividor.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(safeArea)
+            make.top.equalTo(stackView.snp.bottom).offset(20)
             make.height.equalTo(20)
         }
         
         tableViewHeader.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(safeArea)
+            make.top.equalTo(dividor.snp.bottom).offset(8)
             make.height.equalTo(50)
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalTo(safeArea)
+            make.top.equalTo(tableViewHeader.snp.bottom)
         }
     }
     

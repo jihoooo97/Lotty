@@ -84,6 +84,7 @@ public final class StoreSearchViewController: BaseViewController {
             
             self?.presentAlert(message: "최근검색어를 모두 삭제하시겠습니까?") { _ in
                 self?.onTapClearButton.accept(())
+                self?.searchController.isActive = false
             }
         }
         
@@ -95,17 +96,14 @@ public final class StoreSearchViewController: BaseViewController {
         
         output.searchHistory
             .asDriver(onErrorJustReturn: [])
-            .drive(tableView.rx.items(cellIdentifier: SearchHistoryCell.identifier, cellType: SearchHistoryCell.self)) { row, element, cell in
+            .drive(tableView.rx.items(
+                cellIdentifier: SearchHistoryCell.identifier,
+                cellType: SearchHistoryCell.self
+            )) { [weak self] row, element, cell in
                 cell.bind(
                     history: element,
-                    contentAction: { [weak self] in
-                        print("Content\(row) Action")
-                        self?.onTapCell.accept(element.keyword)
-                    },
-                    deleteAction: { [weak self] in
-                        print("Delete\(row) Action")
-                        self?.onTapDeleteCell.accept(element.keyword)
-                    }
+                    contentAction: { self?.onTapCell.accept(element.keyword) },
+                    deleteAction: { self?.onTapDeleteCell.accept(element.keyword) }
                 )
             }.disposed(by: bag)
     }
