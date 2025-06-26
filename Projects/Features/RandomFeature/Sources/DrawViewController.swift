@@ -82,7 +82,7 @@ public final class DrawViewController: BaseViewController {
     public override func setUIProperty() {
         titleLogo = {
             let imageView = UIImageView()
-            imageView.image = .icon(named: "logo_main")?.withRenderingMode(.alwaysOriginal)
+            imageView.image = UIComponentAsset.logoMain.image.withRenderingMode(.alwaysOriginal)
             return imageView
         }()
         
@@ -160,11 +160,11 @@ public final class DrawViewController: BaseViewController {
     }
     
     public override func setLayout() {
-        let leftIcon1 = UIImageView(image: .icon(named: "icon_lomin"))
+        let leftIcon1 = UIImageView(image: UIComponentAsset.iconLomin.image)
         leftIcon1.tintColor = UIComponentAsset.accentColor.color.withAlphaComponent(0.5)
-        let leftIcon2 = UIImageView(image: .icon(named: "icon_lomin"))
+        let leftIcon2 = UIImageView(image: UIComponentAsset.iconLomin.image)
         leftIcon2.tintColor = UIComponentAsset.accentColor.color.withAlphaComponent(0.5)
-        let leftIcon3 = UIImageView(image: .icon(named: "icon_lomin"))
+        let leftIcon3 = UIImageView(image: UIComponentAsset.iconLomin.image)
         leftIcon3.tintColor = UIComponentAsset.accentColor.color.withAlphaComponent(0.5)
         
         view.addSubviews(

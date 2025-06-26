@@ -72,7 +72,7 @@ public final class QRViewController: BaseViewController {
         
         descriptionImage = {
             let imageView = UIImageView()
-            imageView.image = .icon(named: "icon_lomin")
+            imageView.image = UIComponentAsset.iconLomin.image
             imageView.tintColor = .lightGray.withAlphaComponent(0.5)
             imageView.contentMode = .scaleAspectFit
             return imageView
