@@ -13,18 +13,21 @@ import UIComponent
 import UIKit
 import RxSwift
 import RxRelay
+import GoogleMobileAds
 
 public final class StoreSearchViewController: BaseViewController {
     
-    private let viewModel: StoreSearchViewModel
-    
     private lazy var searchController = UISearchController(searchResultsController: nil)
+    
     private lazy var tableViewHeader = SearchHistoryTableViewHeader(title: "최근 검색어")
     private lazy var tableView = UITableView()
+    private lazy var bannerView = BannerView()
     
     private let onTapCell = PublishRelay<String>()
     private let onTapDeleteCell = PublishRelay<String>()
     private let onTapClearButton = PublishRelay<Void>()
+    
+    private let viewModel: StoreSearchViewModel
     
     public init(viewModel: StoreSearchViewModel) {
         self.viewModel = viewModel
@@ -110,15 +113,15 @@ public final class StoreSearchViewController: BaseViewController {
     
     
     public override func setUIProperty() {
-        self.navigationItem.title = "판매점 검색"
-        self.navigationItem.searchController = searchController
-        self.navigationItem.hidesSearchBarWhenScrolling = false
-        
-        searchController.searchBar.placeholder = "지역 이름으로 검색하세요."
-        searchController.searchBar.searchTextField.font = .systemFont(ofSize: 16.0, weight: .medium)
-        searchController.searchBar.searchTextField.autocorrectionType = .no
-        searchController.searchBar.searchTextField.autocapitalizationType = .none
-        searchController.searchBar.searchTextField.spellCheckingType = .no
+        searchController = {
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchBar.placeholder = "지역 이름으로 검색하세요."
+            controller.searchBar.searchTextField.font = .systemFont(ofSize: 16.0, weight: .medium)
+            controller.searchBar.searchTextField.autocorrectionType = .no
+            controller.searchBar.searchTextField.autocapitalizationType = .none
+            controller.searchBar.searchTextField.spellCheckingType = .no
+            return controller
+        }()
                 
         tableView = {
             let tableView = UITableView()
@@ -129,10 +132,22 @@ public final class StoreSearchViewController: BaseViewController {
             tableView.register(SearchHistoryCell.self, forCellReuseIdentifier: SearchHistoryCell.identifier)
             return tableView
         }()
+        
+        bannerView = {
+            let banner = BannerView()
+            banner.adUnitID = "ca-app-pub-3940256099942544/2435281174"
+            banner.rootViewController = self
+            banner.load(Request())
+            return banner
+        }()
+        
+        self.navigationItem.title = "판매점 검색"
+        self.navigationItem.searchController = searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     public override func setLayout() {
-        view.addSubviews(tableViewHeader, tableView)
+        view.addSubviews(tableViewHeader, tableView, bannerView)
         
         tableViewHeader.snp.makeConstraints { make in
             make.horizontalEdges.top.equalTo(safeArea)
@@ -140,8 +155,14 @@ public final class StoreSearchViewController: BaseViewController {
         }
         
         tableView.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalTo(safeArea)
+            make.horizontalEdges.equalTo(safeArea)
             make.top.equalTo(tableViewHeader.snp.bottom)
+            make.bottom.equalTo(bannerView.snp.top)
+        }
+        
+        bannerView.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalTo(safeArea)
+            make.height.equalTo(56)
         }
     }
     

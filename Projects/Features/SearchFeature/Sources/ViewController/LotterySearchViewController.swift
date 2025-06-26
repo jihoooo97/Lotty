@@ -14,6 +14,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import GoogleMobileAds
 
 public final class LotterySearchViewController: BaseViewController {
 
@@ -25,6 +26,7 @@ public final class LotterySearchViewController: BaseViewController {
     
     private lazy var tableViewHeader = SearchHistoryTableViewHeader(title: "최근 본 회차")
     private lazy var tableView = UITableView()
+    private lazy var bannerView = BannerView()
     
     private let onTapCell = PublishRelay<String>()
     private let onTapDeleteCell = PublishRelay<String>()
@@ -138,6 +140,14 @@ public final class LotterySearchViewController: BaseViewController {
             return tableView
         }()
         
+        bannerView = {
+            let banner = BannerView()
+            banner.adUnitID = "ca-app-pub-3940256099942544/2435281174"
+            banner.rootViewController = self
+            banner.load(Request())
+            return banner
+        }()
+        
         self.navigationItem.title = "회차 검색"
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
@@ -147,7 +157,7 @@ public final class LotterySearchViewController: BaseViewController {
         let dividor = UIView()
         dividor.backgroundColor = .lightGray.withAlphaComponent(0.2)
         
-        view.addSubviews(stackView, dividor, tableViewHeader, tableView)
+        view.addSubviews(stackView, dividor, tableViewHeader, tableView, bannerView)
         stackView.addArrangedSubviews(drawNoLabel, lotteryInfoView)
         
         stackView.snp.makeConstraints { make in
@@ -167,8 +177,14 @@ public final class LotterySearchViewController: BaseViewController {
         }
         
         tableView.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalTo(safeArea)
+            make.horizontalEdges.equalTo(safeArea)
             make.top.equalTo(tableViewHeader.snp.bottom)
+            make.bottom.equalTo(bannerView.snp.top)
+        }
+        
+        bannerView.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalTo(safeArea)
+            make.height.equalTo(56)
         }
     }
     
