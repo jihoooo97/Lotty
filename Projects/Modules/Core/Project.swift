@@ -6,10 +6,11 @@ let project = Project.createModule(
     targets: [.dynamicFramework, .unitTest],
     internalDependencies: [],
     externalDependencies: [
-        .external(name: "Kingfisher"),
         .external(name: "RxCocoa"),
         .external(name: "RxSwift"),
         .external(name: "SnapKit"),
-        .package(product: "NMapsMap")
+        .external(name: "Moya"),
+        .external(name: "NMapsMap"),
+        .external(name: "GoogleMobileAds")
     ]
 )
