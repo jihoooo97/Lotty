@@ -51,7 +51,7 @@ public final class LotterySearchViewModel: ViewModelable {
             }.disposed(by: bag)
         
         input.searchFieldDidChange
-            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .withUnretained(self)
             .subscribe { owner, text in
