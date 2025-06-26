@@ -7,7 +7,6 @@ let project = Project.createModule(
     internalDependencies: [
         .Features.map.project,
         .Features.search.project,
-        .Features.qr.project,
         .Features.random.project
     ],
 )

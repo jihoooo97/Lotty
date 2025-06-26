@@ -35,7 +35,6 @@ public extension TargetDependency {
         
         case map
         case search
-        case qr
         case random
         
         public var group: String {
@@ -45,7 +44,6 @@ public extension TargetDependency {
                 
             case .map: "MapFeature"
             case .search: "SearchFeature"
-            case .qr: "QRFeature"
             case .random: "RandomFeature"
             }
         }
