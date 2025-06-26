@@ -22,18 +22,18 @@ public final class LottyMapViewController: BaseViewController {
     private lazy var storeToastView = StoreToastView()
     
     private let onChangeCameraPosition = PublishRelay<CLLocationCoordinate2D>()
-    private var markersInMap: [NMFMarker] = []
+    private var markersInMap: [LottyMarker?] = []
     
     private var selectedStore = SelectedStore()
     
     struct SelectedStore {
-        weak var marker: NMFMarker?
+        weak var marker: LottyMarker?
         var data: StoreModel?
         var latitude, longitude: Double?
         
-        mutating func set(marker: NMFMarker?, data: StoreModel) {
+        mutating func set(marker: LottyMarker?, data: StoreModel) {
             self.marker = marker
-            self.marker?.iconTintColor = .tintColor
+            self.marker?.isSelected = true
             self.marker?.zIndex = 1
             self.data = data
             self.latitude = Double(data.y)
@@ -41,7 +41,7 @@ public final class LottyMapViewController: BaseViewController {
         }
         
         mutating func reset() {
-            self.marker?.iconTintColor = .lightGray
+            self.marker?.isSelected = false
             self.marker?.zIndex = 0
             self.marker = nil
             self.data = nil
@@ -275,11 +275,10 @@ extension LottyMapViewController: NMFMapViewLoadDelegate, NMFMapViewCameraDelega
         for store in storeList {
             guard let latitude = Double(store.y), let longitude = Double(store.x) else { continue }
             
-            let marker = NMFMarker(position: .init(lat: latitude, lng: longitude))
-            marker.iconImage = NMF_MARKER_IMAGE_BLACK
+            let marker = LottyMarker()
+            marker.position = .init(lat: latitude, lng: longitude)
             
             let isSelected = selectedStore.data?.address == store.address && selectedStore.data?.storeName == store.storeName
-            marker.iconTintColor = isSelected ? .tintColor : .lightGray
             
             marker.touchHandler = { [weak self] _ -> Bool in
                 self?.selectedStore.reset()
@@ -292,18 +291,19 @@ extension LottyMapViewController: NMFMapViewLoadDelegate, NMFMapViewCameraDelega
             
             if isSelected {
                 selectedStore.marker = marker
+                marker.isSelected = true
             }
             
-            DispatchQueue.main.async {
-                self.markersInMap.append(marker)
-                marker.mapView = self.mapView
+            DispatchQueue.main.async { [weak self, weak marker] in
+                self?.markersInMap.append(marker)
+                marker?.mapView = self?.mapView
             }
         }
     }
     
     private func clearMarkers() {
         DispatchQueue.main.async {
-            self.markersInMap.forEach { $0.mapView = nil }
+            self.markersInMap.forEach { $0?.mapView = nil }
             self.markersInMap.removeAll()
         }
     }
