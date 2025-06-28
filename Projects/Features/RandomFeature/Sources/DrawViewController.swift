@@ -5,6 +5,7 @@ import UIComponent
 import UIKit
 import RxSwift
 import RxCocoa
+import GoogleMobileAds
 
 public final class DrawViewController: BaseViewController {
 
@@ -22,7 +23,7 @@ public final class DrawViewController: BaseViewController {
     
     private lazy var drawButton = UIButton()
     
-    private let rightLine = UIView()
+    private lazy var bannerView = BannerView()
     
     private let fortuneMent = ["당첨 예감!", "좋은 꿈 꾸셨나봐요?", "느낌이 좋은데요?", "대박 느낌!"]
     
@@ -156,7 +157,19 @@ public final class DrawViewController: BaseViewController {
             return button
         }()
         
-        rightLine.backgroundColor = UIComponentAsset.accentColor.color.withAlphaComponent(0.5)
+        bannerView = {
+            let banner = BannerView()
+            
+            #if DEBUG
+            banner.adUnitID = "ca-app-pub-3940256099942544/2435281174"
+            #else
+            banner.adUnitID = "ca-app-pub-1763854291067764/5550226990"
+            #endif
+            
+            banner.rootViewController = self
+            banner.load(Request())
+            return banner
+        }()
     }
     
     public override func setLayout() {
@@ -166,13 +179,15 @@ public final class DrawViewController: BaseViewController {
         leftIcon2.tintColor = UIComponentAsset.accentColor.color.withAlphaComponent(0.5)
         let leftIcon3 = UIImageView(image: UIComponentAsset.iconLomin.image)
         leftIcon3.tintColor = UIComponentAsset.accentColor.color.withAlphaComponent(0.5)
+        let rightLine = UIView()
+        rightLine.backgroundColor = UIComponentAsset.accentColor.color.withAlphaComponent(0.5)
         
         view.addSubviews(
             leftIcon1, leftIcon2, leftIcon3, rightLine,
             titleLogo, qrScanImage, drawNoLabel,
             publishingDateLabel, drawnDateLabel, dueDateLabel,
             lotteryView,
-            priceLabelTitle, priceLabel, drawButton
+            priceLabelTitle, priceLabel, bannerView, drawButton
         )
         
         titleLogo.snp.makeConstraints { make in
@@ -228,6 +243,11 @@ public final class DrawViewController: BaseViewController {
             make.horizontalEdges.equalTo(lotteryView)
             make.top.equalTo(priceLabel.snp.bottom).offset(40)
             make.height.equalTo(60)
+        }
+        
+        bannerView.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalTo(safeArea)
+            make.height.equalTo(56)
         }
         
         leftIcon1.snp.makeConstraints { make in

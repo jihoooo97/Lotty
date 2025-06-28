@@ -135,7 +135,13 @@ public final class StoreSearchViewController: BaseViewController {
         
         bannerView = {
             let banner = BannerView()
+            
+            #if DEBUG
             banner.adUnitID = "ca-app-pub-3940256099942544/2435281174"
+            #else
+            banner.adUnitID = "ca-app-pub-1763854291067764/5550226990"
+            #endif
+            
             banner.rootViewController = self
             banner.load(Request())
             return banner
