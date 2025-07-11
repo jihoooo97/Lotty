@@ -1,70 +1,111 @@
+## 로또의민족 
+> `2022.01 ~ Now` [‎앱스토어 바로가기](https://apps.apple.com/kr/app/로또의민족/id1615526962)
+
+<img width="20%" src="https://github.com/user-attachments/assets/19e80068-b7c4-4070-a00b-5df70ca18bb0" /> <br>
+
+로또의 민족은 당첨 정보를 조회하고, 번호를 생성할 수 있는 로또 유틸리티 서비스 입니다. <br>
+
+최신 회차 당첨 정보 조회, 주변 판매점 위치 확인, 번호 생성을 할 수 있는 서비스 입니다. <br>
+
+번호를 생성하여 행운을 시험해보세요 ! <br>
+
+<br>
+
+### ⚙️ 개발 환경 및 라이브러리
+
 ![Swift 5.10](https://img.shields.io/badge/Swift-5.10-F05138.svg?style=flat&color=F05138) 
 ![Xcode 15.3](https://img.shields.io/badge/Xcode-15.3-147EFB.svg?style=flat&color=147EFB)
 ![iOS 15.0+](https://img.shields.io/badge/iOS-15.0+-147EFB.svg?style=flat&color=00E007)
-![Tuist 4.18](https://img.shields.io/badge/Tuist-4.18-147EFB.svg?style=flat&color=6E12CB)
-
-# 로또의민족 
-> 로또 당첨 정보 조회, 주변 판매점 위치 확인, 번호 생성을 할 수 있는 서비스  
-> [‎앱스토어](https://apps.apple.com/kr/app/로또의민족/id1615526962)
-<img width="1164" alt="스크린샷 2023-03-03 오전 3 36 47" src="https://github.com/jihoooo97/Lotty/assets/49361214/c0c44a40-9fcd-45b2-b0ec-8238c3eaaa3f">  
+![Tuist 4.18.0](https://img.shields.io/badge/Tuist-4.18-147EFB.svg?style=flat&color=6E12CB)
+[![Moya 15.0.0](https://img.shields.io/badge/Moya-15.0.0-yellow)]()  
 
 <br><br>
 
-## 개발 환경
-| Framework | UIKit |
-|:-:|:-|
-| 구조 | MVVM + RxSwift + Clean Architecture |
-| DI | Swinject |
-| Network | Alamofire |
-| Library | WebKit, NaverMaps, KakaoSDK, Kingfisher |
-<br>
 
-## 모듈 구조
-![graph](https://github.com/jihoooo97/Lotty/assets/49361214/3bdf96ba-7947-408a-856c-1aaacddaade6)  
+## ✨ 기능 소개
 
-> **모듈화**
-```
-- 비슷한 책임을 갖는 코드(클래스, 패키지, 라이브러리 등)를 묶어 모듈로 나눠서 응집도를 향상시킴
-- 모듈 간 의존 관계를 설정함으로써 알아야하는 대상과 알지 못해야하는 대상을 명확히 구분해줌으로 결합도를 낮추고 실수를 방지해 유지 보수가 용이함
-- 만들어 놓은 모듈은 다른 프로젝트에서도 재사용할 수 있어 개발 효율이 높아짐
-```
+### 당첨 정보 조회
+- 최신 로또 회차의 당첨 정보를 확인할 수 있어요.
+- 검색해서 특정 회차의 당첨 정보를 확인할 수 있어요.
+- QR 코드 스캐너로 구매한 로또의 당첨 정보를 확인할 수 있어요.
 
-- **Lotty (App 모듈)**
-  - AppDelegate, SceneDelegate, DI 주입, Resource(Info.plist, Font, Assets)
-- **Data 모듈**
-  - DTO, Network, Database, DataStoure, RepositoryImpl
-- **Domain 모듈**
-  - VO, UseCase, RepositoryProtocol
-- **Presentation 모듈**
-  - Feature, View, ViewModel
-- **Common 모듈**
-  - 공통 기능 (enum, extension, Helper 등)
-- **CommonUI 모듈**
-  - 공통 UI (UILabel, UIButtom, UITableView 등 Custom View, UI관련 extension)
+### 주변 로또 판매점 조회
+- 현 위치를 기반으로 주변 로또 판매점을 조회할 수 있어요.
+- 특정 지역의 판매점을 검색할 수 있어요.
+- 길찾기 버튼을 누르면 판매점까지 경로를 알려줘요.
 
-
-
+### 랜덤 번호 생성
+- 랜덤으로 로또 번호를 생성할 수 있어요.
+- 느낌이 좋은 번호가 나왔다면 로또를 구매하러 가볼까요?
 
 <br>
 
-## 아키텍처
-<img width="800" alt="스크린샷 2024-07-08 오후 4 00 04" src="https://github.com/jihoooo97/Lotty/assets/49361214/6b3d4c51-1a36-4221-a9a7-392d71132949">
+|당첨 정보 조회|회차 검색|QR 코드 스캔|
+|:-:|:-:|:-:|
+|<img width="180" src="https://github.com/user-attachments/assets/70bb0c6c-b1b8-473b-8081-8813cc44040c" />|<img width="180" src="https://github.com/user-attachments/assets/7c865569-a071-438f-ba99-b3b3c6abf706" />|<img width="180" src="https://github.com/user-attachments/assets/5fdc0984-64b9-4a84-aa96-8bb1494501f9" />|
 
-> **Clean Architecture** 
+|주변 판매점 조회|랜덤 번호 생성|
+|:-:|:-:|
+|<img width="180" src="https://github.com/user-attachments/assets/a3dd9196-90d1-40e1-9de6-80596619f0c5" />|<img width="180" src="https://github.com/user-attachments/assets/320a613b-6e6a-455f-9c85-4467d7c0c989" />|
+
+<br><br>
+
+
+## 📚 스킬
+
+### Clean Architecture + MVVM(I/O)
+```mermaid
+graph LR
+subgraph Presentation
+  A(View<br>Controller)
+  B(ViewModel)	
+  A -.Input.-> B
+	B -.Output.-> A
+end
+   
+subgraph Domain
+  C(Usecase<br>Protocol) 
+  D(Usecase)
+  E(Wrapper<br>Protocol)
+  D --> C
+  D --> E
+  B ---> C
+  C -.Model.-> B
+end
+    
+subgraph Networks
+  H(Service)
+  I(Server)
+  G(Wrapper)
+	H -.Request.-> I
+  I -.Response.-> H
+  G -.Entity.-> E
+  G --> H
+end
 ```
-- 분리된 계층의 역할과 책임이 명확해져 코드 응집도가 높아지고, 테스트에 용이해짐
-- 코드가 어떤 계층에 있을지 예측할 수 있어, 코드의 가독성과 개발 효율이 높아짐
+```
+- Network Layer: 서버 또는 로컬에서 직접적으로 데이터를 가져오거나 보내는 책임
+- Domain Layer: 앱의 비즈니스 로직에 대한 책임
+- Presentation Layer: UI 로직에 대한 책임
 ```
 
-- **Data Layer**: 서버 또는 로컬에서 직접적으로 데이터를 가져오거나 보내는 책임
-- **Domain Layer**: 앱의 비즈니스 로직에 대한 책임
-- **Presentation Layer**: UI 로직에 대한 책임
+- Feature, Domain, Network Layer를 분리하여 각 Layer의 역할을 나누었습니다.
+- 분리된 Layer의 역할과 책임이 명확해져 코드 응집도가 높아지고, 테스트에 용이해집니다.
+- 특정 코드가 어떤 Layer에 있을지 예측할 수 있어, 코드의 가독성과 개발 효율이 높아집니다.
 
 <br>
 
-## 담당 역할
-- 지도: 현 위치를 기반으로 주변 로또 판매점을 검색하여 NaverMap Marker로 표시하는 기능 개발
-- 로또 회차 목록: 1,000여 개의 로또 회차에 대한 정보를 infinity scroll을 구현하여 조회할 수 있도록 개발
-- QR Scan: AVKit의 AVCaptureDevice를 활용하여 QR Code Scan 기능 개발
-- 로또번호 생성: 로또 번호를 중복되지 않게 랜덤으로 생성하는 로직 개발
+- MVVM 패턴으로 UI 로직과 비즈니스 로직을 분리했습니다.
+- ViewModel에서 사용자의 이벤트와 화면에 보여질 데이터를 Input Output 구조로 정의했습니다.
+
 <br>
+
+### Modularization (Tuist)
+![graph](graph.png)
+
+- 비슷한 책임을 갖는 코드(클래스, 패키지, 라이브러리 등)를 모듈로 분리하여 응집도가 높고 결합도가 낮은 코드를 구현하도록 했습니다.
+- 모듈 간 의존 관계를 설정함으로써 역할과 참조 관계를 명확히 구분해줌으로 결합도를 낮추고 실수를 방지해 유지 보수에 용이해집니다.
+- 만들어 놓은 모듈은 다른 프로젝트에서도 재사용할 수 있어 개발 효율이 높아집니다.
+- 데모 앱을 통해 테스트 환경을 구축할 수 있습니다.
+
+<br><br>
