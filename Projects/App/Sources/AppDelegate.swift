@@ -106,7 +106,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         let weekSeconds: TimeInterval = 604800
         let fullWeeksPassed = Int(timeInterval / weekSeconds)
     
-        return 1 + fullWeeksPassed
+        return 2 + fullWeeksPassed
     }
     
 }
