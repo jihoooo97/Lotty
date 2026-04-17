@@ -31,25 +31,27 @@ public extension TargetDependency {
     
     enum Features {
         case base
-        case root
-        
-        case map
-        case search
-        case random
+//        case root
+//        
+//        case map
+//        case search
+//        case random
         
         public var group: String {
-            switch self {
-            case .base: "BaseFeature"
-            case .root: "RootFeature"
-                
-            case .map: "MapFeature"
-            case .search: "SearchFeature"
-            case .random: "RandomFeature"
-            }
+            "Feature"
+//            switch self {
+//            case .base: "BaseFeature"
+//            case .root: "RootFeature"
+//                
+//            case .map: "MapFeature"
+//            case .search: "SearchFeature"
+//            case .random: "RandomFeature"
+//            }
         }
         
         public var project: TargetDependency {
-            .project(target: self.group, path: .relativeToRoot("Projects/Features/\(group)"))
+            .project(target: self.group, path: .relativeToRoot("Projects/Feature/"))
+//            .project(target: self.group, path: .relativeToRoot("Projects/Features/\(group)"))
         }
     }
 

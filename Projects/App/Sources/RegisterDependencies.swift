@@ -10,8 +10,6 @@ import Core
 import Domain
 import Networks
 
-import MapFeature
-
 import Foundation
 
 extension SceneDelegate {

@@ -40,7 +40,7 @@ public final class DrawViewModel: ViewModelable {
             .throttle(.milliseconds(500), latest: false, scheduler: MainScheduler.instance)
             .withUnretained(self)
             .subscribe { owner, _ in
-                HapticManager.run(style: .heavy)
+//                HapticManager.run(style: .heavy)
                 
                 output.drawNo.accept(owner.setDrawNo())
                 owner.setPublishingDate(with: output)

@@ -10,6 +10,6 @@ let project = Project.createModule(
     targets: [.app],
     internalDependencies: [
         .Modules.networks.project,
-        .Features.root.project
+        .Features.base.project
     ],
 )

@@ -32,10 +32,16 @@ open class BaseViewController: UIViewController {
         view.backgroundColor = .systemBackground
         setUIProperty()
         setLayout()
+        logFirstScreenView()
     }
     
     
     open func setUIProperty() { }
     open func setLayout() { }
+    
+    private func logFirstScreenView() {
+        let screenName = String(describing: type(of: self))
+        print("First screen view logged: \(screenName)")
+    }
     
 }

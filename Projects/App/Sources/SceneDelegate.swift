@@ -1,5 +1,5 @@
 import Core
-import RootFeature
+import Feature
 
 import UIKit
 

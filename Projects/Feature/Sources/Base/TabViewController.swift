@@ -1,11 +1,6 @@
 import Core
 import Domain
 
-import BaseFeature
-import MapFeature
-import SearchFeature
-import RandomFeature
-
 import UIKit
 
 public final class TabViewController: UITabBarController {
