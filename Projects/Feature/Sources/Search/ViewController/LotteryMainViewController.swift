@@ -12,6 +12,12 @@ public final class LotteryMainViewController: BaseViewController {
     private lazy var qrButton = UIBarButtonItem()
     private lazy var lotteryTableView = UITableView()
     
+    private let progressView: UIActivityIndicatorView = {
+        let progressView = UIActivityIndicatorView()
+        progressView.startAnimating()
+        return progressView
+    }()
+    
     private let refreshControll = UIRefreshControl()
     
     private let fetchLotteryList = PublishRelay<Void>()
@@ -84,6 +90,14 @@ public final class LotteryMainViewController: BaseViewController {
                 cell.configure(with: item)
             }.disposed(by: bag)
         
+        output.lotteryList
+            .filter { !$0.isEmpty }
+            .take(1)
+            .asDriver(onErrorJustReturn: [])
+            .drive { [weak self] _ in
+                self?.progressView.removeFromSuperview()
+            }.disposed(by: bag)
+        
         output.isLoading
             .asDriver(onErrorJustReturn: true)
             .filter { !$0 }
@@ -123,10 +137,15 @@ public final class LotteryMainViewController: BaseViewController {
     
     public override func setLayout() {
         view.addSubviews(lotteryTableView)
+        view.addSubview(progressView)
         
         lotteryTableView.snp.makeConstraints { make in
             make.horizontalEdges.top.equalTo(safeArea)
             make.bottom.equalTo(safeArea).offset(8)
+        }
+        
+        progressView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
 
