@@ -1,4 +1,3 @@
-import BaseFeature
 import Core
 import UIComponent
 

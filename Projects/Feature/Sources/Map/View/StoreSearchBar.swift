@@ -6,8 +6,6 @@
 //  Copyright © 2025 Lotty. All rights reserved.
 //
 
-import BaseFeature
-
 import UIKit
 
 final class StoreSearchBar: UIButton {
