@@ -23,8 +23,16 @@ public final class LotteryMapperImpl: LotteryMapper {
     
     public func getLotteryNumber(_ drawNo: Int) -> Observable<LotteryModel> {
         service.getLotteryNumber(drawNo)
+            .compactMap { $0.toDomain().first }
+            .asObservable()
+            .retry(3)
+    }
+    
+    public func getLotteryNumberList(_ startNo: Int) -> Observable<[LotteryModel]> {
+        service.getLotteryNumberList(startNo)
             .map { $0.toDomain() }
             .asObservable()
+            .retry(3)
     }
     
 }

@@ -16,6 +16,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         registerDependencies()
         
+        if let url = URL(string: "https://www.dhlottery.co.kr/lt645/selectPstLt645Info.do?srchLtEpsd=1000") {
+            URLSession.shared.dataTask(with: URLRequest(url: url)) { _, _, _ in }.resume()
+        }
+        
+        if let url = URL(string: "https://www.dhlottery.co.kr/lt645/selectPstLt645Info.do?srchStrLtEpsd=1200&srchEndLtEpsd=1219&_=1776404293468") {
+            URLSession.shared.dataTask(with: URLRequest(url: url)) { _, _, _ in }.resume()
+        }
+        
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = TabViewController()
         window?.makeKeyAndVisible()

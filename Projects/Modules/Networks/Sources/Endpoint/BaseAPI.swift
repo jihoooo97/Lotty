@@ -46,6 +46,7 @@ public enum APIType {
 enum HeaderType {
     case json
     case jsonWithKakaoAK
+    case jsonWithLottery
     
     var value: [String: String] {
         switch self {
@@ -54,6 +55,10 @@ enum HeaderType {
         case .jsonWithKakaoAK:
             ["Content-Type": "application/json",
              "Authorization": "KakaoAK 7165edf50ee98e1383adf5924f5a76ad"]
+        case .jsonWithLottery:
+            ["Content-Type": "application/json",
+             "X-Requested-With": "XMLHttpRequest",
+             "Referer": "https://www.dhlottery.co.kr/"]
         }
     }
 }

@@ -21,7 +21,7 @@ public class BaseService<Target: TargetType> {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 10
         configuration.timeoutIntervalForResource = 10
-        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+//        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
         
         let session = Session(configuration: configuration, delegate: .init())
         let provider = MoyaProvider<API>(

@@ -13,4 +13,5 @@ import RxSwift
 
 public protocol LotteryMapper {
     func getLotteryNumber(_ drawNo: Int) -> Observable<LotteryModel>
+    func getLotteryNumberList(_ startNo: Int) -> Observable<[LotteryModel]>
 }

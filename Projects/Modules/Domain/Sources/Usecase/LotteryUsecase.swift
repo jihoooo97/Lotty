@@ -45,22 +45,21 @@ public final class DefaultLotteryUsecase: LotteryUsecase {
     }
     
     public func getLotteryNumbers(page: Int) {
-        Observable.from((page * 10)..<(page + 1) * 10)
-            .filter { self.recentDrawNo - $0 >= 1 }
-            .concatMap { self.mapper.getLotteryNumber(self.recentDrawNo - $0) }
-            .map { lottery in
-                if lottery.drawNo == self.recentDrawNo {
-                    var lottery = lottery
-                    lottery.isOpen = true
-                    return lottery
-                } else {
-                    return lottery
+        mapper.getLotteryNumberList(recentDrawNo - page * 10)
+            .withUnretained(self)
+            .subscribe { owner, lotteryList in
+                var editedlotteryList = lotteryList
+                
+                if page == 0 {
+                    editedlotteryList = lotteryList.map { [weak self] lottery in
+                        var lottery = lottery
+                        lottery.isOpen = lottery.drawNo == self?.recentDrawNo
+                        return lottery
+                    }
                 }
-            }
-            .toArray()
-            .subscribe(onSuccess: { [weak self] lotteryList in
-                self?.lotteryList.accept(lotteryList)
-            }).disposed(by: bag)
+                
+                owner.lotteryList.accept(editedlotteryList)
+            }.disposed(by: bag)
     }
     
     private func checkRecentDrawNo() {
