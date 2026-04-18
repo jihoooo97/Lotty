@@ -41,9 +41,10 @@ public final class DrawnLotteryView: UIStackView {
         gameList.enumerated().forEach { offset, game in
             game.alpha = 0.0
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + Double(offset) * 0.1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(offset) * 0.2) {
                 game.alpha = 1.0
                 game.configure(with: numberSets[offset])
+                HapticManager.run(style: .soft)
             }
         }
     }
