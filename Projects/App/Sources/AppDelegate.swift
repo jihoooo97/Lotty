@@ -74,7 +74,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             calendar: .init(identifier: .gregorian),
             timeZone: .init(identifier: "Asia/Seoul"),
             hour: 20,
-            minute: 45,
+            minute: 46,
             weekday: 7
         )
         

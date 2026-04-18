@@ -18,8 +18,10 @@ final class LottyMarker: NMFMarker {
         didSet {
             if isSelected {
                 self.iconImage = NMFOverlayImage(image: UIComponentAsset.iconCloverFour.image)
+                self.height = 60
             } else {
                 self.iconImage = NMFOverlayImage(image: UIComponentAsset.iconCloverThree.image)
+                self.height = 50
             }
         }
     }
@@ -29,7 +31,7 @@ final class LottyMarker: NMFMarker {
         
         self.iconImage = NMFOverlayImage(image: UIComponentAsset.iconCloverThree.image)
         self.width = 50
-        self.height = 60
+        self.height = 50
     }
     
 }
